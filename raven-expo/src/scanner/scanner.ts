@@ -1,6 +1,7 @@
 import { StorageAccessFramework as SAF, getInfoAsync } from 'expo-file-system/legacy';
 import { createAudioPlayer } from 'expo-audio';
 import { repo } from '../db/repo';
+import { getMetadata, getChapters } from '../../modules/audio-metadata';
 
 const AUDIO_EXT = ['mp3', 'm4a', 'm4b', 'aac', 'ogg', 'oga', 'opus', 'wav', 'flac', 'mp4', '3gp'];
 const IMAGE_EXT = ['jpg', 'jpeg', 'png', 'webp'];
@@ -34,31 +35,26 @@ function byName(a: string, b: string): number {
   return decodedName(a).localeCompare(decodedName(b), undefined, { numeric: true, sensitivity: 'base' });
 }
 
-// ---- optional native metadata (graceful fallback to filename-based naming) ----
-type FileMeta = { title?: string; artist?: string; album?: string; track?: number | null };
+// Embedded tags + cover art are read by the local `audio-metadata` native module
+// (framework MediaMetadataRetriever — no Media3 dependency). Falls back to names.
+type FileMeta = {
+  title?: string;
+  artist?: string;
+  album?: string;
+  artworkUri?: string | null;
+  durationMs?: number;
+};
 
 async function readMeta(uri: string): Promise<FileMeta> {
-  try {
-    const lib = require('@missingcore/react-native-metadata-retriever');
-    const m = await lib.getMetadata(uri, ['title', 'artist', 'albumArtist', 'albumTitle', 'trackNumber']);
-    return {
-      title: m.title ?? undefined,
-      artist: m.artist ?? m.albumArtist ?? undefined,
-      album: m.albumTitle ?? undefined,
-      track: m.trackNumber ?? null,
-    };
-  } catch {
-    return {};
-  }
-}
-
-async function saveArtwork(uri: string): Promise<string | null> {
-  try {
-    const lib = require('@missingcore/react-native-metadata-retriever');
-    return (await lib.saveArtwork(uri)) ?? null;
-  } catch {
-    return null;
-  }
+  const m = await getMetadata(uri);
+  if (!m) return {};
+  return {
+    title: m.title ?? undefined,
+    artist: m.artist ?? undefined,
+    album: m.album ?? undefined,
+    artworkUri: m.artworkUri,
+    durationMs: m.durationMs ?? undefined,
+  };
 }
 
 async function probeDurationMs(uri: string): Promise<number> {
@@ -109,31 +105,57 @@ async function buildBook(
   authorOverride: string | null,
   onProbe: (label: string, i: number, total: number) => void,
 ): Promise<boolean> {
-  // metadata-aware ordering: prefer track numbers, else natural filename order
+  const sorted = [...audio].sort(byName);
   const withMeta = await Promise.all(
-    audio.map(async (uri) => ({ uri, meta: await readMeta(uri) })),
+    sorted.map(async (uri) => ({ uri, meta: await readMeta(uri) })),
   );
-  withMeta.sort((a, b) => {
-    const ta = a.meta.track ?? null;
-    const tb = b.meta.track ?? null;
-    if (ta != null && tb != null) return ta - tb;
-    return byName(a.uri, b.uri);
-  });
 
-  const bookTitle = withMeta[0]?.meta.album ?? fallbackTitle;
+  const bookTitle = withMeta[0]?.meta.album ?? withMeta[0]?.meta.title ?? fallbackTitle;
   const author = authorOverride ?? withMeta[0]?.meta.artist ?? null;
-  const cover = (await saveArtwork(withMeta[0].uri)) ?? folderCover;
+  const cover = withMeta[0]?.meta.artworkUri ?? folderCover;
 
-  const chapters: { name: string; durationMs: number; uri: string }[] = [];
-  for (let i = 0; i < withMeta.length; i++) {
-    onProbe(bookTitle, i + 1, withMeta.length);
-    const durationMs = await probeDurationMs(withMeta[i].uri);
-    chapters.push({
-      name: withMeta[i].meta.title ?? stripExt(decodedName(withMeta[i].uri)),
-      durationMs,
-      uri: withMeta[i].uri,
-    });
+  type ChapterInput = { name: string; durationMs: number; uri: string; startMs: number };
+  const chapters: ChapterInput[] = [];
+
+  // Single audio file: prefer embedded chapter marks (e.g. M4B), splitting it in place.
+  if (withMeta.length === 1) {
+    const { uri, meta } = withMeta[0];
+    onProbe(bookTitle, 1, 1);
+    const fileDurationMs = meta.durationMs ?? (await probeDurationMs(uri));
+    const marks = (await getChapters(uri)).filter((c) => c.startMs >= 0).sort((a, b) => a.startMs - b.startMs);
+    if (marks.length > 1) {
+      marks.forEach((m, i) => {
+        const end = i + 1 < marks.length ? marks[i + 1].startMs : fileDurationMs;
+        chapters.push({
+          name: m.title?.trim() || `Chapter ${i + 1}`,
+          durationMs: Math.max(0, end - m.startMs),
+          uri,
+          startMs: m.startMs,
+        });
+      });
+    } else {
+      chapters.push({
+        name: meta.title ?? stripExt(decodedName(uri)),
+        durationMs: fileDurationMs,
+        uri,
+        startMs: 0,
+      });
+    }
+  } else {
+    // Multiple files: each file is a chapter starting at offset 0 within itself.
+    for (let i = 0; i < withMeta.length; i++) {
+      onProbe(bookTitle, i + 1, withMeta.length);
+      const { uri, meta } = withMeta[i];
+      const durationMs = meta.durationMs ?? (await probeDurationMs(uri));
+      chapters.push({
+        name: meta.title ?? stripExt(decodedName(uri)),
+        durationMs,
+        uri,
+        startMs: 0,
+      });
+    }
   }
+
   repo.insertBook({ id, title: bookTitle, author, coverUri: cover, chapters });
   return chapters.length > 0;
 }

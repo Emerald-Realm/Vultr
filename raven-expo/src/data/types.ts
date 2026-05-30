@@ -4,6 +4,9 @@ export interface Chapter {
   name: string;
   durationMs: number;
   uri: string;
+  // Offset of this chapter within its source file. 0 for multi-file books;
+  // non-zero for embedded chapters that share a single M4B file.
+  startMs: number;
 }
 
 export interface Book {

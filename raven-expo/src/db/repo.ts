@@ -14,7 +14,7 @@ type BookRow = {
 
 function chaptersFor(bookId: string): Chapter[] {
   return getDb().getAllSync<Chapter & { sortIndex: number }>(
-    'SELECT id, bookId, name, durationMs, uri FROM chapters WHERE bookId = ? ORDER BY sortIndex ASC',
+    'SELECT id, bookId, name, durationMs, uri, startMs FROM chapters WHERE bookId = ? ORDER BY sortIndex ASC',
     bookId,
   );
 }
@@ -80,7 +80,7 @@ export const repo = {
     title: string;
     author: string | null;
     coverUri: string | null;
-    chapters: { name: string; durationMs: number; uri: string }[];
+    chapters: { name: string; durationMs: number; uri: string; startMs?: number }[];
   }) {
     const db = getDb();
     const existing = repo.getBook(input.id);
@@ -100,13 +100,14 @@ export const repo = {
       db.runSync('DELETE FROM chapters WHERE bookId = ?', input.id);
       input.chapters.forEach((c, i) => {
         db.runSync(
-          `INSERT INTO chapters (id, bookId, name, durationMs, uri, sortIndex) VALUES (?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO chapters (id, bookId, name, durationMs, uri, sortIndex, startMs) VALUES (?, ?, ?, ?, ?, ?, ?)`,
           `${input.id}::${i}`,
           input.id,
           c.name,
           c.durationMs,
           c.uri,
           i,
+          Math.round(c.startMs ?? 0),
         );
       });
     });

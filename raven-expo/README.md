@@ -43,12 +43,15 @@ Per the agreed scope:
   onboarding and the library **+** / empty-state CTA — lets you choose **Top-level**, **Single book**,
   or **Author–book** layout, then opens the Android **Storage Access Framework** folder picker
   (`expo-file-system/legacy`).
-- **Real tags** via the maintained **`@missingcore/react-native-metadata-retriever`**: title, artist/
-  album-artist, album, track number, and embedded **cover art** (saved to a file). Chapters order by
-  track number when present, else natural filename sort. Falls back to folder/file names if a tag is
-  missing or the native module isn't built.
-- Per-file **duration is probed** with `expo-audio`. SAF permissions persist, so imported `content://`
-  files keep playing across restarts. Long-press a book (library) or use the **⋯** menu (details) to remove.
+- **Embedded tags + cover art** are read by a small local native module, `modules/audio-metadata`
+  (framework `MediaMetadataRetriever`, **no Media3 dependency** — so no duplicate-class clash with
+  `expo-audio`). Title/author/album and the embedded cover image come from the file itself; folder/file
+  names and a `cover.jpg`/`folder.png` are used as fallbacks. Per-file **duration** comes from the tags
+  (or is probed with `expo-audio`). SAF permissions persist, so imported `content://` files keep playing
+  across restarts. Long-press a book (library) or use the **⋯** menu (details) to remove.
+- **Embedded M4B chapter marks** — a single-file M4B with a Nero `chpl` chapter box is split into real
+  chapters in place (each chapter is the same file at a stored `startMs` offset; the player runs the file
+  continuously and the chapter index advances at each boundary). Multi-file books get one chapter per file.
 - Supported extensions: mp3, m4a, m4b, aac, ogg, opus, wav, flac, mp4, 3gp.
 
 Seeded on first launch with sample books (remote clips) so playback works before importing; remove with long-press.
@@ -64,9 +67,6 @@ Seeded on first launch with sample books (remote clips) so playback works before
 
 ## Not yet ported (deferred, with rationale)
 
-- **Within-file (embedded M4B) chapter marks** — a single-file M4B imports as one chapter (multi-file
-  books get full chapter nav). True embedded chapters need MP4 `chpl`/`chap` atom parsing (no reliable
-  JS-only path).
 - **Internet cover search + crop** — needs an image-search API/key.
 - **Intentionally excluded:** Android Auto, home-screen widget, skip-silence, volume-gain, bookmarks,
   and analytics/crashlytics/remote-config infra.
