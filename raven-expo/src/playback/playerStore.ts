@@ -12,6 +12,7 @@ const SHAKE_WINDOW_MS = 30000;
 const SHAKE_THRESHOLD = 1.8; // g-force delta
 
 let player: AudioPlayer | null = null;
+let currentUri: string | null = null; // source currently loaded into the player
 let statusSub: { remove: () => void } | null = null;
 let shakeSub: { remove: () => void } | null = null;
 let playingSince: number | null = null;
@@ -129,10 +130,52 @@ export const usePlayer = create<PlayerState>((set, get) => {
     }
   }
 
+  // Chapters that share one file are contiguous; pick the last whose offset has begun.
+  function chapterIndexForFileTime(book: Book, fileTimeMs: number): number | null {
+    let best: number | null = null;
+    for (let i = 0; i < book.chapters.length; i++) {
+      const c = book.chapters[i];
+      if (c.uri !== currentUri) continue;
+      if (fileTimeMs >= c.startMs) best = i;
+    }
+    return best;
+  }
+
+  // For single-file books (e.g. M4B), the player runs continuously; advance the
+  // chapter index when playback crosses an embedded chapter boundary.
+  function maybeAdvanceWithinFile(fileTimeMs: number) {
+    const { book, chapterIndex } = get();
+    if (!book || !currentUri || transitioning) return;
+    const target = chapterIndexForFileTime(book, fileTimeMs);
+    if (target == null || target === chapterIndex) return;
+
+    if (target > chapterIndex && get().sleepMode === 'endOfChapter') {
+      const listened = consumeListened(false);
+      record('SleepTimer', listened);
+      set({ sleepMode: null, chapterIndex: target, positionMs: 0, durationMs: book.chapters[target].durationMs });
+      suppressNextPause = true;
+      player?.seekTo(book.chapters[target].startMs / 1000);
+      player?.pause();
+      repo.savePosition(book.id, target, 0);
+      armShakeWindow();
+      return;
+    }
+
+    if (target > chapterIndex) record('NewChapter', consumeListened(true));
+    set({ chapterIndex: target });
+    activateLockScreen();
+    repo.savePosition(book.id, target, Math.max(0, fileTimeMs - book.chapters[target].startMs));
+  }
+
   function onStatus(status: AudioStatus) {
     if (!status.isLoaded) return;
-    const positionMs = Math.round((status.currentTime ?? 0) * 1000);
-    const durationMs = Math.round((status.duration ?? 0) * 1000) || get().durationMs;
+    const fileTimeMs = Math.round((status.currentTime ?? 0) * 1000);
+    maybeAdvanceWithinFile(fileTimeMs);
+
+    const { book, chapterIndex } = get();
+    const chapter = book?.chapters[chapterIndex];
+    const positionMs = Math.max(0, fileTimeMs - (chapter?.startMs ?? 0));
+    const durationMs = chapter?.durationMs || Math.round((status.duration ?? 0) * 1000) || get().durationMs;
     set({ positionMs, durationMs });
     handlePlayStateChange(status.playing);
 
@@ -163,6 +206,7 @@ export const usePlayer = create<PlayerState>((set, get) => {
     } else {
       player.replace({ uri });
     }
+    currentUri = uri;
     return player;
   }
 
@@ -172,11 +216,13 @@ export const usePlayer = create<PlayerState>((set, get) => {
     const clamped = Math.max(0, Math.min(index, book.chapters.length - 1));
     const chapter = book.chapters[clamped];
     transitioning = true;
-    const p = ensurePlayer(chapter.uri);
+    const sameFile = player != null && currentUri === chapter.uri;
+    const p = sameFile ? player! : ensurePlayer(chapter.uri);
     set({ chapterIndex: clamped, positionMs, durationMs: chapter.durationMs });
-    if (positionMs > 0) p.seekTo(positionMs / 1000);
+    const absMs = chapter.startMs + positionMs;
+    if (absMs > 0) p.seekTo(absMs / 1000);
     p.setPlaybackRate(get().rate, 'high');
-    if (player === p && (autoplay || get().playing)) activateLockScreen();
+    if (autoplay || get().playing) activateLockScreen();
     if (autoplay) {
       lastInternalActionAt = Date.now();
       p.play();
@@ -261,8 +307,10 @@ export const usePlayer = create<PlayerState>((set, get) => {
 
     seekToMs(ms, recordJump = true) {
       if (!player) return;
+      const { book, chapterIndex } = get();
+      const startMs = book?.chapters[chapterIndex]?.startMs ?? 0;
       const clamped = Math.max(0, Math.min(ms, get().durationMs));
-      player.seekTo(clamped / 1000);
+      player.seekTo((startMs + clamped) / 1000);
       set({ positionMs: clamped });
       if (recordJump) record('Jumped', consumeListened(true));
       persist();
@@ -359,6 +407,7 @@ export function releasePlayer() {
   player?.clearLockScreenControls();
   player?.remove();
   player = null;
+  currentUri = null;
   statusSub = null;
   shakeSub = null;
 }

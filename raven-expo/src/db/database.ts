@@ -23,7 +23,8 @@ export function getDb(): SQLiteDatabase {
       name TEXT NOT NULL,
       durationMs INTEGER NOT NULL,
       uri TEXT NOT NULL,
-      sortIndex INTEGER NOT NULL DEFAULT 0
+      sortIndex INTEGER NOT NULL DEFAULT 0,
+      startMs INTEGER NOT NULL DEFAULT 0
     );
     CREATE TABLE IF NOT EXISTS history (
       id TEXT PRIMARY KEY NOT NULL,
@@ -35,6 +36,11 @@ export function getDb(): SQLiteDatabase {
       listenedMs INTEGER NOT NULL DEFAULT 0
     );
   `);
+  // Migration: add chapters.startMs to databases created before embedded chapters.
+  const cols = db.getAllSync<{ name: string }>('PRAGMA table_info(chapters)');
+  if (!cols.some((c) => c.name === 'startMs')) {
+    db.execSync('ALTER TABLE chapters ADD COLUMN startMs INTEGER NOT NULL DEFAULT 0');
+  }
   _db = db;
   return db;
 }
