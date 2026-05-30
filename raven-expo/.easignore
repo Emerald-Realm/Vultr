@@ -1,0 +1,9 @@
+# EAS reinstalls dependencies and re-runs prebuild on the build server, so the
+# uploaded tarball only needs source + config. Keeps the upload small/reliable.
+node_modules/
+dist/
+.expo/
+android/
+ios/
+*.log
+.DS_Store
