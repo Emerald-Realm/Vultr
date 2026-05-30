@@ -1,0 +1,50 @@
+ANDROID_HOME=/Users/accionpraise/Library/Android/sdk
+- Creating native directory (./android)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json
+- Running prebuild
+» android: userInterfaceStyle: Install expo-system-ui in your project to enable this feature.
+- Running prebuild
+✔ Finished prebuild
+› Skipping dev server
+› Building app...
+Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+.............10%.............20%....
+Exception in thread "main" java.io.IOException: Downloading from https://services.gradle.org/distributions/gradle-9.3.1-bin.zip failed: timeout (10000ms)
+	at org.gradle.wrapper.Install.forceFetch(SourceFile:4)
+	at org.gradle.wrapper.Install$1.call(SourceFile:8)
+	at org.gradle.wrapper.GradleWrapperMain.main(SourceFile:67)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:976)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readFully(SSLSocketInputRecord.java:467)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.decodeInputRecord(SSLSocketInputRecord.java:243)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:181)
+	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:111)
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1513)
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1484)
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1069)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:282)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:343)
+	at java.base/sun.net.www.MeteredStream.read(MeteredStream.java:141)
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:132)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$HttpInputStream.read(HttpURLConnection.java:3763)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$HttpInputStream.read(HttpURLConnection.java:3756)
+	at org.gradle.wrapper.Install.forceFetch(SourceFile:2)
+	... 2 more
+Error: /Users/accionpraise/Documents/Extra/Vultr/raven-expo/android/gradlew app:assembleDebug -x lint -x test --configure-on-demand --build-cache -PreactNativeDevServerPort=8081 -PreactNativeArchitectures=arm64-v8a exited with non-zero code: 1
+Error: /Users/accionpraise/Documents/Extra/Vultr/raven-expo/android/gradlew app:assembleDebug -x lint -x test --configure-on-demand --build-cache -PreactNativeDevServerPort=8081 -PreactNativeArchitectures=arm64-v8a exited with non-zero code: 1
+    at ChildProcess.completionListener (/Users/accionpraise/Documents/Extra/Vultr/raven-expo/node_modules/@expo/spawn-async/build/spawnAsync.js:113:23)
+    at Object.onceWrapper (node:events:622:26)
+    at ChildProcess.emit (node:events:507:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+    ...
+    at spawnAsync (/Users/accionpraise/Documents/Extra/Vultr/raven-expo/node_modules/@expo/spawn-async/build/spawnAsync.js:9:23)
+    at spawnGradleAsync (/Users/accionpraise/Documents/Extra/Vultr/raven-expo/node_modules/expo/node_modules/@expo/cli/build/src/start/platforms/android/gradle.js:107:48)
+    at assembleAsync (/Users/accionpraise/Documents/Extra/Vultr/raven-expo/node_modules/expo/node_modules/@expo/cli/build/src/start/platforms/android/gradle.js:82:18)
+    at runAndroidAsync (/Users/accionpraise/Documents/Extra/Vultr/raven-expo/node_modules/expo/node_modules/@expo/cli/build/src/run/android/runAndroidAsync.js:85:41)
