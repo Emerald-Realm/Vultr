@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "voice.app-githubDebug-58:/xml_shortcuts.xml.flat",
+        "source": "voice.app-main-62:/xml/shortcuts.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/mipmap-xxhdpi_ic_shortcut_play_foregound.png.flat",
+        "source": "voice.app-main-62:/mipmap-xxhdpi/ic_shortcut_play_foregound.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "voice.app-main-62:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable-nodpi_raven_logo.png.flat",
+        "source": "voice.app-main-62:/drawable-nodpi/raven_logo.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/xml_cover_paths.xml.flat",
+        "source": "voice.app-main-62:/xml/cover_paths.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/xml-v35__generated_res_locale_config.xml.flat",
+        "source": "voice.app-github-54:/xml-v35/_generated_res_locale_config.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/mipmap-xhdpi_ic_shortcut_play_foregound.png.flat",
+        "source": "voice.app-main-62:/mipmap-xhdpi/ic_shortcut_play_foregound.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable_ic_launcher_monochrome.xml.flat",
+        "source": "voice.app-main-62:/drawable/ic_launcher_monochrome.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/mipmap-mdpi_ic_shortcut_play_foregound.png.flat",
+        "source": "voice.app-main-62:/mipmap-mdpi/ic_shortcut_play_foregound.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable_ic_launcher_background.xml.flat",
+        "source": "voice.app-main-62:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable_ic_shortcut_play.xml.flat",
+        "source": "voice.app-main-62:/drawable/ic_shortcut_play.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/xml__generated_res_locale_config.xml.flat",
+        "source": "voice.app-github-54:/xml/_generated_res_locale_config.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/xml_widget_info.xml.flat",
+        "source": "voice.app-main-62:/xml/widget_info.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/xml_automotive_app_desc.xml.flat",
+        "source": "voice.app-main-62:/xml/automotive_app_desc.xml"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/mipmap-hdpi_ic_shortcut_play_foregound.png.flat",
+        "source": "voice.app-main-62:/mipmap-hdpi/ic_shortcut_play_foregound.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/mipmap-xxxhdpi_ic_shortcut_play_foregound.png.flat",
+        "source": "voice.app-main-62:/mipmap-xxxhdpi/ic_shortcut_play_foregound.png"
+    },
+    {
+        "merged": "voice.app-githubDebug-58:/drawable_ic_launcher.xml.flat",
+        "source": "voice.app-main-62:/drawable/ic_launcher.xml"
+    }
+]

@@ -1,0 +1,5 @@
+R_DEF: Internal format may change without notice
+local
+drawable bookshelf_artwork
+drawable completion_artwork
+drawable welcome

@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml:2:13-83
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml:2:13-83
+	package
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml
+	xmlns:android
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml:2:23-81
+uses-sdk
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml reason: use-sdk injection requested
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml
+	android:targetSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml
+	android:minSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest15455722787097678998.xml

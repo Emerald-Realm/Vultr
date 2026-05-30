@@ -1,0 +1,134 @@
+package voice.features.bookOverview.details
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.datastore.core.DataStore
+import dev.zacsweers.metro.Assisted
+import dev.zacsweers.metro.AssistedFactory
+import dev.zacsweers.metro.AssistedInject
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.launch
+import voice.core.data.Book
+import voice.core.data.BookId
+import voice.core.data.ChapterId
+import voice.core.data.repo.BookRepository
+import voice.core.data.store.CurrentBookStore
+import voice.core.playback.PlayerController
+import voice.core.playback.playstate.PlayStateManager
+import voice.core.ui.ImmutableFile
+import voice.core.ui.formatTime
+import voice.features.bookOverview.overview.MiniPlayerViewState
+import voice.features.bookOverview.overview.toMiniPlayerViewState
+import voice.navigation.Destination
+import voice.navigation.Navigator
+
+@AssistedInject
+class BookDetailsViewModel(
+  private val repo: BookRepository,
+  private val navigator: Navigator,
+  private val player: PlayerController,
+  private val playStateManager: PlayStateManager,
+  @CurrentBookStore
+  private val currentBookStore: DataStore<BookId?>,
+  @Assisted
+  private val bookId: BookId,
+) {
+
+  private val scope = MainScope()
+
+  @Composable
+  fun viewState(): BookDetailsViewState? {
+    val book = remember(bookId) { repo.flow(bookId).filterNotNull() }
+      .collectAsState(initial = null).value ?: return null
+    val currentBookId = remember { currentBookStore.data }.collectAsState(initial = null).value
+    val playState = remember { playStateManager.flow }
+      .collectAsState(initial = PlayStateManager.PlayState.Paused).value
+    return book.toDetailsViewState(
+      miniPlayer = currentBookId?.let { currentId ->
+        repo.flow(currentId).collectAsState(initial = null).value
+          ?.toMiniPlayerViewState(playState == PlayStateManager.PlayState.Playing)
+      },
+    )
+  }
+
+  fun onBackClick() {
+    navigator.goBack()
+  }
+
+  fun onPlayClick() {
+    scope.launch {
+      currentBookStore.updateData { bookId }
+      navigator.goTo(Destination.Playback(bookId))
+      player.play()
+    }
+  }
+
+  fun onChapterClick(chapter: BookDetailsViewState.ChapterViewState) {
+    scope.launch {
+      currentBookStore.updateData { bookId }
+      player.setPosition(chapter.startMs, chapter.chapterId)
+      navigator.goTo(Destination.Playback(bookId))
+      player.play()
+    }
+  }
+
+  fun onMiniPlayerClick(id: BookId) {
+    navigator.goTo(Destination.Playback(id))
+  }
+
+  fun onMiniPlayerPlayClick() {
+    player.playPause()
+  }
+
+  @AssistedFactory
+  interface Factory {
+    fun create(bookId: BookId): BookDetailsViewModel
+  }
+}
+
+data class BookDetailsViewState(
+  val title: String,
+  val author: String?,
+  val cover: ImmutableFile?,
+  val progress: Float,
+  val remainingTime: String,
+  val description: String,
+  val chapters: List<ChapterViewState>,
+  val miniPlayer: MiniPlayerViewState?,
+) {
+  data class ChapterViewState(
+    val chapterId: ChapterId,
+    val title: String,
+    val time: String,
+    val startMs: Long,
+    val isCompleted: Boolean,
+  )
+}
+
+private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDetailsViewState(
+  title = content.name,
+  author = content.author,
+  cover = content.cover?.let(::ImmutableFile),
+  progress = (position.toFloat() / duration.toFloat()).coerceIn(0F, 1F),
+  remainingTime = formatTime(duration - position),
+  description = content.description.orEmpty(),
+  chapters = run {
+    val currentChapterIndex = content.currentChapterIndex
+    val currentMarkStartMs = currentMark.startMs
+    chapters.flatMapIndexed { chapterIndex, chapter ->
+      chapter.chapterMarks.map { mark ->
+        BookDetailsViewState.ChapterViewState(
+          chapterId = chapter.id,
+          title = mark.name ?: chapter.name ?: content.name,
+          time = formatTime(mark.startMs),
+          startMs = mark.startMs,
+          isCompleted = chapterIndex < currentChapterIndex ||
+            (chapterIndex == currentChapterIndex && mark.startMs < currentMarkStartMs),
+        )
+      }
+    }
+  },
+  miniPlayer = miniPlayer,
+)

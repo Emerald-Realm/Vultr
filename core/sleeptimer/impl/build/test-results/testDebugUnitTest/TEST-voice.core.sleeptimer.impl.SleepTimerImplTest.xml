@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.sleeptimer.impl.SleepTimerImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:15:27.671Z" hostname="Accions-MacBook-Air.local" time="1.379">
+  <properties/>
+  <testcase name="disable cancels timer and resets state" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="1.292"/>
+  <testcase name="volumeIsNeverFadedDuringCountdown" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="0.023"/>
+  <testcase name="shake_does_not_cancel_second_countdown_after_window" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="0.033"/>
+  <testcase name="enable with EndOfChapter sets state" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="0.006"/>
+  <testcase name="enable with fixed duration eventually disables and pauses playback" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="0.01"/>
+  <testcase name="initial state is disabled" classname="voice.core.sleeptimer.impl.SleepTimerImplTest" time="0.005"/>
+  <system-out><![CDATA[Debug: startCountdown(duration=5s)
+Debug: startCountdown(duration=5s)
+Debug: Waiting 30s for shake...
+Info: Not playing. Waiting for playback to continue.
+Debug: startCountdown(duration=1m)
+Debug: Waiting 30s for shake...
+Info: Shake detected, resetting timer
+Debug: startCountdown(duration=1m)
+Debug: Waiting 30s for shake...
+Info: Not playing. Waiting for playback to continue.
+Debug: startCountdown(duration=1s)
+Debug: Waiting 30s for shake...
+Info: Not playing. Waiting for playback to continue.
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/accionpraise/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.18.2/62f38a6faf7f069d661b79a07d566f504b0b20c4/byte-buddy-agent-1.18.2.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

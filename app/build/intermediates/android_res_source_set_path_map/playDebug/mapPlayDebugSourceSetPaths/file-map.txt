@@ -1,0 +1,11 @@
+voice.app-play-0 /Users/accionpraise/Documents/Extra/Vultr/app/build/generated/res/pngs/play/debug
+voice.app-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/app/build/generated/updated_navigation_xml/playDebug
+voice.app-playDebug-2 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/generated_locale_config_incremental_dir/playDebug/generatePlayDebugLocaleConfig
+voice.app-packagePlayDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/incremental/playDebug/packagePlayDebugResources/merged.dir
+voice.app-packagePlayDebugResources-4 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/incremental/playDebug/packagePlayDebugResources/stripped.dir
+voice.app-playDebug-5 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/merged_res/playDebug/mergePlayDebugResources
+voice.app-debug-6 /Users/accionpraise/Documents/Extra/Vultr/app/src/debug/res
+voice.app-main-7 /Users/accionpraise/Documents/Extra/Vultr/app/src/main/res
+voice.app-play-8 /Users/accionpraise/Documents/Extra/Vultr/app/src/play/res
+voice.app-playDebug-9 /Users/accionpraise/Documents/Extra/Vultr/app/src/playDebug/res
+gradleHome-0 /Users/accionpraise/.gradle

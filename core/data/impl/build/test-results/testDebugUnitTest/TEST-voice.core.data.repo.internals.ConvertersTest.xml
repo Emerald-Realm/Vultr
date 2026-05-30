@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.data.repo.internals.ConvertersTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:38.717Z" hostname="Accions-MacBook-Air.local" time="0.579">
+  <properties/>
+  <testcase name="file" classname="voice.core.data.repo.internals.ConvertersTest" time="0.267"/>
+  <testcase name="uuid" classname="voice.core.data.repo.internals.ConvertersTest" time="0.003"/>
+  <testcase name="marks" classname="voice.core.data.repo.internals.ConvertersTest" time="0.272"/>
+  <testcase name="marksEmpty" classname="voice.core.data.repo.internals.ConvertersTest" time="0.003"/>
+  <testcase name="instant" classname="voice.core.data.repo.internals.ConvertersTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

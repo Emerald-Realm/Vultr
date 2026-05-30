@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.data.repo.internals.RecentBookSearchTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:39.264Z" hostname="Accions-MacBook-Air.local" time="113.581">
+  <properties/>
+  <testcase name="add delete replace" classname="voice.core.data.repo.internals.RecentBookSearchTest" time="8.041"/>
+  <testcase name="add over limit replaces" classname="voice.core.data.repo.internals.RecentBookSearchTest" time="0.15"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

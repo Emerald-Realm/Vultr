@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="folder_type_file_count">
+        <item quantity="one">%d hangfájl</item>
+        <item quantity="other">%d hangfájl</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d perc</item>
+        <item quantity="other">%d perc</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d másodperc</item>
+        <item quantity="other">%d másodperc</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Ugrás a főoldalra"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Fel"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"További lehetőségek"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Kész"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Az összes megtekintése"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Válasszon alkalmazást"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"KI"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"BE"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"Szóköz"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Keresés…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Lekérdezés törlése"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Keresési lekérdezés"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Keresés"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Lekérdezés küldése"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Hangalapú keresés"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Megosztás a következővel:"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Megosztás a következő alkalmazással: <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Összecsukás"</string>
+    <string name="action_settings">Beállítások</string>
+    <string name="action_sleep">Alvásidőzítő</string>
+    <string name="add">Hozzáadás</string>
+    <string msgid="8719607706653693137" name="androidx_compose_foundation_autofill">"Automatikus kitöltés"</string>
+    <string msgid="1150566100598813236" name="androidx_compose_ui_autofill">"Automatikus kitöltés"</string>
+    <string name="audiobook_folders_title">Hangoskönyv mappák</string>
+    <string name="battery_optimization_action">Frissítés</string>
+    <string name="battery_optimization_rationale">Lejátszási szakadozások történhetnek az ön energiabeállítasai miatt.</string>
+    <string name="book_header_completed">Befejezett</string>
+    <string name="book_header_current">Jelenlegi</string>
+    <string name="book_header_not_started">Még nem elkezdett</string>
+    <string name="bookmark">Könyvjelző</string>
+    <string name="bookmark_added">Könyvjelző hozzáadva</string>
+    <string name="bookmark_edit_hint">Könyvjelző neve</string>
+    <string name="bookmark_edit_title">Könyvjelző szerkesztése</string>
+    <string name="bookmark_just_now">Éppen most</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Fogadás"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Videó"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Elutasítás"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Befejezés"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Bejövő hívás"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Hívás folyamatban"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Bejövő hívás szűrése"</string>
+    <string name="change_book_name">Cím</string>
+    <string name="close">Bezárás</string>
+    <string msgid="406453423630273620" name="close_drawer">"Navigációs menü bezárása"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"Munkalap bezárása"</string>
+    <string name="content_cover">Megjeleníti a választható borítót</string>
+    <string name="cover">Borító</string>
+    <string name="cover_search.author">Szerző</string>
+    <string name="cover_search.icon_recent">Elöző keresés</string>
+    <string name="cover_search_template_no_author">%s borítója</string>
+    <string name="cover_search_template_with_author">%1$s by %2$s borítója</string>
+    <string msgid="8038256446254964252" name="default_error_message">"Érvénytelen adat"</string>
+    <string name="default_notification_channel_name">Most játszott tartalom</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"Előugró ablak"</string>
+    <string name="delete">Törlés</string>
+    <string name="delete_book_bottom_sheet_title">Könyv törlése</string>
+    <string name="delete_book_dialog_content">Ezzel törli az eszközről a könyv hangfájljait is.</string>
+    <string name="delete_book_dialog_deletion_confirmation">Fájlok törlése</string>
+    <string name="delete_book_dialog_title">Könyv törlése</string>
+    <string name="dialog_cancel">Mégse</string>
+    <string name="dialog_confirm">Beállítás</string>
+    <string name="download_book_cover">Borító az internetről</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"Legördülő menü"</string>
+    <string name="edit_book_title">Könyv szerkesztése</string>
+    <string name="error_message_authentication_expired">Az alkalmazás használatához jelentkezzen be</string>
+    <string name="error_message_bad_value">Helytelen beviteli adat</string>
+    <string name="error_message_concurrent_stream_limit">Túl sok eszköz van használatban</string>
+    <string name="error_message_content_already_playing">A tartalom lejátszása már folyamatban van</string>
+    <string name="error_message_disconnected">Leválasztva a médialkalmazásról</string>
+    <string name="error_message_end_of_playlist">Semmi más nincs a sorban</string>
+    <string name="error_message_fallback">Hiba történt. Próbálkozzon újra később.</string>
+    <string name="error_message_info_cancelled">Nem sikerült befejezni. Próbálja újra.</string>
+    <string name="error_message_invalid_state">Ez jelenleg nem lehetséges</string>
+    <string name="error_message_io">Beviteli/kimeneti hiba</string>
+    <string name="error_message_not_available_in_region">Nem lehet betölteni a tartalmat</string>
+    <string name="error_message_not_supported">Ez az alkalmazás nem képes erre</string>
+    <string name="error_message_parental_control_restricted">A tartalom le van tiltva</string>
+    <string name="error_message_permission_denied">Hozzáférés megtagadva</string>
+    <string name="error_message_premium_account_required">Prémium hozzáférés szükséges</string>
+    <string name="error_message_setup_required">Beállítás szükséges</string>
+    <string name="error_message_skip_limit_reached">Nem lehet több számot átugrani</string>
+    <string name="exo_download_completed">A letöltés befejeződött</string>
+    <string name="exo_download_description">Letöltés</string>
+    <string name="exo_download_downloading">Letöltés folyamatban</string>
+    <string name="exo_download_failed">Nem sikerült a letöltés</string>
+    <string name="exo_download_notification_channel_name">Letöltések</string>
+    <string name="exo_download_paused">Letöltések szüneteltetve</string>
+    <string name="exo_download_paused_for_network">A letöltések hálózatra várakoznak</string>
+    <string name="exo_download_paused_for_wifi">A letöltések Wi-Fi-re várakoznak</string>
+    <string name="exo_download_removing">Letöltések törlése folyamatban</string>
+    <string name="fast_forward">Előretekerés</string>
+    <string name="folder_mode_author">Szerző üzemmód: az almappák szerzők, az alalmappák könyvek.</string>
+    <string name="folder_mode_root">Főmappa üzemmód: minden almappa egy-egy könyv</string>
+    <string name="folder_mode_single">Könyv üzemmód: minden mappa egy-egy könyv.</string>
+    <string name="folder_type_book_example_header">Ezzel az akcióval ezeket a könyveket találtuk meg</string>
+    <string name="folder_type_no_books">Voice nem talált egy könyvet se. Léteznek erre hangfájlok?</string>
+    <string name="folder_type_title">Hogyan vannak elrendezve a hangfájlok?</string>
+    <string name="generic_error_message">Valami balul sült el 😢</string>
+    <string name="generic_error_retry">Újra</string>
+    <string msgid="6827826412747255547" name="in_progress">"Folyamatban"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"Részlegesen ellenőrizve"</string>
+    <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Az alsó lap összecsukása"</string>
+    <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Az alsó lap elvetése"</string>
+    <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Fogópont"</string>
+    <string msgid="6670819569745899763" name="m3c_bottom_sheet_expand_description">"Az alsó lap kibontása"</string>
+    <string msgid="3010635850035863127" name="m3c_bottom_sheet_pane_title">"Alsó lap"</string>
+    <string msgid="8166741421776570875" name="m3c_date_input_headline">"Megadott dátum"</string>
+    <string msgid="229313757840775812" name="m3c_date_input_headline_description">"Megadott dátum: %1$s"</string>
+    <string msgid="6116910750161463197" name="m3c_date_input_invalid_for_pattern">"A dátum nem felel meg a várt formátumnak: %1$s"</string>
+    <string msgid="2521768508935305279" name="m3c_date_input_invalid_not_allowed">"Nem engedélyezett dátum: %1$s"</string>
+    <string msgid="7052898923934555305" name="m3c_date_input_invalid_year_range">"A dátum a várt időtartományon (%1$s – %2$s) kívül esik"</string>
+    <string msgid="2895559812010326913" name="m3c_date_input_label">"Dátum"</string>
+    <string msgid="1237013946323089826" name="m3c_date_input_no_input_description">"Nincs"</string>
+    <string msgid="7306227249789210568" name="m3c_date_input_title">"Dátum kiválasztása"</string>
+    <string msgid="7605002211875882969" name="m3c_date_picker_headline">"Kiválasztott dátum"</string>
+    <string msgid="3664277305226978227" name="m3c_date_picker_headline_description">"Jelenleg kiválasztva: %1$s"</string>
+    <string msgid="8436650776581492840" name="m3c_date_picker_navigate_to_year_description">"Navigálás a következő évhez: %1$s"</string>
+    <string msgid="5811000998184572395" name="m3c_date_picker_no_selection_description">"Nincs"</string>
+    <string msgid="7813882352367152251" name="m3c_date_picker_scroll_to_earlier_years">"Görgessen a korábbi évek megjelenítéséhez"</string>
+    <string msgid="5727367015496556177" name="m3c_date_picker_scroll_to_later_years">"Görgessen a későbbi évek megjelenítéséhez"</string>
+    <string msgid="1804346892470238807" name="m3c_date_picker_switch_to_calendar_mode">"Váltás naptárbeviteli módra"</string>
+    <string msgid="395627960681594326" name="m3c_date_picker_switch_to_day_selection">"Csúsztatással kiválaszthatja a kívánt évet, vagy koppintással visszaválthat a nap kiválasztásához."</string>
+    <string msgid="2219746470065162704" name="m3c_date_picker_switch_to_input_mode">"Váltás szövegbeviteli módra"</string>
+    <string msgid="7142101321095356500" name="m3c_date_picker_switch_to_next_month">"Váltás a következő hónapra"</string>
+    <string msgid="228438865139394590" name="m3c_date_picker_switch_to_previous_month">"Váltás az előző hónapra"</string>
+    <string msgid="791651718641787594" name="m3c_date_picker_switch_to_year_selection">"Váltás az év kiválasztására"</string>
+    <string msgid="7430790972741451689" name="m3c_date_picker_title">"Dátum kiválasztása"</string>
+    <string msgid="3199387177749801575" name="m3c_date_picker_today_description">"Ma"</string>
+    <string msgid="2068382232816991922" name="m3c_date_picker_year_picker_pane_title">"Látható az évválasztó"</string>
+    <string msgid="3190049423327661366" name="m3c_date_range_input_invalid_range_input">"Érvénytelen a megadott dátumtartomány"</string>
+    <string msgid="3148384720560189467" name="m3c_date_range_input_title">"Dátumok megadása"</string>
+    <string msgid="2138321128465719402" name="m3c_date_range_picker_day_in_range">"Tartományon belül"</string>
+    <string msgid="4947636797751277713" name="m3c_date_range_picker_end_headline">"Záró dátum"</string>
+    <string msgid="602077859540990149" name="m3c_date_range_picker_scroll_to_next_month">"Görgessen a következő hónap megjelenítéséhez"</string>
+    <string msgid="4592174524846109496" name="m3c_date_range_picker_scroll_to_previous_month">"Görgessen az előző hónap megjelenítéséhez"</string>
+    <string msgid="4665981448952749820" name="m3c_date_range_picker_start_headline">"Kezdő dátum"</string>
+    <string msgid="3134165431120340385" name="m3c_date_range_picker_title">"Dátumok kiválasztása"</string>
+    <string msgid="7617233117134790350" name="m3c_dialog">"Párbeszédpanel"</string>
+    <string msgid="3177828188723359358" name="m3c_dropdown_menu_collapsed">"Összecsukva"</string>
+    <string msgid="2360841780724299882" name="m3c_dropdown_menu_expanded">"Kibontva"</string>
+    <string msgid="8687821690726149911" name="m3c_dropdown_menu_toggle">"Legördülő menü átváltása"</string>
+    <string msgid="6072492480528318635" name="m3c_floating_toolbar_collapse">"Eszköztár összecsukása"</string>
+    <string msgid="6880757017246780255" name="m3c_floating_toolbar_expand">"Eszköztár kibontása"</string>
+    <string msgid="6152806324422087846" name="m3c_search_bar_search">"Keresés"</string>
+    <string msgid="6152755701819882931" name="m3c_snackbar_dismiss">"Elvetés"</string>
+    <string msgid="3868801555855510515" name="m3c_snackbar_pane_title">"Figyelmeztetés"</string>
+    <string msgid="7655536806087401899" name="m3c_suggestions_available">"Javaslatok alább"</string>
+    <string msgid="409352516511718051" name="m3c_time_input_dialog_title">"Időpont megadása"</string>
+    <string msgid="2786685010796619560" name="m3c_time_picker_am">"de."</string>
+    <string msgid="7412665527536641863" name="m3c_time_picker_dialog_title">"Időpont kiválasztása"</string>
+    <string msgid="2349193472625211372" name="m3c_time_picker_hour">"Óra"</string>
+    <string msgid="9179527532316922345" name="m3c_time_picker_hour_24h_suffix">"%1$d óra"</string>
+    <string msgid="8876759303332837035" name="m3c_time_picker_hour_selection">"Óra kiválasztása"</string>
+    <string msgid="3458167507790628988" name="m3c_time_picker_hour_suffix">"%1$d óra"</string>
+    <string msgid="6973808109666874069" name="m3c_time_picker_hour_text_field">"óra megadása"</string>
+    <string msgid="4313071914266462005" name="m3c_time_picker_minute">"Perc"</string>
+    <string msgid="4699133535056739733" name="m3c_time_picker_minute_selection">"Perc kiválasztása"</string>
+    <string msgid="5064177921781937179" name="m3c_time_picker_minute_suffix">"%1$d perc"</string>
+    <string msgid="7661234488295443182" name="m3c_time_picker_minute_text_field">"perc megadása"</string>
+    <string msgid="5865171949528594571" name="m3c_time_picker_period_toggle_description">"Napszak kiválasztása"</string>
+    <string msgid="6616362054113087709" name="m3c_time_picker_pm">"du."</string>
+    <string msgid="4145073906612931838" name="m3c_time_picker_toggle_keyboard">"Az időpont megadásához váltson szövegbeviteli módra"</string>
+    <string msgid="8841786098195101324" name="m3c_time_picker_toggle_touch">"Az időpont bevitelhez váltson óra módra"</string>
+    <string msgid="1805687647081129904" name="m3c_tooltip_long_press_label">"Elemleírás megjelenítése"</string>
+    <string msgid="5460405025248574620" name="m3c_tooltip_pane_description">"Elemleírás"</string>
+    <string msgid="6564222473543418073" name="m3c_wide_navigation_rail_close_rail">"Sáv bezárása"</string>
+    <string msgid="8350283435461615411" name="m3c_wide_navigation_rail_pane_title">"Navigációs sáv"</string>
+    <string name="mark_as_completed">Jelölés meghallgatottnak</string>
+    <string name="mark_as_current">Megjelölés aktuálisként</string>
+    <string name="mark_as_not_started">Megjelölés még el nem kezdettként</string>
+    <string name="media3_controls_pause_description">Szüneteltetés</string>
+    <string name="media3_controls_play_description">Lejátszás</string>
+    <string name="media3_controls_seek_back_description">Ugrás vissza</string>
+    <string name="media3_controls_seek_forward_description">Ugrás előre</string>
+    <string name="media3_controls_seek_to_next_description">Ugrás a következő elemre</string>
+    <string name="media3_controls_seek_to_previous_description">Ugrás az előző elemre</string>
+    <string name="media_session_recent">Legutóbbiak</string>
+    <string name="media_session_root">Összes hangoskönyv</string>
+    <string name="migration_delete_dialog_action_delete">Törlés</string>
+    <string name="migration_delete_dialog_action_keep">Megtartás</string>
+    <string name="migration_delete_dialog_content">Ha törli a régi pozíciókat, nem fogja tudni visszaállítani a régi lejátszási pozíciókat.</string>
+    <string name="migration_delete_dialog_title">Pozíciók törlése</string>
+    <string name="migration_detail_content_added_at">Hozzáadva</string>
+    <string name="migration_detail_content_bookmarks">Könyvjelzők</string>
+    <string name="migration_detail_content_name">Cím</string>
+    <string name="migration_detail_content_position">Hely</string>
+    <string name="migration_detail_content_position_current_chapter_position">Pozició a fejezetben</string>
+    <string name="migration_detail_content_position_current_chapter_title">Jelenlegi fejezet</string>
+    <string name="migration_detail_content_position_current_file_position">Pozició a fájlban</string>
+    <string name="migration_detail_content_position_current_file_title">Jelenlegi fájl</string>
+    <string name="migration_detail_content_root">Főmappa</string>
+    <string name="migration_detail_title">Régi könyvek helye</string>
+    <string name="migration_hint_confirm">Értem</string>
+    <string name="migration_hint_content">Az újabb Android-verziók változásai miatt ki kell választani a hangoskönyv mappát a rendszerválasztóval.\n\nKattintson a fenti ikonra a régi könyvek helyének megtekintéséhez.</string>
+    <string name="migration_hint_title">Hozzáférés a régi könyvek helyéhez</string>
+    <string name="more">Tovább</string>
+    <string msgid="542007171693138492" name="navigation_menu">"Navigációs menü"</string>
+    <string name="next_track">Következő hangfelvétel</string>
+    <string msgid="6610465462668679431" name="not_selected">"Nincs kijelölve"</string>
+    <string name="notification_sleep_timer_disable">Elalváskapcsoló megállítasa</string>
+    <string name="notification_sleep_timer_enable">Elalváskapcsoló engedélyezése</string>
+    <string name="onboarding.button_next">Tovább</string>
+    <string name="onboarding.completion.next_button">Lejátszás elkezdése</string>
+    <string name="onboarding.completion.subtitle">Az ön első könyve várja a lejátszást. A Voice jó szórakozást kíván!</string>
+    <string name="onboarding.completion.title">Gyorstalpaló vége!</string>
+    <string name="onboarding.explanation.subtitle">A Voice segítségével, ön eltudja rendezni a könyveit mint egyedi fájlok vagy mint hangfájlmappák. Ön dönt!</string>
+    <string name="onboarding.explanation.title">Az ön könyvtára, az ön döntései</string>
+    <string name="onboarding_welcome_subtitle">Az ön személyes hangoskönyvlejátszója. Nézzünk szét!</string>
+    <string name="onboarding_welcome_title">Üdv a Voice-ban!</string>
+    <string name="pause">Szünet</string>
+    <string name="pick_book_cover">Borító a fájlrendszerből</string>
+    <string name="play">Lejátszás</string>
+    <string name="play_current">Jelenlegi lejátszása</string>
+    <string name="play_pause">Lejátszás / Szünet</string>
+    <string name="playback_speed">Lejátszási sebesség</string>
+    <string name="popup_edit">Szerkesztés</string>
+    <string name="pref_app_version">Applikáció verzió</string>
+    <string name="pref_auto_rewind_title">Automatikus visszatekerés</string>
+    <string name="pref_get_support">Segítségkérés</string>
+    <string name="pref_help_translating">Segíts lefordítani a Voice applikációt</string>
+    <string name="pref_report_issue">Hibajelentés</string>
+    <string name="pref_seek_time">Kihagyás mértéke</string>
+    <string name="pref_suggest_idea">Javasolj egy ötletet</string>
+    <string name="pref_theme_dark">Sötét téma</string>
+    <string name="pref_use_grid">Rácsos elrendezés</string>
+    <string name="previous_track">Előző hangfelvétel</string>
+    <string msgid="5941395253238309765" name="range_end">"Tartomány vége"</string>
+    <string msgid="7097486360902471446" name="range_start">"Tartomány kezdete"</string>
+    <string name="remove">Eltávolítás</string>
+    <string name="review.feedback.button.no">Mégse</string>
+    <string name="review.feedback.button.yes">Értékelés küldése</string>
+    <string name="review.feedback.content">Meg tudná mondani hol tudnánk javítani? Értékeljük az ön véleményét és segít minket továbbfejleszteni az applikációt.</string>
+    <string name="review.feedback.title">Sajnáljuk ezt hallani!</string>
+    <string name="review.request.button.no">Kössz nem</string>
+    <string name="review.request.button.yes">Értékelés most</string>
+    <string name="review.request.content">Mi értékeljük az ön vélemenyét! Ha van egy pillanata, ossza meg velünk az ön tapasztalatát és hagyjon egy értékelést. Segít minket jobbátenni mások tapasztalatát.</string>
+    <string name="review.request.title">Jól teljesít a Voice?</string>
+    <string name="rewind">Visszatekerés</string>
+    <string name="search_hint">Mit keres?</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Keresés"</string>
+    <string name="select_folder_subtitle">Hogyan kívánja hozzáadni a könyvet: egyedi fájlként vagy hangfájlmappaként?</string>
+    <string name="select_folder_title_default">Hangoskönyv(ek) hozzáadása</string>
+    <string name="select_folder_title_onboarding">Az ön első hangoskönyve</string>
+    <string name="select_folder_type_file">Fájl</string>
+    <string name="select_folder_type_folder">Mappa</string>
+    <string msgid="6043586758067023" name="selected">"Kijelölve"</string>
+    <string name="skip_silence">Csend kihagyása</string>
+    <string name="sleep_timer.button.decrement">Rövidebb</string>
+    <string name="sleep_timer.button.increment">Hosszabb</string>
+    <string name="sleep_timer.title">Szép álmokat! 🌙</string>
+    <string msgid="2792228137354697160" name="snackbar_pane_title">"Figyelmeztetés"</string>
+    <string msgid="4139871816613051306" name="state_empty">"Üres"</string>
+    <string msgid="5834637030682409883" name="state_off">"Ki"</string>
+    <string msgid="1490883874751719580" name="state_on">"Be"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="storage_bug_button">Hozzáférés engedélyezése</string>
+    <string name="storage_bug_subtitle">Egyes eszközökön, egy rendszerapplikációnak hiányzanak bizonyos hozzáférések a külső tárolóhoz. Ezek a hozzáférések lényegesek ahhoz hogy Voice sikeresen tudja felolvasni az ön könyvjeit.</string>
+    <string name="storage_bug_title">Hozzáférés szükséges</string>
+    <string msgid="2561197295334830845" name="switch_role">"Kapcsoló"</string>
+    <string msgid="1672349317127674378" name="tab">"Lap"</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> százalék."</string>
+    <string msgid="3765533235322692011" name="tooltip_description">"elemleírás"</string>
+    <string msgid="3124740595719787496" name="tooltip_label">"elemleírás megjelenítése"</string>
+    <string name="voice_intro_first_book">Adjon hozzá a hangoskönyv mappát, hogy elkezdhesse a hallgatást!</string>
+    <string name="volume_boost">Hangerőnövelés</string>
+</resources>

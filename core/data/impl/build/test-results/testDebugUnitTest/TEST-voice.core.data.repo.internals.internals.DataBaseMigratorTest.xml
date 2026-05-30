@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.data.repo.internals.internals.DataBaseMigratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:18:33.041Z" hostname="Accions-MacBook-Air.local" time="0.325">
+  <properties/>
+  <testcase name="emptyTableLeadsToCorrectSchema" classname="voice.core.data.repo.internals.internals.DataBaseMigratorTest" time="0.217"/>
+  <testcase name="migrate43" classname="voice.core.data.repo.internals.internals.DataBaseMigratorTest" time="0.058"/>
+  <testcase name="migrate44" classname="voice.core.data.repo.internals.internals.DataBaseMigratorTest" time="0.048"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,4 @@
+voice.features.folderPicker.test.folderPicker-mergeDebugUnitTestResources-0 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/merged.dir
+voice.features.folderPicker.test.folderPicker-mergeDebugUnitTestResources-1 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/stripped.dir
+voice.features.folderPicker.test.folderPicker-debugUnitTest-2 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/merged_res/debugUnitTest/mergeDebugUnitTestResources
+gradleHome-0 /Users/accionpraise/.gradle

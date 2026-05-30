@@ -1,0 +1,803 @@
+-- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:91:5-99:16
+	android:grantUriPermissions
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:95:7-41
+	android:authorities
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:93:7-59
+	android:exported
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:94:7-31
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:92:7-56
+manifest
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:2:1-103:12
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:2:1-103:12
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:2:1-103:12
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:2:1-103:12
+MERGED from [:core:logging:debug] /Users/accionpraise/Documents/Extra/Vultr/core/logging/debug/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:playbackScreen] /Users/accionpraise/Documents/Extra/Vultr/features/playbackScreen/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:settings] /Users/accionpraise/Documents/Extra/Vultr/features/settings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:folderPicker] /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:bookOverview] /Users/accionpraise/Documents/Extra/Vultr/features/bookOverview/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:cover] /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:onboarding] /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:bookmark] /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:widget] /Users/accionpraise/Documents/Extra/Vultr/features/widget/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:ui] /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:sleeptimer:impl] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-28:12
+MERGED from [:features:sleepTimer] /Users/accionpraise/Documents/Extra/Vultr/features/sleepTimer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:strings] /Users/accionpraise/Documents/Extra/Vultr/core/strings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:data:impl] /Users/accionpraise/Documents/Extra/Vultr/core/data/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:scanner] /Users/accionpraise/Documents/Extra/Vultr/core/scanner/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:featureflag] /Users/accionpraise/Documents/Extra/Vultr/core/featureflag/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:navigation] /Users/accionpraise/Documents/Extra/Vultr/navigation/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:search] /Users/accionpraise/Documents/Extra/Vultr/core/search/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:data:api] /Users/accionpraise/Documents/Extra/Vultr/core/data/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:remoteconfig:noop] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:remoteconfig:api] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:common] /Users/accionpraise/Documents/Extra/Vultr/core/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:initializer] /Users/accionpraise/Documents/Extra/Vultr/core/initializer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:sleeptimer:api] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:documentfile] /Users/accionpraise/Documents/Extra/Vultr/core/documentfile/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:features:review:noop] /Users/accionpraise/Documents/Extra/Vultr/features/review/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:analytics:noop] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:analytics:api] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [:core:logging:api] /Users/accionpraise/Documents/Extra/Vultr/core/logging/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/95772f5a94419210d923aff1e54afe1e/transformed/coil-compose-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b161475eeae1aff73f073917a042749/transformed/coil-compose-base-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b67844f0d416f22fdbaad53a4f68747d/transformed/coil-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f2bff2d89bcbc1129499db3c05df02ea/transformed/coil-base-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/518ab315a73348c789502ff41593903d/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/47fb9ebdaf6cee36a616b6c4914a920b/transformed/appcompat-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation3:navigation3-runtime-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/00c783c84ce95f887729f2b5d36ab7d9/transformed/navigation3-runtime/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation3:navigation3-ui-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/41b662c8328f964b406b0c9b5a16c037/transformed/navigation3-ui/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d3fd6946de3bd58b8cf47df3c7e85837/transformed/foundation-layout/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20d199f734056917e135c3102685cd9a/transformed/material-ripple/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e194f7db3472457ec3ea2f901bc9e906/transformed/foundation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eaac1397e88ab5c1acc8bdb49aae0c03/transformed/ui-tooling-data/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/235b6dff4c34cee740122b9316f922e4/transformed/ui-unit/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ea216cf50332626bbc0e3e90eb16bd15/transformed/ui-text/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/105c9c5a6b56fb5d9ad73bd7593340c1/transformed/ui-util/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/93e0a8aef4dcc7b361ce14cc8b16e920/transformed/ui-graphics/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a407ad13ad15847a82a262011aac38f6/transformed/ui-geometry/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8aab998e5197f8979f6ace7098f95f00/transformed/ui-tooling-preview/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/954aebf6c5f4c1c31bd74b0b6776524a/transformed/material3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/248bc306546f4fb7dac33cc740a892e0/transformed/animation-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a554e3bb26e6a249e7606277da2c2d97/transformed/animation-graphics/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/759cae1a44a4cc87922bd4bec9e2d17c/transformed/animation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f7978c8dd80570399719061fbaeb5221/transformed/material-icons-extended-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f07cf18eb3f5ecbd3dc04496e9cce689/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1d5b6971a73fbee2090ca532c1146590/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.paging:paging-common-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/736cb5dbc10c839c77e1cb2657fc9a72/transformed/paging-common/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.paging:paging-compose-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9bcdf3d3da4456d5d65910338c250be6/transformed/paging-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.paging:paging-runtime-ktx:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/c2456db00f552846293b1c5bc67c82b2/transformed/paging-runtime-ktx-3.4.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.paging:paging-runtime:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9eef5e8a0c3eff9a77eebb0f2f67c463/transformed/paging-runtime-3.4.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e771553d61abaafe76206660895a235b/transformed/fragment-1.5.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media3:media3-inspector:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/902d52ad08a23a5d5d70acb98c177c97/transformed/media3-inspector-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.media3:media3-extractor:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9fd791acacdc8bb866d180336ffad2cf/transformed/media3-extractor-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-container:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/62e0fa4a35ff4d24e08eaddc630f68b2/transformed/media3-container-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-datasource:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4f824be0aa91b60d178905013818768/transformed/media3-datasource-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-decoder:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b0653d812495b30c4c6c6e9ccb33b125/transformed/media3-decoder-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-database:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/16a3a9338e359317b0e807e42efdad14/transformed/media3-database-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-common:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a230fff3a937ab94d1428b51e47d1bf2/transformed/media3-common-1.10.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media3:media3-session:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/70f28f87ad67f9be447eface70df5c65/transformed/media3-session-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.6.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4ba95655b4d4a373c6c74672bfac8b6c/transformed/transition-1.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/77edcdc28f6ed65b6750f836bba72c63/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e2b6583c5e3b3b4604c171fd0c0e0a9/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/63535375957d2fc3e6e66e4dd459250e/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e8fbe202a909d3a339c47f7793dbbafe/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/0c3e1150404e36bf632a5a77cb03c37d/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1c3cc4781865e6f1ed0f5dcaa4a638c/transformed/lifecycle-livedata-core-ktx-2.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/359ee3b19fd9a7129da8b0e2bed8de9d/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b9f06c820c75cc04d40c60c2a9447885/transformed/lifecycle-viewmodel-2.10.0/AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1da07d131a6ff053f97cbcaa1ab8c74c/transformed/lifecycle-viewmodel/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/098a98762694e43d6c88ff9febe1a1fe/transformed/lifecycle-runtime-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/75be8e0abc1b2176ca4de20aec4970a6/transformed/navigationevent/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/58d920e0f715368549aa37d358b9858a/transformed/navigationevent-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4684a3fb8307ad67b7c51394cc71b212/transformed/runtime-annotation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/df1adb608df48d7042464d659ef7cfb8/transformed/runtime-retain/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e117f31212ef55deb4e89271c1e1376/transformed/runtime/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/980ebb5fae76b6664589b6135df239c8/transformed/runtime-saveable/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/328fd058a8e676865ecaedb8b67c0ab1/transformed/activity-ktx-1.13.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5d010baa630489563ce161c97420bfd6/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e8379bdaaed6b81cbc5293b75d92535/transformed/savedstate-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8de329039721cae162d009d9e82ebfee/transformed/savedstate/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/254ccde4222836fe04db1db9860621bd/transformed/core-ktx-1.18.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.documentfile:documentfile:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9758c82471d28d3ea53898f87eebdc1f/transformed/documentfile-1.1.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/14b143ba4427e6c5a41fe4861efedd53/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ffbbf46a049640d7c61f051aaf220527/transformed/media-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1cffca3c1fd2659c5a6e7841dbf7be02/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eec67d85c25cd374e79e0c6b72bf27f0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20148c75e257a97b5c3bf9d9439288f8/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e808241c3feb0442458873039d86a6d/transformed/recyclerview-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1fc25d7882b872fb10ee599eed414d3a/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/53b4bd71d6baab06189e3624c28962d7/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a2bc65d57964986c534a08dbebf0cff7/transformed/window-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/de83d158eff0ef8204f7b9803a04d5a0/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e43ab33691cc4f9894c28df19157016/transformed/lifecycle-runtime/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/99f610d9ac84170d2b8ac15a9487ebbf/transformed/lifecycle-livedata-2.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b685bea51c9c4b295eaa179575f7a56d/transformed/lifecycle-livedata-ktx-2.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4f8087cdc59667156784bc53917b6fb7/transformed/lifecycle-viewmodel-ktx-2.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/987838bba7a4160101d2753dfa2e6df6/transformed/lifecycle-service-2.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/964d8983d9ea1510ef1df09837a2d4a3/transformed/lifecycle-livedata-core-2.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/86f2ac2cb46c358ea445495afe6b77e4/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6972428cc1e882771cb825fcdf55ca9a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/38943dfc571abeb8feb6cfd9e402a347/transformed/ui/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:17:1-29:12
+MERGED from [androidx.activity:activity:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1eb921f8109a27f880e580267ba8700/transformed/activity-1.13.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-compose:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/428677ba8cbb5d1a3e632c1919ca0ad1/transformed/activity-compose-1.13.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-core-android:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/90016b1b18bb523da06947c7f87776ec/transformed/datastore-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-ktx:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9736891259a3af1258c9d15988e3c98d/transformed/room-ktx-2.8.4/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d074c677a17dbc8e5cc4501a4393ee3d/transformed/core-viewtree-1.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:2:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e44e4e00e3497504f43846e7c8c8e83/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1aadad792e9eb23b107c11b186dbd66e/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4062b255dd7c470135761d070e36d2a7/transformed/tracing-1.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4b773f43cc25580f5cd99bd84b646a0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ab2de0cf4759a5179415721081e6433e/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/91c0902e56448faecad879a244120650/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/85b3485a202df9fd614bc2c5d140c0fd/transformed/sqlite-framework/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/98b1c9efc54d9c37feac723a795e6eb2/transformed/sqlite/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/136bf03a71b4c2744be1022be36c1c73/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b337815423d69e5f5d2e058248dc4b70/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/32195d629b93c729db02e0a160c04b76/transformed/annotation-experimental-1.5.0/AndroidManifest.xml:2:1-7:12
+	package
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:3:3-49
+	android:versionCode
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:5:3-77
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-common:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a230fff3a937ab94d1428b51e47d1bf2/transformed/media3-common-1.10.0/AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-common:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a230fff3a937ab94d1428b51e47d1bf2/transformed/media3-common-1.10.0/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:5:20-74
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:6:3-75
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:6:20-72
+uses-permission#android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:7:3-90
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:7:20-87
+uses-permission#android.permission.INTERNET
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:8:3-65
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:8:5-67
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:8:5-67
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:8:20-62
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:9:3-66
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:23:5-68
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:23:5-68
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:9:20-63
+uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:10:3-93
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:10:20-90
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:11:3-13:27
+	tools:node
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:13:5-24
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:12:5-59
+application
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:15:3-101:17
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:15:3-101:17
+MERGED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:5-26:19
+MERGED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:8:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:22:5-27:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:22:5-27:19
+MERGED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:23:5-29:19
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:10:5-20:19
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:10:5-20:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4b773f43cc25580f5cd99bd84b646a0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4b773f43cc25580f5cd99bd84b646a0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:21:5-31
+	android:label
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:20:5-37
+	android:appCategory
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:19:5-32
+	tools:ignore
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:23:5-60
+	android:icon
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:18:5-41
+	android:theme
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:22:5-36
+	android:enableOnBackInvokedCallback
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:16:5-47
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:17:5-27
+meta-data#com.google.android.gms.car.application
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:25:5-27:53
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:27:7-50
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:26:7-60
+meta-data#com.google.android.gms.car.notification.SmallIcon
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:30:5-33:41
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:32:7-51
+	tools:ignore
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:33:7-38
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:31:7-71
+meta-data#com.google.android.gms.car.application.theme
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:36:5-38:44
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:38:7-41
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:37:7-66
+activity-alias#voice.app.features.MainActivity
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:40:5-52:22
+	android:exported
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:43:7-30
+	android:targetActivity
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:42:7-45
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:41:7-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:44:7-47:23
+action#android.intent.action.MAIN
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:45:9-61
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:45:17-58
+category#android.intent.category.LAUNCHER
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:46:9-69
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:46:19-66
+meta-data#android.app.shortcuts
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:49:7-51:45
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:51:9-42
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:50:9-45
+activity#voice.app.MainActivity
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:54:5-63:16
+	android:windowSoftInputMode
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:56:7-49
+	android:exported
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:57:7-30
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:55:7-35
+intent-filter#action:name:android.media.action.MEDIA_PLAY_FROM_SEARCH+category:name:android.intent.category.DEFAULT
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:59:7-62:23
+action#android.media.action.MEDIA_PLAY_FROM_SEARCH
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:60:9-78
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:60:17-75
+category#android.intent.category.DEFAULT
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:61:9-68
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:61:19-65
+service#voice.core.playback.session.PlaybackService
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:65:5-75:15
+	android:enabled
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:69:7-29
+	android:exported
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:68:7-30
+	tools:ignore
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:70:7-37
+	android:foregroundServiceType
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:67:7-52
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:66:7-65
+intent-filter#action:name:android.media.browse.MediaBrowserService+action:name:androidx.media3.session.MediaLibraryService
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:71:7-74:23
+action#androidx.media3.session.MediaLibraryService
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:72:9-78
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:72:17-75
+action#android.media.browse.MediaBrowserService
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:73:9-75
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:73:17-72
+receiver#voice.app.features.widget.BaseWidgetProvider
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:77:5-89:16
+	android:label
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:80:7-39
+	android:exported
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:81:7-30
+	android:icon
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:79:7-43
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:78:7-57
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:82:7-84:23
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:83:9-76
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:83:17-73
+meta-data#android.appwidget.provider
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:86:7-88:47
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:88:9-44
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:87:9-50
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:96:7-98:47
+	android:resource
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:98:9-44
+	android:name
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml:97:9-59
+uses-sdk
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+MERGED from [:core:logging:debug] /Users/accionpraise/Documents/Extra/Vultr/core/logging/debug/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:logging:debug] /Users/accionpraise/Documents/Extra/Vultr/core/logging/debug/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:playbackScreen] /Users/accionpraise/Documents/Extra/Vultr/features/playbackScreen/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:playbackScreen] /Users/accionpraise/Documents/Extra/Vultr/features/playbackScreen/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:settings] /Users/accionpraise/Documents/Extra/Vultr/features/settings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:settings] /Users/accionpraise/Documents/Extra/Vultr/features/settings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:folderPicker] /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:folderPicker] /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:bookOverview] /Users/accionpraise/Documents/Extra/Vultr/features/bookOverview/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:bookOverview] /Users/accionpraise/Documents/Extra/Vultr/features/bookOverview/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:cover] /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:cover] /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:onboarding] /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:onboarding] /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:bookmark] /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:bookmark] /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:widget] /Users/accionpraise/Documents/Extra/Vultr/features/widget/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:widget] /Users/accionpraise/Documents/Extra/Vultr/features/widget/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:ui] /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:ui] /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:sleeptimer:impl] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:sleeptimer:impl] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:6:5-44
+MERGED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:6:5-44
+MERGED from [:features:sleepTimer] /Users/accionpraise/Documents/Extra/Vultr/features/sleepTimer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:sleepTimer] /Users/accionpraise/Documents/Extra/Vultr/features/sleepTimer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:strings] /Users/accionpraise/Documents/Extra/Vultr/core/strings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:strings] /Users/accionpraise/Documents/Extra/Vultr/core/strings/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:data:impl] /Users/accionpraise/Documents/Extra/Vultr/core/data/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:data:impl] /Users/accionpraise/Documents/Extra/Vultr/core/data/impl/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:scanner] /Users/accionpraise/Documents/Extra/Vultr/core/scanner/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:scanner] /Users/accionpraise/Documents/Extra/Vultr/core/scanner/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:featureflag] /Users/accionpraise/Documents/Extra/Vultr/core/featureflag/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:featureflag] /Users/accionpraise/Documents/Extra/Vultr/core/featureflag/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:navigation] /Users/accionpraise/Documents/Extra/Vultr/navigation/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:navigation] /Users/accionpraise/Documents/Extra/Vultr/navigation/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:search] /Users/accionpraise/Documents/Extra/Vultr/core/search/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:search] /Users/accionpraise/Documents/Extra/Vultr/core/search/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:data:api] /Users/accionpraise/Documents/Extra/Vultr/core/data/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:data:api] /Users/accionpraise/Documents/Extra/Vultr/core/data/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:remoteconfig:noop] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:remoteconfig:noop] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:remoteconfig:api] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:remoteconfig:api] /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:common] /Users/accionpraise/Documents/Extra/Vultr/core/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:common] /Users/accionpraise/Documents/Extra/Vultr/core/common/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:initializer] /Users/accionpraise/Documents/Extra/Vultr/core/initializer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:initializer] /Users/accionpraise/Documents/Extra/Vultr/core/initializer/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:sleeptimer:api] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:sleeptimer:api] /Users/accionpraise/Documents/Extra/Vultr/core/sleeptimer/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:documentfile] /Users/accionpraise/Documents/Extra/Vultr/core/documentfile/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:documentfile] /Users/accionpraise/Documents/Extra/Vultr/core/documentfile/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:review:noop] /Users/accionpraise/Documents/Extra/Vultr/features/review/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:features:review:noop] /Users/accionpraise/Documents/Extra/Vultr/features/review/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:analytics:noop] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:analytics:noop] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/noop/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:analytics:api] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:analytics:api] /Users/accionpraise/Documents/Extra/Vultr/core/analytics/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:logging:api] /Users/accionpraise/Documents/Extra/Vultr/core/logging/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [:core:logging:api] /Users/accionpraise/Documents/Extra/Vultr/core/logging/api/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/95772f5a94419210d923aff1e54afe1e/transformed/coil-compose-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/95772f5a94419210d923aff1e54afe1e/transformed/coil-compose-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b161475eeae1aff73f073917a042749/transformed/coil-compose-base-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b161475eeae1aff73f073917a042749/transformed/coil-compose-base-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b67844f0d416f22fdbaad53a4f68747d/transformed/coil-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b67844f0d416f22fdbaad53a4f68747d/transformed/coil-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f2bff2d89bcbc1129499db3c05df02ea/transformed/coil-base-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f2bff2d89bcbc1129499db3c05df02ea/transformed/coil-base-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/518ab315a73348c789502ff41593903d/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/518ab315a73348c789502ff41593903d/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/47fb9ebdaf6cee36a616b6c4914a920b/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/47fb9ebdaf6cee36a616b6c4914a920b/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation3:navigation3-runtime-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/00c783c84ce95f887729f2b5d36ab7d9/transformed/navigation3-runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation3:navigation3-runtime-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/00c783c84ce95f887729f2b5d36ab7d9/transformed/navigation3-runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation3:navigation3-ui-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/41b662c8328f964b406b0c9b5a16c037/transformed/navigation3-ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation3:navigation3-ui-android:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/41b662c8328f964b406b0c9b5a16c037/transformed/navigation3-ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d3fd6946de3bd58b8cf47df3c7e85837/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d3fd6946de3bd58b8cf47df3c7e85837/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20d199f734056917e135c3102685cd9a/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20d199f734056917e135c3102685cd9a/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e194f7db3472457ec3ea2f901bc9e906/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e194f7db3472457ec3ea2f901bc9e906/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eaac1397e88ab5c1acc8bdb49aae0c03/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eaac1397e88ab5c1acc8bdb49aae0c03/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/235b6dff4c34cee740122b9316f922e4/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/235b6dff4c34cee740122b9316f922e4/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ea216cf50332626bbc0e3e90eb16bd15/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ea216cf50332626bbc0e3e90eb16bd15/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/105c9c5a6b56fb5d9ad73bd7593340c1/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/105c9c5a6b56fb5d9ad73bd7593340c1/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/93e0a8aef4dcc7b361ce14cc8b16e920/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/93e0a8aef4dcc7b361ce14cc8b16e920/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a407ad13ad15847a82a262011aac38f6/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a407ad13ad15847a82a262011aac38f6/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8aab998e5197f8979f6ace7098f95f00/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8aab998e5197f8979f6ace7098f95f00/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/954aebf6c5f4c1c31bd74b0b6776524a/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/954aebf6c5f4c1c31bd74b0b6776524a/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/248bc306546f4fb7dac33cc740a892e0/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/248bc306546f4fb7dac33cc740a892e0/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a554e3bb26e6a249e7606277da2c2d97/transformed/animation-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-graphics-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a554e3bb26e6a249e7606277da2c2d97/transformed/animation-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/759cae1a44a4cc87922bd4bec9e2d17c/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/759cae1a44a4cc87922bd4bec9e2d17c/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f7978c8dd80570399719061fbaeb5221/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f7978c8dd80570399719061fbaeb5221/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f07cf18eb3f5ecbd3dc04496e9cce689/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f07cf18eb3f5ecbd3dc04496e9cce689/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1d5b6971a73fbee2090ca532c1146590/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1d5b6971a73fbee2090ca532c1146590/transformed/accompanist-drawablepainter-0.32.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.paging:paging-common-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/736cb5dbc10c839c77e1cb2657fc9a72/transformed/paging-common/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-common-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/736cb5dbc10c839c77e1cb2657fc9a72/transformed/paging-common/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-compose-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9bcdf3d3da4456d5d65910338c250be6/transformed/paging-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-compose-android:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9bcdf3d3da4456d5d65910338c250be6/transformed/paging-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-runtime-ktx:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/c2456db00f552846293b1c5bc67c82b2/transformed/paging-runtime-ktx-3.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-runtime-ktx:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/c2456db00f552846293b1c5bc67c82b2/transformed/paging-runtime-ktx-3.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-runtime:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9eef5e8a0c3eff9a77eebb0f2f67c463/transformed/paging-runtime-3.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.paging:paging-runtime:3.4.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9eef5e8a0c3eff9a77eebb0f2f67c463/transformed/paging-runtime-3.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e771553d61abaafe76206660895a235b/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e771553d61abaafe76206660895a235b/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media3:media3-inspector:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/902d52ad08a23a5d5d70acb98c177c97/transformed/media3-inspector-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-inspector:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/902d52ad08a23a5d5d70acb98c177c97/transformed/media3-inspector-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/da881a91f4d68f094bb8c03fbf4d2392/transformed/media3-exoplayer-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9fd791acacdc8bb866d180336ffad2cf/transformed/media3-extractor-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9fd791acacdc8bb866d180336ffad2cf/transformed/media3-extractor-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/62e0fa4a35ff4d24e08eaddc630f68b2/transformed/media3-container-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/62e0fa4a35ff4d24e08eaddc630f68b2/transformed/media3-container-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4f824be0aa91b60d178905013818768/transformed/media3-datasource-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4f824be0aa91b60d178905013818768/transformed/media3-datasource-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b0653d812495b30c4c6c6e9ccb33b125/transformed/media3-decoder-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b0653d812495b30c4c6c6e9ccb33b125/transformed/media3-decoder-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/16a3a9338e359317b0e807e42efdad14/transformed/media3-database-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/16a3a9338e359317b0e807e42efdad14/transformed/media3-database-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a230fff3a937ab94d1428b51e47d1bf2/transformed/media3-common-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a230fff3a937ab94d1428b51e47d1bf2/transformed/media3-common-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-session:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/70f28f87ad67f9be447eface70df5c65/transformed/media3-session-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-session:1.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/70f28f87ad67f9be447eface70df5c65/transformed/media3-session-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4ba95655b4d4a373c6c74672bfac8b6c/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4ba95655b4d4a373c6c74672bfac8b6c/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/77edcdc28f6ed65b6750f836bba72c63/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/77edcdc28f6ed65b6750f836bba72c63/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e2b6583c5e3b3b4604c171fd0c0e0a9/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e2b6583c5e3b3b4604c171fd0c0e0a9/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/63535375957d2fc3e6e66e4dd459250e/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/63535375957d2fc3e6e66e4dd459250e/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e8fbe202a909d3a339c47f7793dbbafe/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/e8fbe202a909d3a339c47f7793dbbafe/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/0c3e1150404e36bf632a5a77cb03c37d/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/0c3e1150404e36bf632a5a77cb03c37d/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1c3cc4781865e6f1ed0f5dcaa4a638c/transformed/lifecycle-livedata-core-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1c3cc4781865e6f1ed0f5dcaa4a638c/transformed/lifecycle-livedata-core-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/359ee3b19fd9a7129da8b0e2bed8de9d/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/359ee3b19fd9a7129da8b0e2bed8de9d/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b9f06c820c75cc04d40c60c2a9447885/transformed/lifecycle-viewmodel-2.10.0/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b9f06c820c75cc04d40c60c2a9447885/transformed/lifecycle-viewmodel-2.10.0/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1da07d131a6ff053f97cbcaa1ab8c74c/transformed/lifecycle-viewmodel/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1da07d131a6ff053f97cbcaa1ab8c74c/transformed/lifecycle-viewmodel/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/098a98762694e43d6c88ff9febe1a1fe/transformed/lifecycle-runtime-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/098a98762694e43d6c88ff9febe1a1fe/transformed/lifecycle-runtime-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/75be8e0abc1b2176ca4de20aec4970a6/transformed/navigationevent/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/75be8e0abc1b2176ca4de20aec4970a6/transformed/navigationevent/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/58d920e0f715368549aa37d358b9858a/transformed/navigationevent-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/58d920e0f715368549aa37d358b9858a/transformed/navigationevent-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4684a3fb8307ad67b7c51394cc71b212/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4684a3fb8307ad67b7c51394cc71b212/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/df1adb608df48d7042464d659ef7cfb8/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/df1adb608df48d7042464d659ef7cfb8/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e117f31212ef55deb4e89271c1e1376/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e117f31212ef55deb4e89271c1e1376/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/980ebb5fae76b6664589b6135df239c8/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/980ebb5fae76b6664589b6135df239c8/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/328fd058a8e676865ecaedb8b67c0ab1/transformed/activity-ktx-1.13.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/328fd058a8e676865ecaedb8b67c0ab1/transformed/activity-ktx-1.13.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5d010baa630489563ce161c97420bfd6/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5d010baa630489563ce161c97420bfd6/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e8379bdaaed6b81cbc5293b75d92535/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/3e8379bdaaed6b81cbc5293b75d92535/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8de329039721cae162d009d9e82ebfee/transformed/savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8de329039721cae162d009d9e82ebfee/transformed/savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/254ccde4222836fe04db1db9860621bd/transformed/core-ktx-1.18.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/254ccde4222836fe04db1db9860621bd/transformed/core-ktx-1.18.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.documentfile:documentfile:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9758c82471d28d3ea53898f87eebdc1f/transformed/documentfile-1.1.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.documentfile:documentfile:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9758c82471d28d3ea53898f87eebdc1f/transformed/documentfile-1.1.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/14b143ba4427e6c5a41fe4861efedd53/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/14b143ba4427e6c5a41fe4861efedd53/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ffbbf46a049640d7c61f051aaf220527/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.7.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ffbbf46a049640d7c61f051aaf220527/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1cffca3c1fd2659c5a6e7841dbf7be02/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1cffca3c1fd2659c5a6e7841dbf7be02/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eec67d85c25cd374e79e0c6b72bf27f0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/eec67d85c25cd374e79e0c6b72bf27f0/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20148c75e257a97b5c3bf9d9439288f8/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/20148c75e257a97b5c3bf9d9439288f8/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e808241c3feb0442458873039d86a6d/transformed/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e808241c3feb0442458873039d86a6d/transformed/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1fc25d7882b872fb10ee599eed414d3a/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1fc25d7882b872fb10ee599eed414d3a/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/53b4bd71d6baab06189e3624c28962d7/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/53b4bd71d6baab06189e3624c28962d7/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a2bc65d57964986c534a08dbebf0cff7/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/a2bc65d57964986c534a08dbebf0cff7/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/de83d158eff0ef8204f7b9803a04d5a0/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/de83d158eff0ef8204f7b9803a04d5a0/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e43ab33691cc4f9894c28df19157016/transformed/lifecycle-runtime/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9e43ab33691cc4f9894c28df19157016/transformed/lifecycle-runtime/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/99f610d9ac84170d2b8ac15a9487ebbf/transformed/lifecycle-livedata-2.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/99f610d9ac84170d2b8ac15a9487ebbf/transformed/lifecycle-livedata-2.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b685bea51c9c4b295eaa179575f7a56d/transformed/lifecycle-livedata-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b685bea51c9c4b295eaa179575f7a56d/transformed/lifecycle-livedata-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4f8087cdc59667156784bc53917b6fb7/transformed/lifecycle-viewmodel-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4f8087cdc59667156784bc53917b6fb7/transformed/lifecycle-viewmodel-ktx-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/987838bba7a4160101d2753dfa2e6df6/transformed/lifecycle-service-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/987838bba7a4160101d2753dfa2e6df6/transformed/lifecycle-service-2.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/964d8983d9ea1510ef1df09837a2d4a3/transformed/lifecycle-livedata-core-2.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/964d8983d9ea1510ef1df09837a2d4a3/transformed/lifecycle-livedata-core-2.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/86f2ac2cb46c358ea445495afe6b77e4/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/86f2ac2cb46c358ea445495afe6b77e4/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6972428cc1e882771cb825fcdf55ca9a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6972428cc1e882771cb825fcdf55ca9a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/38943dfc571abeb8feb6cfd9e402a347/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/38943dfc571abeb8feb6cfd9e402a347/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1eb921f8109a27f880e580267ba8700/transformed/activity-1.13.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d1eb921f8109a27f880e580267ba8700/transformed/activity-1.13.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/428677ba8cbb5d1a3e632c1919ca0ad1/transformed/activity-compose-1.13.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.13.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/428677ba8cbb5d1a3e632c1919ca0ad1/transformed/activity-compose-1.13.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/90016b1b18bb523da06947c7f87776ec/transformed/datastore-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.2.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/90016b1b18bb523da06947c7f87776ec/transformed/datastore-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-ktx:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9736891259a3af1258c9d15988e3c98d/transformed/room-ktx-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/9736891259a3af1258c9d15988e3c98d/transformed/room-ktx-2.8.4/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:21:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d074c677a17dbc8e5cc4501a4393ee3d/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/d074c677a17dbc8e5cc4501a4393ee3d/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:6:5-44
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:6:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e44e4e00e3497504f43846e7c8c8e83/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e44e4e00e3497504f43846e7c8c8e83/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1aadad792e9eb23b107c11b186dbd66e/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1aadad792e9eb23b107c11b186dbd66e/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4062b255dd7c470135761d070e36d2a7/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4062b255dd7c470135761d070e36d2a7/transformed/tracing-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4b773f43cc25580f5cd99bd84b646a0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/accionpraise/.gradle/caches/9.5.0/transforms/f4b773f43cc25580f5cd99bd84b646a0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ab2de0cf4759a5179415721081e6433e/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/accionpraise/.gradle/caches/9.5.0/transforms/ab2de0cf4759a5179415721081e6433e/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/91c0902e56448faecad879a244120650/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/91c0902e56448faecad879a244120650/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/85b3485a202df9fd614bc2c5d140c0fd/transformed/sqlite-framework/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/85b3485a202df9fd614bc2c5d140c0fd/transformed/sqlite-framework/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/98b1c9efc54d9c37feac723a795e6eb2/transformed/sqlite/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-android:2.6.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/98b1c9efc54d9c37feac723a795e6eb2/transformed/sqlite/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/136bf03a71b4c2744be1022be36c1c73/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/136bf03a71b4c2744be1022be36c1c73/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b337815423d69e5f5d2e058248dc4b70/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/b337815423d69e5f5d2e058248dc4b70/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/32195d629b93c729db02e0a160c04b76/transformed/annotation-experimental-1.5.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/32195d629b93c729db02e0a160c04b76/transformed/annotation-experimental-1.5.0/AndroidManifest.xml:5:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/app/src/main/AndroidManifest.xml
+receiver#androidx.media3.session.MediaButtonReceiver
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:9-15:20
+	android:exported
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-36
+	android:name
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:13-71
+intent-filter#action:name:android.intent.action.MEDIA_BUTTON
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:13-14:29
+action#android.intent.action.MEDIA_BUTTON
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:17-77
+	android:name
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:25-74
+receiver#voice.core.playback.receiver.WidgetButtonReceiver
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:9-25:20
+	android:exported
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-36
+	tools:ignore
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-44
+	android:name
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:13-77
+intent-filter#action:name:voice.WidgetAction
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:13-24:29
+action#voice.WidgetAction
+ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:17-61
+	android:name
+		ADDED from [:core:playback] /Users/accionpraise/Documents/Extra/Vultr/core/playback/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:25-58
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4a7f092c885aa60eb2bb20a2c5bac498/transformed/ui-tooling/AndroidManifest.xml:24:13-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:24:9-32:20
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:11:9-19:20
+MERGED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:11:9-19:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/1339afa529ce8aed0f01b7951705ead6/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/dfc730a8d1d0019bac745aa9f8b76d50/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.10.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/490a11d0169eb25e269151e38339f0bf/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:30:17-78
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:24:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:26:9-28:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/4b7b5af3b3de52aae83522a48f607b30/transformed/window-1.5.0/AndroidManifest.xml:27:13-51
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:23:9-81
+permission#de.ph1b.audiobook.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:26:22-94
+uses-permission#de.ph1b.audiobook.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.18.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/21a31f1688951a46304c3300602ea6f1/transformed/core-1.18.0/AndroidManifest.xml:26:22-94
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:23:9-26:79
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:25:13-36
+	android:theme
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:26:13-76
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.11.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/5c7a600b99e86138a9461548659ef873/transformed/ui-test-manifest-1.11.0/AndroidManifest.xml:24:13-63
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime-android:2.8.4] /Users/accionpraise/.gradle/caches/9.5.0/transforms/8e50c83a274d90f0092a9b6d7b356075/transformed/room-runtime/AndroidManifest.xml:25:13-74
+meta-data#okhttp3.internal.platform.PlatformInitializer
+ADDED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:16:13-18:52
+	android:value
+		ADDED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:18:17-49
+	android:name
+		ADDED from [com.squareup.okhttp3:okhttp-android:5.3.2] /Users/accionpraise/.gradle/caches/9.5.0/transforms/6dddc8652abff1000af094ab898460d1/transformed/okhttp-release/AndroidManifest.xml:17:17-77
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/accionpraise/.gradle/caches/9.5.0/transforms/29e18079d4361c6fc4e32dda499bf062/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92

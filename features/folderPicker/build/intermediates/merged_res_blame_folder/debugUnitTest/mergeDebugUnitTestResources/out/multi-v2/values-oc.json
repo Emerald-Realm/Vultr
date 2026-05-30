@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "voice.features.folderPicker.test.folderPicker-mergeDebugUnitTestResources-61:/values-oc/values-oc.xml",
+            "map": [
+                {
+                    "source": "/Users/accionpraise/Documents/Extra/Vultr/core/strings/build/intermediates/packaged_res/debug/packageDebugResources/values-oc/values-oc.xml",
+                    "from": {
+                        "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,196,253,293,350,405,477,526,589,656,726,783,832,873,917,961,1038,1129,1200,1250,1301,1376,1447,1502,1566,1613,1668,1712",
+                        "endLines": "5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32",
+                        "endColumns": "14,56,39,56,54,71,48,62,66,69,56,48,40,43,43,76,90,70,49,50,74,70,54,63,46,54,43,60",
+                        "endOffsets": "191,248,288,345,400,472,521,584,651,721,778,827,868,912,956,1033,1124,1195,1245,1296,1371,1442,1497,1561,1608,1663,1707,1768"
+                    }
+                }
+            ]
+        }
+    ]
+}

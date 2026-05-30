@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="folder_type_file_count">
+        <item quantity="one">%d קובץ שמע</item>
+        <item quantity="two">%d קבצי שמע</item>
+        <item quantity="other">%d קבצי שמע</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d דקה</item>
+        <item quantity="two">%d דקות</item>
+        <item quantity="other">%d דקות</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">שנייה</item>
+        <item quantity="two">%d שניות</item>
+        <item quantity="other">%d שניות</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"ניווט לדף הבית"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"ניווט למעלה"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"עוד אפשרויות"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"סיום"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"הצגת הכול"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"בחירת אפליקציה"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"כבוי"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"מופעל"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+‎"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"מחיקה"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"רווח"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"תפריט+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"חיפוש…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"מחיקת השאילתה"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"שאילתת חיפוש"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"חיפוש"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"שליחת שאילתה"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"חיפוש קולי"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"שיתוף עם"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"שיתוף עם <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"כיווץ"</string>
+    <string name="action_settings">העדפות</string>
+    <string name="action_sleep">טיימר-שינה</string>
+    <string name="add">הוסף</string>
+    <string msgid="8719607706653693137" name="androidx_compose_foundation_autofill">"מילוי אוטומטי"</string>
+    <string msgid="1150566100598813236" name="androidx_compose_ui_autofill">"מילוי אוטומטי"</string>
+    <string name="audiobook_folders_title">תיקיית קולספר</string>
+    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">בחר זמן סיום</string>
+    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">בחר זמן התחלה</string>
+    <string name="auto_sleep_timer.subtitle">תפעיל את שעון השינה ­האוטומטי כשההפעלה מגיעה ל- %1$s ו- %2$s</string>
+    <string name="auto_sleep_timer.title">שעון עצר אוטומטי לשינה</string>
+    <string name="battery_optimization_action">עדכן</string>
+    <string name="battery_optimization_rationale">עקב מגבלות חסכון החשמל שלך, ייתכנו הפרעות בהשמעה.</string>
+    <string name="book_header_completed">הושלמו</string>
+    <string name="book_header_current">נוכחי</string>
+    <string name="book_header_not_started">לא שמעתי עדיין</string>
+    <string name="bookmark">סימנייה</string>
+    <string name="bookmark_added">סימנייה נוספה</string>
+    <string name="bookmark_edit_hint">שם הסימנייה</string>
+    <string name="bookmark_edit_title">ערוך סימנייה</string>
+    <string name="bookmark_just_now">ממש עכשיו</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"מענה"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"וידאו"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"דחייה"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"ניתוק"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"שיחה נכנסת"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"שיחה פעילה"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"סינון שיחה נכנסת"</string>
+    <string name="change_book_name">שם</string>
+    <string name="close">סגור</string>
+    <string msgid="406453423630273620" name="close_drawer">"סגירת תפריט הניווט"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"סגירת הגיליון"</string>
+    <string name="content_cover">להציג עטיפות לבחירה</string>
+    <string name="cover">עטיפה</string>
+    <string name="cover_search.author">מחבר</string>
+    <string name="cover_search.icon_recent">תור לאחרונה</string>
+    <string name="cover_search_template_no_author">%s עטיפת הקולספר</string>
+    <string name="cover_search_template_with_author">%1$s מאת %2$s עטיפת קולספר</string>
+    <string msgid="8038256446254964252" name="default_error_message">"הקלט לא תקין"</string>
+    <string name="default_notification_channel_name">הפריט שמופעל עכשיו</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"חלון קופץ"</string>
+    <string name="delete">הסר</string>
+    <string name="delete_book_bottom_sheet_title">מחק ספר</string>
+    <string name="delete_book_dialog_content">פעולה זו תמחק את הקבצים במכשיר שלך.</string>
+    <string name="delete_book_dialog_deletion_confirmation">מחק את הקבצים שלי</string>
+    <string name="delete_book_dialog_title">מחק ספר</string>
+    <string name="dialog_cancel">ביטול</string>
+    <string name="dialog_confirm">אישור</string>
+    <string name="download_book_cover">עטיפות מהאינטרנט</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"תפריט נפתח"</string>
+    <string name="edit_book_title">ערוך ספר</string>
+    <string name="end_of_chapter">סוף פרק</string>
+    <string name="error_message_authentication_expired">כדי להשתמש באפליקציה הזו, צריך להיכנס לחשבון</string>
+    <string name="error_message_bad_value">נתוני קלט שגויים</string>
+    <string name="error_message_concurrent_stream_limit">מתבצעת האזנה ביותר מדי מכשירים</string>
+    <string name="error_message_content_already_playing">התוכן הזה כבר פועל</string>
+    <string name="error_message_disconnected">נותק מאפליקציית המדיה</string>
+    <string name="error_message_end_of_playlist">אין עוד פריטים ברשימת הבאים בתור</string>
+    <string name="error_message_fallback">משהו השתבש. אפשר לנסות מאוחר יותר.</string>
+    <string name="error_message_info_cancelled">לא ניתן להשלים את הפעולה. רוצה לנסות שוב?</string>
+    <string name="error_message_invalid_state">אי אפשר לבצע את הפעולה הזו כרגע</string>
+    <string name="error_message_io">נתוני קלט או פלט שגויים</string>
+    <string name="error_message_not_available_in_region">התוכן הזה לא זמין כאן</string>
+    <string name="error_message_not_supported">אי אפשר לבצע את הפעולה הזו באפליקציה הזו</string>
+    <string name="error_message_parental_control_restricted">התוכן הזה חסום</string>
+    <string name="error_message_permission_denied">הגישה נדחתה</string>
+    <string name="error_message_premium_account_required">נדרשת גישה ל-Premium</string>
+    <string name="error_message_setup_required">נדרשת הגדרה</string>
+    <string name="error_message_skip_limit_reached">אי אפשר לדלג יותר על טראקים</string>
+    <string name="exo_download_completed">ההורדה הושלמה</string>
+    <string name="exo_download_description">הורדה</string>
+    <string name="exo_download_downloading">ההורדה מתבצעת</string>
+    <string name="exo_download_failed">ההורדה לא הושלמה</string>
+    <string name="exo_download_notification_channel_name">הורדות</string>
+    <string name="exo_download_paused">ההורדות הושהו</string>
+    <string name="exo_download_paused_for_network">ההורדות בהמתנה לרשת</string>
+    <string name="exo_download_paused_for_wifi">ההורדות בהמתנה ל-Wi-Fi</string>
+    <string name="exo_download_removing">מסיר הורדות</string>
+    <string name="fast_forward">הרץ קדימה</string>
+    <string name="folder_mode_author">מצב מחבר-ספר: תיקיות משנה הן מחברים, תיקיות משנה הן ספרים.</string>
+    <string name="folder_mode_root">מצב ספר ברמה עליונה: תיקיות משנה הן ספרים</string>
+    <string name="folder_mode_single">מצב ספר בודד: תיקייה אחת שווה ספר אחד.</string>
+    <string name="folder_type_book_example_header">זה יוביל לגילוי הספרים הבאים</string>
+    <string name="folder_type_no_books">Voice לא זיהה ספרים. האם יש קבצי שמע?</string>
+    <string name="folder_type_title">איך הקבצים שלך מסודרים?</string>
+    <string name="generic_error_message">משהו השתבש 😢</string>
+    <string name="generic_error_retry">נסה שוב</string>
+    <string msgid="6827826412747255547" name="in_progress">"בתהליך"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"מסומנת חלקית"</string>
+    <string name="mark_as_completed">סמן כהושלם</string>
+    <string name="mark_as_current">סמן כנוכחי</string>
+    <string name="mark_as_not_started">סמן כ-עוד לא התחלתי</string>
+    <string name="media3_controls_pause_description">השהיה</string>
+    <string name="media3_controls_play_description">הפעלה</string>
+    <string name="media3_controls_seek_back_description">דילוג אחורה</string>
+    <string name="media3_controls_seek_forward_description">דילוג קדימה</string>
+    <string name="media3_controls_seek_to_next_description">דילוג לפריט הבא</string>
+    <string name="media3_controls_seek_to_previous_description">דילוג לפריט הקודם</string>
+    <string name="media_session_recent">אחרונים</string>
+    <string name="media_session_root">כל הקולספרים</string>
+    <string name="migration_delete_dialog_action_delete">הסר</string>
+    <string name="migration_delete_dialog_action_keep">שמור</string>
+    <string name="migration_delete_dialog_content">לאחר שתמחק את המיקומים הישנים, לא תוכל לשחזר את מיקומי ההפעלה הישנים שלך.</string>
+    <string name="migration_delete_dialog_title">מחק מיקומים</string>
+    <string name="migration_detail_content_added_at">נוסף ב</string>
+    <string name="migration_detail_content_bookmarks">סימניות</string>
+    <string name="migration_detail_content_name">שם</string>
+    <string name="migration_detail_content_position">מיקום</string>
+    <string name="migration_detail_content_position_current_chapter_position">מיקום בפרק</string>
+    <string name="migration_detail_content_position_current_chapter_title">פרק נוכחי</string>
+    <string name="migration_detail_content_position_current_file_position">מיקום בקובץ</string>
+    <string name="migration_detail_content_position_current_file_title">קובץ נוכחי</string>
+    <string name="migration_detail_content_root">תיקייה ראשית</string>
+    <string name="migration_detail_title">מיקומי ספרים ישנים</string>
+    <string name="migration_hint_confirm">מובן</string>
+    <string name="migration_hint_content">עקב שינויים בגרסאות חדשות יותר של אנדרואיד, יש צורך לבחור את תיקיית ספרי האודיו שלך באמצעות בורר המערכת.\n\nלחץ על הסמל למעלה כדי להציג את מיקומי הספרים הישנים שלך.</string>
+    <string name="migration_hint_title">ניגש למיקומי ספרים ישנים</string>
+    <string name="more">עוד</string>
+    <string msgid="542007171693138492" name="navigation_menu">"תפריט הניווט"</string>
+    <string name="next_track">רצועה הבאה</string>
+    <string msgid="6610465462668679431" name="not_selected">"לא נבחר"</string>
+    <string name="notification_sleep_timer_disable">בטל טיימר שינה</string>
+    <string name="notification_sleep_timer_enable">הפעל טיימר שינה</string>
+    <string name="onboarding.button_next">הבא</string>
+    <string name="onboarding.completion.next_button">התחל להאזין</string>
+    <string name="onboarding.completion.subtitle">נגן הקולספר הראשון שלך מוכן להשמעה. תהנה מהמסע שלך עם Voice!</string>
+    <string name="onboarding.completion.title">הכל מוכן!</string>
+    <string name="onboarding.explanation.subtitle">בעזרת Voice, תוכלו להוסיף ספרים כקבצים בודדים או לארגן אותם בתיקיות. בחרו!</string>
+    <string name="onboarding.explanation.title">הספרייה שלך, בדרך שלך</string>
+    <string name="onboarding_analytics_consent_title">עזרו לשפר את Voice</string>
+    <string name="onboarding_welcome_subtitle">נגן ספרי הקולספרים האישי שלך בכיס. בואו נתאים את Voice אליכם.</string>
+    <string name="onboarding_welcome_title">ברוכים הבאים ל-Voice!</string>
+    <string name="pause">השהה</string>
+    <string name="pick_book_cover">עטיפות מקובץ קיים</string>
+    <string name="play">הפעל</string>
+    <string name="play_current">השמע את הנוכחי</string>
+    <string name="play_pause">הפעל \\ השהה</string>
+    <string name="playback.current_chapter">פרק נוכחי</string>
+    <string name="playback_speed">מהירות השמעה</string>
+    <string name="popup_edit">ערוך</string>
+    <string name="pref_app_version">גרסת יישום</string>
+    <string name="pref_auto_rewind_title">הרצה אוטומטית</string>
+    <string name="pref_faq">שאלות נפוצות</string>
+    <string name="pref_get_support">תמיכה</string>
+    <string name="pref_help_translating">עזור לתרגם את Voice</string>
+    <string name="pref_report_issue">דווח על תקלה</string>
+    <string name="pref_seek_time">דלג כמות</string>
+    <string name="pref_suggest_idea">הצע רעיון</string>
+    <string name="pref_theme_dark">מצב כהה</string>
+    <string name="pref_use_grid">תשתמש בפריסת רשת</string>
+    <string name="previous_track">רצועה קודמת</string>
+    <string msgid="5941395253238309765" name="range_end">"סוף הטווח"</string>
+    <string msgid="7097486360902471446" name="range_start">"תחילת הטווח"</string>
+    <string name="remove">מחק</string>
+    <string name="review.feedback.button.no">ביטול</string>
+    <string name="review.feedback.button.yes">שלח משוב</string>
+    <string name="review.feedback.content">האם תוכל לספר לנו מה השתבש? אנו מעריכים את המשוב שלך והוא עוזר לנו לשפר את חווייתך.</string>
+    <string name="review.feedback.title">אנחנו מצטערים לשמוע את זה!</string>
+    <string name="review.request.button.no">לא, תודה</string>
+    <string name="review.request.button.yes">דרג עכשיו</string>
+    <string name="review.request.content">המשוב שלך חשוב לנו! אם יש לך רגע פנוי, דרג אותנו ושתפו אותנו בחווייתך. זה עוזר לנו לשפר את החוויה ולהציע חוויית האזנה טובה יותר.</string>
+    <string name="review.request.title">נהנים מ-Voice?</string>
+    <string name="rewind">הרץ אחורה</string>
+    <string name="search_hint">מה את.ה מחפש.ת?</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"חיפוש"</string>
+    <string name="select_folder_subtitle">האם ברצונך להוסיף קובץ בודד כספר או כתיקייה?</string>
+    <string name="select_folder_title_default">הוסף קולספר.ים</string>
+    <string name="select_folder_title_onboarding">הוסף את הקולספר הראשון שלך</string>
+    <string name="select_folder_type_file">קובץ</string>
+    <string name="select_folder_type_folder">תיקייה</string>
+    <string msgid="6043586758067023" name="selected">"נבחר"</string>
+    <string name="skip_silence">דלג על קטעים שקטים</string>
+    <string name="sleep_timer.button.decrement">קצר יותר</string>
+    <string name="sleep_timer.button.increment">ארוך יותר</string>
+    <string name="sleep_timer.title">חלומות פז! 🌙</string>
+    <string msgid="2792228137354697160" name="snackbar_pane_title">"התראה"</string>
+    <string msgid="4139871816613051306" name="state_empty">"ריק"</string>
+    <string msgid="5834637030682409883" name="state_off">"מצב מושבת"</string>
+    <string msgid="1490883874751719580" name="state_on">"מצב פעיל"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="storage_bug_button">הענקת הרשאה</string>
+    <string name="storage_bug_subtitle">עבור מכשירים מסוימים, לאפליקציית מערכת חסרה את ההרשאה הנדרשת לגישה לאחסון החיצוני. גישה זו חיונית כדי ש-Voice יוכל לקרוא את ספרי האודיו שלך.</string>
+    <string name="storage_bug_title">נדרש אישור</string>
+    <string msgid="2561197295334830845" name="switch_role">"מתג"</string>
+    <string msgid="1672349317127674378" name="tab">"כרטיסייה"</string>
+    <string msgid="5946805113151406391" name="template_percent">"<ns1:g id="PERCENTAGE">%1$d</ns1:g> אחוזים."</string>
+    <string msgid="3765533235322692011" name="tooltip_description">"הסבר קצר"</string>
+    <string msgid="3124740595719787496" name="tooltip_label">"הצגת ההסבר הקצר"</string>
+    <string name="voice_intro_first_book">בואו נוסיף את תיקיית הקולספר שלכם כדי שתוכלו להתחיל להאזין!</string>
+    <string name="volume_boost">הגבר עוצמה</string>
+</resources>

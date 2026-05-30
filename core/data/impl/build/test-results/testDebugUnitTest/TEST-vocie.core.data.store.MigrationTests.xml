@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="vocie.core.data.store.MigrationTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:39.536Z" hostname="Accions-MacBook-Air.local" time="112.542">
+  <properties/>
+  <testcase name="migration is skipped when unrelated key present" classname="vocie.core.data.store.MigrationTests" time="6.981"/>
+  <testcase name="falls back to FOLLOW_DEVICE when key missing" classname="vocie.core.data.store.MigrationTests" time="0.046"/>
+  <testcase name="autoRewind migrates from SharedPreferences and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.053"/>
+  <testcase name="defaults are used when SharedPreferences empty" classname="vocie.core.data.store.MigrationTests" time="0.053"/>
+  <testcase name="seekTime migrates from SharedPreferences and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.043"/>
+  <testcase name="migrates LIST from SharedPreferences and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.045"/>
+  <testcase name="multiple migrations applied sequentially" classname="vocie.core.data.store.MigrationTests" time="0.033"/>
+  <testcase name="intPrefsDataMigration migrates and cleans up arbitrary key" classname="vocie.core.data.store.MigrationTests" time="0.029"/>
+  <testcase name="falls back to FOLLOW_DEVICE on unknown legacy value and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.049"/>
+  <testcase name="darkTheme migrates from SharedPreferences and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.044"/>
+  <testcase name="migrates GRID from SharedPreferences and cleans up" classname="vocie.core.data.store.MigrationTests" time="0.043"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

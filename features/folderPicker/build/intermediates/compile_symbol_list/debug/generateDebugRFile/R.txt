@@ -1,0 +1,1 @@
+int drawable folder_type_artwork 0x0

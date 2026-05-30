@@ -1,0 +1,4 @@
+voice.features.onboarding.test.onboarding-mergeDebugUnitTestResources-0 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/merged.dir
+voice.features.onboarding.test.onboarding-mergeDebugUnitTestResources-1 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/stripped.dir
+voice.features.onboarding.test.onboarding-debugUnitTest-2 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/merged_res/debugUnitTest/mergeDebugUnitTestResources
+gradleHome-0 /Users/accionpraise/.gradle

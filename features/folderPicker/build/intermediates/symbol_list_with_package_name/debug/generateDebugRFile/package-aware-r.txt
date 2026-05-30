@@ -1,0 +1,2 @@
+voice.features.folderPicker
+drawable folder_type_artwork

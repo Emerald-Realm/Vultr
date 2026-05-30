@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.data.repo.internals.internals.migrations.Migration39to40Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:18:32.103Z" hostname="Accions-MacBook-Air.local" time="0.271">
+  <properties/>
+  <testcase name="negativeNumbersBecomeZero" classname="voice.core.data.repo.internals.internals.migrations.Migration39to40Test" time="0.268"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

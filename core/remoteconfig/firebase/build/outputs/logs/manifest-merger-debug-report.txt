@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml:2:13-83
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml:2:13-83
+	package
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml
+	xmlns:android
+		ADDED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml:2:23-81
+uses-sdk
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml reason: use-sdk injection requested
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml
+INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml
+	android:targetSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml
+	android:minSdkVersion
+		INJECTED from /Users/accionpraise/Documents/Extra/Vultr/core/remoteconfig/firebase/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest6358013644909948091.xml

@@ -1,0 +1,29 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="voice.core.analytics.firebase" >
+4
+5    <uses-sdk android:minSdkVersion="28" />
+5-->INJECTED
+5-->INJECTED
+6
+7    <uses-permission android:name="android.permission.INTERNET" />
+7-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:3:3-65
+7-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:3:20-62
+8    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+8-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:4:3-77
+8-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:4:20-74
+9    <uses-permission android:name="android.permission.WAKE_LOCK" />
+9-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:5:3-66
+9-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:5:20-63
+10
+11    <application>
+11-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:7:3-11:17
+12        <meta-data
+12-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:8:5-10:31
+13            android:name="firebase_analytics_collection_enabled"
+13-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:9:7-59
+14            android:value="false" />
+14-->/Users/accionpraise/Documents/Extra/Vultr/core/analytics/firebase/src/main/AndroidManifest.xml:10:7-28
+15    </application>
+16
+17</manifest>

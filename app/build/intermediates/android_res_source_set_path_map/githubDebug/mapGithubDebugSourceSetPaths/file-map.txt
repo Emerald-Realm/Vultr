@@ -1,0 +1,11 @@
+voice.app-github-0 /Users/accionpraise/Documents/Extra/Vultr/app/build/generated/res/pngs/github/debug
+voice.app-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/app/build/generated/updated_navigation_xml/githubDebug
+voice.app-githubDebug-2 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/generated_locale_config_incremental_dir/githubDebug/generateGithubDebugLocaleConfig
+voice.app-packageGithubDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/incremental/githubDebug/packageGithubDebugResources/merged.dir
+voice.app-packageGithubDebugResources-4 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/incremental/githubDebug/packageGithubDebugResources/stripped.dir
+voice.app-githubDebug-5 /Users/accionpraise/Documents/Extra/Vultr/app/build/intermediates/merged_res/githubDebug/mergeGithubDebugResources
+voice.app-debug-6 /Users/accionpraise/Documents/Extra/Vultr/app/src/debug/res
+voice.app-github-7 /Users/accionpraise/Documents/Extra/Vultr/app/src/github/res
+voice.app-githubDebug-8 /Users/accionpraise/Documents/Extra/Vultr/app/src/githubDebug/res
+voice.app-main-9 /Users/accionpraise/Documents/Extra/Vultr/app/src/main/res
+gradleHome-0 /Users/accionpraise/.gradle

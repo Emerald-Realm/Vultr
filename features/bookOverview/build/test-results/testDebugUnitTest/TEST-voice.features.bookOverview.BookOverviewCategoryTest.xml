@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.features.bookOverview.BookOverviewCategoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:44.034Z" hostname="Accions-MacBook-Air.local" time="0.228">
+  <properties/>
+  <testcase name="finished" classname="voice.features.bookOverview.BookOverviewCategoryTest" time="0.221"/>
+  <testcase name="current" classname="voice.features.bookOverview.BookOverviewCategoryTest" time="0.001"/>
+  <testcase name="notStarted" classname="voice.features.bookOverview.BookOverviewCategoryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

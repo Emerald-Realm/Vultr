@@ -1,0 +1,9 @@
+voice.core.ui-pngs-0 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/generated/res/pngs/debug
+voice.core.ui-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/generated/updated_navigation_xml/debug
+voice.core.ui-mergeDebugResources-2 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+voice.core.ui-mergeDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+voice.core.ui-debug-4 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/merged_res/debug/mergeDebugResources
+voice.core.ui-debug-5 /Users/accionpraise/Documents/Extra/Vultr/core/ui/build/intermediates/packaged_res/debug/packageDebugResources
+voice.core.ui-debug-6 /Users/accionpraise/Documents/Extra/Vultr/core/ui/src/debug/res
+voice.core.ui-main-7 /Users/accionpraise/Documents/Extra/Vultr/core/ui/src/main/res
+gradleHome-0 /Users/accionpraise/.gradle

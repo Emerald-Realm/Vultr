@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="voice.core.data.repo.internals.internals.migrations.Migration40to41Test" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:39.945Z" hostname="Accions-MacBook-Air.local" time="112.347">
+  <properties/>
+  <testcase name="insert" classname="voice.core.data.repo.internals.internals.migrations.Migration40to41Test" time="7.6"/>
+  <testcase name="insertBeforeMigrationThrows" classname="voice.core.data.repo.internals.internals.migrations.Migration40to41Test" time="0.042"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

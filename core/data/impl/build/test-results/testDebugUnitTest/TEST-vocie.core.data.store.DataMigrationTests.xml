@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="vocie.core.data.store.DataMigrationTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-05-30T06:16:38.812Z" hostname="Accions-MacBook-Air.local" time="114.219">
+  <properties/>
+  <testcase name="intPrefsDataMigration migrates and cleans up arbitrary key" classname="vocie.core.data.store.DataMigrationTests" time="8.49"/>
+  <testcase name="booleanPrefsDataMigration migrates and cleans up arbitrary key" classname="vocie.core.data.store.DataMigrationTests" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

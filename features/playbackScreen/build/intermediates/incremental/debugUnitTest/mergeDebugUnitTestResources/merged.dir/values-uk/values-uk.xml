@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="folder_type_file_count">
+        <item quantity="one">%d аудіофайл</item>
+        <item quantity="few">%d аудіофайли</item>
+        <item quantity="many">%d аудіофайлів</item>
+        <item quantity="other">%d аудіофайлів</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d хвилина</item>
+        <item quantity="few">%d хвилини</item>
+        <item quantity="many">%d хвилин</item>
+        <item quantity="other">%d хвилин</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d секунда</item>
+        <item quantity="few">%d секунди</item>
+        <item quantity="many">%d секунд</item>
+        <item quantity="other">%d секунд</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Перейти на головну"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Перейти вгору"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Більше опцій"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Показати всі"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Вибрати програму"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ВИМКНЕНО"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"УВІМКНЕНО"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"пробіл"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Введіть пошуковий запит…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Очистити запит"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Пошуковий запит"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Пошук"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Наіслати запит"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Голосовий пошук"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Поділитися:"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Поділитися через додаток <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Згорнути"</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="action_sleep">Таймер сну</string>
+    <string name="add">Додати</string>
+    <string msgid="8719607706653693137" name="androidx_compose_foundation_autofill">"Автозаповнення"</string>
+    <string msgid="1150566100598813236" name="androidx_compose_ui_autofill">"Автозаповнення"</string>
+    <string name="audiobook_folders_title">Папки з аудіокнигами</string>
+    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Час кінця</string>
+    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Час початку</string>
+    <string name="auto_sleep_timer.subtitle">Автоматично запустити таймер сну, коли програш починається між %1$s та %2$s</string>
+    <string name="auto_sleep_timer.title">Автоматичний таймер сну</string>
+    <string name="battery_optimization_action">Оновити</string>
+    <string name="battery_optimization_rationale">Налаштування енергозбереження пристрою можуть призвести до переривань у відтворенні аудіокниг.</string>
+    <string name="book_header_completed">Завершені</string>
+    <string name="book_header_current">Поточні</string>
+    <string name="book_header_not_started">Ще не початі</string>
+    <string name="bookmark">Закладка</string>
+    <string name="bookmark_added">Закладку додано</string>
+    <string name="bookmark_edit_hint">Назва закладки</string>
+    <string name="bookmark_edit_title">Редагувати закладку</string>
+    <string name="bookmark_just_now">Щойно</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Відповісти"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Відео"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Відхилити"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Завершити"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Вхідний виклик"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Активний виклик"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Вхідний виклик (Фільтр)"</string>
+    <string name="change_book_name">Назва</string>
+    <string name="close">Закрити</string>
+    <string msgid="406453423630273620" name="close_drawer">"Закрити меню навігації"</string>
+    <string msgid="7573152094250666567" name="close_sheet">"Закрити аркуш"</string>
+    <string name="content_cover">Показує вибір обкладинки</string>
+    <string name="cover">Обкладинка</string>
+    <string name="cover_search.author">Автор</string>
+    <string name="cover_search.icon_recent">Недавній запит</string>
+    <string name="cover_search_template_no_author">Обкладинка аудіокниги %s</string>
+    <string name="cover_search_template_with_author">Обкладинка аудіокниги %1$s автора %2$s</string>
+    <string msgid="8038256446254964252" name="default_error_message">"Введено недійсні дані"</string>
+    <string name="default_notification_channel_name">Зараз відтворюється</string>
+    <string msgid="6312721426453364202" name="default_popup_window_title">"Спливаюче вікно"</string>
+    <string name="delete">Видалити</string>
+    <string name="delete_book_bottom_sheet_title">Видалити книгу</string>
+    <string name="delete_book_dialog_content">Файли на вашому пристрої буде видалено.</string>
+    <string name="delete_book_dialog_deletion_confirmation">Видалити мої файли</string>
+    <string name="delete_book_dialog_title">Видалити книгу</string>
+    <string name="dialog_cancel">Скасувати</string>
+    <string name="dialog_confirm">Установити</string>
+    <string name="download_book_cover">Обкладинка з Інтернету</string>
+    <string msgid="1890207353314751437" name="dropdown_menu">"Спадне меню"</string>
+    <string name="edit_book_title">Редагувати книгу</string>
+    <string name="end_of_chapter">Кінець розділу</string>
+    <string name="error_message_authentication_expired">Увійдіть, щоб використовувати цей додаток</string>
+    <string name="error_message_bad_value">Неправильні вхідні дані</string>
+    <string name="error_message_concurrent_stream_limit">Контент відтворюється на завеликій кількості пристроїв</string>
+    <string name="error_message_content_already_playing">Цей контент уже відтворюється</string>
+    <string name="error_message_disconnected">Від’єднано від мультимедійного додатка</string>
+    <string name="error_message_end_of_playlist">Черга порожня</string>
+    <string name="error_message_fallback">Сталася помилка. Повторіть спробу пізніше.</string>
+    <string name="error_message_info_cancelled">Не вдалося завершити. Повторіть спробу.</string>
+    <string name="error_message_invalid_state">Зараз ця дія недоступна</string>
+    <string name="error_message_io">Помилка вводу/виводу</string>
+    <string name="error_message_not_available_in_region">Цей контент недоступний у вашому регіоні</string>
+    <string name="error_message_not_supported">Додаток не підтримує цю дію</string>
+    <string name="error_message_parental_control_restricted">Цей контент заблоковано</string>
+    <string name="error_message_permission_denied">Доступ заборонено</string>
+    <string name="error_message_premium_account_required">Потрібен платний обліковий запис</string>
+    <string name="error_message_setup_required">Потрібне налаштування</string>
+    <string name="error_message_skip_limit_reached">Більше не можна пропускати композиції</string>
+    <string name="exo_download_completed">Завантаження завершено</string>
+    <string name="exo_download_description">Завантажити</string>
+    <string name="exo_download_downloading">Завантажується</string>
+    <string name="exo_download_failed">Не вдалося завантажити</string>
+    <string name="exo_download_notification_channel_name">Завантаження</string>
+    <string name="exo_download_paused">Завантаження призупинено</string>
+    <string name="exo_download_paused_for_network">Очікується підключення до мережі</string>
+    <string name="exo_download_paused_for_wifi">Очікується підключення до Wi-Fi</string>
+    <string name="exo_download_removing">Завантаження видаляються</string>
+    <string name="fast_forward">Перемотати вперед</string>
+    <string name="folder_mode_author">Режим «Автор–Книга»: підкаталоги це автори, під-підкаталоги – книги</string>
+    <string name="folder_mode_root">Книжковий режим верхнього рівня: підкаталоги – це книги</string>
+    <string name="folder_mode_single">Режим однієї книги: один каталог відповідає одній книзі</string>
+    <string name="folder_type_book_example_header">Пошук книг</string>
+    <string name="folder_type_no_books">Voice не виявив жодної книги. Тут є аудіофайли?</string>
+    <string name="folder_type_title">Як структуровані ваші файли?</string>
+    <string name="generic_error_message">Щось пішло не так 😢</string>
+    <string name="generic_error_retry">Повторити</string>
+    <string msgid="6827826412747255547" name="in_progress">"Виконується"</string>
+    <string msgid="7933458017204019916" name="indeterminate">"Частково вибрано"</string>
+    <string msgid="2988463736136100848" name="m3c_bottom_sheet_collapse_description">"Згорнути нижній екран"</string>
+    <string msgid="1555567894577437024" name="m3c_bottom_sheet_dismiss_description">"Закрити нижній екран"</string>
+    <string msgid="8403354765404029791" name="m3c_bottom_sheet_drag_handle_description">"Маркер переміщення"</string>
+    <string msgid="6670819569745899763" name="m3c_bottom_sheet_expand_description">"Розгорнути нижній екран"</string>
+    <string msgid="3010635850035863127" name="m3c_bottom_sheet_pane_title">"Нижній екран"</string>
+    <string msgid="8166741421776570875" name="m3c_date_input_headline">"Введена дата"</string>
+    <string msgid="229313757840775812" name="m3c_date_input_headline_description">"Введена дата: %1$s"</string>
+    <string msgid="6116910750161463197" name="m3c_date_input_invalid_for_pattern">"Дата не відповідає очікуваному шаблону: %1$s"</string>
+    <string msgid="2521768508935305279" name="m3c_date_input_invalid_not_allowed">"Недопустима дата: %1$s"</string>
+    <string msgid="7052898923934555305" name="m3c_date_input_invalid_year_range">"Дата за межами очікуваного діапазону років %1$s – %2$s"</string>
+    <string msgid="2895559812010326913" name="m3c_date_input_label">"Дата"</string>
+    <string msgid="1237013946323089826" name="m3c_date_input_no_input_description">"Немає"</string>
+    <string msgid="7306227249789210568" name="m3c_date_input_title">"Виберіть дату"</string>
+    <string msgid="7605002211875882969" name="m3c_date_picker_headline">"Вибрана дата"</string>
+    <string msgid="3664277305226978227" name="m3c_date_picker_headline_description">"Поточний вибір: %1$s"</string>
+    <string msgid="8436650776581492840" name="m3c_date_picker_navigate_to_year_description">"Перейти до %1$s року"</string>
+    <string msgid="5811000998184572395" name="m3c_date_picker_no_selection_description">"Немає"</string>
+    <string msgid="7813882352367152251" name="m3c_date_picker_scroll_to_earlier_years">"Прокрутіть, щоб відобразити попередні роки"</string>
+    <string msgid="5727367015496556177" name="m3c_date_picker_scroll_to_later_years">"Прокрутіть, щоб відобразити пізніші роки"</string>
+    <string msgid="1804346892470238807" name="m3c_date_picker_switch_to_calendar_mode">"Перейти в режим введення в календарі"</string>
+    <string msgid="395627960681594326" name="m3c_date_picker_switch_to_day_selection">"Проведіть пальцем по екрану, щоб вибрати рік, або торкніться, щоб повернутися до вибору дня"</string>
+    <string msgid="2219746470065162704" name="m3c_date_picker_switch_to_input_mode">"Перейти в режим введення тексту"</string>
+    <string msgid="7142101321095356500" name="m3c_date_picker_switch_to_next_month">"Перейти до наступного місяця"</string>
+    <string msgid="228438865139394590" name="m3c_date_picker_switch_to_previous_month">"Перейти до попереднього місяця"</string>
+    <string msgid="791651718641787594" name="m3c_date_picker_switch_to_year_selection">"Перейти до вибору року"</string>
+    <string msgid="7430790972741451689" name="m3c_date_picker_title">"Виберіть дату"</string>
+    <string msgid="3199387177749801575" name="m3c_date_picker_today_description">"Сьогодні"</string>
+    <string msgid="2068382232816991922" name="m3c_date_picker_year_picker_pane_title">"Показувати засіб вибору року"</string>
+    <string msgid="3190049423327661366" name="m3c_date_range_input_invalid_range_input">"Указано недійсний діапазон дат"</string>
+    <string msgid="3148384720560189467" name="m3c_date_range_input_title">"Введіть дати"</string>
+    <string msgid="2138321128465719402" name="m3c_date_range_picker_day_in_range">"У діапазоні"</string>
+    <string msgid="4947636797751277713" name="m3c_date_range_picker_end_headline">"Дата завершення"</string>
+    <string msgid="602077859540990149" name="m3c_date_range_picker_scroll_to_next_month">"Прокрутіть, щоб відобразити наступний місяць"</string>
+    <string msgid="4592174524846109496" name="m3c_date_range_picker_scroll_to_previous_month">"Прокрутіть, щоб відобразити попередній місяць"</string>
+    <string msgid="4665981448952749820" name="m3c_date_range_picker_start_headline">"Дата початку"</string>
+    <string msgid="3134165431120340385" name="m3c_date_range_picker_title">"Виберіть дати"</string>
+    <string msgid="7617233117134790350" name="m3c_dialog">"Вікно"</string>
+    <string msgid="3177828188723359358" name="m3c_dropdown_menu_collapsed">"Згорнуто"</string>
+    <string msgid="2360841780724299882" name="m3c_dropdown_menu_expanded">"Розгорнуто"</string>
+    <string msgid="8687821690726149911" name="m3c_dropdown_menu_toggle">"Згорнути або розгорнути спадне меню"</string>
+    <string msgid="6072492480528318635" name="m3c_floating_toolbar_collapse">"Згорнути панель інструментів"</string>
+    <string msgid="6880757017246780255" name="m3c_floating_toolbar_expand">"Розгорнути панель інструментів"</string>
+    <string msgid="6152806324422087846" name="m3c_search_bar_search">"Пошук"</string>
+    <string msgid="6152755701819882931" name="m3c_snackbar_dismiss">"Закрити"</string>
+    <string msgid="3868801555855510515" name="m3c_snackbar_pane_title">"Сповіщення"</string>
+    <string msgid="7655536806087401899" name="m3c_suggestions_available">"Підказки внизу"</string>
+    <string msgid="409352516511718051" name="m3c_time_input_dialog_title">"Введіть час"</string>
+    <string msgid="2786685010796619560" name="m3c_time_picker_am">"ДП"</string>
+    <string msgid="7412665527536641863" name="m3c_time_picker_dialog_title">"Виберіть час"</string>
+    <string msgid="2349193472625211372" name="m3c_time_picker_hour">"Година"</string>
+    <string msgid="9179527532316922345" name="m3c_time_picker_hour_24h_suffix">"%1$d год"</string>
+    <string msgid="8876759303332837035" name="m3c_time_picker_hour_selection">"Вибрати годину"</string>
+    <string msgid="3458167507790628988" name="m3c_time_picker_hour_suffix">"%1$d год"</string>
+    <string msgid="6973808109666874069" name="m3c_time_picker_hour_text_field">"для годин"</string>
+    <string msgid="4313071914266462005" name="m3c_time_picker_minute">"Хвилина"</string>
+    <string msgid="4699133535056739733" name="m3c_time_picker_minute_selection">"Вибрати хвилини"</string>
+    <string msgid="5064177921781937179" name="m3c_time_picker_minute_suffix">"%1$d хв"</string>
+    <string msgid="7661234488295443182" name="m3c_time_picker_minute_text_field">"для хвилин"</string>
+    <string msgid="5865171949528594571" name="m3c_time_picker_period_toggle_description">"Виберіть ДП чи ПП"</string>
+    <string msgid="6616362054113087709" name="m3c_time_picker_pm">"ПП"</string>
+    <string msgid="4145073906612931838" name="m3c_time_picker_toggle_keyboard">"Перейти в режим введення тексту, щоб указати час"</string>
+    <string msgid="8841786098195101324" name="m3c_time_picker_toggle_touch">"Перейти в режим годинника, щоб ввести час"</string>
+    <string msgid="1805687647081129904" name="m3c_tooltip_long_press_label">"Показати спливаючу підказку"</string>
+    <string msgid="5460405025248574620" name="m3c_tooltip_pane_description">"Спливаюча підказка"</string>
+    <string msgid="6564222473543418073" name="m3c_wide_navigation_rail_close_rail">"Закрити панель"</string>
+    <string msgid="8350283435461615411" name="m3c_wide_navigation_rail_pane_title">"Панель навігації"</string>
+    <string name="mark_as_completed">Позначити як завершене</string>
+    <string name="mark_as_current">Позначити як поточне</string>
+    <string name="mark_as_not_started">Позначити як ще не почате</string>
+    <string name="media3_controls_pause_description">Призупинити</string>
+    <string name="media3_controls_play_description">Відтворити</string>
+    <string name="media3_controls_seek_back_description">Перемотати назад</string>
+    <string name="media3_controls_seek_forward_description">Перемотати вперед</string>
+    <string name="media3_controls_seek_to_next_description">Перейти до наступного об’єкта</string>
+    <string name="media3_controls_seek_to_previous_description">Перейти до попереднього об’єкта</string>
+    <string name="media_session_recent">Нещодавні</string>
+    <string name="media_session_root">Всі аудіокниги</string>
+    <string name="migration_delete_dialog_action_delete">Видалити</string>
+    <string name="migration_delete_dialog_action_keep">Зберегти</string>
+    <string name="migration_delete_dialog_content">Якщо ви видалите старі місця відтворення, відновити їх буде неможливо.</string>
+    <string name="migration_delete_dialog_title">Видалити місця відтворення</string>
+    <string name="migration_detail_content_added_at">Додано</string>
+    <string name="migration_detail_content_bookmarks">Закладки</string>
+    <string name="migration_detail_content_name">Назва</string>
+    <string name="migration_detail_content_position">Місце розташування</string>
+    <string name="migration_detail_content_position_current_chapter_position">Місце у розділі</string>
+    <string name="migration_detail_content_position_current_chapter_title">Поточна частина</string>
+    <string name="migration_detail_content_position_current_file_position">Позиція в файлі</string>
+    <string name="migration_detail_content_position_current_file_title">Поточний файл</string>
+    <string name="migration_detail_content_root">Коренева папка</string>
+    <string name="migration_detail_title">Старі місця розташування книг</string>
+    <string name="migration_hint_confirm">Зрозуміло</string>
+    <string name="migration_hint_content">Через зміни в нових версіях Android папку з аудіокнигами потрібно вибирати за допомогою системного диспетчера файлів. \n \nНатисніть значок вгорі, щоб переглянути ваші старі місця розташування книг.</string>
+    <string name="migration_hint_title">Триває читання старих місць відтворення книг</string>
+    <string name="more">Більше</string>
+    <string msgid="542007171693138492" name="navigation_menu">"Меню навігації"</string>
+    <string name="next_track">Наступний запис</string>
+    <string msgid="6610465462668679431" name="not_selected">"Не вибрано"</string>
+    <string name="notification_sleep_timer_disable">Вимкнути таймер сну</string>
+    <string name="notification_sleep_timer_enable">Увімкнути таймер сну</string>
+    <string name="onboarding.button_next">Далі</string>
+    <string name="onboarding.completion.next_button">Розпочати слухати</string>
+    <string name="onboarding.completion.subtitle">Ваша перша аудіокнига готова до прослуховування. Насолоджуйтеся вашою подорожжю з Voice!</string>
+    <string name="onboarding.completion.title">Ви все зробили!</string>
+    <string name="onboarding.explanation.subtitle">За допомогою Voice ви можете додавати книги як окремі файли, або зібрані у каталогах. Вибір за вами!</string>
+    <string name="onboarding.explanation.title">Ваша бібліотека, ваш спосіб</string>
+    <string name="onboarding_analytics_consent_button_disable">Продовжити без збирання данних</string>
+    <string name="onboarding_analytics_consent_button_enable">Продовжити з збиранням данних</string>
+    <string name="onboarding_analytics_consent_description">Дозвольте нам збирати анонімні данні, щоб допомогти нам покращити додаток. Можете змінити думку в налаштуваннях.</string>
+    <string name="onboarding_analytics_consent_privacy_policy">Політика Конфіденційності</string>
+    <string name="onboarding_analytics_consent_title">Допоможіть покращити Voice</string>
+    <string name="onboarding_welcome_subtitle">Ваш особистий кишеньковий програвач аудіокниг. Налаштуймо його.</string>
+    <string name="onboarding_welcome_title">Ласкаво просимо до Voice!</string>
+    <string name="pause">Призупинити</string>
+    <string name="pick_book_cover">Обкладинка з файлу</string>
+    <string name="play">Відтворити</string>
+    <string name="play_current">Відтворити поточну</string>
+    <string name="play_pause">Відтворити/призупинити</string>
+    <string name="playback.current_chapter">Глава</string>
+    <string name="playback_speed">Швидкість відтворення</string>
+    <string name="popup_edit">Редагувати</string>
+    <string name="pref_app_version">Версія</string>
+    <string name="pref_audiobook_folders_explanation">Налаштування папок, які скануються для пошуку аудіокних</string>
+    <string name="pref_auto_rewind_title">Інтервал автовідмотування</string>
+    <string name="pref_faq">ЧаПи</string>
+    <string name="pref_get_support">Підтримка</string>
+    <string name="pref_help_translating">Допомога в перекладі Voice</string>
+    <string name="pref_report_issue">Повідомити про проблему</string>
+    <string name="pref_seek_time">Інтервал перемотування</string>
+    <string name="pref_suggest_idea">Пропозиції</string>
+    <string name="pref_theme_dark">Темна тема</string>
+    <string name="pref_use_grid">Сіточний макет</string>
+    <string name="previous_track">Попередній запис</string>
+    <string msgid="5941395253238309765" name="range_end">"Кінець діапазону"</string>
+    <string msgid="7097486360902471446" name="range_start">"Початок діапазону"</string>
+    <string name="remove">Вилучити</string>
+    <string name="review.feedback.button.no">Скасування</string>
+    <string name="review.feedback.button.yes">Надіслати відгук</string>
+    <string name="review.feedback.content">Не могли б ви розповісти нам, що саме не сподобалось? Ми цінуємо ваші відгуки, і вони допомагають нам покращувати ваш досвід.</string>
+    <string name="review.feedback.title">Нам шкода це чути!</string>
+    <string name="review.request.button.no">Ні, дякую</string>
+    <string name="review.request.button.yes">Оцінити зараз</string>
+    <string name="review.request.content">Ваш відгук важливий для нас! Якщо ви маєте час, оцініть нас і поділіться враженнями. Це допомагає нам робити виправлення та пропонувати кращу якість прослуховування.</string>
+    <string name="review.request.title">Подобається Voice?</string>
+    <string name="rewind">Перемотати назад</string>
+    <string name="search_hint">Що ви шукаєте?</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Пошук"</string>
+    <string name="select_folder_subtitle">Ви хочете додати книгу як окремий файл або каталог?</string>
+    <string name="select_folder_title_default">Додайте свої аудіокниги</string>
+    <string name="select_folder_title_onboarding">Додайте свою першу аудіокнигу</string>
+    <string name="select_folder_type_file">Файл</string>
+    <string name="select_folder_type_folder">Каталог</string>
+    <string msgid="6043586758067023" name="selected">"Вибрано"</string>
+    <string name="settings_analytics_consent_description">Дозволити анонімне збирання данних для покращення додатку</string>
+    <string name="settings_analytics_consent_title">Аналітика</string>
+    <string name="skip_silence">Пропускати тишу</string>
+    <string name="sleep_timer.button.decrement">Коротше</string>
+    <string name="sleep_timer.button.increment">Довше</string>
+    <string name="sleep_timer.title">На добраніч! 🌙</string>
+    <string msgid="2792228137354697160" name="snackbar_pane_title">"Сповіщення"</string>
+    <string msgid="4139871816613051306" name="state_empty">"Пусто"</string>
+    <string msgid="5834637030682409883" name="state_off">"Вимкнено"</string>
+    <string msgid="1490883874751719580" name="state_on">"Увімкнено"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="storage_bug_button">Надати дозвіл</string>
+    <string name="storage_bug_subtitle">На деяких пристроях системні програми не мають необхідного дозволу на доступ до зовнішнього накопичувача. Цей дозвіл необхідний для того, аби Voice мав змогу читати ваші аудіокниги.</string>
+    <string name="storage_bug_title">Потрібен дозвіл</string>
+    <string msgid="2561197295334830845" name="switch_role">"Перемикач"</string>
+    <string msgid="1672349317127674378" name="tab">"Вкладка"</string>
+    <string msgid="5946805113151406391" name="template_percent">"Відсотків: <ns1:g id="PERCENTAGE">%1$d</ns1:g>."</string>
+    <string msgid="3765533235322692011" name="tooltip_description">"спливаюча підказка"</string>
+    <string msgid="3124740595719787496" name="tooltip_label">"показати спливаючу підказку"</string>
+    <string name="voice_intro_first_book">Давайте додамо папку з аудіокнигами, щоб ви могли почати прослуховування!</string>
+    <string name="volume_boost">Збільшення гучності</string>
+</resources>

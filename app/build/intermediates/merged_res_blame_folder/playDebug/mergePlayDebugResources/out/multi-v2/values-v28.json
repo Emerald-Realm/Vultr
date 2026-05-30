@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "voice.app-mergePlayDebugResources-56:/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "/Users/accionpraise/.gradle/caches/9.5.0/transforms/47fb9ebdaf6cee36a616b6c4914a920b/transformed/appcompat-1.7.1/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2,3,4,8",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,397",
+                        "endLines": "2,3,7,11",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,392,584"
+                    }
+                }
+            ]
+        }
+    ]
+}
