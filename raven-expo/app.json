@@ -1,0 +1,64 @@
+{
+  "expo": {
+    "name": "Raven",
+    "slug": "raven-expo",
+    "scheme": "raven",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.raven.audiobook"
+    },
+    "android": {
+      "package": "com.raven.audiobook",
+      "adaptiveIcon": {
+        "backgroundColor": "#457CFA",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-audio",
+        {
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": true
+        }
+      ],
+      "expo-sqlite",
+      "expo-image",
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/HostGrotesk.ttf"
+          ]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#457CFA",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180
+        }
+      ],
+      "expo-asset"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "81dbfbf9-1e08-4b39-950b-e31a575317bb"
+      }
+    }
+  }
+}
