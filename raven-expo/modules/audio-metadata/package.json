@@ -1,6 +1,0 @@
-{
-  "name": "audio-metadata",
-  "version": "0.1.0",
-  "description": "Local Expo module: embedded audio tags, cover art, and M4B chapters (framework-only, no Media3).",
-  "main": "index.ts"
-}
