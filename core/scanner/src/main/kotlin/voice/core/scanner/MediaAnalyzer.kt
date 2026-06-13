@@ -45,15 +45,15 @@ internal class MediaAnalyzer(
 
   suspend fun analyze(file: CachedDocumentFile): Metadata? {
     val builder = Metadata.Builder(file.nameWithoutExtension())
-    val duration = retrieveDuration(file.uri)
+
+    // A single retriever yields both duration and track groups from one container
+    // parse, instead of opening and parsing the file twice.
+    val (duration, trackGroups) = retrieveDurationAndTrackGroups(file.uri)
       ?: return null
     if (duration <= Duration.ZERO) {
       Logger.w("Duration is zero or negative for file: ${file.uri}")
       return null
     }
-
-    val trackGroups = retrieveMetadata(file.uri)
-      ?: return null
 
     repeat(trackGroups.length) { trackGroupsIndex ->
       val trackGroup = trackGroups[trackGroupsIndex]
@@ -133,6 +133,14 @@ internal class MediaAnalyzer(
       -> {
         builder.description = entry.value.toString(Charsets.UTF_8)
       }
+      "com.apple.quicktime.creationdate",
+      "com.apple.quicktime.year",
+      "©day",
+      "date",
+      "year",
+      -> {
+        builder.year = builder.year ?: parseYear(entry.value.toString(Charsets.UTF_8))
+      }
     }
   }
 
@@ -147,6 +155,9 @@ internal class MediaAnalyzer(
       key == "ALBUM" -> builder.album = value
       key == "TITLE" -> builder.title = value
       key == "DESCRIPTION" || key == "COMMENT" || key == "SUMMARY" -> builder.description = value
+      key == "DATE" || key == "YEAR" || key == "ORIGINALDATE" -> {
+        builder.year = builder.year ?: parseYear(value)
+      }
       key.startsWith("CHAPTER") -> {
         val withoutPrefix = key.removePrefix("CHAPTER")
         val isName = withoutPrefix.endsWith("NAME")
@@ -200,9 +211,16 @@ internal class MediaAnalyzer(
         "DESCRIPTION", "TXXX:DESCRIPTION", "SUMMARY", "TXXX:SUMMARY" -> builder.description = value
         else -> Logger.v("Unknown TXXX frame description:  ${entry.description}, value: $value")
       }
-      "TRCK", "TYER", "TSSE" -> {}
+      "TYER", "TDRC", "TDAT", "TORY", "TDOR" -> builder.year = builder.year ?: parseYear(value)
+      "TRCK", "TSSE" -> {}
       else -> Logger.v("Unknown frame ID: ${entry.id}, value: $value")
     }
+  }
+
+  private fun parseYear(value: String?): Int? {
+    if (value == null) return null
+    val match = Regex("""\d{4}""").find(value) ?: return null
+    return match.value.toIntOrNull()?.takeIf { it in 1000..3000 }
   }
 
   private fun visitComment(
@@ -212,28 +230,15 @@ internal class MediaAnalyzer(
     builder.description = entry.text
   }
 
-  private suspend fun retrieveMetadata(uri: Uri): TrackGroupArray? {
+  private suspend fun retrieveDurationAndTrackGroups(uri: Uri): Pair<Duration, TrackGroupArray>? {
     return try {
       MetadataRetriever.Builder(context, MediaItem.fromUri(uri))
         .setMediaSourceFactory(mediaSourceFactory)
         .build()
-        .use {
-          it.retrieveTrackGroups().await()
-        }
-    } catch (e: Exception) {
-      if (e is CancellationException) currentCoroutineContext().ensureActive()
-      Logger.w(e, "Error retrieving metadata")
-      null
-    }
-  }
-
-  private suspend fun retrieveDuration(uri: Uri): Duration? {
-    return try {
-      MetadataRetriever.Builder(context, MediaItem.fromUri(uri))
-        .setMediaSourceFactory(mediaSourceFactory)
-        .build()
-        .use {
-          it.retrieveDurationUs().await().microseconds
+        .use { retriever ->
+          val duration = retriever.retrieveDurationUs().await().microseconds
+          val trackGroups = retriever.retrieveTrackGroups().await()
+          duration to trackGroups
         }
     } catch (e: Exception) {
       if (e is CancellationException) currentCoroutineContext().ensureActive()

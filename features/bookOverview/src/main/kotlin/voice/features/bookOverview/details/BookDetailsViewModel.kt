@@ -9,6 +9,7 @@ import dev.zacsweers.metro.AssistedFactory
 import dev.zacsweers.metro.AssistedInject
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import voice.core.data.Book
 import voice.core.data.BookId
@@ -37,6 +38,16 @@ class BookDetailsViewModel(
 ) {
 
   private val scope = MainScope()
+
+  init {
+    scope.launch {
+      // If this is the book in progress, warm the player on screen open so that
+      // pressing play to continue resumes instantly instead of preparing on tap.
+      if (currentBookStore.data.first() == bookId) {
+        player.prepare()
+      }
+    }
+  }
 
   @Composable
   fun viewState(): BookDetailsViewState? {
@@ -94,6 +105,9 @@ data class BookDetailsViewState(
   val cover: ImmutableFile?,
   val progress: Float,
   val remainingTime: String,
+  val durationText: String,
+  val chapterCount: Int,
+  val year: Int?,
   val description: String,
   val chapters: List<ChapterViewState>,
   val miniPlayer: MiniPlayerViewState?,
@@ -113,6 +127,13 @@ private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDeta
   cover = content.cover?.let(::ImmutableFile),
   progress = (position.toFloat() / duration.toFloat()).coerceIn(0F, 1F),
   remainingTime = formatTime(duration - position),
+  durationText = run {
+    val hours = duration / 3_600_000
+    val minutes = (duration % 3_600_000) / 60_000
+    if (hours > 0) "$hours hrs" else "$minutes min"
+  },
+  chapterCount = chapters.sumOf { it.chapterMarks.size },
+  year = content.year,
   description = content.description.orEmpty(),
   chapters = run {
     val currentChapterIndex = content.currentChapterIndex

@@ -12,7 +12,7 @@ Vad den kan göra:
 - Android Auto
 - Insomningstimer. Du behöver inte stänga av spelaren mitt i natten.
 
-Voice är fri och har öppen källkod. Det betyder att alla kan se vad den gör. Den använder minimala behörigheter.
+Raven är fri och har öppen källkod. Det betyder att alla kan se vad den gör. Den använder minimala behörigheter.
 
 Om du har förslag eller hittar fel, rapportera dem här:
 https://github.com/VoiceAudiobook/Voice/issues
