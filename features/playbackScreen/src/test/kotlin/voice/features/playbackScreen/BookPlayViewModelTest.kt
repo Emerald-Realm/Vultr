@@ -87,6 +87,7 @@ class BookPlayViewModelTest {
     currentBookResolver = currentBookResolver,
     player = player.apply {
       every { pauseIfCurrentBookDifferentFrom(book.id) } just Runs
+      every { prepare() } just Runs
     },
     sleepTimer = sleepTimer,
     playStateManager = playStateManager,
@@ -319,6 +320,7 @@ class BookPlayViewModelTest {
       player = mockk {
         every { pauseIfCurrentBookDifferentFrom(book.id) } just Runs
         every { livePlaybackStateFlow(book.id) } returns livePlaybackFlow
+        every { prepare() } just Runs
       },
       sleepTimer = sleepTimer,
       playStateManager = mockk {

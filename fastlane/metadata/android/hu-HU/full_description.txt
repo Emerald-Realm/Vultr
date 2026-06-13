@@ -12,7 +12,7 @@ Lehetőségek:
 - Android Auto
 - Alvásidőzítő. Nem kell kikapcsolni a lejátszót az éjszaka közepén.
 
-A Voice ingyenes és nyílt forráskódú. Ez azt jelenti, hogy mindenki láthatja, mit csinál. Minimális engedélyeket igényel.
+A Raven ingyenes és nyílt forráskódú. Ez azt jelenti, hogy mindenki láthatja, mit csinál. Minimális engedélyeket igényel.
 
 Ha javaslatai vannak, vagy hibákat talál, jelentse azokat itt:
 https://github.com/VoiceAudiobook/Voice/issues

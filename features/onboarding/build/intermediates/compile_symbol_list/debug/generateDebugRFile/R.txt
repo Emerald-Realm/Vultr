@@ -1,3 +1,0 @@
-int drawable bookshelf_artwork 0x0
-int drawable completion_artwork 0x0
-int drawable welcome 0x0

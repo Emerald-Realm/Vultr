@@ -1,9 +1,0 @@
-voice.features.onboarding-pngs-0 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/generated/res/pngs/debug
-voice.features.onboarding-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/generated/updated_navigation_xml/debug
-voice.features.onboarding-mergeDebugResources-2 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-voice.features.onboarding-mergeDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-voice.features.onboarding-debug-4 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/merged_res/debug/mergeDebugResources
-voice.features.onboarding-debug-5 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/build/intermediates/packaged_res/debug/packageDebugResources
-voice.features.onboarding-debug-6 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/src/debug/res
-voice.features.onboarding-main-7 /Users/accionpraise/Documents/Extra/Vultr/features/onboarding/src/main/res
-gradleHome-0 /Users/accionpraise/.gradle

@@ -1,9 +1,0 @@
-voice.features.cover-pngs-0 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/generated/res/pngs/debug
-voice.features.cover-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/generated/updated_navigation_xml/debug
-voice.features.cover-mergeDebugResources-2 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-voice.features.cover-mergeDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-voice.features.cover-debug-4 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/merged_res/debug/mergeDebugResources
-voice.features.cover-debug-5 /Users/accionpraise/Documents/Extra/Vultr/features/cover/build/intermediates/packaged_res/debug/packageDebugResources
-voice.features.cover-debug-6 /Users/accionpraise/Documents/Extra/Vultr/features/cover/src/debug/res
-voice.features.cover-main-7 /Users/accionpraise/Documents/Extra/Vultr/features/cover/src/main/res
-gradleHome-0 /Users/accionpraise/.gradle

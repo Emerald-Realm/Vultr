@@ -1,2 +1,0 @@
-int drawable circle 0x0
-int layout circle 0x0

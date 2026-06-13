@@ -1,4 +1,0 @@
-voice.features.onboarding
-drawable bookshelf_artwork
-drawable completion_artwork
-drawable welcome

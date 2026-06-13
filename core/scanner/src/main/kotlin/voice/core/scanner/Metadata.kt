@@ -15,6 +15,7 @@ internal data class Metadata(
   val series: String?,
   val part: String?,
   val description: String?,
+  val year: Int?,
 ) {
 
   internal class Builder(val fileName: String) {
@@ -27,6 +28,7 @@ internal data class Metadata(
     var series: String? = null
     var part: String? = null
     var description: String? = null
+    var year: Int? = null
     val vorbisChapterNames = mutableMapOf<Int, String>()
     val vorbisChapterStarts = mutableMapOf<Int, Long>()
 
@@ -55,6 +57,7 @@ internal data class Metadata(
         series = series,
         part = part,
         description = description,
+        year = year,
       )
     }
   }

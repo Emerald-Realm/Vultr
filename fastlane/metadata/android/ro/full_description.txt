@@ -12,7 +12,7 @@ Capabilități:
 - Android Auto
 - Oprire temporizată. Nu e nevoie să te trezești în mijlocul nopții ca să oprești player-ul.
 
-Voice este gratuit și open source. Asta înseamnă că toată lumea poate să vadă ce se întâmplă "sub capotă". Folosește doar permisiunile absolut necesare.
+Raven este gratuit și open source. Asta înseamnă că toată lumea poate să vadă ce se întâmplă "sub capotă". Folosește doar permisiunile absolut necesare.
 
 Dacă ai sugestii sau ai găsit un bug, te așteptăm aici:
 https://github.com/VoiceAudiobook/Voice/issues

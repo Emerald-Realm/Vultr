@@ -48,6 +48,7 @@ internal fun GridBooks(
   onBookLongClick: (BookId) -> Unit,
   showPermissionBugCard: Boolean,
   onPermissionBugCardClick: () -> Unit,
+  showHeaders: Boolean = true,
 ) {
   val cellCount = gridColumnCount()
   LazyVerticalGrid(
@@ -65,15 +66,17 @@ internal fun GridBooks(
     }
     books.forEach { (category, books) ->
       if (books.isEmpty()) return@forEach
-      item(
-        span = { GridItemSpan(maxLineSpan) },
-        key = category,
-        contentType = "header",
-      ) {
-        Header(
-          modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
-          category = category,
-        )
+      if (showHeaders) {
+        item(
+          span = { GridItemSpan(maxLineSpan) },
+          key = category,
+          contentType = "header",
+        ) {
+          Header(
+            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+            category = category,
+          )
+        }
       }
       items(
         items = books.toList(),

@@ -1,24 +1,25 @@
 package voice.features.bookOverview.details
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.FilledIconButton
+import androidx.compose.material.icons.outlined.Book
+import androidx.compose.material.icons.outlined.DateRange
+import androidx.compose.material.icons.outlined.Timelapse
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,14 +32,12 @@ import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavEntry
-import coil.compose.AsyncImage
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.IntoSet
@@ -47,7 +46,6 @@ import voice.core.common.rootGraphAs
 import voice.features.bookOverview.views.MiniPlayer
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
-import voice.core.ui.R as UiR
 
 @ContributesTo(AppScope::class)
 interface BookDetailsGraph {
@@ -118,30 +116,34 @@ internal fun BookDetailsScreen(
       verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
       item {
-        AsyncImage(
-          modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1F)
-            .clip(RoundedCornerShape(2.dp)),
-          model = viewState.cover?.file,
-          placeholder = painterResource(id = UiR.drawable.album_art),
-          error = painterResource(id = UiR.drawable.album_art),
-          contentScale = ContentScale.Crop,
-          contentDescription = null,
+        BookCoverArt(
+          cover = viewState.cover,
+          onPlayClick = onPlayClick,
         )
       }
       item {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-          Column(Modifier.weight(1F)) {
-            Text(viewState.title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-            viewState.author?.let {
-              Text(it, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
-          }
-          FilledIconButton(onClick = onPlayClick) {
-            Icon(Icons.Default.PlayArrow, contentDescription = null)
+        Column(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+          Text(
+            text = viewState.title,
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+          )
+          viewState.author?.let {
+            Text(
+              text = it,
+              style = MaterialTheme.typography.bodyLarge,
+              color = MaterialTheme.colorScheme.onSurfaceVariant,
+              textAlign = TextAlign.Center,
+            )
           }
         }
+      }
+      item {
+        StatsRow(viewState)
       }
       item {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -190,5 +192,44 @@ internal fun BookDetailsScreen(
         }
       }
     }
+  }
+}
+
+@Composable
+private fun StatsRow(
+  viewState: BookDetailsViewState,
+  modifier: Modifier = Modifier,
+) {
+  Row(
+    modifier = modifier.fillMaxWidth(),
+    horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    StatItem(icon = Icons.Outlined.Timelapse, text = viewState.durationText)
+    StatItem(icon = Icons.Outlined.Book, text = "${viewState.chapterCount} chapters")
+    viewState.year?.let { year ->
+      StatItem(icon = Icons.Outlined.DateRange, text = year.toString())
+    }
+  }
+}
+
+@Composable
+private fun StatItem(
+  icon: ImageVector,
+  text: String,
+) {
+  Row(verticalAlignment = Alignment.CenterVertically) {
+    Icon(
+      imageVector = icon,
+      contentDescription = null,
+      modifier = Modifier.size(18.dp),
+      tint = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.width(6.dp))
+    Text(
+      text = text,
+      style = MaterialTheme.typography.labelLarge,
+      color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
   }
 }

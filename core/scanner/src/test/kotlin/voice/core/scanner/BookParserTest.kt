@@ -134,5 +134,6 @@ class BookParserTest {
     series = null,
     part = null,
     description = null,
+    year = null,
   )
 }

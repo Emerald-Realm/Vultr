@@ -1,4 +1,0 @@
-voice.features.bookmark.test.bookmark-mergeDebugUnitTestResources-0 /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/merged.dir
-voice.features.bookmark.test.bookmark-mergeDebugUnitTestResources-1 /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/incremental/debugUnitTest/mergeDebugUnitTestResources/stripped.dir
-voice.features.bookmark.test.bookmark-debugUnitTest-2 /Users/accionpraise/Documents/Extra/Vultr/features/bookmark/build/intermediates/merged_res/debugUnitTest/mergeDebugUnitTestResources
-gradleHome-0 /Users/accionpraise/.gradle
