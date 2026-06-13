@@ -182,6 +182,49 @@ class MediaScannerTest {
     )
   }
 
+  @Test
+  fun scanRootSplitsNestedBooksIntoWholeBooks() = test {
+    val audiobooks = folder("audiobooks")
+
+    // audiobooks/author1 is a container, not a book: each of its sub-folders is a
+    // distinct whole book and must be recognized as such even in Root mode.
+    val book1 = File(audiobooks, "author1/book1")
+    val book1Chapters = listOf(
+      audioFile(book1, "a.mp3"),
+      audioFile(book1, "b.mp3"),
+    )
+
+    val book2 = File(audiobooks, "author1/book2")
+    val book2Chapters = listOf(audioFile(book2, "c.mp3"))
+
+    scan(FolderType.Root, audiobooks)
+
+    assertBookContents(
+      BookContentView(book1, chapters = book1Chapters),
+      BookContentView(book2, chapters = book2Chapters),
+    )
+  }
+
+  @Test
+  fun scanRootMergesMultiDiscFolderIntoSingleBook() = test {
+    val audiobooks = folder("audiobooks")
+
+    // mybook holds its audio only in disc sub-folders; it is one whole book whose
+    // discs are folded together into a single ordered chapter list.
+    val book = File(audiobooks, "mybook")
+    val chapters = listOf(
+      audioFile(File(book, "CD1"), "1.mp3"),
+      audioFile(File(book, "CD1"), "2.mp3"),
+      audioFile(File(book, "CD2"), "3.mp3"),
+    )
+
+    scan(FolderType.Root, audiobooks)
+
+    assertBookContents(
+      BookContentView(book, chapters = chapters),
+    )
+  }
+
   private fun test(test: suspend TestEnvironment.() -> Unit) {
     runTest {
       TestEnvironment().use { test(it) }
@@ -246,6 +289,7 @@ class MediaScannerTest {
               series = "Series",
               part = "Part",
               description = "Description",
+              year = 2021,
             )
           }
         }

@@ -1,8 +1,8 @@
-Are you looking for a clean, minimalist audiobook player that just works? Voice is your ultimate offline companion for listening to your favorite DRM-free audiobooks without distractions. We believe your listening experience should be seamless, which is why Voice is 100% free, open-source, and contains absolutely no ads.
+Are you looking for a clean, minimalist audiobook player that just works? Raven is your ultimate offline companion for listening to your favorite DRM-free audiobooks without distractions. We believe your listening experience should be seamless, which is why Raven is 100% free, open-source, and contains absolutely no ads.
 
-Designed for audiobook enthusiasts who manage their own local files (M4B, MP3, M4A, OGG, OGA, OPUS, etc.), Voice lets you focus on what matters most: the story. Simply add your main audiobook folder, and the app automatically recognizes each subfolder as a single book. No complex syncing, no forced cloud accounts—just your local files, played perfectly.
+Designed for audiobook enthusiasts who manage their own local files (M4B, MP3, M4A, OGG, OGA, OPUS, etc.), Raven lets you focus on what matters most: the story. Simply add your main audiobook folder, and the app automatically recognizes each subfolder as a single book. No complex syncing, no forced cloud accounts—just your local files, played perfectly.
 
-Despite its clean interface, Voice packs powerful features for power users:
+Despite its clean interface, Raven packs powerful features for power users:
 • 100% Offline & Ad-Free: Enjoy uninterrupted listening anywhere. No internet connection required, no subscriptions, and zero advertisements.
 • Advanced Audio Controls: Adjust playback speed, activate Volume Boost for quiet recordings, and use the Skip Silence toggle to seamlessly breeze through pauses.
 • Configurable Auto-Rewind: Paused for a while? The app automatically rewinds a few seconds when you resume, so you can easily catch the context.
@@ -13,7 +13,7 @@ Despite its clean interface, Voice packs powerful features for power users:
 • System Integration: Control playback directly via the Home Screen Widget, media notifications, or safely from your car's dashboard with full Android Auto support.
 • Folder-Based Library: Filter books by "Current," "Completed," and "Not Started." Easily switch views between lists and grids.
 
-Voice is completely free and open-source software (GNU GPLv3 license). This means the community can see exactly what it does. We respect your privacy and only use the most minimal Android permissions necessary to read your local audio files.
+Raven is completely free and open-source software (GNU GPLv3 license). This means the community can see exactly what it does. We respect your privacy and only use the most minimal Android permissions necessary to read your local audio files.
 
 Transform your Android device into the perfect offline audio sanctuary today!
 

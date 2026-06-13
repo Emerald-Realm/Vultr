@@ -60,6 +60,7 @@ internal class BookParser(
       series = analyzed?.series,
       part = analyzed?.part,
       description = analyzed?.description,
+      year = analyzed?.year,
     ).also {
       validateIntegrity(it, chapters)
     }

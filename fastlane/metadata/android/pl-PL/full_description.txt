@@ -12,7 +12,7 @@ Co potrafi:
 - Android Auto
 - Wyłącznik czasowy. Nie musisz specjalnie wyłączać odtwarzacza w środku nocy
 
-Voice jest wolnym i otwartym oprogramowaniem. To oznacza, że wszyscy mogą zobaczyć w jaki sposób on działa. Wykorzystuje on minimalny zestaw uprawnień.
+Raven jest wolnym i otwartym oprogramowaniem. To oznacza, że wszyscy mogą zobaczyć w jaki sposób on działa. Wykorzystuje on minimalny zestaw uprawnień.
 
 Jeśli masz jakieś sugestie, lub znajdziesz błędy, zgłoś je tutaj:
 https://github.com/VoiceAudiobook/Voice/issues

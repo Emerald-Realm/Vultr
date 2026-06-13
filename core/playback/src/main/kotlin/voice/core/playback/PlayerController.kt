@@ -112,6 +112,18 @@ class PlayerController(
     controller.play()
   }
 
+  /**
+   * Warms up the player for the current book without starting playback so that a
+   * subsequent [play] resumes instantly. Safe to call repeatedly: [maybePrepare]
+   * is a no-op once the current book is already prepared.
+   */
+  fun prepare() {
+    scope.launch {
+      val controller = awaitConnect() ?: return@launch
+      maybePrepare(controller)
+    }
+  }
+
   fun playPause() = executeAfterPrepare { controller ->
     if (controller.isPlaying) {
       controller.pause()
@@ -120,6 +132,7 @@ class PlayerController(
     }
   }
 
+  @IgnorableReturnValue
   private suspend fun maybePrepare(controller: MediaController): Boolean {
     val bookId = currentBookStoreId.data.first() ?: return false
     if (controller.currentBookId() == bookId &&

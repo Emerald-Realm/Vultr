@@ -12,7 +12,7 @@ Ce qu'il peut faire:
 - Android Auto
 - Minuteur de mise en veille. Inutile d'éteindre le lecteur au milieu de la nuit.
 
-Voice est gratuit et open source. Cela signifie que chacun peut voir ce qu'il fait. Il ne requiert que des permissions minimales.
+Raven est gratuit et open source. Cela signifie que chacun peut voir ce qu'il fait. Il ne requiert que des permissions minimales.
 
 Si vous avez des suggestions ou avez trouvé un bug, signalez-le à l'adresse :
 https://github.com/VoiceAudiobook/Voice/issues

@@ -8,16 +8,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.datastore.core.DataStore
 import androidx.documentfile.provider.DocumentFile
 import dev.zacsweers.metro.Assisted
 import dev.zacsweers.metro.AssistedFactory
 import dev.zacsweers.metro.AssistedInject
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import voice.core.common.DispatcherProvider
 import voice.core.data.audioFileCount
 import voice.core.data.folders.AudiobookFolders
 import voice.core.data.folders.FolderType
 import voice.core.data.isAudioFile
+import voice.core.data.store.OnboardingCompletedStore
 import voice.core.documentfile.CachedDocumentFile
 import voice.core.documentfile.CachedDocumentFileFactory
 import voice.core.documentfile.nameWithoutExtension
@@ -31,6 +35,8 @@ class SelectFolderTypeViewModel(
   private val audiobookFolders: AudiobookFolders,
   private val navigator: Navigator,
   private val documentFileFactory: CachedDocumentFileFactory,
+  @OnboardingCompletedStore
+  private val onboardingCompletedStore: DataStore<Boolean>,
   @Assisted
   private val uri: Uri,
   @Assisted
@@ -38,6 +44,8 @@ class SelectFolderTypeViewModel(
   @Assisted
   private val origin: Origin,
 ) {
+
+  private val scope = MainScope()
 
   private var selectedFolderMode: MutableState<FolderMode?> = mutableStateOf(null)
 
@@ -75,14 +83,10 @@ class SelectFolderTypeViewModel(
         null -> error("Add should not be clickable at this point")
       },
     )
-    when (origin) {
-      Origin.Default -> {
-        navigator.setRoot(Destination.BookOverview)
-      }
-      Origin.Onboarding -> {
-        navigator.goTo(Destination.OnboardingCompletion)
-      }
+    if (origin == Origin.Onboarding) {
+      scope.launch { onboardingCompletedStore.updateData { true } }
     }
+    navigator.setRoot(Destination.BookOverview)
   }
 
   @Composable
