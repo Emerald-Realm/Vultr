@@ -85,6 +85,8 @@ class BookPlayViewModel(
     scope.launch {
       player.pauseIfCurrentBookDifferentFrom(bookId)
       currentBookStoreId.updateData { bookId }
+      // Warm the player while the screen renders so pressing play resumes instantly.
+      player.prepare()
     }
   }
 

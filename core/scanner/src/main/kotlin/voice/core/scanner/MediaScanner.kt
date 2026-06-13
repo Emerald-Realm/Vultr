@@ -25,8 +25,11 @@ internal class MediaScanner(
           files
         }
         FolderType.Root -> {
-          files.flatMap { file ->
-            file.children
+          // Each child is resolved into one or more whole books, so nested
+          // structures (author → book, series → book) and multi-disc books are
+          // recognized correctly instead of being merged or split blindly.
+          files.flatMap { root ->
+            root.children.flatMap { child -> child.bookRoots() }
           }
         }
         FolderType.Author -> {
@@ -35,9 +38,7 @@ internal class MediaScanner(
               if (author.isFile) {
                 listOf(author)
               } else {
-                author.children.flatMap {
-                  author.children
-                }
+                author.children
               }
             }
           }
@@ -91,3 +92,41 @@ internal class MediaScanner(
     }
   }
 }
+
+/**
+ * Resolves a file or folder into the whole books it contains, independent of how
+ * deeply they are nested:
+ * - an audio file is a single-file book,
+ * - a folder that directly holds audio is one whole book (nested sub-folders such
+ *   as discs or bonus content are folded in as chapters by the [ChapterParser]),
+ * - a folder whose audio lives only in sub-folders is either a single multi-disc
+ *   book (when those sub-folders look like discs/parts) or a container of several
+ *   distinct books (e.g. an author or series folder), which is descended into.
+ */
+internal fun CachedDocumentFile.bookRoots(): List<CachedDocumentFile> {
+  if (isFile) {
+    return if (isAudioFile()) listOf(this) else emptyList()
+  }
+  val children = children
+  if (children.any { it.isAudioFile() }) {
+    return listOf(this)
+  }
+  val audioSubFolders = children.filter { child ->
+    child.isDirectory && child.walk().any { it.isAudioFile() }
+  }
+  return when {
+    // No audio anywhere: keep the folder itself as a (currently empty) book so a
+    // known book whose files are temporarily gone keeps its saved position.
+    audioSubFolders.isEmpty() -> listOf(this)
+    audioSubFolders.all { it.looksLikeBookPart() } -> listOf(this)
+    else -> audioSubFolders.flatMap { it.bookRoots() }
+  }
+}
+
+private fun CachedDocumentFile.looksLikeBookPart(): Boolean {
+  val name = name?.trim()?.lowercase() ?: return false
+  return name.toIntOrNull() != null || BOOK_PART_REGEX.matches(name)
+}
+
+private val BOOK_PART_REGEX =
+  Regex("""^(cd|dis[ck]|part|pt|volume|vol|tape|chapter|ch)[\s._-]*\d+$""")

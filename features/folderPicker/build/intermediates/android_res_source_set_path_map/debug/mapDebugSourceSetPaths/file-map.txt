@@ -1,9 +1,0 @@
-voice.features.folderPicker-pngs-0 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/generated/res/pngs/debug
-voice.features.folderPicker-updated_navigation_xml-1 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/generated/updated_navigation_xml/debug
-voice.features.folderPicker-mergeDebugResources-2 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-voice.features.folderPicker-mergeDebugResources-3 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-voice.features.folderPicker-debug-4 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/merged_res/debug/mergeDebugResources
-voice.features.folderPicker-debug-5 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/build/intermediates/packaged_res/debug/packageDebugResources
-voice.features.folderPicker-debug-6 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/src/debug/res
-voice.features.folderPicker-main-7 /Users/accionpraise/Documents/Extra/Vultr/features/folderPicker/src/main/res
-gradleHome-0 /Users/accionpraise/.gradle

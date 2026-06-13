@@ -1,10 +1,10 @@
-site_name: Voice
-site_description: "Voice is an open source audiobook player built for simplicity and accessibility. Listen to, organize, and enjoy your audiobooks effortlessly."
+site_name: Raven
+site_description: "Raven is an open source audiobook player built for simplicity and accessibility. Listen to, organize, and enjoy your audiobooks effortlessly."
 site_author: Paul Woitaschek
 site_url: https://voice.woitaschek.de
 
 repo_url: https://github.com/VoiceAudiobook/Voice
-repo_name: "Voice on GitHub"
+repo_name: "Raven on GitHub"
 
 nav:
   - Home: index.md

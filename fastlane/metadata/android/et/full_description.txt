@@ -12,9 +12,9 @@ Mida see rakendus oskab:
 - liidestus Android Autoga
 - unetaimer, mis tagab selle, et sa ei pea keset ööd umbkaudu seda rakendust välja lülitama
 
-Voice on vaba tarkvara ja põhineb avatud lähtekoodil. See tähendab, et kõik huvilised saavad kontrollida, kuidas ta töötab. Lisaks vajab ta minimaalselt õigusi.
+Raven on vaba tarkvara ja põhineb avatud lähtekoodil. See tähendab, et kõik huvilised saavad kontrollida, kuidas ta töötab. Lisaks vajab ta minimaalselt õigusi.
 
 Kui sul on soovitusi või leiad mõne vea, siis teata neist siin:
 https://github.com/VoiceAudiobook/Voice/issues
 
-Voice on avaldatud GNU Üldise Avaliku Litsentsi versioon 3 alusel
+Raven on avaldatud GNU Üldise Avaliku Litsentsi versioon 3 alusel

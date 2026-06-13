@@ -94,6 +94,8 @@ class VoicePlayerTest {
       coEvery { get(bookId) } answers { currentBook }
       coEvery { updateBook(any(), any()) } just Runs
     },
+    contentRepo = mockk(relaxed = true),
+    historyRecorder = mockk(relaxed = true),
     currentBookStoreId = mockk {
       every { data } returns flowOf(bookId)
     },

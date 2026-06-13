@@ -2,7 +2,7 @@ package voice.features.bookOverview.views
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -190,35 +190,68 @@ internal fun BookOverview(
         )
       }
     },
+    floatingActionButton = {
+      viewState.playButtonState?.let { playButtonState ->
+        PlayButton(
+          playing = playButtonState == BookOverviewViewState.PlayButtonState.Playing,
+          fabSize = 56.dp,
+          iconSize = 28.dp,
+          onPlayClick = onPlayButtonClick,
+        )
+      }
+    },
     contentWindowInsets = WindowInsets(0, 0, 0, 0),
   ) { contentPadding ->
-    Box(
+    Column(
       Modifier
         .padding(contentPadding)
         .consumeWindowInsets(contentPadding),
     ) {
+      var selectedFilter by remember(viewState.books.keys) {
+        mutableStateOf(defaultFilter(viewState.books))
+      }
+      FilterChips(
+        selected = selectedFilter,
+        onSelect = { selectedFilter = it },
+      )
+      val filteredBooks = mapOf(selectedFilter to viewState.books[selectedFilter].orEmpty())
       when (viewState.layoutMode) {
         BookOverviewLayoutMode.List -> {
           ListBooks(
-            books = viewState.books,
+            books = filteredBooks,
             onBookClick = onBookClick,
             onBookLongClick = onBookLongClick,
             showPermissionBugCard = viewState.showStoragePermissionBugCard,
             onPermissionBugCardClick = onPermissionBugCardClick,
+            showHeaders = false,
           )
         }
         BookOverviewLayoutMode.Grid -> {
           GridBooks(
-            books = viewState.books,
+            books = filteredBooks,
             onBookClick = onBookClick,
             onBookLongClick = onBookLongClick,
             showPermissionBugCard = viewState.showStoragePermissionBugCard,
             onPermissionBugCardClick = onPermissionBugCardClick,
+            showHeaders = false,
           )
         }
       }
     }
   }
+}
+
+private val filterDefaultPreference = listOf(
+  BookOverviewCategory.CURRENT,
+  BookOverviewCategory.NOT_STARTED,
+  BookOverviewCategory.FINISHED,
+)
+
+private fun defaultFilter(
+  books: Map<BookOverviewCategory, Map<*, *>>,
+): BookOverviewCategory {
+  return filterDefaultPreference.firstOrNull { books[it]?.isNotEmpty() == true }
+    ?: BookOverviewCategory.CURRENT
 }
 
 @Suppress("ktlint:compose:preview-public-check")

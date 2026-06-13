@@ -46,32 +46,48 @@ internal class CoverScanner(
       return@withContext false
     }
 
-    documentFile.listFiles().forEach { child ->
-      if (child.isFile && child.canRead() && child.type?.startsWith("image/") == true) {
-        val coverFile = coverSaver.newBookCoverFile()
-        val worked = try {
-          context.contentResolver.openInputStream(child.uri)?.use { input ->
-            coverFile.outputStream().use { output ->
-              input.copyTo(output)
-            }
+    // Prefer images that are conventionally the book art (cover/folder/front/…)
+    // over an arbitrary image that happens to come first in the listing.
+    val images = documentFile.listFiles()
+      .filter { it.isFile && it.canRead() && it.type?.startsWith("image/") == true }
+      .sortedBy { coverNamePriority(it.name) }
+
+    for (child in images) {
+      val coverFile = coverSaver.newBookCoverFile()
+      val worked = try {
+        context.contentResolver.openInputStream(child.uri)?.use { input ->
+          coverFile.outputStream().use { output ->
+            input.copyTo(output)
           }
-          true
-        } catch (e: IOException) {
-          Logger.w(e, "Error while copying the cover from ${child.uri}")
-          false
-        } catch (e: IllegalStateException) {
-          // On some Samsung Devices, openInputStream throws this exception, though it should not.
-          Logger.w(e, "Error while copying the cover from ${child.uri}")
-          false
         }
-        if (worked) {
-          coverSaver.setBookCover(coverFile, book.id)
-          return@withContext true
-        }
+        true
+      } catch (e: IOException) {
+        Logger.w(e, "Error while copying the cover from ${child.uri}")
+        false
+      } catch (e: IllegalStateException) {
+        // On some Samsung Devices, openInputStream throws this exception, though it should not.
+        Logger.w(e, "Error while copying the cover from ${child.uri}")
+        false
+      }
+      if (worked) {
+        coverSaver.setBookCover(coverFile, book.id)
+        return@withContext true
       }
     }
 
     false
+  }
+
+  private fun coverNamePriority(name: String?): Int {
+    val lower = name?.lowercase() ?: return LAST_PRIORITY
+    return when {
+      lower.startsWith("cover") -> 0
+      lower.startsWith("folder") -> 1
+      lower.startsWith("front") -> 2
+      lower.startsWith("album") || lower.contains("albumart") -> 3
+      lower.contains("artwork") || lower.contains("art") -> 4
+      else -> LAST_PRIORITY
+    }
   }
 
   private suspend fun scanForEmbeddedCover(book: Book) {
@@ -89,3 +105,5 @@ internal class CoverScanner(
       }
   }
 }
+
+private const val LAST_PRIORITY = Int.MAX_VALUE

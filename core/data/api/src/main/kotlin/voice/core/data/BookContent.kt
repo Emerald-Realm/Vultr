@@ -29,6 +29,8 @@ public data class BookContent(
   val series: String?,
   val part: String?,
   val description: String?,
+  @ColumnInfo(defaultValue = "NULL")
+  val year: Int? = null,
 ) {
 
   @Ignore

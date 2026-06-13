@@ -46,6 +46,7 @@ internal fun ListBooks(
   onBookLongClick: (BookId) -> Unit,
   showPermissionBugCard: Boolean,
   onPermissionBugCardClick: () -> Unit,
+  showHeaders: Boolean = true,
 ) {
   LazyColumn(
     verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -58,17 +59,19 @@ internal fun ListBooks(
     }
     books.forEach { (category, books) ->
       if (books.isEmpty()) return@forEach
-      stickyHeader(
-        key = category,
-        contentType = "header",
-      ) {
-        Header(
-          modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(vertical = 8.dp, horizontal = 8.dp),
-          category = category,
-        )
+      if (showHeaders) {
+        stickyHeader(
+          key = category,
+          contentType = "header",
+        ) {
+          Header(
+            modifier = Modifier
+              .fillMaxWidth()
+              .background(MaterialTheme.colorScheme.surface)
+              .padding(vertical = 8.dp, horizontal = 8.dp),
+            category = category,
+          )
+        }
       }
       items(
         items = books.toList(),

@@ -38,6 +38,7 @@ class SelectFolderTypeViewModelTest {
       audiobookFolders = mockk(),
       navigator = mockk(),
       documentFileFactory = FileBasedDocumentFactory,
+      onboardingCompletedStore = mockk(relaxed = true),
       uri = audiobookFolder.toUri(),
       documentFile = DocumentFile.fromFile(audiobookFolder),
       origin = Origin.Default,

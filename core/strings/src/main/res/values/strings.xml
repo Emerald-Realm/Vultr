@@ -44,7 +44,7 @@
     <string name="pref_suggest_idea">Suggest an idea</string>
     <string name="pref_use_grid">Use grid layout</string>
     <string name="pref_report_issue">Report a problem</string>
-    <string name="pref_help_translating">Help translating Voice</string>
+    <string name="pref_help_translating">Help translating Raven</string>
     <string name="pref_get_support">Get support</string>
     <string name="pref_app_version">App version</string>
     <string name="pref_faq">FAQ</string>
@@ -117,7 +117,7 @@
     <string name="generic_error_message">Something went wrong 😢</string>
     <string name="generic_error_retry">Retry</string>
     <string name="storage_bug_title">Permission required</string>
-    <string name="storage_bug_subtitle">For certain devices, a system app is missing the necessary permission to access the external storage. This access is essential for Voice to read your audiobooks.</string>
+    <string name="storage_bug_subtitle">For certain devices, a system app is missing the necessary permission to access the external storage. This access is essential for Raven to read your audiobooks.</string>
     <string name="storage_bug_button">Grant permission</string>
     <string name="select_folder_title_onboarding">Add Your First Audiobook</string>
     <string name="select_folder_title_default">Add your Audiobook(s)</string>
@@ -136,7 +136,7 @@
     <string name="onboarding.completion.title">You\'re All Set!</string>
     <string name="onboarding.completion.subtitle">Your first audiobook is ready to play. Enjoy your journey with Raven!</string>
     <string name="onboarding.completion.next_button">Start Listening</string>
-    <string name="onboarding_analytics_consent_title">Help improve Voice</string>
+    <string name="onboarding_analytics_consent_title">Help improve Raven</string>
     <string name="onboarding_analytics_consent_description">Allow us to collect anonymous usage data to help improve the app. You can change this later in settings.</string>
     <string name="onboarding_analytics_consent_button_enable">Continue with analytics</string>
     <string name="onboarding_analytics_consent_button_disable">Continue without analytics</string>

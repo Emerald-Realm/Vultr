@@ -1,3 +1,0 @@
-voice.features.cover
-drawable circle
-layout circle

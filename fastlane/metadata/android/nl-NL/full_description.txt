@@ -12,7 +12,7 @@ Kenmerken:
 - Android Auto-ondersteuning
 - Slaapklok: je hoeft de speler niet midden in de nacht te stoppen
 
-Voice is gratis en openbronsoftware. Dit betekent dat iedereen kan zien hoe het werkt en wat het doet. De app vereist slechts een minimaal aantal rechten.
+Raven is gratis en openbronsoftware. Dit betekent dat iedereen kan zien hoe het werkt en wat het doet. De app vereist slechts een minimaal aantal rechten.
 
 Als je suggesties hebt of bugs vindt, meld ze dan hier:
 https://github.com/VoiceAudiobook/Voice/issues
