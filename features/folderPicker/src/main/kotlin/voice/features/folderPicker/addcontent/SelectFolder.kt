@@ -78,19 +78,13 @@ internal fun SelectFolder(
           fontWeight = FontWeight.Medium,
           color = MaterialTheme.colorScheme.onBackground,
         )
-        Spacer(Modifier.size(8.dp))
-        Text(
-          modifier = Modifier.padding(horizontal = 20.dp),
-          text = stringResource(StringsR.string.select_folder_subtitle),
-          style = MaterialTheme.typography.bodyMedium,
-          color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
 
+        // Buttons are centered vertically per the design.
         Spacer(Modifier.weight(1f))
 
         SelectFolderButtonRow(onAdd)
 
-        Spacer(Modifier.size(32.dp))
+        Spacer(Modifier.weight(1f))
       }
     },
   )

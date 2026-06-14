@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import voice.core.ui.theme.LocalRavenColors
 import voice.core.strings.R as StringsR
 
 @Composable
@@ -26,13 +27,16 @@ fun PlayButton(
   modifier: Modifier = Modifier,
 ) {
   val cornerSize by animateDpAsState(
-    targetValue = if (playing) 16.dp else fabSize / 2,
+    targetValue = if (playing) 20.dp else fabSize / 2,
     label = "cornerSize",
   )
+  val colors = LocalRavenColors.current
   FloatingActionButton(
     modifier = modifier.size(fabSize),
     onClick = onPlayClick,
     shape = RoundedCornerShape(cornerSize),
+    containerColor = colors.primary,
+    contentColor = colors.white,
   ) {
     Icon(
       modifier = Modifier.size(iconSize),

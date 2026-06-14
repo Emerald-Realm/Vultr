@@ -1,6 +1,6 @@
 **Privacy Policy**
 
-This privacy policy applies to the Voice app (hereby referred to as "Application") for mobile devices that was created by Paul Woitaschek (
+This privacy policy applies to the Voice app (hereby referred to as "Application") for mobile devices that was created by Emerald-Realm (
 hereby referred to as "Service Provider") as an Open Source service. This service is intended for use "AS IS".
 
 **Information Collection and Use**
@@ -60,7 +60,7 @@ be available as part of your mobile device or via the mobile application marketp
 **Data Retention Policy**
 
 The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd
-like them to delete User Provided Data that you have provided via the Application, please contact them at woitaschek@gmail.com and they will
+like them to delete User Provided Data that you have provided via the Application, please contact them at iyinoluwa05@gmail.com and they will
 respond in a reasonable time.
 
 **Children**
@@ -70,7 +70,7 @@ The Service Provider does not use the Application to knowingly solicit data from
 The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable
 information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal
 information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that
-your child has provided us with personal information, please contact the Service Provider (woitaschek@gmail.com) so that they will be able
+your child has provided us with personal information, please contact the Service Provider (iyinoluwa05@gmail.com) so that they will be able
 to take the necessary actions.
 
 **Security**
@@ -94,7 +94,7 @@ us.
 **Contact Us**
 
 If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service
-Provider via email at woitaschek@gmail.com.
+Provider via email at iyinoluwa05@gmail.com.
 
 * * *
 

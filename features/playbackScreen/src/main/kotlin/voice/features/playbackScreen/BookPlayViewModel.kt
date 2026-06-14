@@ -19,8 +19,10 @@ import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
 import voice.core.data.Book
 import voice.core.data.BookId
+import voice.core.data.Bookmark
 import voice.core.data.durationMs
 import voice.core.data.markForPosition
+import voice.core.data.positionInfo
 import voice.core.data.repo.BookRepository
 import voice.core.data.repo.BookmarkRepo
 import voice.core.data.sleeptimer.SleepTimerPreference
@@ -44,8 +46,14 @@ import voice.core.ui.ImmutableFile
 import voice.core.ui.formatTime
 import voice.features.playbackScreen.batteryOptimization.BatteryOptimization
 import voice.features.sleepTimer.SleepTimerViewState
+import voice.features.playbackScreen.view.BookmarkChapterGroup
+import voice.features.playbackScreen.view.BookmarkItemUi
+import voice.features.playbackScreen.view.EditBookmarkState
 import voice.navigation.Destination
 import voice.navigation.Navigator
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
@@ -128,6 +136,8 @@ class BookPlayViewModel(
       sleepTimerState = sleepTime.toViewState(),
       playing = isPlaying,
       title = book.content.name,
+      author = book.content.author,
+      playbackSpeed = book.content.playbackSpeed,
       showPreviousNextButtons = hasMoreThanOneChapter,
       chapterName = currentMark.name.takeIf { hasMoreThanOneChapter },
       duration = currentMark.durationMs.milliseconds,
@@ -304,8 +314,149 @@ class BookPlayViewModel(
     )
   }
 
+  private val _showBookmarksSheet = mutableStateOf(false)
+  val showBookmarksSheet: State<Boolean> get() = _showBookmarksSheet
+  private val _bookmarkGroups = mutableStateOf<List<BookmarkChapterGroup>>(emptyList())
+  val bookmarkGroups: State<List<BookmarkChapterGroup>> get() = _bookmarkGroups
+  private var _allBookmarks: List<Bookmark> = emptyList()
+
+  private val _showAddBookmarkDialog = mutableStateOf(false)
+  val showAddBookmarkDialog: State<Boolean> get() = _showAddBookmarkDialog
+
+  private val _editBookmarkState = mutableStateOf<EditBookmarkState?>(null)
+  val editBookmarkState: State<EditBookmarkState?> get() = _editBookmarkState
+
   fun onBookmarkClick() {
-    navigator.goTo(Destination.Bookmarks(bookId))
+    scope.launch {
+      val book = currentBook() ?: return@launch
+      _allBookmarks = bookmarkRepository.bookmarks(book.content)
+      _bookmarkGroups.value = buildBookmarkGroups(book, _allBookmarks)
+      _showBookmarksSheet.value = true
+    }
+  }
+
+  fun dismissBookmarksSheet() {
+    _showBookmarksSheet.value = false
+  }
+
+  fun onAddBookmarkFromSheet() {
+    _showBookmarksSheet.value = false
+    _showAddBookmarkDialog.value = true
+  }
+
+  fun dismissAddBookmarkDialog() {
+    _showAddBookmarkDialog.value = false
+  }
+
+  fun saveNewBookmark(title: String) {
+    scope.launch {
+      val book = currentBook() ?: return@launch
+      bookmarkRepository.addBookmarkAtBookPosition(
+        book = book,
+        title = title.ifBlank { null },
+        setBySleepTimer = false,
+      )
+      _viewEffects.tryEmit(BookPlayViewEffect.BookmarkAdded)
+    }
+  }
+
+  fun onEditBookmark(bookmarkId: Bookmark.Id) {
+    val bookmark = _allBookmarks.find { it.id == bookmarkId } ?: return
+    scope.launch {
+      val book = currentBook() ?: return@launch
+      val chapter = book.chapters.find { it.id == bookmark.chapterId }
+      val info = chapter?.positionInfo(bookmark.time)
+      _showBookmarksSheet.value = false
+      _editBookmarkState.value = EditBookmarkState(
+        bookmarkId = bookmarkId,
+        chapterInfo = "${info?.name ?: ""} - ${voice.core.ui.formatTime(info?.positionInMarkMs ?: 0L, info?.markDurationMs ?: 0L)}",
+        currentTitle = bookmark.title ?: "",
+      )
+    }
+  }
+
+  fun dismissEditBookmark() {
+    _editBookmarkState.value = null
+  }
+
+  fun saveEditedBookmark(bookmarkId: Bookmark.Id, newTitle: String) {
+    val bookmark = _allBookmarks.find { it.id == bookmarkId } ?: return
+    scope.launch {
+      bookmarkRepository.addBookmark(bookmark.copy(title = newTitle.ifBlank { null }))
+    }
+  }
+
+  fun deleteBookmark(bookmarkId: Bookmark.Id) {
+    scope.launch {
+      bookmarkRepository.deleteBookmark(bookmarkId)
+      _allBookmarks = _allBookmarks.filter { it.id != bookmarkId }
+      val book = currentBook() ?: return@launch
+      _bookmarkGroups.value = buildBookmarkGroups(book, _allBookmarks)
+    }
+  }
+
+  fun onBookmarkItemClick(bookmarkId: Bookmark.Id) {
+    val bookmark = _allBookmarks.find { it.id == bookmarkId } ?: return
+    player.setPosition(bookmark.time, bookmark.chapterId)
+    _showBookmarksSheet.value = false
+  }
+
+  fun exportBookmarks() {
+    scope.launch {
+      val book = currentBook() ?: return@launch
+      val text = buildString {
+        appendLine("${book.content.name} Bookmarks")
+        appendLine()
+        _allBookmarks
+          .groupBy { it.chapterId }
+          .forEach { (chapterId, bookmarks) ->
+            val chapter = book.chapters.find { it.id == chapterId }
+            appendLine(chapter?.name ?: "Unknown Chapter")
+            bookmarks.forEach { bm ->
+              val time = voice.core.ui.formatTime(bm.time, chapter?.duration ?: 0L)
+              appendLine("  [$time] ${bm.title ?: "Bookmark"}")
+            }
+            appendLine()
+          }
+      }
+      _viewEffects.tryEmit(BookPlayViewEffect.ExportBookmarks(text))
+    }
+  }
+
+  private fun buildBookmarkGroups(book: Book, bookmarks: List<Bookmark>): List<BookmarkChapterGroup> {
+    val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
+    val zone = ZoneId.systemDefault()
+    val chaptersById = book.chapters.associateBy { it.id }
+    return bookmarks
+      .filter { !it.setBySleepTimer }
+      .mapNotNull { bm ->
+        val chapter = chaptersById[bm.chapterId] ?: return@mapNotNull null
+        Triple(bm, chapter.positionInfo(bm.time), bm)
+      }
+      .groupBy { it.second.name ?: "Chapter" }
+      .map { (chapterName, entries) ->
+        BookmarkChapterGroup(
+          chapterName = chapterName,
+          items = entries.sortedByDescending { it.first.addedAt }.map { (bm, info, _) ->
+            BookmarkItemUi(
+              id = bm.id,
+              title = bm.title ?: "",
+              timeAndDate = "${voice.core.ui.formatTime(info.positionInMarkMs, info.markDurationMs)} - ${dateFormatter.format(bm.addedAt.atZone(zone).toLocalDate())}",
+            )
+          },
+        )
+      }
+  }
+
+  private val _showHistorySheet = mutableStateOf(false)
+  val showHistorySheet: State<Boolean> get() = _showHistorySheet
+
+  fun onHistoryClick() {
+    _showHistorySheet.value = true
+  }
+
+  fun dismissHistorySheet() {
+    _showHistorySheet.value = false
   }
 
   fun onBookmarkLongClick() {

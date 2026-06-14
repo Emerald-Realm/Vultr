@@ -14,7 +14,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Text
+import voice.core.ui.RavenTheme
 import voice.features.playbackScreen.BookPlayViewState
 import kotlin.time.Duration
 
@@ -36,7 +42,6 @@ internal fun BookPlayContent(
       CoverRow(
         cover = viewState.cover,
         onPlayClick = onPlayClick,
-        sleepTimerState = viewState.sleepTimerState,
         modifier = Modifier
           .fillMaxHeight()
           .weight(1F)
@@ -48,14 +53,10 @@ internal fun BookPlayContent(
           .weight(1F),
         verticalArrangement = Arrangement.Center,
       ) {
+        PlayerHeader(title = viewState.title, author = viewState.author)
+        Spacer(modifier = Modifier.size(16.dp))
         viewState.chapterName?.let { chapterName ->
-          ChapterRow(
-            chapterName = chapterName,
-            nextPreviousVisible = viewState.showPreviousNextButtons,
-            onSkipToNext = onSkipToNext,
-            onSkipToPrevious = onSkipToPrevious,
-            onCurrentChapterClick = onCurrentChapterClick,
-          )
+          ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
         }
         Spacer(modifier = Modifier.size(20.dp))
         SliderRow(
@@ -66,43 +67,38 @@ internal fun BookPlayContent(
         Spacer(modifier = Modifier.size(16.dp))
         PlaybackRow(
           playing = viewState.playing,
+          showPreviousNext = viewState.showPreviousNextButtons,
           onPlayClick = onPlayClick,
           onRewindClick = onRewindClick,
           onFastForwardClick = onFastForwardClick,
+          onSkipToPrevious = onSkipToPrevious,
+          onSkipToNext = onSkipToNext,
         )
       }
     }
   } else {
     Column(Modifier.padding(contentPadding)) {
-      // Fit the cover to the width as a square, centered with white space above
-      // and below rather than stretching it into a tall rectangle.
+      Spacer(modifier = Modifier.size(8.dp))
+      PlayerHeader(title = viewState.title, author = viewState.author)
       Box(
         modifier = Modifier
           .fillMaxWidth()
           .weight(1F)
-          .padding(horizontal = 16.dp, vertical = 8.dp),
+          .padding(horizontal = 16.dp, vertical = 16.dp),
         contentAlignment = Alignment.Center,
       ) {
         CoverRow(
           onPlayClick = onPlayClick,
           cover = viewState.cover,
-          sleepTimerState = viewState.sleepTimerState,
           modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(0.82f)
             .aspectRatio(1F),
         )
       }
       viewState.chapterName?.let { chapterName ->
-        Spacer(modifier = Modifier.size(16.dp))
-        ChapterRow(
-          chapterName = chapterName,
-          nextPreviousVisible = viewState.showPreviousNextButtons,
-          onSkipToNext = onSkipToNext,
-          onSkipToPrevious = onSkipToPrevious,
-          onCurrentChapterClick = onCurrentChapterClick,
-        )
+        ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
       }
-      Spacer(modifier = Modifier.size(20.dp))
+      Spacer(modifier = Modifier.size(16.dp))
       SliderRow(
         duration = viewState.duration,
         playedTime = viewState.playedTime,
@@ -111,11 +107,50 @@ internal fun BookPlayContent(
       Spacer(modifier = Modifier.size(16.dp))
       PlaybackRow(
         playing = viewState.playing,
+        showPreviousNext = viewState.showPreviousNextButtons,
         onPlayClick = onPlayClick,
         onRewindClick = onRewindClick,
         onFastForwardClick = onFastForwardClick,
+        onSkipToPrevious = onSkipToPrevious,
+        onSkipToNext = onSkipToNext,
       )
       Spacer(modifier = Modifier.size(24.dp))
+    }
+  }
+}
+
+@Composable
+private fun PlayerHeader(
+  title: String,
+  author: String?,
+) {
+  Column(
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(horizontal = 24.dp),
+    horizontalAlignment = Alignment.CenterHorizontally,
+  ) {
+    Text(
+      text = title,
+      fontSize = 24.sp,
+      fontWeight = FontWeight.Medium,
+      letterSpacing = (-0.12).sp,
+      textAlign = TextAlign.Center,
+      color = RavenTheme.colors.title,
+      maxLines = 1,
+      overflow = TextOverflow.Ellipsis,
+    )
+    if (!author.isNullOrBlank()) {
+      Spacer(Modifier.size(4.dp))
+      Text(
+        text = author,
+        fontSize = 13.sp,
+        letterSpacing = (-0.065).sp,
+        textAlign = TextAlign.Center,
+        color = RavenTheme.colors.support,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+      )
     }
   }
 }

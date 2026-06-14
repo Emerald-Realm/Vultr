@@ -13,6 +13,7 @@ import kotlinx.serialization.builtins.nullable
 import kotlinx.serialization.builtins.serializer
 import voice.core.data.BookId
 import voice.core.data.GridMode
+import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.featureflag.FeatureFlagOverride
 import kotlin.time.Duration
@@ -33,16 +34,13 @@ public interface StoreModule {
   @Provides
   @SingleIn(AppScope::class)
   @DarkThemeStore
-  private fun darkTheme(
+  private fun themeMode(
     factory: VoiceDataStoreFactory,
-    sharedPreferences: SharedPreferences,
-  ): DataStore<Boolean> {
-    return factory.boolean(
-      fileName = "darkTheme",
-      defaultValue = false,
-      migrations = listOf(
-        booleanPrefsDataMigration(sharedPreferences, "darkTheme"),
-      ),
+  ): DataStore<ThemeMode> {
+    return factory.create(
+      serializer = ThemeMode.serializer(),
+      defaultValue = ThemeMode.FollowSystem,
+      fileName = "themeMode",
     )
   }
 

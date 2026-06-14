@@ -20,6 +20,7 @@ import org.junit.Test
 import voice.core.common.AppInfoProvider
 import voice.core.common.DispatcherProvider
 import voice.core.data.GridMode
+import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.featureflag.MemoryFeatureFlag
 import voice.core.ui.GridCount
@@ -29,7 +30,7 @@ import voice.navigation.Navigator
 class SettingsViewModelTest {
 
   private val scope = TestScope()
-  private val useDarkThemeStore = MemoryDataStore(false)
+  private val themeModeStore = MemoryDataStore(ThemeMode.FollowSystem)
   private val autoRewindAmountStore = MemoryDataStore(10)
   private val seekTimeStore = MemoryDataStore(30)
   private val gridModeStore = MemoryDataStore(GridMode.GRID)
@@ -49,7 +50,7 @@ class SettingsViewModelTest {
   private val folderPickerFeatureFlag = MemoryFeatureFlag(false)
 
   private val viewModel = SettingsViewModel(
-    useDarkThemeStore = useDarkThemeStore,
+    themeModeStore = themeModeStore,
     autoRewindAmountStore = autoRewindAmountStore,
     seekTimeStore = seekTimeStore,
     navigator = navigator,

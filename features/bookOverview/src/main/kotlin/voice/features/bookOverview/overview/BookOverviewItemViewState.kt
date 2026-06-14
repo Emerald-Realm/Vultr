@@ -6,6 +6,7 @@ import voice.core.data.BookId
 import voice.core.logging.api.Logger
 import voice.core.ui.ImmutableFile
 import voice.core.ui.formatTime
+import java.time.Instant
 
 @Immutable
 data class BookOverviewItemViewState(
@@ -15,6 +16,7 @@ data class BookOverviewItemViewState(
   val progress: Float,
   val id: BookId,
   val remainingTime: String,
+  val addedAt: Instant,
 )
 
 @Immutable
@@ -34,6 +36,7 @@ internal fun Book.toItemViewState() = BookOverviewItemViewState(
   id = id,
   progress = progress(),
   remainingTime = formatTime(duration - position),
+  addedAt = content.addedAt,
 )
 
 internal fun Book.toMiniPlayerViewState(playing: Boolean) = MiniPlayerViewState(

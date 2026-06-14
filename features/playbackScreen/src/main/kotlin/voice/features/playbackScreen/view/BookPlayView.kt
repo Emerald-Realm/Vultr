@@ -10,8 +10,13 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import voice.core.ui.VoiceTheme
 import voice.features.playbackScreen.BookPlayViewState
+import java.util.Locale
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
+
+private fun formatSpeed(speed: Float): String {
+  return String.format(Locale.US, "%.1f", speed).removeSuffix(".0") + "×"
+}
 
 @Composable
 internal fun BookPlayView(
@@ -24,6 +29,8 @@ internal fun BookPlayView(
   onSleepTimerClick: () -> Unit,
   onBookmarkClick: () -> Unit,
   onBookmarkLongClick: () -> Unit,
+  onAddBookmarkClick: () -> Unit,
+  onHistoryClick: () -> Unit,
   onSpeedChangeClick: () -> Unit,
   onSkipSilenceClick: () -> Unit,
   onVolumeBoostClick: () -> Unit,
@@ -43,12 +50,26 @@ internal fun BookPlayView(
         onSleepTimerClick = onSleepTimerClick,
         onBookmarkClick = onBookmarkClick,
         onBookmarkLongClick = onBookmarkLongClick,
+        onAddBookmarkClick = onAddBookmarkClick,
         onSpeedChangeClick = onSpeedChangeClick,
         onSkipSilenceClick = onSkipSilenceClick,
         onVolumeBoostClick = onVolumeBoostClick,
         onCloseClick = onCloseClick,
         useLandscapeLayout = useLandscapeLayout,
       )
+    },
+    bottomBar = {
+      if (!useLandscapeLayout) {
+        PlayerActionsBar(
+          speedText = formatSpeed(viewState.playbackSpeed),
+          speedActive = viewState.playbackSpeed != 1.0f,
+          sleepTimerState = viewState.sleepTimerState,
+          onSpeedClick = onSpeedChangeClick,
+          onBookmarksClick = onBookmarkClick,
+          onHistoryClick = onHistoryClick,
+          onSleepClick = onSleepTimerClick,
+        )
+      }
     },
     content = {
       BookPlayContent(
@@ -83,6 +104,8 @@ private fun BookPlayPreview(
       onSleepTimerClick = {},
       onBookmarkClick = {},
       onBookmarkLongClick = {},
+      onAddBookmarkClick = {},
+      onHistoryClick = {},
       onSpeedChangeClick = {},
       onSkipSilenceClick = {},
       onVolumeBoostClick = {},
@@ -107,6 +130,8 @@ private class BookPlayViewStatePreviewProvider : PreviewParameterProvider<BookPl
       skipSilence = true,
       sleepTimerState = BookPlayViewState.SleepTimerViewState.Disabled,
       title = "Das Ende der Welt",
+      author = "Max Mustermann",
+      playbackSpeed = 1.2f,
     )
     yield(initial)
     yield(

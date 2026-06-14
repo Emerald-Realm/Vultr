@@ -9,11 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Remove
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,11 +24,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import java.text.DecimalFormat
 import kotlin.math.abs
+import voice.core.ui.RavenTheme
+import voice.core.ui.R as UiR
 
 private val speedPresets = listOf(
   "0.75x" to 0.75f,
@@ -53,6 +55,7 @@ internal fun SpeedDialog(
   ModalBottomSheet(
     onDismissRequest = { viewModel.dismissDialog() },
     sheetState = sheetState,
+    shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
   ) {
     Column(
       modifier = Modifier
@@ -64,21 +67,27 @@ internal fun SpeedDialog(
     ) {
       Text(
         text = "Reading Speed: ${format.format(dialogState.speed)}x",
-        style = MaterialTheme.typography.headlineSmall,
-        fontWeight = FontWeight.Bold,
+        style = MaterialTheme.typography.titleMedium,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp,
+        letterSpacing = (-0.09).sp,
         textAlign = TextAlign.Center,
       )
-      Spacer(Modifier.height(20.dp))
+      Spacer(Modifier.height(24.dp))
       Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
       ) {
         IconButton(
           onClick = {
-            viewModel.onPlaybackSpeedChanged((dialogState.speed - 0.05f).coerceIn(valueRange))
+            viewModel.onPlaybackSpeedChanged((dialogState.speed + 0.05f).coerceIn(valueRange))
           },
         ) {
-          Icon(Icons.Filled.Remove, contentDescription = null)
+          Icon(
+            painter = painterResource(UiR.drawable.ic_mage_plus_circle),
+            contentDescription = null,
+            modifier = Modifier.size(20.dp),
+          )
         }
         Slider(
           modifier = Modifier
@@ -90,16 +99,20 @@ internal fun SpeedDialog(
         )
         IconButton(
           onClick = {
-            viewModel.onPlaybackSpeedChanged((dialogState.speed + 0.05f).coerceIn(valueRange))
+            viewModel.onPlaybackSpeedChanged((dialogState.speed - 0.05f).coerceIn(valueRange))
           },
         ) {
-          Icon(Icons.Filled.Add, contentDescription = null)
+          Icon(
+            painter = painterResource(UiR.drawable.ic_mage_minus_circle),
+            contentDescription = null,
+            modifier = Modifier.size(20.dp),
+          )
         }
       }
       Spacer(Modifier.height(16.dp))
       Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
       ) {
         speedPresets.forEach { (label, value) ->
           SpeedChip(
@@ -111,13 +124,27 @@ internal fun SpeedDialog(
         }
       }
       Spacer(Modifier.height(24.dp))
-      Button(
-        onClick = { viewModel.dismissDialog() },
+      Surface(
         modifier = Modifier
           .fillMaxWidth()
-          .height(56.dp),
+          .height(48.dp)
+          .clickable { viewModel.dismissDialog() },
+        shape = RoundedCornerShape(12.dp),
+        color = RavenTheme.colors.primary,
       ) {
-        Text("Save Settings")
+        Row(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalArrangement = Arrangement.Center,
+          verticalAlignment = Alignment.CenterVertically,
+        ) {
+          Text(
+            text = "Save Settings",
+            color = Color.White,
+            fontWeight = FontWeight.Medium,
+            fontSize = 16.sp,
+            letterSpacing = (-0.08).sp,
+          )
+        }
       }
     }
   }
@@ -131,18 +158,24 @@ private fun SpeedChip(
   modifier: Modifier = Modifier,
 ) {
   Surface(
-    modifier = modifier.clickable(onClick = onClick),
+    modifier = modifier
+      .height(45.dp)
+      .clickable(onClick = onClick),
     shape = RoundedCornerShape(percent = 50),
-    color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
-    contentColor = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+    color = if (selected) RavenTheme.colors.primary else RavenTheme.colors.bgStyle,
+    contentColor = if (selected) Color.White else RavenTheme.colors.subTitle,
   ) {
-    Text(
-      text = label,
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(vertical = 12.dp),
-      textAlign = TextAlign.Center,
-      style = MaterialTheme.typography.bodyMedium,
-    )
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalArrangement = Arrangement.Center,
+      verticalAlignment = Alignment.CenterVertically,
+    ) {
+      Text(
+        text = label,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.SemiBold,
+        letterSpacing = (-0.12).sp,
+      )
+    }
   }
 }

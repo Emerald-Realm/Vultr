@@ -15,11 +15,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.outlined.Book
-import androidx.compose.material.icons.outlined.DateRange
-import androidx.compose.material.icons.outlined.Timelapse
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,11 +23,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -46,6 +46,7 @@ import voice.core.common.rootGraphAs
 import voice.features.bookOverview.views.MiniPlayer
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
+import voice.core.ui.R as UiR
 
 @ContributesTo(AppScope::class)
 interface BookDetailsGraph {
@@ -77,7 +78,18 @@ fun BookDetailsScreen(bookId: voice.core.data.BookId) {
     onChapterClick = viewModel::onChapterClick,
     onMiniPlayerClick = viewModel::onMiniPlayerClick,
     onMiniPlayerPlayClick = viewModel::onMiniPlayerPlayClick,
+    onEditClick = viewModel::onEditClick,
   )
+  val editForm = viewModel.editForm.value
+  if (editForm != null) {
+    EditBookSheet(
+      form = editForm,
+      onDismiss = viewModel::onDismissEdit,
+      onSave = viewModel::saveEdit,
+      onPickCover = viewModel::onPickCover,
+      onDownloadCover = viewModel::onDownloadCover,
+    )
+  }
 }
 
 @Composable
@@ -88,14 +100,31 @@ internal fun BookDetailsScreen(
   onChapterClick: (BookDetailsViewState.ChapterViewState) -> Unit,
   onMiniPlayerClick: (voice.core.data.BookId) -> Unit,
   onMiniPlayerPlayClick: () -> Unit,
+  onEditClick: () -> Unit = {},
 ) {
   Scaffold(
     topBar = {
-      IconButton(
-        modifier = Modifier.statusBarsPadding(),
-        onClick = onBackClick,
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .statusBarsPadding(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
       ) {
-        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+        IconButton(onClick = onBackClick) {
+          Icon(
+            painter = painterResource(UiR.drawable.ic_mage_arrow_left),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+          )
+        }
+        IconButton(onClick = onEditClick) {
+          Icon(
+            painter = painterResource(UiR.drawable.ic_mage_dots),
+            contentDescription = "Edit book",
+            modifier = Modifier.size(24.dp),
+          )
+        }
       }
     },
     bottomBar = {
@@ -161,13 +190,14 @@ internal fun BookDetailsScreen(
       }
       if (viewState.description.isNotBlank()) {
         item {
-          Text(viewState.description, style = MaterialTheme.typography.bodyLarge)
+          ExpandableDescription(viewState.description)
         }
       }
       item {
         Text("Chapters", style = MaterialTheme.typography.titleLarge)
       }
       items(viewState.chapters) { chapter ->
+        val primary = MaterialTheme.colorScheme.primary
         Column(
           modifier = Modifier
             .fillMaxWidth()
@@ -177,21 +207,55 @@ internal fun BookDetailsScreen(
           Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Top,
           ) {
+            Text(
+              text = chapter.number.toString(),
+              modifier = Modifier.width(28.dp),
+              style = MaterialTheme.typography.labelMedium,
+              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
             Text(
               text = chapter.title,
               modifier = Modifier.weight(1F),
               style = MaterialTheme.typography.titleMedium,
+              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurface,
               maxLines = 2,
               overflow = TextOverflow.Ellipsis,
             )
-            Text(chapter.time, style = MaterialTheme.typography.labelMedium)
+            Text(
+              text = chapter.time,
+              modifier = Modifier.padding(start = 8.dp),
+              style = MaterialTheme.typography.labelMedium,
+              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
+            )
           }
           Spacer(Modifier.height(14.dp))
           HorizontalDivider()
         }
       }
     }
+  }
+}
+
+@Composable
+private fun ExpandableDescription(description: String) {
+  var expanded by remember { mutableStateOf(false) }
+  Column(modifier = Modifier.fillMaxWidth()) {
+    Text(
+      text = description,
+      style = MaterialTheme.typography.bodyLarge,
+      maxLines = if (expanded) Int.MAX_VALUE else 3,
+      overflow = TextOverflow.Ellipsis,
+    )
+    Text(
+      text = if (expanded) "Read less" else "Read more",
+      modifier = Modifier
+        .padding(top = 4.dp)
+        .clickable { expanded = !expanded },
+      style = MaterialTheme.typography.bodyLarge,
+      fontWeight = FontWeight.Bold,
+    )
   }
 }
 
@@ -205,25 +269,25 @@ private fun StatsRow(
     horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
     verticalAlignment = Alignment.CenterVertically,
   ) {
-    StatItem(icon = Icons.Outlined.Timelapse, text = viewState.durationText)
-    StatItem(icon = Icons.Outlined.Book, text = "${viewState.chapterCount} chapters")
+    StatItem(painter = painterResource(UiR.drawable.ic_mage_clock), text = viewState.durationText)
+    StatItem(painter = painterResource(UiR.drawable.ic_mage_book), text = "${viewState.chapterCount} chapters")
     viewState.year?.let { year ->
-      StatItem(icon = Icons.Outlined.DateRange, text = year.toString())
+      StatItem(painter = painterResource(UiR.drawable.ic_mage_calendar), text = year.toString())
     }
   }
 }
 
 @Composable
 private fun StatItem(
-  icon: ImageVector,
+  painter: Painter,
   text: String,
 ) {
   Row(verticalAlignment = Alignment.CenterVertically) {
     Icon(
-      imageVector = icon,
+      painter = painter,
       contentDescription = null,
       modifier = Modifier.size(18.dp),
-      tint = MaterialTheme.colorScheme.onSurfaceVariant,
+      tint = MaterialTheme.colorScheme.primary,
     )
     Spacer(Modifier.width(6.dp))
     Text(
