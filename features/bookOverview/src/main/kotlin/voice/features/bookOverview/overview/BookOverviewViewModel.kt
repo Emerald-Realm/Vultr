@@ -19,6 +19,7 @@ import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.SingleIn
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import voice.core.common.comparator.sortedNaturally
 import voice.core.data.Book
@@ -94,14 +95,11 @@ class BookOverviewViewModel(
 
     val noBooks = !scannerActive && books.isEmpty()
 
-    val layoutMode = when (gridMode) {
-      GridMode.LIST -> BookOverviewLayoutMode.List
-      GridMode.GRID -> BookOverviewLayoutMode.Grid
-      GridMode.FOLLOW_DEVICE -> if (gridCount.useGridAsDefault()) {
-        BookOverviewLayoutMode.Grid
-      } else {
-        BookOverviewLayoutMode.List
-      }
+    // Row = list, 2×2 Grid = 2 columns, 3×3 Grid = 3 columns.
+    val (layoutMode, gridColumns) = when (gridMode) {
+      GridMode.LIST -> BookOverviewLayoutMode.List to 0
+      GridMode.GRID -> BookOverviewLayoutMode.Grid to 2
+      GridMode.FOLLOW_DEVICE -> BookOverviewLayoutMode.Grid to 3
     }
 
     val bookSearchViewState = bookSearchViewState(layoutMode)
@@ -116,6 +114,9 @@ class BookOverviewViewModel(
 
     return BookOverviewViewState(
       layoutMode = layoutMode,
+      gridColumns = gridColumns,
+      currentBookId = currentBookId,
+      isPlaying = playState == PlayStateManager.PlayState.Playing,
       books = books
         .groupBy {
           it.category
@@ -242,6 +243,18 @@ class BookOverviewViewModel(
 
   fun playPause() {
     playerController.playPause()
+  }
+
+  fun onPlayBookClick(id: BookId) {
+    scope.launch {
+      val current = currentBookStoreDataStore.data.first()
+      if (current == id) {
+        playerController.playPause()
+      } else {
+        currentBookStoreDataStore.updateData { id }
+        playerController.play()
+      }
+    }
   }
 
   fun onPermissionBugCardClick() {

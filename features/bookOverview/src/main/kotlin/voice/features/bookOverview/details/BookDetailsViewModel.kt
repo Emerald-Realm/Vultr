@@ -1,7 +1,10 @@
 package voice.features.bookOverview.details
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.Assisted
@@ -38,6 +41,9 @@ class BookDetailsViewModel(
 ) {
 
   private val scope = MainScope()
+
+  private val _editForm = mutableStateOf<EditBookForm?>(null)
+  val editForm: State<EditBookForm?> get() = _editForm
 
   init {
     scope.launch {
@@ -93,10 +99,71 @@ class BookDetailsViewModel(
     player.playPause()
   }
 
+  fun onEditClick() {
+    scope.launch {
+      val book = repo.get(bookId) ?: return@launch
+      _editForm.value = EditBookForm(
+        title = book.content.name,
+        author = book.content.author.orEmpty(),
+        date = book.content.year?.toString().orEmpty(),
+        description = book.content.description.orEmpty(),
+        cover = book.content.cover?.let(::ImmutableFile),
+      )
+    }
+  }
+
+  fun onDismissEdit() {
+    _editForm.value = null
+  }
+
+  fun saveEdit(
+    title: String,
+    author: String,
+    date: String,
+    description: String,
+  ) {
+    scope.launch {
+      repo.updateBook(bookId) { content ->
+        content.copy(
+          name = title.trim().ifBlank { content.name },
+          author = author.trim().ifBlank { null },
+          year = date.trim().toIntOrNull(),
+          description = description.trim().ifBlank { null },
+        )
+      }
+    }
+    _editForm.value = null
+  }
+
+  fun onPickCover(uri: Uri) {
+    _editForm.value = null
+    navigator.goTo(Destination.EditCover(bookId, uri))
+  }
+
+  fun onDownloadCover() {
+    _editForm.value = null
+    navigator.goTo(Destination.CoverFromInternet(bookId))
+  }
+
   @AssistedFactory
   interface Factory {
     fun create(bookId: BookId): BookDetailsViewModel
   }
+}
+
+data class EditBookForm(
+  val title: String,
+  val author: String,
+  val date: String,
+  val description: String,
+  val cover: ImmutableFile?,
+)
+
+private fun formatHoursMinutes(ms: Long): String {
+  val totalMinutes = ms.coerceAtLeast(0) / 60_000
+  val hours = totalMinutes / 60
+  val minutes = totalMinutes % 60
+  return if (hours > 0) "${hours}h ${minutes}min" else "${minutes}min"
 }
 
 data class BookDetailsViewState(
@@ -113,11 +180,13 @@ data class BookDetailsViewState(
   val miniPlayer: MiniPlayerViewState?,
 ) {
   data class ChapterViewState(
+    val number: Int,
     val chapterId: ChapterId,
     val title: String,
     val time: String,
     val startMs: Long,
     val isCompleted: Boolean,
+    val isCurrent: Boolean,
   )
 }
 
@@ -126,12 +195,8 @@ private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDeta
   author = content.author,
   cover = content.cover?.let(::ImmutableFile),
   progress = (position.toFloat() / duration.toFloat()).coerceIn(0F, 1F),
-  remainingTime = formatTime(duration - position),
-  durationText = run {
-    val hours = duration / 3_600_000
-    val minutes = (duration % 3_600_000) / 60_000
-    if (hours > 0) "$hours hrs" else "$minutes min"
-  },
+  remainingTime = formatHoursMinutes(duration - position) + " left",
+  durationText = formatHoursMinutes(duration),
   chapterCount = chapters.sumOf { it.chapterMarks.size },
   year = content.year,
   description = content.description.orEmpty(),
@@ -141,15 +206,17 @@ private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDeta
     chapters.flatMapIndexed { chapterIndex, chapter ->
       chapter.chapterMarks.map { mark ->
         BookDetailsViewState.ChapterViewState(
+          number = 0,
           chapterId = chapter.id,
           title = mark.name ?: chapter.name ?: content.name,
           time = formatTime(mark.startMs),
           startMs = mark.startMs,
           isCompleted = chapterIndex < currentChapterIndex ||
             (chapterIndex == currentChapterIndex && mark.startMs < currentMarkStartMs),
+          isCurrent = chapterIndex == currentChapterIndex && mark.startMs == currentMarkStartMs,
         )
       }
-    }
+    }.mapIndexed { index, chapter -> chapter.copy(number = index + 1) }
   },
   miniPlayer = miniPlayer,
 )

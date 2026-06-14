@@ -11,9 +11,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.History
-import androidx.compose.material.icons.outlined.SentimentSatisfied
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
@@ -21,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import voice.core.data.BookId
@@ -30,6 +28,7 @@ import voice.features.bookOverview.views.GridBook
 import voice.features.bookOverview.views.ListBookRow
 import voice.features.bookOverview.views.gridColumnCount
 import voice.core.strings.R as StringsR
+import voice.core.ui.R as UiR
 
 @Composable
 internal fun BookSearchContent(
@@ -51,7 +50,7 @@ internal fun BookSearchContent(
             colors = ListItemDefaults.colors(containerColor = Color.Transparent),
             leadingContent = {
               Icon(
-                imageVector = Icons.Outlined.History,
+                painter = painterResource(UiR.drawable.ic_mage_clock),
                 contentDescription = stringResource(id = StringsR.string.cover_search_icon_recent),
               )
             },
@@ -64,7 +63,7 @@ internal fun BookSearchContent(
             colors = ListItemDefaults.colors(containerColor = Color.Transparent),
             leadingContent = {
               Icon(
-                imageVector = Icons.Outlined.SentimentSatisfied,
+                painter = painterResource(UiR.drawable.ic_mage_user),
                 contentDescription = stringResource(id = StringsR.string.cover_search_author),
               )
             },

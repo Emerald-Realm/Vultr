@@ -72,7 +72,7 @@ fun EditCoverDialog(
 
   AlertDialog(
     onDismissRequest = { onDismiss() },
-    title = { Text(text = stringResource(StringsR.string.cover)) },
+    title = { Text(text = "Crop Cover") },
     text = {
       Box {
         AsyncImage(
@@ -133,12 +133,12 @@ fun EditCoverDialog(
           }
         },
       ) {
-        Text(text = stringResource(StringsR.string.dialog_confirm))
+        Text(text = "Set")
       }
     },
     dismissButton = {
       TextButton(onClick = { onDismiss() }) {
-        Text(text = stringResource(StringsR.string.dialog_cancel))
+        Text(text = "Cancel")
       }
     },
   )

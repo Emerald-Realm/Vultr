@@ -1,43 +1,43 @@
 package voice.features.sleepTimer
+import voice.core.ui.RavenTheme
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.PressInteraction
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Remove
-import androidx.compose.material3.Icon
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.ListItemDefaults
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.delay
+import androidx.compose.ui.unit.sp
 import voice.core.strings.R as StringsR
 
+private val sleepTimeOptions = listOf(5, 10, 15, 20, 25, 30, 45, 60)
+private const val END_OF_CHAPTER = -1
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SleepTimerDialog(
   viewState: SleepTimerViewState,
@@ -48,112 +48,111 @@ fun SleepTimerDialog(
   onAcceptSleepAtEndOfChapter: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
+  var selectedTime by remember { mutableIntStateOf(viewState.customSleepTime) }
   ModalBottomSheet(
     modifier = modifier,
     onDismissRequest = onDismiss,
     sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+    shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
   ) {
-    Column {
+    Column(
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 24.dp)
+        .navigationBarsPadding()
+        .padding(bottom = 16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
       Text(
-        modifier = Modifier
-          .padding(horizontal = 16.dp)
-          .fillMaxWidth(),
         text = stringResource(id = StringsR.string.sleep_timer_title),
-        style = MaterialTheme.typography.headlineSmall,
+        style = MaterialTheme.typography.titleMedium,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp,
+        letterSpacing = (-0.09).sp,
         textAlign = TextAlign.Center,
       )
-      Spacer(modifier = Modifier.size(16.dp))
-      listOf(5, 15, 30, 60).forEach { time ->
-        ListItem(
-          modifier = Modifier.clickable {
-            onAcceptSleepTime(time)
-          },
-          colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-          headlineContent = {
-            Text(text = minutes(minutes = time))
-          },
+      Spacer(Modifier.height(24.dp))
+      FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        maxItemsInEachRow = 3,
+      ) {
+        sleepTimeOptions.forEach { time ->
+          SleepChip(
+            modifier = Modifier.weight(1f),
+            label = "$time Min",
+            selected = selectedTime == time,
+            onClick = { selectedTime = time },
+          )
+        }
+        SleepChip(
+          modifier = Modifier.weight(1f),
+          label = stringResource(id = StringsR.string.end_of_chapter),
+          selected = selectedTime == END_OF_CHAPTER,
+          onClick = { selectedTime = END_OF_CHAPTER },
         )
       }
-      ListItem(
-        modifier = Modifier.clickable {
-          onAcceptSleepTime(viewState.customSleepTime)
-        },
-        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-        headlineContent = {
-          Text(text = minutes(minutes = viewState.customSleepTime))
-        },
-        trailingContent = {
-          Row {
-            ContinuousPressIcon(
-              onEmit = onDecrementSleepTime,
-              icon = Icons.Outlined.Remove,
-              contentDescription = stringResource(id = StringsR.string.sleep_timer_button_decrement),
-            )
-            ContinuousPressIcon(
-              onEmit = onIncrementSleepTime,
-              icon = Icons.Outlined.Add,
-              contentDescription = stringResource(id = StringsR.string.sleep_timer_button_increment),
-            )
-          }
-        },
-      )
-      ListItem(
-        modifier = Modifier.clickable(onClick = onAcceptSleepAtEndOfChapter),
-        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-        headlineContent = {
-          Text(text = stringResource(id = StringsR.string.end_of_chapter))
-        },
-      )
-      Spacer(modifier = Modifier.size(32.dp))
+      Spacer(Modifier.height(24.dp))
+      Surface(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(48.dp)
+          .clickable {
+            if (selectedTime == END_OF_CHAPTER) {
+              onAcceptSleepAtEndOfChapter()
+            } else {
+              onAcceptSleepTime(selectedTime)
+            }
+          },
+        shape = RoundedCornerShape(12.dp),
+        color = RavenTheme.colors.primary,
+      ) {
+        Row(
+          modifier = Modifier.fillMaxWidth(),
+          horizontalArrangement = Arrangement.Center,
+          verticalAlignment = Alignment.CenterVertically,
+        ) {
+          Text(
+            text = "Save Settings",
+            color = Color.White,
+            fontWeight = FontWeight.Medium,
+            fontSize = 16.sp,
+            letterSpacing = (-0.08).sp,
+          )
+        }
+      }
     }
   }
 }
 
 @Composable
-private fun ContinuousPressIcon(
-  onEmit: () -> Unit,
-  icon: ImageVector,
-  contentDescription: String,
+private fun SleepChip(
+  label: String,
+  selected: Boolean,
+  onClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  var isPressed by remember { mutableStateOf(false) }
-
-  LaunchedEffect(isPressed, onEmit) {
-    if (isPressed) {
-      delay(500)
-      while (isPressed) {
-        onEmit()
-        delay(100)
-      }
-    }
-  }
-  val interactionSource = remember { MutableInteractionSource() }
-  Icon(
-    imageVector = icon,
-    contentDescription = contentDescription,
+  Surface(
     modifier = modifier
-      .size(48.dp)
-      .combinedClickable(
-        interactionSource = interactionSource,
-        indication = ripple(),
-        onClick = onEmit,
-        onLongClick = { isPressed = true },
+      .height(37.dp)
+      .clickable(onClick = onClick),
+    shape = RoundedCornerShape(percent = 50),
+    color = if (selected) RavenTheme.colors.primary else RavenTheme.colors.bgStyle,
+    contentColor = if (selected) Color.White else RavenTheme.colors.title,
+  ) {
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalArrangement = Arrangement.Center,
+      verticalAlignment = Alignment.CenterVertically,
+    ) {
+      Text(
+        text = label,
+        fontSize = 15.sp,
+        fontWeight = FontWeight.Medium,
+        letterSpacing = (-0.075).sp,
+        textAlign = TextAlign.Center,
       )
-      .padding(12.dp),
-  )
-  LaunchedEffect(interactionSource) {
-    interactionSource.interactions.collect { interaction ->
-      if (interaction is PressInteraction.Release ||
-        interaction is PressInteraction.Cancel
-      ) {
-        isPressed = false
-      }
     }
   }
-}
-
-@Composable
-@ReadOnlyComposable
-private fun minutes(minutes: Int): String {
-  return pluralStringResource(StringsR.plurals.minutes, minutes, minutes)
 }

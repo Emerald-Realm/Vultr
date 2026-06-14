@@ -18,6 +18,7 @@ import voice.core.common.AppInfoProvider
 import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
 import voice.core.data.GridMode
+import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.data.store.AnalyticsConsentStore
 import voice.core.data.store.AutoRewindAmountStore
@@ -28,7 +29,6 @@ import voice.core.data.store.SeekTimeStore
 import voice.core.data.store.SleepTimerPreferenceStore
 import voice.core.featureflag.FeatureFlag
 import voice.core.featureflag.FolderPickerInSettingsFeatureFlagQualifier
-import voice.core.ui.DARK_THEME_SETTABLE
 import voice.core.ui.GridCount
 import voice.navigation.Destination
 import voice.navigation.Navigator
@@ -37,7 +37,7 @@ import java.time.LocalTime
 @Inject
 class SettingsViewModel(
   @DarkThemeStore
-  private val useDarkThemeStore: DataStore<Boolean>,
+  private val themeModeStore: DataStore<ThemeMode>,
   @AutoRewindAmountStore
   private val autoRewindAmountStore: DataStore<Int>,
   @SeekTimeStore
@@ -66,7 +66,7 @@ class SettingsViewModel(
 
   @Composable
   fun viewState(): SettingsViewState {
-    val useDarkTheme by remember { useDarkThemeStore.data }.collectAsState(initial = false)
+    val themeMode by remember { themeModeStore.data }.collectAsState(initial = ThemeMode.FollowSystem)
     val autoRewindAmount by remember { autoRewindAmountStore.data }.collectAsState(initial = 0)
     val seekTime by remember { seekTimeStore.data }.collectAsState(initial = 0)
     val gridMode by remember { gridModeStore.data }.collectAsState(initial = GridMode.GRID)
@@ -79,8 +79,7 @@ class SettingsViewModel(
     }
     val showDeveloperMenu by remember { developerMenuUnlockedStore.data }.collectAsState(initial = false)
     return SettingsViewState(
-      useDarkTheme = useDarkTheme,
-      showDarkThemePref = DARK_THEME_SETTABLE,
+      themeMode = themeMode,
       seekTimeInSeconds = seekTime,
       autoRewindInSeconds = autoRewindAmount,
       dialog = dialog.value,
@@ -90,6 +89,7 @@ class SettingsViewModel(
         GridMode.GRID -> true
         GridMode.FOLLOW_DEVICE -> gridCount.useGridAsDefault()
       },
+      gridMode = gridMode,
       autoSleepTimer = SettingsViewState.AutoSleepTimerViewState(
         enabled = autoSleepTimer.autoSleepTimerEnabled,
         startTime = autoSleepTimer.autoSleepStartTime,
@@ -106,10 +106,32 @@ class SettingsViewModel(
     navigator.goBack()
   }
 
-  override fun toggleDarkTheme() {
+  override fun onThemeRowClick() {
+    dialog.value = SettingsViewState.Dialog.Theme
+  }
+
+  override fun setThemeMode(themeMode: ThemeMode) {
     mainScope.launch {
-      useDarkThemeStore.updateData { !it }
+      themeModeStore.updateData { themeMode }
     }
+    dialog.value = null
+  }
+
+  // Placeholder URLs until the real pages are available.
+  override fun openWebsite() {
+    navigator.goTo(Destination.Website("https://raven.audiobook.app"))
+  }
+
+  override fun openTermsOfService() {
+    navigator.goTo(Destination.Website("https://raven.audiobook.app/terms"))
+  }
+
+  override fun openPrivacyPolicy() {
+    navigator.goTo(Destination.Website("https://raven.audiobook.app/privacy"))
+  }
+
+  override fun openOpenSourceLicenses() {
+    navigator.goTo(Destination.Website("https://raven.audiobook.app/licenses"))
   }
 
   override fun toggleGrid() {
@@ -126,6 +148,17 @@ class SettingsViewModel(
         }
       }
     }
+  }
+
+  override fun onLayoutRowClick() {
+    dialog.value = SettingsViewState.Dialog.Layout
+  }
+
+  override fun setGridMode(gridMode: GridMode) {
+    mainScope.launch {
+      gridModeStore.updateData { gridMode }
+    }
+    dialog.value = null
   }
 
   override fun seekAmountChanged(seconds: Int) {
@@ -153,17 +186,16 @@ class SettingsViewModel(
   }
 
   override fun getSupport() {
-    navigator.goTo(Destination.Website("https://github.com/VoiceAudiobook/Voice/discussions/categories/q-a"))
+    navigator.goTo(Destination.Website("https://github.com/Emerald-Realm/Vultr/discussions"))
   }
 
   override fun suggestIdea() {
-    navigator.goTo(Destination.Website("https://github.com/VoiceAudiobook/Voice/discussions/categories/ideas"))
+    navigator.goTo(Destination.Website("https://github.com/Emerald-Realm/Vultr/discussions"))
   }
 
   override fun openBugReport() {
-    val url = "https://github.com/VoiceAudiobook/Voice/issues/new".toUri()
+    val url = "https://github.com/Emerald-Realm/Vultr/issues/new".toUri()
       .buildUpon()
-      .appendQueryParameter("template", "bug.yml")
       .appendQueryParameter("version", appInfoProvider.versionName)
       .appendQueryParameter("androidversion", Build.VERSION.SDK_INT.toString())
       .appendQueryParameter("device", Build.MODEL)
@@ -173,11 +205,11 @@ class SettingsViewModel(
 
   override fun openTranslations() {
     dismissDialog()
-    navigator.goTo(Destination.Website("https://hosted.weblate.org/engage/voice/"))
+    navigator.goTo(Destination.Website("https://github.com/Emerald-Realm/Vultr"))
   }
 
   override fun openFaq() {
-    navigator.goTo(Destination.Website("https://voice.woitaschek.de/faq/"))
+    navigator.goTo(Destination.Website("https://raven.audiobook.app/faq"))
   }
 
   override fun openFolderPicker() {

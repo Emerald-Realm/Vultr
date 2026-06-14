@@ -1,14 +1,19 @@
 package voice.features.playbackScreen
 
+import android.content.Intent
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.NavEntry
 import dev.zacsweers.metro.AppScope
@@ -17,12 +22,18 @@ import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
 import voice.core.data.BookId
+import voice.features.playbackScreen.history.HistoryGraph
+import voice.features.playbackScreen.history.HistorySheetContent
+import voice.features.playbackScreen.view.AddBookmarkDialog
 import voice.features.playbackScreen.view.BookPlayView
+import voice.features.playbackScreen.view.BookmarksBottomSheet
+import voice.features.playbackScreen.view.EditBookmarkSheet
 import voice.features.sleepTimer.SleepTimerDialog
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
 import voice.core.strings.R as StringsR
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookPlayScreen(bookId: BookId) {
   val viewModel = retain(bookId.value) {
@@ -30,6 +41,7 @@ fun BookPlayScreen(bookId: BookId) {
       .bookPlayViewModelFactory
       .create(bookId)
   }
+  val context = LocalContext.current
   val snackbarHostState = remember { SnackbarHostState() }
   val dialogState = viewModel.dialogState.value
   val viewState = viewModel.viewState()
@@ -53,6 +65,13 @@ fun BookPlayScreen(bookId: BookId) {
             viewModel.onBatteryOptimizationRequested()
           }
         }
+        is BookPlayViewEffect.ExportBookmarks -> {
+          val sendIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, viewEffect.text)
+          }
+          context.startActivity(Intent.createChooser(sendIntent, "Export Bookmarks"))
+        }
       }
     }
   }
@@ -64,6 +83,8 @@ fun BookPlayScreen(bookId: BookId) {
     onSeek = viewModel::seekTo,
     onBookmarkClick = viewModel::onBookmarkClick,
     onBookmarkLongClick = viewModel::onBookmarkLongClick,
+    onAddBookmarkClick = viewModel::onAddBookmarkFromSheet,
+    onHistoryClick = viewModel::onHistoryClick,
     onSkipSilenceClick = viewModel::toggleSkipSilence,
     onSleepTimerClick = viewModel::toggleSleepTimer,
     onVolumeBoostClick = viewModel::onVolumeGainIconClick,
@@ -97,6 +118,46 @@ fun BookPlayScreen(bookId: BookId) {
         )
       }
     }
+  }
+  if (viewModel.showHistorySheet.value) {
+    val historyViewModel = retain("history-${bookId.value}") {
+      rootGraphAs<HistoryGraph>().historyViewModelFactory.create(bookId)
+    }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    ModalBottomSheet(
+      onDismissRequest = { viewModel.dismissHistorySheet() },
+      sheetState = sheetState,
+    ) {
+      HistorySheetContent(
+        viewState = historyViewModel.viewState(),
+        onDelete = historyViewModel::onDelete,
+      )
+    }
+  }
+  if (viewModel.showBookmarksSheet.value) {
+    BookmarksBottomSheet(
+      groups = viewModel.bookmarkGroups.value,
+      onDismiss = viewModel::dismissBookmarksSheet,
+      onAddBookmark = viewModel::onAddBookmarkFromSheet,
+      onExportBookmarks = viewModel::exportBookmarks,
+      onEditBookmark = viewModel::onEditBookmark,
+      onDeleteBookmark = viewModel::deleteBookmark,
+      onBookmarkClick = viewModel::onBookmarkItemClick,
+    )
+  }
+  if (viewModel.showAddBookmarkDialog.value) {
+    AddBookmarkDialog(
+      onDismiss = viewModel::dismissAddBookmarkDialog,
+      onSave = viewModel::saveNewBookmark,
+    )
+  }
+  val editState = viewModel.editBookmarkState.value
+  if (editState != null) {
+    EditBookmarkSheet(
+      state = editState,
+      onDismiss = viewModel::dismissEditBookmark,
+      onSave = viewModel::saveEditedBookmark,
+    )
   }
 }
 

@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,14 +25,13 @@ internal fun Cover(
   AsyncImage(
     modifier = Modifier
       .fillMaxSize()
+      .shadow(elevation = 16.dp, shape = RoundedCornerShape(12.dp), clip = false)
+      .clip(RoundedCornerShape(12.dp))
       .pointerInput(Unit) {
         detectTapGestures(
-          onDoubleTap = {
-            onDoubleClick()
-          },
+          onDoubleTap = { onDoubleClick() },
         )
-      }
-      .clip(RoundedCornerShape(20.dp)),
+      },
     contentScale = ContentScale.Crop,
     model = cover?.file,
     placeholder = painterResource(id = UiR.drawable.album_art),

@@ -167,7 +167,11 @@ private fun Content(
         item(span = { GridItemSpan(maxLineSpan) }) {
           Spacer(modifier = Modifier.size(16.dp))
         }
-        items(viewState.books) { book ->
+        // Detected books are shown one per row (full-width list), not a grid.
+        items(
+          items = viewState.books,
+          span = { GridItemSpan(maxLineSpan) },
+        ) { book ->
           FolderModeBook(
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, end = 8.dp, start = 8.dp),
             book = book,

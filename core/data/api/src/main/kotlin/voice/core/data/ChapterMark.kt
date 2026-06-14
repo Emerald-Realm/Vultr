@@ -37,3 +37,22 @@ public fun Chapter.markForPosition(positionInChapterMs: Long): ChapterMark {
     ?: chapterMarks.firstOrNull { positionInChapterMs == it.endMs }
     ?: chapterMarks.first()
 }
+
+/**
+ * Resolves the human-facing chapter name and the position/length *within that chapter mark*
+ * (not the whole audio file, not the global book position) for a position inside this chapter.
+ */
+public data class ChapterPositionInfo(
+  val name: String?,
+  val positionInMarkMs: Long,
+  val markDurationMs: Long,
+)
+
+public fun Chapter.positionInfo(positionInChapterMs: Long): ChapterPositionInfo {
+  val mark = markForPosition(positionInChapterMs)
+  return ChapterPositionInfo(
+    name = mark.name ?: name,
+    positionInMarkMs = (positionInChapterMs - mark.startMs).coerceAtLeast(0L),
+    markDurationMs = mark.durationMs,
+  )
+}

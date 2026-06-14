@@ -1,11 +1,20 @@
 package voice.features.settings
 
+import voice.core.data.GridMode
+import voice.core.data.ThemeMode
 import java.time.LocalTime
 
 interface SettingsListener {
   fun close()
-  fun toggleDarkTheme()
+  fun onThemeRowClick()
+  fun setThemeMode(themeMode: ThemeMode)
+  fun openWebsite()
+  fun openTermsOfService()
+  fun openPrivacyPolicy()
+  fun openOpenSourceLicenses()
   fun toggleGrid()
+  fun onLayoutRowClick()
+  fun setGridMode(gridMode: GridMode)
   fun seekAmountChanged(seconds: Int)
   fun onSeekAmountRowClick()
   fun autoRewindAmountChang(seconds: Int)
@@ -28,8 +37,15 @@ interface SettingsListener {
   companion object {
     fun noop() = object : SettingsListener {
       override fun close() {}
-      override fun toggleDarkTheme() {}
+      override fun onThemeRowClick() {}
+      override fun setThemeMode(themeMode: ThemeMode) {}
+      override fun openWebsite() {}
+      override fun openTermsOfService() {}
+      override fun openPrivacyPolicy() {}
+      override fun openOpenSourceLicenses() {}
       override fun toggleGrid() {}
+      override fun onLayoutRowClick() {}
+      override fun setGridMode(gridMode: GridMode) {}
       override fun seekAmountChanged(seconds: Int) {}
       override fun onSeekAmountRowClick() {}
       override fun autoRewindAmountChang(seconds: Int) {}

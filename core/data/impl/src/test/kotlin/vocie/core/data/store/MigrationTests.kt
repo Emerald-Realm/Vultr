@@ -20,6 +20,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import voice.core.common.AppInfoProvider
 import voice.core.data.GridMode
+import voice.core.data.ThemeMode
 import voice.core.data.store.AutoRewindAmountStore
 import voice.core.data.store.DarkThemeStore
 import voice.core.data.store.GridModeStore
@@ -41,7 +42,7 @@ interface MigrationTestGraph {
   val autoRewindAmountStore: DataStore<Int>
 
   @DarkThemeStore
-  val darkThemeStore: DataStore<Boolean>
+  val themeModeStore: DataStore<ThemeMode>
 
   @GridModeStore
   val gridModeStore: DataStore<GridMode>
@@ -98,16 +99,10 @@ class MigrationTests {
   }
 
   @Test
-  fun `darkTheme migrates from SharedPreferences and cleans up`() = runTest {
-    val expected = true
-    sharedPreferences.edit {
-      clear()
-      putBoolean("darkTheme", expected)
-    }
+  fun `themeMode defaults to FollowSystem`() = runTest {
+    sharedPreferences.edit { clear() }
 
-    val store = testGraph.darkThemeStore
-    store.data.first() shouldBe expected
-    sharedPreferences.contains("darkTheme") shouldBe false
+    testGraph.themeModeStore.data.first() shouldBe ThemeMode.FollowSystem
   }
 
   @Test
@@ -116,7 +111,7 @@ class MigrationTests {
 
     testGraph.seekTimeStore.data.first() shouldBe 20
     testGraph.autoRewindAmountStore.data.first() shouldBe 2
-    testGraph.darkThemeStore.data.first() shouldBe false
+    testGraph.themeModeStore.data.first() shouldBe ThemeMode.FollowSystem
   }
 
   @Test
@@ -136,14 +131,12 @@ class MigrationTests {
       clear()
       putInt("SEEK_TIME", 15)
       putInt("AUTO_REWIND", 5)
-      putBoolean("darkTheme", true)
     }
 
     testGraph.seekTimeStore.data.first() shouldBe 15
     testGraph.autoRewindAmountStore.data.first() shouldBe 5
-    testGraph.darkThemeStore.data.first() shouldBe true
 
-    listOf("SLEEP_TIME", "SEEK_TIME", "AUTO_REWIND", "darkTheme")
+    listOf("SLEEP_TIME", "SEEK_TIME", "AUTO_REWIND")
       .forEach {
         sharedPreferences.contains(it).shouldBeFalse()
       }

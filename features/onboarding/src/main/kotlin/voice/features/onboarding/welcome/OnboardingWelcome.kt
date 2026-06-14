@@ -71,7 +71,7 @@ private fun OnboardingWelcome(
       Text(
         modifier = Modifier.fillMaxWidth(),
         text = stringResource(StringsR.string.onboarding_welcome_title),
-        textAlign = TextAlign.Center,
+        textAlign = TextAlign.Start,
         style = MaterialTheme.typography.displaySmall,
         fontSize = 36.sp,
         lineHeight = 39.sp,
@@ -83,7 +83,7 @@ private fun OnboardingWelcome(
           .fillMaxWidth()
           .padding(top = 12.dp),
         text = stringResource(StringsR.string.onboarding_welcome_subtitle),
-        textAlign = TextAlign.Center,
+        textAlign = TextAlign.Start,
         style = MaterialTheme.typography.bodyLarge,
         lineHeight = 26.sp,
         color = MaterialTheme.colorScheme.onSurfaceVariant,

@@ -9,10 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.LibraryBooks
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
@@ -27,9 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import voice.core.data.BookId
 import voice.core.ui.VoiceTheme
@@ -37,6 +35,7 @@ import voice.features.bookOverview.overview.BookOverviewLayoutMode
 import voice.features.bookOverview.overview.BookOverviewViewState
 import voice.features.bookOverview.search.BookSearchViewState
 import kotlin.time.Duration.Companion.seconds
+import voice.core.ui.R as UiR
 
 @Composable
 internal fun BookOverviewTopBar(
@@ -95,33 +94,24 @@ private fun MyLibraryHeader(
     modifier = Modifier
       .fillMaxWidth()
       .statusBarsPadding()
-      .padding(start = 12.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
+      .padding(start = 20.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
     verticalAlignment = Alignment.CenterVertically,
   ) {
-    Row(
-      modifier = Modifier
-        .clip(RoundedCornerShape(12.dp))
-        .clickable(onClick = onLibraryClick)
-        .padding(horizontal = 8.dp, vertical = 6.dp),
-      verticalAlignment = Alignment.CenterVertically,
-    ) {
-      Icon(
-        imageVector = Icons.AutoMirrored.Filled.LibraryBooks,
-        contentDescription = null,
-      )
-      Spacer(Modifier.width(10.dp))
-      Text(
-        text = "My Library",
-        style = MaterialTheme.typography.headlineSmall,
-        fontWeight = FontWeight.Bold,
-      )
-    }
+    Text(
+      text = "My Library",
+      fontSize = 24.sp,
+      fontWeight = FontWeight.Medium,
+      letterSpacing = (-0.12).sp,
+    )
     Spacer(Modifier.weight(1F))
     IconButton(onClick = onSearchClick) {
-      Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+      Icon(painter = painterResource(UiR.drawable.ic_mage_search), contentDescription = null)
+    }
+    IconButton(onClick = onLibraryClick) {
+      Icon(painter = painterResource(UiR.drawable.ic_mage_file_records), contentDescription = null)
     }
     IconButton(onClick = onSettingsClick) {
-      Icon(imageVector = Icons.Filled.Settings, contentDescription = null)
+      Icon(painter = painterResource(UiR.drawable.ic_mage_settings), contentDescription = null)
     }
   }
 }
@@ -134,6 +124,9 @@ private fun BookOverviewTopBarPreview() {
       viewState = BookOverviewViewState(
         books = emptyMap(),
         layoutMode = BookOverviewLayoutMode.List,
+        gridColumns = 2,
+        currentBookId = null,
+        isPlaying = false,
         playButtonState = BookOverviewViewState.PlayButtonState.Paused,
         showAddBookHint = true,
         showSearchIcon = true,
