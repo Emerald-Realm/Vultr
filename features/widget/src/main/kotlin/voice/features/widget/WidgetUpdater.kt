@@ -1,9 +1,12 @@
 package voice.features.widget
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
@@ -19,6 +22,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import voice.app.features.widget.BaseWidgetProvider
+import voice.app.features.widget.RavenWidgetBarProvider
+import voice.app.features.widget.RavenWidgetCompactProvider
+import voice.app.features.widget.RavenWidgetControlsProvider
+import voice.app.features.widget.RavenWidgetShowcaseProvider
 import voice.core.data.Book
 import voice.core.data.BookId
 import voice.core.data.repo.BookRepository
@@ -49,23 +56,176 @@ class WidgetUpdater(
       val book = currentBookStore.data.first()?.let {
         repo.get(it)
       }
-      val componentName = ComponentName(this@WidgetUpdater.context, BaseWidgetProvider::class.java)
-      val ids = appWidgetManager.getAppWidgetIds(componentName)
-
-      for (widgetId in ids) {
-        updateWidgetForId(book, widgetId)
-      }
+      updateLegacyWidget(book)
+      updateFixedWidget(book, RavenWidgetCompactProvider::class.java, R.layout.widget_compact, ::populateCompact)
+      updateFixedWidget(book, RavenWidgetBarProvider::class.java, R.layout.widget_bar, ::populateBar)
+      updateFixedWidget(book, RavenWidgetControlsProvider::class.java, R.layout.widget_controls, ::populateControls)
+      updateFixedWidget(book, RavenWidgetShowcaseProvider::class.java, R.layout.widget_showcase, ::populateShowcase)
     }
   }
 
-  private suspend fun updateWidgetForId(
+  private suspend fun updateFixedWidget(
     book: Book?,
-    widgetId: Int,
+    provider: Class<out AppWidgetProvider>,
+    layout: Int,
+    populate: suspend (RemoteViews, Book?) -> Unit,
   ) {
-    if (book != null) {
-      initWidgetForPresentBook(widgetId, book)
+    val componentName = ComponentName(context, provider)
+    val ids = appWidgetManager.getAppWidgetIds(componentName)
+    for (widgetId in ids) {
+      val remoteViews = RemoteViews(context.packageName, layout)
+      populate(remoteViews, book)
+      appWidgetManager.updateAppWidget(widgetId, remoteViews)
+    }
+  }
+
+  private suspend fun populateCompact(
+    remoteViews: RemoteViews,
+    book: Book?,
+  ) {
+    remoteViews.setOnClickPendingIntent(R.id.wholeWidget, openCurrentBookIntent())
+    if (book == null) {
+      remoteViews.setImageViewResource(R.id.cover, UiR.drawable.album_art)
+      return
+    }
+    remoteViews.setTextViewText(R.id.title, book.content.name)
+    remoteViews.setTextViewText(R.id.timeLeft, timeLeftText(book))
+    setCover(remoteViews, book, COVER_SMALL_PX)
+  }
+
+  private suspend fun populateBar(
+    remoteViews: RemoteViews,
+    book: Book?,
+  ) {
+    remoteViews.setOnClickPendingIntent(R.id.wholeWidget, openCurrentBookIntent())
+    bindButton(remoteViews, R.id.playPause, WidgetButtonReceiver.Action.PlayPause)
+    bindButton(remoteViews, R.id.rewind, WidgetButtonReceiver.Action.Rewind)
+    bindButton(remoteViews, R.id.skipNext, WidgetButtonReceiver.Action.SkipToNext)
+    remoteViews.setImageViewResource(R.id.playPause, playPauseIcon())
+    if (book == null) return
+    remoteViews.setTextViewText(R.id.title, book.content.name)
+    remoteViews.setTextViewText(R.id.author, subtitle(book))
+  }
+
+  private suspend fun populateControls(
+    remoteViews: RemoteViews,
+    book: Book?,
+  ) {
+    remoteViews.setOnClickPendingIntent(R.id.wholeWidget, openCurrentBookIntent())
+    bindButton(remoteViews, R.id.rewind, WidgetButtonReceiver.Action.Rewind)
+    bindButton(remoteViews, R.id.skipPrevious, WidgetButtonReceiver.Action.SkipToPrevious)
+    bindButton(remoteViews, R.id.playPause, WidgetButtonReceiver.Action.PlayPause)
+    bindButton(remoteViews, R.id.skipNext, WidgetButtonReceiver.Action.SkipToNext)
+    bindButton(remoteViews, R.id.fastForward, WidgetButtonReceiver.Action.FastForward)
+    remoteViews.setImageViewResource(R.id.playPause, playPauseIcon())
+    if (book == null) {
+      remoteViews.setImageViewResource(R.id.cover, UiR.drawable.album_art)
+      return
+    }
+    remoteViews.setTextViewText(R.id.title, book.content.name)
+    remoteViews.setTextViewText(R.id.author, subtitle(book))
+    setCover(remoteViews, book, COVER_SMALL_PX)
+  }
+
+  private suspend fun populateShowcase(
+    remoteViews: RemoteViews,
+    book: Book?,
+  ) {
+    remoteViews.setOnClickPendingIntent(R.id.wholeWidget, openCurrentBookIntent())
+    bindButton(remoteViews, R.id.playPause, WidgetButtonReceiver.Action.PlayPause)
+    remoteViews.setImageViewResource(R.id.playPause, playPauseIcon())
+    if (book == null) {
+      remoteViews.setImageViewResource(R.id.cover, UiR.drawable.album_art)
+      return
+    }
+    remoteViews.setTextViewText(R.id.title, book.content.name)
+    remoteViews.setTextViewText(R.id.author, book.content.author.orEmpty())
+    remoteViews.setTextViewText(R.id.timeLeft, timeLeftText(book))
+    setCover(remoteViews, book, COVER_LARGE_PX)
+  }
+
+  private fun bindButton(
+    remoteViews: RemoteViews,
+    viewId: Int,
+    action: WidgetButtonReceiver.Action,
+  ) {
+    remoteViews.setOnClickPendingIntent(viewId, WidgetButtonReceiver.pendingIntent(context, action))
+  }
+
+  private fun playPauseIcon(): Int {
+    return if (playStateManager.playState == PlayStateManager.PlayState.Playing) {
+      UiR.drawable.ic_pause_white_36dp
     } else {
-      initWidgetForAbsentBook(widgetId)
+      UiR.drawable.ic_play_white_36dp
+    }
+  }
+
+  private fun openCurrentBookIntent(): PendingIntent {
+    return mainActivityIntentProvider.toCurrentBook()
+  }
+
+  private fun subtitle(book: Book): String {
+    return book.content.author ?: book.currentChapter.name ?: book.content.name
+  }
+
+  private fun timeLeftText(book: Book): String {
+    val remainingMs = (book.duration - book.position).coerceAtLeast(0)
+    val totalMinutes = remainingMs / 60_000L
+    val hours = (totalMinutes / 60L).toInt()
+    val minutes = (totalMinutes % 60L).toInt()
+    return if (hours > 0) {
+      context.getString(R.string.widget_time_left_hm, hours, minutes)
+    } else {
+      context.getString(R.string.widget_time_left_m, minutes)
+    }
+  }
+
+  private suspend fun setCover(
+    remoteViews: RemoteViews,
+    book: Book,
+    sizePx: Int,
+  ) {
+    val bitmap = loadCover(book, sizePx)
+    if (bitmap != null) {
+      remoteViews.setImageViewBitmap(R.id.cover, bitmap)
+    } else {
+      remoteViews.setImageViewResource(R.id.cover, UiR.drawable.album_art)
+    }
+  }
+
+  private suspend fun loadCover(
+    book: Book,
+    sizePx: Int,
+  ): Bitmap? {
+    val coverFile = book.content.cover ?: return null
+    if (sizePx <= 0) return null
+    return runCatching {
+      context.imageLoader
+        .execute(
+          ImageRequest.Builder(context)
+            .data(coverFile)
+            .size(sizePx, sizePx)
+            .fallback(UiR.drawable.album_art)
+            .error(UiR.drawable.album_art)
+            .allowHardware(false)
+            .build(),
+        )
+        .drawable
+        ?.toBitmap()
+    }.getOrNull()
+  }
+
+  // --- Legacy resizable widget (unchanged behavior) ---
+
+  private suspend fun updateLegacyWidget(book: Book?) {
+    val componentName = ComponentName(context, BaseWidgetProvider::class.java)
+    val ids = appWidgetManager.getAppWidgetIds(componentName)
+    for (widgetId in ids) {
+      if (book != null) {
+        initWidgetForPresentBook(widgetId, book)
+      } else {
+        initWidgetForAbsentBook(widgetId)
+      }
     }
   }
 
@@ -134,12 +294,7 @@ class WidgetUpdater(
     val rewindPI = WidgetButtonReceiver.pendingIntent(context, WidgetButtonReceiver.Action.Rewind)
     remoteViews.setOnClickPendingIntent(R.id.rewind, rewindPI)
 
-    val playIcon = if (playStateManager.playState == PlayStateManager.PlayState.Playing) {
-      UiR.drawable.ic_pause_white_36dp
-    } else {
-      UiR.drawable.ic_play_white_36dp
-    }
-    remoteViews.setImageViewResource(R.id.playPause, playIcon)
+    remoteViews.setImageViewResource(R.id.playPause, playPauseIcon())
 
     // if we have any book, init the views and have a click on the whole widget start BookPlay.
     // if we have no book, simply have a click on the whole widget start BookChoose.
@@ -238,5 +393,10 @@ class WidgetUpdater(
     if (summarizedItemsHeight > widgetHeight) {
       remoteViews.setViewVisibility(R.id.title, View.GONE)
     }
+  }
+
+  private companion object {
+    const val COVER_SMALL_PX = 160
+    const val COVER_LARGE_PX = 320
   }
 }

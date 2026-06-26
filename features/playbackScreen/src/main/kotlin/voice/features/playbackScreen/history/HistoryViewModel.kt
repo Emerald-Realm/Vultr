@@ -26,6 +26,7 @@ class HistoryViewModel(
   private val listeningSessionRepo: ListeningSessionRepo,
   private val bookRepository: BookRepository,
   private val navigator: Navigator,
+  private val playerController: voice.core.playback.PlayerController,
   dispatcherProvider: DispatcherProvider,
   @Assisted
   private val bookId: BookId,
@@ -42,7 +43,9 @@ class HistoryViewModel(
   private fun refresh() {
     scope.launch {
       val book = bookRepository.get(bookId)
-      val chaptersById = book?.chapters?.associateBy { it.id }.orEmpty()
+      val chapters = book?.chapters.orEmpty()
+      val chaptersById = chapters.associateBy { it.id }
+      val bookDurationMs = chapters.sumOf { it.duration }
       val zone = ZoneId.systemDefault()
       val days = listeningSessionRepo.forBook(bookId)
         .sortedByDescending { it.createdAt }
@@ -61,19 +64,23 @@ class HistoryViewModel(
             date = date,
             summary = summary,
             entries = sessions.map { session ->
-              val time = session.createdAt.atZone(zone).toLocalTime()
               val info = chaptersById[session.chapterId]?.positionInfo(session.positionInChapter)
               val positionText = if (info != null) {
                 "${formatTime(info.positionInMarkMs, info.markDurationMs)}/${formatTime(info.markDurationMs, info.markDurationMs)}"
               } else {
                 formatTime(session.positionInChapter)
               }
+              // Global book position: durations of all earlier chapters + position within this chapter.
+              // Mirrors Book.position so it matches the player.
+              val globalPositionMs = chapters
+                .takeWhile { it.id != session.chapterId }
+                .sumOf { it.duration } + session.positionInChapter
               HistoryEntryViewState(
                 id = session.id,
                 action = runCatching { ListeningHistoryAction.valueOf(session.action) }.getOrNull(),
                 chapterName = info?.name,
                 positionText = positionText,
-                timeText = "%02d:%02d".format(time.hour, time.minute),
+                globalPositionText = formatTime(globalPositionMs, bookDurationMs),
               )
             },
           )
@@ -99,6 +106,13 @@ class HistoryViewModel(
     }
   }
 
+  fun onEntryClick(id: ListeningSession.Id) {
+    scope.launch {
+      val session = listeningSessionRepo.forBook(bookId).find { it.id == id } ?: return@launch
+      playerController.setPosition(session.positionInChapter, session.chapterId)
+    }
+  }
+
   @AssistedFactory
   interface Factory {
     fun create(bookId: BookId): HistoryViewModel
@@ -121,5 +135,5 @@ data class HistoryEntryViewState(
   val action: ListeningHistoryAction?,
   val chapterName: String?,
   val positionText: String,
-  val timeText: String,
+  val globalPositionText: String,
 )

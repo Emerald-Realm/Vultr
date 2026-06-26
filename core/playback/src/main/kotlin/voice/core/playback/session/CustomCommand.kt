@@ -33,7 +33,11 @@ internal sealed interface CustomCommand {
       if (command.customAction != CUSTOM_COMMAND_ACTION) {
         return null
       }
-      val json = args.getString(CUSTOM_COMMAND_EXTRA) ?: return null
+      // Controllers send the payload in the args bundle, while notification command buttons
+      // carry it in the SessionCommand's own extras. Accept either.
+      val json = args.getString(CUSTOM_COMMAND_EXTRA)
+        ?: command.customExtras.getString(CUSTOM_COMMAND_EXTRA)
+        ?: return null
       return Json.decodeFromString(serializer(), json)
     }
   }

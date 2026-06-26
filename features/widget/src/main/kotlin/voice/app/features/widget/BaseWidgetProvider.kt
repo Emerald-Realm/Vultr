@@ -5,12 +5,14 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import dev.zacsweers.metro.HasMemberInjections
 import dev.zacsweers.metro.Inject
 import voice.core.common.rootGraph
 import voice.features.widget.WidgetGraph
 import voice.features.widget.WidgetUpdater
 
-class BaseWidgetProvider : AppWidgetProvider() {
+@HasMemberInjections
+open class BaseWidgetProvider : AppWidgetProvider() {
 
   @Inject
   lateinit var widgetUpdater: WidgetUpdater

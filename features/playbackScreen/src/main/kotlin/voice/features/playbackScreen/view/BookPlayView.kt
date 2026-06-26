@@ -10,12 +10,15 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import voice.core.ui.VoiceTheme
 import voice.features.playbackScreen.BookPlayViewState
-import java.util.Locale
+import java.text.DecimalFormat
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
+// Shows up to two decimals, trimming trailing zeros: 1 → "1×", 1.5 → "1.5×", 1.15 → "1.15×".
+private val speedFormat = DecimalFormat("0.##")
+
 private fun formatSpeed(speed: Float): String {
-  return String.format(Locale.US, "%.1f", speed).removeSuffix(".0") + "×"
+  return speedFormat.format(speed) + "×"
 }
 
 @Composable

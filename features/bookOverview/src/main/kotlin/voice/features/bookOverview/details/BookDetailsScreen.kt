@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -43,6 +43,7 @@ import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
+import voice.core.ui.readableContentWidth
 import voice.features.bookOverview.views.MiniPlayer
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
@@ -80,16 +81,6 @@ fun BookDetailsScreen(bookId: voice.core.data.BookId) {
     onMiniPlayerPlayClick = viewModel::onMiniPlayerPlayClick,
     onEditClick = viewModel::onEditClick,
   )
-  val editForm = viewModel.editForm.value
-  if (editForm != null) {
-    EditBookSheet(
-      form = editForm,
-      onDismiss = viewModel::onDismissEdit,
-      onSave = viewModel::saveEdit,
-      onPickCover = viewModel::onPickCover,
-      onDownloadCover = viewModel::onDownloadCover,
-    )
-  }
 }
 
 @Composable
@@ -139,14 +130,16 @@ internal fun BookDetailsScreen(
   ) { padding ->
     LazyColumn(
       modifier = Modifier
-        .fillMaxSize()
-        .padding(padding),
+        .fillMaxHeight()
+        .padding(padding)
+        .readableContentWidth(),
       contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
       verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
       item {
         BookCoverArt(
           cover = viewState.cover,
+          playing = viewState.isPlaying,
           onPlayClick = onPlayClick,
         )
       }
@@ -207,7 +200,7 @@ internal fun BookDetailsScreen(
           Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Top,
+            verticalAlignment = Alignment.CenterVertically,
           ) {
             Text(
               text = chapter.number.toString(),

@@ -150,6 +150,7 @@ internal fun GridBook(
     Text(
       text = book.name,
       fontSize = 14.sp,
+      lineHeight = 16.sp,
       fontWeight = FontWeight.Medium,
       letterSpacing = (-0.07).sp,
       color = MaterialTheme.colorScheme.onSurface,

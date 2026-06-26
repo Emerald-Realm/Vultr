@@ -80,11 +80,11 @@ internal fun SpeedDialog(
       ) {
         IconButton(
           onClick = {
-            viewModel.onPlaybackSpeedChanged((dialogState.speed + 0.05f).coerceIn(valueRange))
+            viewModel.onPlaybackSpeedChanged((dialogState.speed - 0.05f).coerceIn(valueRange))
           },
         ) {
           Icon(
-            painter = painterResource(UiR.drawable.ic_mage_plus_circle),
+            painter = painterResource(UiR.drawable.ic_mage_minus_circle),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
           )
@@ -99,11 +99,11 @@ internal fun SpeedDialog(
         )
         IconButton(
           onClick = {
-            viewModel.onPlaybackSpeedChanged((dialogState.speed - 0.05f).coerceIn(valueRange))
+            viewModel.onPlaybackSpeedChanged((dialogState.speed + 0.05f).coerceIn(valueRange))
           },
         ) {
           Icon(
-            painter = painterResource(UiR.drawable.ic_mage_minus_circle),
+            painter = painterResource(UiR.drawable.ic_mage_plus_circle),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
           )

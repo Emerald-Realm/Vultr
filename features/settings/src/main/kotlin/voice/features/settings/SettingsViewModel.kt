@@ -117,21 +117,20 @@ class SettingsViewModel(
     dialog.value = null
   }
 
-  // Placeholder URLs until the real pages are available.
   override fun openWebsite() {
-    navigator.goTo(Destination.Website("https://raven.audiobook.app"))
+    navigator.goTo(Destination.Website(SITE_BASE))
   }
 
   override fun openTermsOfService() {
-    navigator.goTo(Destination.Website("https://raven.audiobook.app/terms"))
+    navigator.goTo(Destination.Website("$SITE_BASE/terms"))
   }
 
   override fun openPrivacyPolicy() {
-    navigator.goTo(Destination.Website("https://raven.audiobook.app/privacy"))
+    navigator.goTo(Destination.Website("$SITE_BASE/privacy-policy"))
   }
 
   override fun openOpenSourceLicenses() {
-    navigator.goTo(Destination.Website("https://raven.audiobook.app/licenses"))
+    navigator.goTo(Destination.Website("$SITE_BASE/licenses"))
   }
 
   override fun toggleGrid() {
@@ -209,7 +208,7 @@ class SettingsViewModel(
   }
 
   override fun openFaq() {
-    navigator.goTo(Destination.Website("https://raven.audiobook.app/faq"))
+    navigator.goTo(Destination.Website("$SITE_BASE/faq"))
   }
 
   override fun openFolderPicker() {
@@ -262,3 +261,7 @@ class SettingsViewModel(
     navigator.goTo(Destination.DeveloperSettings)
   }
 }
+
+// GitHub Pages site served from the /docs folder of the public repo.
+// Enable Pages: repo Settings → Pages → Source: main / "/docs".
+private const val SITE_BASE = "https://emerald-realm.github.io/Vultr"

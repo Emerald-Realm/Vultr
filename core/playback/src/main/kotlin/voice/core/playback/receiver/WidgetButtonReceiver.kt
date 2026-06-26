@@ -48,6 +48,8 @@ class WidgetButtonReceiver : BroadcastReceiver() {
               player.rewind()
               player.play()
             }
+            Action.SkipToNext -> player.next()
+            Action.SkipToPrevious -> player.previous()
           }
         }
       } finally {
@@ -86,6 +88,8 @@ class WidgetButtonReceiver : BroadcastReceiver() {
     PlayPause,
     FastForward,
     Rewind,
+    SkipToNext,
+    SkipToPrevious,
     ;
 
     companion object {

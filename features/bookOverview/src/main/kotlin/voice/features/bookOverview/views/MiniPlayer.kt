@@ -67,21 +67,27 @@ internal fun MiniPlayer(
             .padding(horizontal = 16.dp),
         ) {
           Text(
-            text = viewState.title,
+            text = viewState.chapterTitle,
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
           )
-          viewState.author?.let {
-            Text(
-              text = it,
-              style = MaterialTheme.typography.bodyMedium,
-              color = MaterialTheme.colorScheme.onSurfaceVariant,
-              maxLines = 1,
-              overflow = TextOverflow.Ellipsis,
-            )
-          }
+          Text(
+            text = buildString {
+              append(viewState.positionText)
+              append("/ ")
+              append(viewState.durationText)
+              viewState.author?.let {
+                append(" – ")
+                append(it)
+              }
+            },
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+          )
         }
         Surface(
           modifier = Modifier
@@ -92,7 +98,7 @@ internal fun MiniPlayer(
         ) {
           Box(contentAlignment = Alignment.Center) {
             Icon(
-              painter = painterResource(if (viewState.playing) UiR.drawable.ic_mage_pause else UiR.drawable.ic_mage_play),
+              painter = painterResource(if (viewState.playing) UiR.drawable.ic_pause_filled else UiR.drawable.ic_play_filled),
               contentDescription = null,
               tint = Color.White,
               modifier = Modifier.size(24.dp),

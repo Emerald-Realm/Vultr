@@ -1,1 +1,1 @@
-Minimalist offline audiobook player. Free, no ads, volume boost & sleep timer.
+Minimalist offline audiobook player. Free, open source, no ads, no tracking.

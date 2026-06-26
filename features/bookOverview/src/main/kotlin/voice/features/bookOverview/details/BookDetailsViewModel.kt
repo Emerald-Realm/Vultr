@@ -1,10 +1,7 @@
 package voice.features.bookOverview.details
 
-import android.net.Uri
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.Assisted
@@ -42,9 +39,6 @@ class BookDetailsViewModel(
 
   private val scope = MainScope()
 
-  private val _editForm = mutableStateOf<EditBookForm?>(null)
-  val editForm: State<EditBookForm?> get() = _editForm
-
   init {
     scope.launch {
       // If this is the book in progress, warm the player on screen open so that
@@ -62,7 +56,9 @@ class BookDetailsViewModel(
     val currentBookId = remember { currentBookStore.data }.collectAsState(initial = null).value
     val playState = remember { playStateManager.flow }
       .collectAsState(initial = PlayStateManager.PlayState.Paused).value
+    val isPlaying = currentBookId == bookId && playState == PlayStateManager.PlayState.Playing
     return book.toDetailsViewState(
+      isPlaying = isPlaying,
       miniPlayer = currentBookId?.let { currentId ->
         repo.flow(currentId).collectAsState(initial = null).value
           ?.toMiniPlayerViewState(playState == PlayStateManager.PlayState.Playing)
@@ -76,9 +72,15 @@ class BookDetailsViewModel(
 
   fun onPlayClick() {
     scope.launch {
-      currentBookStore.updateData { bookId }
-      navigator.goTo(Destination.Playback(bookId))
-      player.play()
+      if (currentBookStore.data.first() == bookId) {
+        // Already the active book: toggle in place so the cover button pauses/resumes
+        // and its icon stays in sync with the actual play state.
+        player.playPause()
+      } else {
+        currentBookStore.updateData { bookId }
+        navigator.goTo(Destination.Playback(bookId))
+        player.play()
+      }
     }
   }
 
@@ -100,49 +102,7 @@ class BookDetailsViewModel(
   }
 
   fun onEditClick() {
-    scope.launch {
-      val book = repo.get(bookId) ?: return@launch
-      _editForm.value = EditBookForm(
-        title = book.content.name,
-        author = book.content.author.orEmpty(),
-        date = book.content.year?.toString().orEmpty(),
-        description = book.content.description.orEmpty(),
-        cover = book.content.cover?.let(::ImmutableFile),
-      )
-    }
-  }
-
-  fun onDismissEdit() {
-    _editForm.value = null
-  }
-
-  fun saveEdit(
-    title: String,
-    author: String,
-    date: String,
-    description: String,
-  ) {
-    scope.launch {
-      repo.updateBook(bookId) { content ->
-        content.copy(
-          name = title.trim().ifBlank { content.name },
-          author = author.trim().ifBlank { null },
-          year = date.trim().toIntOrNull(),
-          description = description.trim().ifBlank { null },
-        )
-      }
-    }
-    _editForm.value = null
-  }
-
-  fun onPickCover(uri: Uri) {
-    _editForm.value = null
-    navigator.goTo(Destination.EditCover(bookId, uri))
-  }
-
-  fun onDownloadCover() {
-    _editForm.value = null
-    navigator.goTo(Destination.CoverFromInternet(bookId))
+    navigator.goTo(Destination.EditBook(bookId))
   }
 
   @AssistedFactory
@@ -177,6 +137,7 @@ data class BookDetailsViewState(
   val year: Int?,
   val description: String,
   val chapters: List<ChapterViewState>,
+  val isPlaying: Boolean,
   val miniPlayer: MiniPlayerViewState?,
 ) {
   data class ChapterViewState(
@@ -190,7 +151,10 @@ data class BookDetailsViewState(
   )
 }
 
-private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDetailsViewState(
+private fun Book.toDetailsViewState(
+  isPlaying: Boolean,
+  miniPlayer: MiniPlayerViewState?,
+) = BookDetailsViewState(
   title = content.name,
   author = content.author,
   cover = content.cover?.let(::ImmutableFile),
@@ -218,5 +182,6 @@ private fun Book.toDetailsViewState(miniPlayer: MiniPlayerViewState?) = BookDeta
       }
     }.mapIndexed { index, chapter -> chapter.copy(number = index + 1) }
   },
+  isPlaying = isPlaying,
   miniPlayer = miniPlayer,
 )

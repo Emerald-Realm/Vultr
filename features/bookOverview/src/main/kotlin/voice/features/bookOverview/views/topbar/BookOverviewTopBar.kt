@@ -67,20 +67,7 @@ internal fun BookOverviewTopBar(
         onSettingsClick = onSettingsClick,
       )
     }
-    var showLoading by remember { mutableStateOf(false) }
-    LaunchedEffect(viewState.isLoading) {
-      if (viewState.isLoading) {
-        delay(3.seconds)
-      }
-      showLoading = viewState.isLoading
-    }
-    if (showLoading) {
-      LinearProgressIndicator(
-        Modifier
-          .padding(top = 12.dp)
-          .fillMaxWidth(),
-      )
-    }
+    // Scanning progress is shown at the bottom of the screen (see ScanningBar), not here.
   }
 }
 
@@ -140,6 +127,7 @@ private fun BookOverviewTopBarPreview() {
         showStoragePermissionBugCard = false,
         showFolderPickerIcon = true,
         miniPlayer = null,
+        selectedCategoryIndex = null,
       ),
       onBookFolderClick = {},
       onSettingsClick = {},

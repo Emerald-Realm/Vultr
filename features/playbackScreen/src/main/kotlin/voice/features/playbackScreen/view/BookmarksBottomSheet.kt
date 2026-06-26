@@ -67,6 +67,7 @@ internal fun BookmarksBottomSheet(
     onDismissRequest = onDismiss,
     sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
     shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
+    containerColor = RavenTheme.colors.bgMain,
   ) {
     Column(
       modifier = Modifier
@@ -127,27 +128,28 @@ internal fun BookmarksBottomSheet(
         }
       }
       Spacer(Modifier.height(16.dp))
-      Column(
+      Row(
         modifier = Modifier.padding(horizontal = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
       ) {
         Surface(
           modifier = Modifier
-            .fillMaxWidth()
+            .weight(1f)
+            .height(48.dp)
             .clickable(onClick = onAddBookmark),
           shape = RoundedCornerShape(12.dp),
           color = Color.Transparent,
-          border = androidx.compose.foundation.BorderStroke(1.dp, RavenTheme.colors.bgStyle),
+          border = androidx.compose.foundation.BorderStroke(1.dp, RavenTheme.colors.borderStrong),
         ) {
           Row(
-            modifier = Modifier.padding(10.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
           ) {
             Icon(
               painter = painterResource(UiR.drawable.ic_mage_bookmark_plus),
               contentDescription = null,
-              modifier = Modifier.size(24.dp),
+              modifier = Modifier.size(20.dp),
               tint = RavenTheme.colors.primary,
             )
             Spacer(Modifier.width(8.dp))
@@ -161,7 +163,7 @@ internal fun BookmarksBottomSheet(
         }
         Surface(
           modifier = Modifier
-            .fillMaxWidth()
+            .weight(1f)
             .height(48.dp)
             .clickable(onClick = onExportBookmarks),
           shape = RoundedCornerShape(12.dp),
@@ -199,7 +201,7 @@ private fun BookmarkRow(
       .fillMaxWidth()
       .clickable(onClick = onClick),
     shape = RoundedCornerShape(6.dp),
-    color = RavenTheme.colors.bgSecondary,
+    color = RavenTheme.colors.bgTertiary,
   ) {
     Row(
       modifier = Modifier.padding(8.dp),
@@ -248,9 +250,9 @@ private fun BookmarkRow(
           ) {
             Surface(
               shape = RoundedCornerShape(8.dp),
-              color = Color.White,
+              color = RavenTheme.colors.bgModal,
               shadowElevation = 4.dp,
-              border = androidx.compose.foundation.BorderStroke(1.dp, RavenTheme.colors.bgStyle),
+              border = androidx.compose.foundation.BorderStroke(1.dp, RavenTheme.colors.borderAvg),
             ) {
               Column(
                 modifier = Modifier

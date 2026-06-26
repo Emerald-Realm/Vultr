@@ -51,6 +51,7 @@ interface HistoryGraph {
 fun HistorySheetContent(
   viewState: HistoryViewState,
   onDelete: (voice.core.data.ListeningSession.Id) -> Unit,
+  onEntryClick: (voice.core.data.ListeningSession.Id) -> Unit = {},
 ) {
   Column(
     modifier = Modifier
@@ -111,7 +112,11 @@ fun HistorySheetContent(
             }
           }
           items(day.entries, key = { it.id.value }) { entry ->
-            HistoryRow(entry = entry, onDelete = { onDelete(entry.id) })
+            HistoryRow(
+              entry = entry,
+              onClick = { onEntryClick(entry.id) },
+              onDelete = { onDelete(entry.id) },
+            )
           }
         }
       }
@@ -122,13 +127,16 @@ fun HistorySheetContent(
 @Composable
 private fun HistoryRow(
   entry: HistoryEntryViewState,
+  onClick: () -> Unit,
   onDelete: () -> Unit,
 ) {
   var showPopup by remember { mutableStateOf(false) }
   Surface(
-    modifier = Modifier.fillMaxWidth(),
+    modifier = Modifier
+      .fillMaxWidth()
+      .clickable(onClick = onClick),
     shape = RoundedCornerShape(6.dp),
-    color = Color(0xFFF9FAFB),
+    color = RavenTheme.colors.bgTertiary,
   ) {
     Row(
       modifier = Modifier.padding(8.dp),
@@ -151,7 +159,7 @@ private fun HistoryRow(
           color = RavenTheme.colors.subTitle,
         )
         Text(
-          text = "${actionLabel(entry.action)} · ${entry.timeText}",
+          text = "${actionLabel(entry.action)} · ${entry.globalPositionText}",
           fontSize = 12.sp,
           letterSpacing = (-0.06).sp,
           color = RavenTheme.colors.caption,
@@ -174,9 +182,9 @@ private fun HistoryRow(
           ) {
             Surface(
               shape = RoundedCornerShape(8.dp),
-              color = Color.White,
+              color = RavenTheme.colors.bgModal,
               shadowElevation = 4.dp,
-              border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFF3F5F6)),
+              border = androidx.compose.foundation.BorderStroke(1.dp, RavenTheme.colors.borderAvg),
             ) {
               Text(
                 text = stringResource(StringsR.string.delete),

@@ -58,7 +58,7 @@ internal fun SettingsRow(
             painter = painterResource(UiR.drawable.ic_mage_dots),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
-            tint = Color(0xFF000000),
+            tint = RavenTheme.colors.icon,
           )
         }
         SettingsRowTrailing.ExternalLink -> {
@@ -66,7 +66,7 @@ internal fun SettingsRow(
             painter = painterResource(UiR.drawable.ic_mage_arrow_up_right),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
-            tint = Color(0xFF000000),
+            tint = RavenTheme.colors.icon,
           )
         }
         SettingsRowTrailing.None -> {}

@@ -1,7 +1,5 @@
 package voice.features.bookOverview.views
 
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +8,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -33,7 +32,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -96,7 +97,6 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
   val editBookTitleViewModel = bookGraph.editBookTitleViewModel
   val bottomSheetViewModel = bookGraph.bottomSheetViewModel
   val deleteBookViewModel = bookGraph.deleteBookViewModel
-  val fileCoverViewModel = bookGraph.fileCoverViewModel
 
   LaunchedEffect(Unit) {
     bookOverviewViewModel.attach()
@@ -118,15 +118,6 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
     }
   }
 
-  val getContentLauncher = rememberLauncherForActivityResult(
-    contract = ActivityResultContracts.GetContent(),
-    onResult = { uri ->
-      if (uri != null) {
-        fileCoverViewModel.onImagePicked(uri)
-      }
-    },
-  )
-
   var showBottomSheet by remember { mutableStateOf(false) }
   Box(modifier = Modifier.fillMaxSize()) {
   BookOverview(
@@ -146,6 +137,7 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
     onSearchBookClick = bookOverviewViewModel::onSearchBookClick,
     onPermissionBugCardClick = bookOverviewViewModel::onPermissionBugCardClick,
     onMiniPlayerClick = bookOverviewViewModel::onMiniPlayerClick,
+    onCategorySelected = bookOverviewViewModel::onCategorySelected,
   )
   val deleteBookViewState = deleteBookViewModel.state.value
   if (deleteBookViewState != null) {
@@ -183,9 +175,6 @@ fun BookOverviewScreen(modifier: Modifier = Modifier) {
           state = bottomSheetViewModel.state.value,
           onItemClick = { item ->
             val name = bookName(bottomSheetViewModel.bookId)
-            if (item == BottomSheetItem.FileCover) {
-              getContentLauncher.launch("image/*")
-            }
             scope.launch {
               sheetState.hide()
               bottomSheetViewModel.onItemClick(item)
@@ -262,13 +251,17 @@ private fun ScanningBar(modifier: Modifier = Modifier) {
     modifier = modifier.fillMaxWidth(),
     color = RavenTheme.colors.bgMain,
   ) {
-    Column {
-      androidx.compose.material3.HorizontalDivider(color = RavenTheme.colors.primaryFaint)
-      androidx.compose.material3.Text(
-        text = "Scanning",
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+      androidx.compose.material3.LinearProgressIndicator(
         modifier = Modifier
           .fillMaxWidth()
-          .padding(vertical = 14.dp),
+          .height(2.dp),
+        color = RavenTheme.colors.primary,
+        trackColor = RavenTheme.colors.bgTertiary,
+      )
+      androidx.compose.material3.Text(
+        text = "Scanning",
+        modifier = Modifier.padding(vertical = 14.dp),
         textAlign = androidx.compose.ui.text.style.TextAlign.Center,
         fontSize = 16.sp,
         letterSpacing = (-0.08).sp,
@@ -283,7 +276,6 @@ private fun feedbackForItem(item: BottomSheetItem, name: String?): String? {
   return when (item) {
     BottomSheetItem.BookCategoryMarkAsCompleted -> "$prefix marked as completed"
     BottomSheetItem.BookCategoryMarkAsNotStarted -> "$prefix marked as not started"
-    BottomSheetItem.BookCategoryMarkAsCurrent -> "$prefix marked as in progress"
     else -> null
   }
 }
@@ -303,6 +295,7 @@ internal fun BookOverview(
   onPermissionBugCardClick: () -> Unit,
   onMiniPlayerClick: (BookId) -> Unit,
   modifier: Modifier = Modifier,
+  onCategorySelected: (Int) -> Unit = {},
   snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
   val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -341,44 +334,72 @@ internal fun BookOverview(
         .padding(contentPadding)
         .consumeWindowInsets(contentPadding),
     ) {
-      val initialPage = remember(viewState.books.keys) { defaultFilterIndex(viewState) }
-      val pagerState = rememberPagerState(initialPage = initialPage) { categoryOrder.size }
+      val pagerState = rememberPagerState(initialPage = 0) { categoryOrder.size }
+
+      // Restore the last-used tab once the persisted value has loaded; falls back to the
+      // default category the first time the library is opened. Applied only once.
+      var initialApplied by rememberSaveable { mutableStateOf(false) }
+      LaunchedEffect(viewState.selectedCategoryIndex, viewState.books.keys) {
+        if (!initialApplied) {
+          val stored = viewState.selectedCategoryIndex ?: return@LaunchedEffect
+          val target = stored.takeIf { it in categoryOrder.indices } ?: defaultFilterIndex(viewState)
+          pagerState.scrollToPage(target)
+          initialApplied = true
+        }
+      }
+
+      // Persist the tab the user settles on so the next open restores it.
+      LaunchedEffect(initialApplied) {
+        if (initialApplied) {
+          snapshotFlow { pagerState.currentPage }
+            .collect { page -> onCategorySelected(page) }
+        }
+      }
+
       FilterChips(
-        selectedIndex = pagerState.currentPage,
+        selectedIndex = pagerState.targetPage,
         onSelect = { index -> scope.launch { pagerState.animateScrollToPage(index) } },
       )
       HorizontalPager(
         state = pagerState,
         modifier = Modifier.fillMaxSize(),
+        beyondViewportPageCount = 1,
+        key = { page -> categoryOrder[page] },
       ) { page ->
         val category = categoryOrder[page]
-        val entries = viewState.books[category].orEmpty().toList()
-        when (viewState.layoutMode) {
-          BookOverviewLayoutMode.List -> {
-            ListBooks(
-              entries = entries,
-              currentBookId = viewState.currentBookId,
-              isPlaying = viewState.isPlaying,
-              onBookClick = onBookClick,
-              onBookLongClick = onBookLongClick,
-              onPlayClick = onPlayBookClick,
-              onMenuClick = onBookLongClick,
-              showPermissionBugCard = viewState.showStoragePermissionBugCard,
-              onPermissionBugCardClick = onPermissionBugCardClick,
-            )
-          }
-          BookOverviewLayoutMode.Grid -> {
-            GridBooks(
-              entries = entries,
-              columns = viewState.gridColumns,
-              currentBookId = viewState.currentBookId,
-              isPlaying = viewState.isPlaying,
-              onBookClick = onBookClick,
-              onBookLongClick = onBookLongClick,
-              onPlayClick = onPlayBookClick,
-              showPermissionBugCard = viewState.showStoragePermissionBugCard,
-              onPermissionBugCardClick = onPermissionBugCardClick,
-            )
+        val entries = remember(viewState.books, category) {
+          viewState.books[category].orEmpty().toList()
+        }
+        if (entries.isEmpty() && !viewState.showStoragePermissionBugCard) {
+          EmptyCategory(category = category, isLoading = viewState.isLoading)
+        } else {
+          when (viewState.layoutMode) {
+            BookOverviewLayoutMode.List -> {
+              ListBooks(
+                entries = entries,
+                currentBookId = viewState.currentBookId,
+                isPlaying = viewState.isPlaying,
+                onBookClick = onBookClick,
+                onBookLongClick = onBookLongClick,
+                onPlayClick = onPlayBookClick,
+                onMenuClick = onBookLongClick,
+                showPermissionBugCard = viewState.showStoragePermissionBugCard,
+                onPermissionBugCardClick = onPermissionBugCardClick,
+              )
+            }
+            BookOverviewLayoutMode.Grid -> {
+              GridBooks(
+                entries = entries,
+                columns = viewState.gridColumns,
+                currentBookId = viewState.currentBookId,
+                isPlaying = viewState.isPlaying,
+                onBookClick = onBookClick,
+                onBookLongClick = onBookLongClick,
+                onPlayClick = onPlayBookClick,
+                showPermissionBugCard = viewState.showStoragePermissionBugCard,
+                onPermissionBugCardClick = onPermissionBugCardClick,
+              )
+            }
           }
         }
       }
@@ -474,6 +495,7 @@ internal class BookOverviewPreviewParameterProvider : PreviewParameterProvider<B
       showStoragePermissionBugCard = false,
       showFolderPickerIcon = true,
       miniPlayer = null,
+      selectedCategoryIndex = BookOverviewCategory.CURRENT.let { categoryOrder.indexOf(it) },
     ),
   )
 }

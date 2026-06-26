@@ -62,7 +62,6 @@ include(":core:strings")
 include(":core:ui")
 
 include(":features:bookOverview")
-include(":features:bookmark")
 include(":features:cover")
 include(":features:folderPicker")
 include(":features:onboarding")

@@ -21,20 +21,13 @@ class EditBookTitleViewModel(private val repo: BookRepository) : BottomSheetItem
   private val _state = mutableStateOf<EditBookTitleState?>(null)
   internal val state: State<EditBookTitleState?> get() = _state
 
-  override suspend fun items(bookId: BookId): List<BottomSheetItem> {
-    return listOf(BottomSheetItem.Title)
-  }
+  // Title editing now lives inside the Edit Book screen, not the library menu.
+  override suspend fun items(bookId: BookId): List<BottomSheetItem> = emptyList()
 
   override suspend fun onItemClick(
     bookId: BookId,
     item: BottomSheetItem,
   ) {
-    if (item != BottomSheetItem.Title) return
-    val book = repo.get(bookId) ?: return
-    _state.value = EditBookTitleState(
-      title = book.content.name,
-      bookId = bookId,
-    )
   }
 
   internal fun onDismissEditTitle() {

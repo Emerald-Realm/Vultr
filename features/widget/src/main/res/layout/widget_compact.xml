@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/wholeWidget"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/widget_card_background"
+  android:padding="12dp"
+  tools:ignore="Overdraw">
+
+  <ImageView
+    android:id="@+id/cover"
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:layout_alignParentStart="true"
+    android:layout_centerVertical="true"
+    android:contentDescription="@string/content_cover"
+    android:scaleType="centerCrop"
+    tools:src="@drawable/album_art" />
+
+  <ImageView
+    android:id="@+id/ravenLogo"
+    android:layout_width="18dp"
+    android:layout_height="18dp"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentTop="true"
+    android:contentDescription="@string/app_name"
+    android:src="@drawable/ic_raven_widget_logo" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_toEndOf="@id/cover"
+    android:layout_toStartOf="@id/ravenLogo"
+    android:layout_marginStart="12dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textColor="@color/copy_primary_text_default_material_dark"
+      android:textSize="15sp"
+      android:textStyle="bold"
+      tools:text="The Let Them Theory" />
+
+    <TextView
+      android:id="@+id/timeLeft"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="2dp"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textColor="@color/copy_secondary_text_default_material_dark"
+      android:textSize="12sp"
+      tools:text="9h 3m left" />
+  </LinearLayout>
+
+</RelativeLayout>
