@@ -30,6 +30,7 @@ import voice.core.data.repo.BookRepository
 import voice.core.data.repo.internals.dao.RecentBookSearchDao
 import voice.core.data.store.CurrentBookStore
 import voice.core.data.store.GridModeStore
+import voice.core.data.store.SelectedBookCategoryStore
 import voice.core.featureflag.ExperimentalPlaybackPersistenceQualifier
 import voice.core.featureflag.FeatureFlag
 import voice.core.featureflag.FolderPickerInSettingsFeatureFlagQualifier
@@ -57,6 +58,8 @@ class BookOverviewViewModel(
   private val currentBookStoreDataStore: DataStore<BookId?>,
   @GridModeStore
   private val gridModeStore: DataStore<GridMode>,
+  @SelectedBookCategoryStore
+  private val selectedCategoryStore: DataStore<Int>,
   private val gridCount: GridCount,
   private val navigator: Navigator,
   private val recentBookSearchDao: RecentBookSearchDao,
@@ -90,6 +93,9 @@ class BookOverviewViewModel(
     val scannerActive = remember { mediaScanner.scannerActive }
       .collectAsState(initial = false).value
     val gridMode = remember { gridModeStore.data }
+      .collectAsState(initial = null).value
+      ?: return BookOverviewViewState.Loading
+    val selectedCategoryIndex = remember { selectedCategoryStore.data }
       .collectAsState(initial = null).value
       ?: return BookOverviewViewState.Loading
 
@@ -157,7 +163,14 @@ class BookOverviewViewModel(
           )
         }
       },
+      selectedCategoryIndex = selectedCategoryIndex,
     )
+  }
+
+  fun onCategorySelected(index: Int) {
+    scope.launch {
+      selectedCategoryStore.updateData { index }
+    }
   }
 
   @Composable

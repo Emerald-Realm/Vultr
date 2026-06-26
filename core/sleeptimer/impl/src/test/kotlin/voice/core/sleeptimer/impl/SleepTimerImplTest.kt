@@ -51,7 +51,7 @@ class SleepTimerImplTest {
   private val setVolumeSlots = mutableListOf<Float>()
   private val playerController = mockk<PlayerController> {
     every { setVolume(capture(setVolumeSlots)) } just Runs
-    every { pauseWithRewind(any()) } answers {
+    every { pause() } answers {
       playStateManager.playState = PlayStateManager.PlayState.Paused
     }
     every {
@@ -61,7 +61,6 @@ class SleepTimerImplTest {
     }
   }
 
-  private val fadeOutStore = MemoryDataStore(2.seconds)
   private val testDispatcher = StandardTestDispatcher()
   private val testScope = TestScope(testDispatcher)
 
@@ -74,7 +73,6 @@ class SleepTimerImplTest {
       shakeDetector,
       sleepTimerPreferenceStore,
       playerController,
-      fadeOutStore,
       dispatcherProvider,
       tracker = mockk(relaxed = true),
       historyRecorder = mockk(relaxed = true),
@@ -92,7 +90,7 @@ class SleepTimerImplTest {
 
     advanceTimeBy(2.seconds)
     sleepTimer.state.value shouldBe SleepTimerState.Disabled
-    coVerify(exactly = 1) { playerController.pauseWithRewind(any()) }
+    coVerify(exactly = 1) { playerController.pause() }
   }
 
   @Test
@@ -135,7 +133,7 @@ class SleepTimerImplTest {
     // 1) Let the first countdown finish and enter the shake window
     advanceTimeBy(longDuration + 1.seconds)
     runCurrent()
-    coVerify(exactly = 1) { playerController.pauseWithRewind(any()) }
+    coVerify(exactly = 1) { playerController.pause() }
     sleepTimer.state.value shouldBe SleepTimerState.Disabled
 
     // 2) Trigger the shake → a new countdown should start independently of the old timeout
@@ -149,7 +147,7 @@ class SleepTimerImplTest {
     runCurrent()
 
     // The second countdown should complete normally
-    coVerify(exactly = 2) { playerController.pauseWithRewind(any()) }
+    coVerify(exactly = 2) { playerController.pause() }
     sleepTimer.state.value shouldBe SleepTimerState.Disabled
   }
 

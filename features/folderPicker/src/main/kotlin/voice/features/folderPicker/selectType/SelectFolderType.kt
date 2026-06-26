@@ -6,8 +6,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Surface
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -38,6 +45,7 @@ import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
+import voice.core.ui.RavenTheme
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
 import voice.navigation.Origin
@@ -95,8 +103,20 @@ private fun SelectFolderType(
   val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
   Scaffold(
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    floatingActionButton = {
-      AddingFab(addButtonVisible = viewState.addButtonVisible, onAddClick = onAddClick)
+    bottomBar = {
+      if (viewState.addButtonVisible) {
+        Button(
+          onClick = onAddClick,
+          modifier = Modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+            .padding(horizontal = 20.dp, vertical = 12.dp)
+            .height(48.dp),
+          shape = RoundedCornerShape(12.dp),
+        ) {
+          Text(text = stringResource(id = StringsR.string.add))
+        }
+      }
     },
     topBar = {
       AppBar(scrollBehavior, onBackClick)
@@ -122,6 +142,28 @@ private fun Content(
     modifier = Modifier.fillMaxSize(),
   ) {
     item(
+      key = "ravenLogo",
+      span = { GridItemSpan(maxLineSpan) },
+    ) {
+      Surface(
+        modifier = Modifier
+          .padding(start = 16.dp, top = 8.dp)
+          .size(44.dp),
+        shape = CircleShape,
+        color = RavenTheme.colors.bgTertiary,
+      ) {
+        Box(contentAlignment = Alignment.Center) {
+          Icon(
+            // Preserve the logo's 154:185 portrait aspect ratio so it isn't squashed into a square.
+            modifier = Modifier.size(width = 20.dp, height = 24.dp),
+            painter = painterResource(id = voice.core.ui.R.drawable.ic_raven_logo),
+            contentDescription = null,
+            tint = RavenTheme.colors.primary,
+          )
+        }
+      }
+    }
+    item(
       key = "header",
       span = { GridItemSpan(maxLineSpan) },
     ) {
@@ -138,7 +180,7 @@ private fun Content(
         Text(
           modifier = Modifier.padding(top = 24.dp),
           text = stringResource(id = StringsR.string.folder_type_book_example_header),
-          style = MaterialTheme.typography.headlineSmall,
+          style = MaterialTheme.typography.titleMedium,
         )
       }
     }

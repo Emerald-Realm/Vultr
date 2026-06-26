@@ -22,10 +22,12 @@ data class BookOverviewItemViewState(
 @Immutable
 data class MiniPlayerViewState(
   val id: BookId,
-  val title: String,
+  val chapterTitle: String,
   val author: String?,
   val cover: ImmutableFile?,
   val progress: Float,
+  val positionText: String,
+  val durationText: String,
   val playing: Boolean,
 )
 
@@ -41,10 +43,13 @@ internal fun Book.toItemViewState() = BookOverviewItemViewState(
 
 internal fun Book.toMiniPlayerViewState(playing: Boolean) = MiniPlayerViewState(
   id = id,
-  title = content.name,
+  chapterTitle = currentMark.name ?: currentChapter.name ?: content.name,
   author = content.author,
   cover = content.cover?.let(::ImmutableFile),
   progress = progress(),
+  // Global book position / total book duration, matching the player and notification.
+  positionText = formatTime(position, duration),
+  durationText = formatTime(duration),
   playing = playing,
 )
 

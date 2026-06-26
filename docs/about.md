@@ -1,12 +1,19 @@
-# About Voice
+---
+title: About
+permalink: /about/
+---
 
-Voice is a simple and intuitive audiobook player that explores new technologies, design ideas, and modern coding practices. Our goal is to
-create an app that is both reliable and a joy to use — powered by a design philosophy that favors minimalism.
+# About Raven
 
-Key characteristics of Voice include:
+Raven is a simple, intuitive audiobook player built around a design philosophy of minimalism and reliability. The goal is an app that gets out of your way so you can focus on the story.
 
-- **User Focus:** Prioritizing intuitive and straightforward usage.
-- **Minimalism:** Only essential features and settings are included to maintain simplicity.
-- **Reliability:** Regular updates and community feedback help to keep the app stable.
+Key characteristics:
 
-Want to know more or get involved? Browse the other sections for development details and licensing information.
+- **User focus** — intuitive, straightforward playback of your own audiobooks.
+- **Minimalism** — only the essential features and settings, kept clean.
+- **Privacy** — fully offline, no accounts, no ads, and no tracking.
+- **Open source** — free software under the GNU GPLv3.
+
+Raven is an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) project and is not affiliated with or endorsed by it.
+
+Source, issues and contributions: <https://github.com/Emerald-Realm/Vultr>.

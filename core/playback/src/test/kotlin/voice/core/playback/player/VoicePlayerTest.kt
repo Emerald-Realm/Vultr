@@ -59,6 +59,7 @@ class VoicePlayerTest {
   }
 
   private val seekTimeStore = MemoryDataStore(2)
+  private val autoRewindAmountStore = MemoryDataStore(0)
 
   private val internalPlayer = TestExoPlayerBuilder(ApplicationProvider.getApplicationContext())
     .setMediaSourceFactory(
@@ -100,7 +101,7 @@ class VoicePlayerTest {
       every { data } returns flowOf(bookId)
     },
     seekTimeStore = seekTimeStore,
-    autoRewindAmountStore = mockk(),
+    autoRewindAmountStore = autoRewindAmountStore,
     scope = scope,
     chapterRepo = mockk {
       coEvery { this@mockk.get(any()) } answers {
@@ -190,6 +191,42 @@ class VoicePlayerTest {
 
     player.seekToPrevious()
     player.shouldHavePosition(0, 0)
+  }
+
+  @Test
+  fun `auto rewind on resume rewinds by the configured amount`() = scope.runTest {
+    setMediaItems(
+      listOf(
+        chapter(ChapterMark(startMs = 0, endMs = 30_000, name = null)),
+      ),
+    )
+    autoRewindAmountStore.updateData { 5 }
+
+    player.seekTo(0, 20_000)
+    player.prepare()
+    awaitReady()
+    player.shouldHavePosition(0, 20_000)
+
+    player.play()
+    player.shouldHavePosition(0, 15_000)
+  }
+
+  @Test
+  fun `auto rewind of zero does not move the position on resume`() = scope.runTest {
+    setMediaItems(
+      listOf(
+        chapter(ChapterMark(startMs = 0, endMs = 30_000, name = null)),
+      ),
+    )
+    autoRewindAmountStore.updateData { 0 }
+
+    player.seekTo(0, 20_000)
+    player.prepare()
+    awaitReady()
+    player.shouldHavePosition(0, 20_000)
+
+    player.play()
+    player.shouldHavePosition(0, 20_000)
   }
 
   @Test

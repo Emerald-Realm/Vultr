@@ -37,6 +37,7 @@ import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
 import voice.core.ui.VoiceTheme
+import voice.core.ui.readableContentWidth
 import voice.features.settings.SettingsListener
 import voice.features.settings.SettingsViewEffect
 import voice.features.settings.SettingsViewModel
@@ -94,6 +95,7 @@ private fun Settings(
       modifier = Modifier
         .padding(contentPadding)
         .verticalScroll(rememberScrollState())
+        .readableContentWidth()
         .padding(horizontal = 20.dp),
     ) {
       // Appearance

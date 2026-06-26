@@ -1,10 +1,24 @@
-# Voice
+---
+title: Raven Audiobook Player
+permalink: /
+---
 
-![Voice Image](feature.jpg)
+# Raven Audiobook Player
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png){: style="height:80px"}](https://play.google.com/store/apps/details?id=de.ph1b.audiobook)
-[![Get it on F-Droid](https://f-droid.org/badge/get-it-on.png){: style="height:80px"}](https://f-droid.org/packages/de.ph1b.audiobook)
+![Raven](feature.jpg)
 
-Welcome to the Voice project — a simple, user-focused audiobook player that emphasizes minimalism and reliability.
+A minimalist, **offline**, open-source audiobook player for Android. No accounts, no ads, no tracking — just your own audiobooks, played beautifully.
 
-Learn more on the [About](about.md) and [Development](development.md) pages.
+[Get it on Google Play](https://play.google.com/store/apps/details?id=io.github.emeraldrealm.raven)
+
+## Links
+
+- 📖 [Privacy Policy](/Vultr/privacy-policy/)
+- 📜 [Terms of Use](/Vultr/terms/)
+- ⚖️ [Open Source Licenses](/Vultr/licenses/)
+- ❓ [FAQ](/Vultr/faq/)
+- 💻 [Source code on GitHub](https://github.com/Emerald-Realm/Vultr)
+
+Raven is free software under the **GNU GPL v3**, and an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) project.
+
+Questions or bug reports: **Jonaim039@gmail.com**.

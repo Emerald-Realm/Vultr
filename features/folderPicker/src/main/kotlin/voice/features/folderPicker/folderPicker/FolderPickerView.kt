@@ -2,14 +2,17 @@ package voice.features.folderPicker.folderPicker
 
 import android.net.Uri
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -21,9 +24,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import voice.core.ui.RavenTheme
+import voice.core.ui.R as UiR
 import androidx.navigation3.runtime.NavEntry
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesTo
@@ -98,22 +104,18 @@ private fun FolderOverviewView(
         },
       )
     },
-    floatingActionButton = {
-      val text = stringResource(id = StringsR.string.add)
-      ExtendedFloatingActionButton(
-        text = {
-          Text(text)
-        },
-        onClick = {
-          onAddClick()
-        },
-        icon = {
-          Icon(
-            imageVector = Icons.Outlined.Add,
-            contentDescription = text,
-          )
-        },
-      )
+    bottomBar = {
+      Button(
+        onClick = onAddClick,
+        modifier = Modifier
+          .fillMaxWidth()
+          .navigationBarsPadding()
+          .padding(horizontal = 20.dp, vertical = 12.dp)
+          .height(48.dp),
+        shape = RoundedCornerShape(12.dp),
+      ) {
+        Text(text = stringResource(id = StringsR.string.add))
+      }
     },
   ) { contentPadding ->
     LazyColumn(contentPadding = contentPadding) {
@@ -130,8 +132,9 @@ private fun FolderOverviewView(
               },
               content = {
                 Icon(
-                  imageVector = Icons.Outlined.Delete,
+                  painter = painterResource(UiR.drawable.ic_mage_trash),
                   contentDescription = stringResource(StringsR.string.delete),
+                  tint = RavenTheme.colors.errorBase,
                 )
               },
             )

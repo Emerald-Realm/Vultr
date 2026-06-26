@@ -144,6 +144,7 @@ internal fun ListBookRow(
         Text(
           text = book.name,
           style = MaterialTheme.typography.titleSmall,
+          lineHeight = 16.sp,
           color = MaterialTheme.colorScheme.onSurface,
           maxLines = 2,
         )

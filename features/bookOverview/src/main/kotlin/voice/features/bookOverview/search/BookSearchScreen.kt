@@ -63,7 +63,7 @@ internal fun BookSearchContent(
             colors = ListItemDefaults.colors(containerColor = Color.Transparent),
             leadingContent = {
               Icon(
-                painter = painterResource(UiR.drawable.ic_mage_user),
+                painter = painterResource(UiR.drawable.ic_mage_user_circle),
                 contentDescription = stringResource(id = StringsR.string.cover_search_author),
               )
             },

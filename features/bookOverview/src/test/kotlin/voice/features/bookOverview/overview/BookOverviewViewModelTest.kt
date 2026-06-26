@@ -54,6 +54,7 @@ class BookOverviewViewModelTest {
       },
       currentBookStoreDataStore = MemoryDataStore(currentBook.id),
       gridModeStore = MemoryDataStore(GridMode.LIST),
+      selectedCategoryStore = MemoryDataStore(-1),
       gridCount = mockk<GridCount> {
         every { useGridAsDefault() } returns false
       },

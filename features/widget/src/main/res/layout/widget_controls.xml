@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/wholeWidget"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/widget_card_background"
+  android:orientation="vertical"
+  android:padding="14dp"
+  tools:ignore="Overdraw">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+      android:id="@+id/cover"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:contentDescription="@string/content_cover"
+      android:scaleType="centerCrop"
+      tools:src="@drawable/album_art" />
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="12dp"
+      android:layout_weight="1"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/copy_primary_text_default_material_dark"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:text="The Sandman: Act III" />
+
+      <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/copy_secondary_text_default_material_dark"
+        android:textSize="12sp"
+        tools:text="Neil Gaiman, Dirk Maggs" />
+    </LinearLayout>
+
+    <ImageView
+      android:id="@+id/ravenLogo"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginStart="8dp"
+      android:contentDescription="@string/app_name"
+      android:src="@drawable/ic_raven_widget_logo" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="5">
+
+    <ImageView
+      android:id="@+id/rewind"
+      android:layout_width="0dp"
+      android:layout_height="44dp"
+      android:layout_weight="1"
+      android:background="@android:color/transparent"
+      android:contentDescription="@string/rewind"
+      android:padding="8dp"
+      android:src="@drawable/ic_rewind_white_36dp" />
+
+    <ImageView
+      android:id="@+id/skipPrevious"
+      android:layout_width="0dp"
+      android:layout_height="44dp"
+      android:layout_weight="1"
+      android:background="@android:color/transparent"
+      android:contentDescription="@string/previous_track"
+      android:padding="8dp"
+      android:src="@drawable/ic_widget_skip_previous" />
+
+    <ImageView
+      android:id="@+id/playPause"
+      android:layout_width="0dp"
+      android:layout_height="44dp"
+      android:layout_weight="1"
+      android:background="@android:color/transparent"
+      android:contentDescription="@string/play_pause"
+      android:padding="4dp"
+      android:src="@drawable/ic_play_white_36dp" />
+
+    <ImageView
+      android:id="@+id/skipNext"
+      android:layout_width="0dp"
+      android:layout_height="44dp"
+      android:layout_weight="1"
+      android:background="@android:color/transparent"
+      android:contentDescription="@string/next_track"
+      android:padding="8dp"
+      android:src="@drawable/ic_widget_skip_next" />
+
+    <ImageView
+      android:id="@+id/fastForward"
+      android:layout_width="0dp"
+      android:layout_height="44dp"
+      android:layout_weight="1"
+      android:background="@android:color/transparent"
+      android:contentDescription="@string/fast_forward"
+      android:padding="8dp"
+      android:src="@drawable/ic_fast_forward_white_36dp" />
+  </LinearLayout>
+
+</LinearLayout>

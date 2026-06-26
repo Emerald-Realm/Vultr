@@ -136,7 +136,7 @@ private fun LayoutOptionCard(
       shape = RoundedCornerShape(8.dp),
       border = BorderStroke(
         width = if (selected) 2.dp else 1.dp,
-        color = if (selected) RavenTheme.colors.primary else RavenTheme.colors.bgSecondary,
+        color = if (selected) RavenTheme.colors.primary else RavenTheme.colors.borderStrong,
       ),
       color = if (selected) RavenTheme.colors.primaryFaint else RavenTheme.colors.bgModal,
     ) {

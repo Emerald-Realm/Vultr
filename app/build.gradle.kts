@@ -168,7 +168,6 @@ dependencies {
   implementation(projects.features.cover)
   implementation(projects.core.documentfile)
   implementation(projects.features.onboarding)
-  implementation(projects.features.bookmark)
   implementation(projects.features.widget)
 
   implementation(libs.appCompat)

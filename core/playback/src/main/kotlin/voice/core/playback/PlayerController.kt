@@ -34,7 +34,6 @@ import voice.core.playback.session.MediaItemProvider
 import voice.core.playback.session.PlaybackService
 import voice.core.playback.session.sendCustomCommand
 import voice.core.playback.session.toMediaIdOrNull
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 @Inject
@@ -157,9 +156,8 @@ class PlayerController(
     }
   }
 
-  fun pauseWithRewind(rewind: Duration) = executeAfterPrepare { controller ->
+  fun pause() = executeAfterPrepare { controller ->
     controller.pause()
-    controller.seekTo((controller.currentPosition - rewind.inWholeMilliseconds).coerceAtLeast(0))
   }
 
   fun setSpeed(speed: Float) = executeAfterPrepare { controller ->

@@ -21,6 +21,8 @@ data class BookOverviewViewState(
   val showStoragePermissionBugCard: Boolean,
   val showFolderPickerIcon: Boolean,
   val miniPlayer: MiniPlayerViewState?,
+  // Persisted last-used category index; null while still loading, -1 when never chosen.
+  val selectedCategoryIndex: Int?,
 ) {
 
   companion object {
@@ -43,6 +45,7 @@ data class BookOverviewViewState(
       showStoragePermissionBugCard = false,
       showFolderPickerIcon = true,
       miniPlayer = null,
+      selectedCategoryIndex = null,
     )
   }
 

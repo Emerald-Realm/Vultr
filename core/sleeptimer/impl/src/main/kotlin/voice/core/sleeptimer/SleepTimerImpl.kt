@@ -14,7 +14,6 @@ import kotlinx.coroutines.withTimeoutOrNull
 import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
 import voice.core.data.sleeptimer.SleepTimerPreference
-import voice.core.data.store.FadeOutStore
 import voice.core.data.store.SleepTimerPreferenceStore
 import voice.core.logging.api.Logger
 import voice.core.playback.PlayerController
@@ -34,8 +33,6 @@ class SleepTimerImpl internal constructor(
   @SleepTimerPreferenceStore
   private val sleepTimerPreferenceStore: DataStore<SleepTimerPreference>,
   private val playerController: PlayerController,
-  @FadeOutStore
-  private val fadeOutStore: DataStore<Duration>,
   dispatcherProvider: DispatcherProvider,
   private val tracker: SleepTimerTracker,
   private val historyRecorder: PlaybackHistoryRecorder,
@@ -78,7 +75,6 @@ class SleepTimerImpl internal constructor(
     var left = duration
     _state.value = SleepTimerState.Enabled.WithDuration(left)
 
-    val rewindOnEnd = fadeOutStore.data.first()
     val interval = 500.milliseconds
 
     // Volume stays at full until the abrupt pause; no fade-out.
@@ -91,7 +87,9 @@ class SleepTimerImpl internal constructor(
     _state.value = SleepTimerState.Disabled
 
     historyRecorder.onSleepEnded()
-    playerController.pauseWithRewind(rewindOnEnd)
+    // Plain pause; the rewind is applied uniformly on resume by the player's
+    // auto-rewind setting, keeping sleep-timer resume consistent with every other resume.
+    playerController.pause()
 
     val shakeDetected = detectShakeWithTimeout()
     if (shakeDetected) {

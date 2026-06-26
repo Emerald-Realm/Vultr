@@ -21,6 +21,7 @@ import voice.core.ui.R as UiR
 @Composable
 internal fun BookCoverArt(
   cover: ImmutableFile?,
+  playing: Boolean,
   onPlayClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
@@ -39,7 +40,7 @@ internal fun BookCoverArt(
         .clip(RoundedCornerShape(12.dp)),
     )
     PlayButton(
-      playing = false,
+      playing = playing,
       fabSize = 56.dp,
       iconSize = 28.dp,
       onPlayClick = onPlayClick,

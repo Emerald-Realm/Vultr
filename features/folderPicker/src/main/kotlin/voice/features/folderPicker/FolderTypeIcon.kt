@@ -1,30 +1,28 @@
 package voice.features.folderPicker
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.LibraryBooks
-import androidx.compose.material.icons.outlined.AudioFile
-import androidx.compose.material.icons.outlined.Folder
-import androidx.compose.material.icons.outlined.Person
+import androidx.annotation.DrawableRes
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import voice.core.data.folders.FolderType
 import voice.core.strings.R as StringsR
+import voice.core.ui.R as UiR
 
 @Composable
 internal fun FolderTypeIcon(folderType: FolderType) {
   Icon(
-    imageVector = folderType.icon(),
+    painter = painterResource(folderType.iconRes()),
     contentDescription = folderType.contentDescription(),
   )
 }
 
-private fun FolderType.icon(): ImageVector = when (this) {
-  FolderType.SingleFile -> Icons.Outlined.AudioFile
-  FolderType.SingleFolder -> Icons.Outlined.Folder
-  FolderType.Root -> Icons.AutoMirrored.Outlined.LibraryBooks
-  FolderType.Author -> Icons.Outlined.Person
+@DrawableRes
+private fun FolderType.iconRes(): Int = when (this) {
+  FolderType.SingleFile -> UiR.drawable.ic_mage_book
+  FolderType.SingleFolder -> UiR.drawable.ic_mage_book
+  FolderType.Root -> UiR.drawable.ic_mage_book
+  FolderType.Author -> UiR.drawable.ic_mage_user_circle
 }
 
 @Composable

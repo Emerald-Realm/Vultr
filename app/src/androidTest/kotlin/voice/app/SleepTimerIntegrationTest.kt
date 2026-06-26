@@ -19,7 +19,6 @@ import voice.core.data.MarkData
 import voice.core.data.repo.BookContentRepo
 import voice.core.data.repo.ChapterRepo
 import voice.core.data.store.CurrentBookStore
-import voice.core.data.store.FadeOutStore
 import voice.core.playback.PlayerController
 import voice.core.playback.playstate.PlayStateManager
 import voice.core.sleeptimer.SleepTimer
@@ -28,7 +27,6 @@ import voice.core.sleeptimer.SleepTimerState
 import java.io.File
 import java.time.Instant
 import java.util.UUID
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 class SleepTimerIntegrationTest {
@@ -51,17 +49,11 @@ class SleepTimerIntegrationTest {
   @Inject
   lateinit var playStateManager: PlayStateManager
 
-  @field:[Inject FadeOutStore]
-  lateinit var fadeOutStore: DataStore<Duration>
-
   @Test
   fun testWithTimedMode() = runTest {
     rootGraphAs<TestGraph>().inject(this@SleepTimerIntegrationTest)
 
     val bookId = prepareTestBook()
-
-    // speed up the tests by using shorter fade out and sleep times
-    fadeOutStore.updateData { 1.seconds }
 
     // play the book and wait for it to start
     playerController.play()
@@ -81,9 +73,6 @@ class SleepTimerIntegrationTest {
     rootGraphAs<TestGraph>().inject(this@SleepTimerIntegrationTest)
 
     val bookId = prepareTestBook()
-
-    // speed up the tests by using shorter fade out and sleep times
-    fadeOutStore.updateData { 1.seconds }
 
     // play the book and wait for it to start
     playerController.play()

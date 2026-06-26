@@ -1,55 +1,39 @@
-### Does Voice support Android Auto?
+---
+title: FAQ
+permalink: /faq/
+---
 
-Yes, Voice fully supports Android Auto!
+# Frequently Asked Questions
 
-!!! warning
+### How do I add my audiobooks?
 
-    For Android Auto functionality to work, you must install Voice directly from the
-    [Google Play Store](https://play.google.com/store/apps/details?id=de.ph1b.audiobook).
-    This is because Android Auto integration requires versions that have been reviewed and approved by the Google Play team.
+Open Raven, add your main audiobook folder, and each subfolder becomes a book automatically. Raven plays files already on your device — it does not download or stream content.
 
-### Why doesn't Voice support the xyz Media Format?
+### Which file formats are supported?
 
-Voice relies on the media formats that are natively supported by the Android platform.
+Raven plays the audio formats natively supported by Android, including M4B, MP3, M4A, OGG, OGA and OPUS. You can see the full list of platform-supported formats [here](https://developer.android.com/media/media3/exoplayer/supported-formats). If a file that should work isn't showing up, it is most likely corrupted or incompatible with your Android version.
 
-You can review the currently supported file extensions [here](https://developer.android.com/media/media3/exoplayer/supported-formats).
-If a file that should be supported is not displayed, it is most likely either corrupted or incompatible with your Android version.
+### Does Raven collect any data?
 
-### Why isn’t feature xyz available in the app?
+No. Raven has no analytics, no ads, and no trackers. Everything stays on your device. See the [Privacy Policy](/Vultr/privacy-policy/).
 
-I adhere to a core design principle of minimalism. As such, the app will only include settings and UI components that are absolutely
-essential.
+### Why isn't feature X in the app?
 
-### How can I join the beta?
+Raven follows a principle of minimalism — it includes only the settings and controls that are genuinely useful, so the app stays simple and reliable.
 
-To participate in the public beta, you can either:
+### How do I resume after the sleep timer stops?
 
-- [Join via the Web](https://play.google.com/store/apps/details?id=de.ph1b.audiobook)
-- [Join through Google Play](https://play.google.com/apps/testing/de.ph1b.audiobook)
+When the sleep timer elapses, Raven pauses after a brief fade-out. To keep listening:
 
-### Which Voice version should I use on older Android?
+- **Shake to resume** — shake your device shortly after it pauses to restart playback.
+- **Open to resume** — open the app and press play again.
 
-!!! tip
+(On a few devices, shake detection may be less reliable.)
 
-    To check your API level, go to **Settings » About » Android version** on your device.
+### Is Raven free? Is it open source?
 
-If you’re running an Android release that’s not supported by the latest Voice build, pick the version below that matches your OS/API level:
+Yes to both. Raven is completely free, with no ads or subscriptions, and is open source under the GPLv3. The code is at <https://github.com/Emerald-Realm/Vultr>.
 
-| Android Version | API Level (SDK) | Voice Version                                                           |
-|-----------------|-----------------|-------------------------------------------------------------------------|
-| Android 9+      | 28+             | Supported in the latest version 🎉                                      |
-| Android 8.1     | 27              | [8.2.4‑2](https://github.com/VoiceAudiobook/Voice/releases/tag/8.2.4-2) |
-| Android 8       | 26              | [8.2.4‑2](https://github.com/VoiceAudiobook/Voice/releases/tag/8.2.4-2) |
-| Android 7.1     | 25              | [8.2.4‑2](https://github.com/VoiceAudiobook/Voice/releases/tag/8.2.4-2) |
-| Android 7.0     | 24              | [6.0.10](https://github.com/VoiceAudiobook/Voice/releases/tag/6.0.10)   |
+### How can I report a bug or request a feature?
 
-### How do I resume playback after the sleep timer stops?
-
-Once the sleep timer elapses, Voice pauses playback (after a brief fade-out). To keep listening, you have two options:
-
-- **Shake to resume**: Shake your device within 30 seconds of pause to restart playback.
-- **Open to resume**: Open the App and simply press on play again
-
-!!! warning
-
-    On some devices (e.g. Samsung S20fe) shake-to-resume may not work reliably.
+Email **Jonaim039@gmail.com** or open an issue on [GitHub](https://github.com/Emerald-Realm/Vultr/issues).

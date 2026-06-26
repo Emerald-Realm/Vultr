@@ -226,19 +226,21 @@ class VoicePlayer(
     analytics.event(if (playWhenReady) "play" else "pause")
 
     if (playWhenReady) {
+      val autoRewindAmount = runBlocking { autoRewindAmountStore.data.first().seconds }
+      if (autoRewindAmount > ZERO) {
+        val currentPosition = player.currentPosition.takeUnless { it == C.TIME_UNSET }?.milliseconds ?: ZERO
+        if (currentPosition > ZERO) {
+          seekTo(
+            (currentPosition - autoRewindAmount)
+              .coerceAtLeast(ZERO)
+              .inWholeMilliseconds,
+          )
+        }
+      }
       historyRecorder.onPlay()
       updateLastPlayedAt()
     } else {
       historyRecorder.onPause()
-      val currentPosition = player.currentPosition.takeUnless { it == C.TIME_UNSET }?.milliseconds ?: ZERO
-      if (currentPosition > ZERO) {
-        val autoRewindAmount = runBlocking { autoRewindAmountStore.data.first().seconds }
-        seekTo(
-          (currentPosition - autoRewindAmount)
-            .coerceAtLeast(ZERO)
-            .inWholeMilliseconds,
-        )
-      }
     }
     super.setPlayWhenReady(playWhenReady)
   }

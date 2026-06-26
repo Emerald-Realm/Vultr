@@ -1,7 +1,6 @@
 package voice.features.playbackScreen
 
 import android.content.Intent
-import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SnackbarDuration
@@ -22,6 +21,7 @@ import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
 import voice.core.data.BookId
+import voice.core.ui.RavenTheme
 import voice.features.playbackScreen.history.HistoryGraph
 import voice.features.playbackScreen.history.HistorySheetContent
 import voice.features.playbackScreen.view.AddBookmarkDialog
@@ -93,7 +93,9 @@ fun BookPlayScreen(bookId: BookId) {
     onSkipToNext = viewModel::next,
     onSkipToPrevious = viewModel::previous,
     onCurrentChapterClick = viewModel::onCurrentChapterClick,
-    useLandscapeLayout = LocalConfiguration.current.orientation == ORIENTATION_LANDSCAPE,
+    // Two-pane on wide screens (tablets in either orientation + phone landscape), not just
+    // by orientation, so the cover and the controls always fit together.
+    useLandscapeLayout = LocalConfiguration.current.screenWidthDp >= 600,
     snackbarHostState = snackbarHostState,
   )
   if (dialogState != null) {
@@ -127,10 +129,15 @@ fun BookPlayScreen(bookId: BookId) {
     ModalBottomSheet(
       onDismissRequest = { viewModel.dismissHistorySheet() },
       sheetState = sheetState,
+      containerColor = RavenTheme.colors.bgMain,
     ) {
       HistorySheetContent(
         viewState = historyViewModel.viewState(),
         onDelete = historyViewModel::onDelete,
+        onEntryClick = { id ->
+          historyViewModel.onEntryClick(id)
+          viewModel.dismissHistorySheet()
+        },
       )
     }
   }

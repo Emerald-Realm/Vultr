@@ -85,6 +85,17 @@ public interface StoreModule {
 
   @Provides
   @SingleIn(AppScope::class)
+  @SelectedBookCategoryStore
+  // -1 means "no selection yet"; the library then falls back to the default category on first open.
+  private fun selectedBookCategory(factory: VoiceDataStoreFactory): DataStore<Int> {
+    return factory.int(
+      fileName = "selectedBookCategory",
+      defaultValue = -1,
+    )
+  }
+
+  @Provides
+  @SingleIn(AppScope::class)
   @SleepTimerPreferenceStore
   private fun sleepTimerPreference(factory: VoiceDataStoreFactory): DataStore<SleepTimerPreference> {
     return factory.create(

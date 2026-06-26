@@ -1,0 +1,11 @@
+Welcome to Raven — the first release!
+
+• Offline audiobook player for your own M4B, MP3, M4A, OGG and OPUS files
+• Automatic folder-based library with Current / Completed / Not Started filters
+• Light and dark themes, list and grid layouts
+• Playback speed, Volume Boost and Skip Silence
+• Bookmarks, smart auto-rewind and accurate position memory
+• Sleep timer with end-of-chapter and nightly-window modes (shake to reset)
+• Chapter controls in the app and the media notification
+• Cover art management and library search
+• 100% free, open source, no ads, no tracking
