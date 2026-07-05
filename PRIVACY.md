@@ -43,4 +43,4 @@ If this policy changes, we will update this page and the "Last updated" date abo
 
 ## Contact
 
-Questions about privacy? Email **Jonaim039@gmail.com** or open an issue at <https://github.com/Emerald-Realm/Vultr/issues>.
+Questions about privacy? Open an issue at <https://github.com/Emerald-Realm/Vultr/issues>.

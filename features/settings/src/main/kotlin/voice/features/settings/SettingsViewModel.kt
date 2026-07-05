@@ -118,19 +118,19 @@ class SettingsViewModel(
   }
 
   override fun openWebsite() {
-    navigator.goTo(Destination.Website(SITE_BASE))
+    navigator.goTo(Destination.Website(WEBSITE_URL))
   }
 
   override fun openTermsOfService() {
-    navigator.goTo(Destination.Website("$SITE_BASE/terms"))
+    navigator.goTo(Destination.Website("$DOCS_BASE/docs/terms.md"))
   }
 
   override fun openPrivacyPolicy() {
-    navigator.goTo(Destination.Website("$SITE_BASE/privacy-policy"))
+    navigator.goTo(Destination.Website("$DOCS_BASE/docs/privacy-policy.md"))
   }
 
   override fun openOpenSourceLicenses() {
-    navigator.goTo(Destination.Website("$SITE_BASE/licenses"))
+    navigator.goTo(Destination.Website("$DOCS_BASE/docs/licenses.md"))
   }
 
   override fun toggleGrid() {
@@ -197,7 +197,6 @@ class SettingsViewModel(
       .buildUpon()
       .appendQueryParameter("version", appInfoProvider.versionName)
       .appendQueryParameter("androidversion", Build.VERSION.SDK_INT.toString())
-      .appendQueryParameter("device", Build.MODEL)
       .toString()
     navigator.goTo(Destination.Website(url))
   }
@@ -208,7 +207,7 @@ class SettingsViewModel(
   }
 
   override fun openFaq() {
-    navigator.goTo(Destination.Website("$SITE_BASE/faq"))
+    navigator.goTo(Destination.Website("$DOCS_BASE/docs/faq.md"))
   }
 
   override fun openFolderPicker() {
@@ -264,4 +263,5 @@ class SettingsViewModel(
 
 // GitHub Pages site served from the /docs folder of the public repo.
 // Enable Pages: repo Settings → Pages → Source: main / "/docs".
-private const val SITE_BASE = "https://emerald-realm.github.io/Vultr"
+private const val WEBSITE_URL = "https://praiseoyegoke.framer.website/raven"
+private const val DOCS_BASE = "https://github.com/Emerald-Realm/Vultr/blob/main"

@@ -31,4 +31,4 @@ These terms may be updated from time to time; the "Last updated" date will refle
 
 ## Contact
 
-Questions? Email **Jonaim039@gmail.com**.
+Questions? Open an issue at <https://github.com/Emerald-Realm/Vultr/issues>.

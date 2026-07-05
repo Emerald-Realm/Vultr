@@ -1,5 +1,6 @@
 package voice.features.playbackScreen.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,6 +36,7 @@ internal fun BookPlayContent(
   onSkipToNext: () -> Unit,
   onSkipToPrevious: () -> Unit,
   onCurrentChapterClick: () -> Unit,
+  onBookDetailsClick: () -> Unit,
   useLandscapeLayout: Boolean,
 ) {
   if (useLandscapeLayout) {
@@ -53,7 +55,11 @@ internal fun BookPlayContent(
           .weight(1F),
         verticalArrangement = Arrangement.Center,
       ) {
-        PlayerHeader(title = viewState.title, author = viewState.author)
+        PlayerHeader(
+          title = viewState.title,
+          author = viewState.author,
+          onClick = onBookDetailsClick,
+        )
         Spacer(modifier = Modifier.size(16.dp))
         viewState.chapterName?.let { chapterName ->
           ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
@@ -79,7 +85,11 @@ internal fun BookPlayContent(
   } else {
     Column(Modifier.padding(contentPadding)) {
       Spacer(modifier = Modifier.size(8.dp))
-      PlayerHeader(title = viewState.title, author = viewState.author)
+      PlayerHeader(
+        title = viewState.title,
+        author = viewState.author,
+        onClick = onBookDetailsClick,
+      )
       Box(
         modifier = Modifier
           .fillMaxWidth()
@@ -123,10 +133,12 @@ internal fun BookPlayContent(
 private fun PlayerHeader(
   title: String,
   author: String?,
+  onClick: () -> Unit,
 ) {
   Column(
     modifier = Modifier
       .fillMaxWidth()
+      .clickable(onClick = onClick)
       .padding(horizontal = 24.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {

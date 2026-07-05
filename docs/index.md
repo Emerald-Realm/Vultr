@@ -21,4 +21,4 @@ A minimalist, **offline**, open-source audiobook player for Android. No accounts
 
 Raven is free software under the **GNU GPL v3**, and an independent fork of the open-source [Voice](https://github.com/PaulWoitaschek/Voice) project.
 
-Questions or bug reports: **Jonaim039@gmail.com**.
+Questions or bug reports: <https://github.com/Emerald-Realm/Vultr/issues>.

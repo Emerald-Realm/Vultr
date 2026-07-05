@@ -36,4 +36,4 @@ Yes to both. Raven is completely free, with no ads or subscriptions, and is open
 
 ### How can I report a bug or request a feature?
 
-Email **Jonaim039@gmail.com** or open an issue on [GitHub](https://github.com/Emerald-Realm/Vultr/issues).
+Open an issue on [GitHub](https://github.com/Emerald-Realm/Vultr/issues).

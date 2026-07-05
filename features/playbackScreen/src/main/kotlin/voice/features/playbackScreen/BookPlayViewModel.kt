@@ -255,6 +255,10 @@ class BookPlayViewModel(
     navigator.goBack()
   }
 
+  fun onBookDetailsClick() {
+    navigator.goTo(Destination.BookDetails(bookId))
+  }
+
   fun onCurrentChapterClick() {
     scope.launch {
       val book = currentBook() ?: return@launch

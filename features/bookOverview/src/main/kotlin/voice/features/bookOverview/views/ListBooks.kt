@@ -57,7 +57,7 @@ internal fun ListBooks(
 ) {
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
-    verticalArrangement = Arrangement.spacedBy(8.dp),
+    verticalArrangement = Arrangement.spacedBy(16.dp),
     contentPadding = PaddingValues(top = 16.dp, start = 20.dp, end = 20.dp, bottom = 16.dp),
   ) {
     if (showPermissionBugCard) {
