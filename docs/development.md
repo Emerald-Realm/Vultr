@@ -109,7 +109,7 @@ This code is embedded in the git tag by `release.main.kts` and used by CI and Fa
 
 ## Pages Deployment
 
-To projects [Website](https://voice.woitaschek.de/) uses Github Pages and Mkdocs.
+The project website uses MkDocs for repository-hosted documentation and the public product site lives at <https://praiseoyegoke.framer.website/raven>.
 To deploy a new website, use dispatch a workflow
 manually.
 

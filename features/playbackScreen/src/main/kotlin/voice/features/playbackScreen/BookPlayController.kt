@@ -93,6 +93,7 @@ fun BookPlayScreen(bookId: BookId) {
     onSkipToNext = viewModel::next,
     onSkipToPrevious = viewModel::previous,
     onCurrentChapterClick = viewModel::onCurrentChapterClick,
+    onBookDetailsClick = viewModel::onBookDetailsClick,
     // Two-pane on wide screens (tablets in either orientation + phone landscape), not just
     // by orientation, so the cover and the controls always fit together.
     useLandscapeLayout = LocalConfiguration.current.screenWidthDp >= 600,

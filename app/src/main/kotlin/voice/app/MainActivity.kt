@@ -7,6 +7,12 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -65,6 +71,26 @@ class MainActivity : AppCompatActivity() {
         NavDisplay(
           backStack = backStack,
           sceneStrategies = listOf(dialogStrategy),
+          transitionSpec = {
+            if (targetState.key is Destination.Playback) {
+              slideInVertically(
+                animationSpec = tween(PlayerTransitionMillis),
+                initialOffsetY = { it },
+              ) togetherWith ExitTransition.None
+            } else {
+              EnterTransition.None togetherWith ExitTransition.None
+            }
+          },
+          popTransitionSpec = {
+            if (initialState.key is Destination.Playback) {
+              EnterTransition.None togetherWith slideOutVertically(
+                animationSpec = tween(PlayerTransitionMillis),
+                targetOffsetY = { it },
+              )
+            } else {
+              EnterTransition.None togetherWith ExitTransition.None
+            }
+          },
           onBack = {
             if (backStack.size > 1) {
               backStack.removeLastOrNull()
@@ -133,6 +159,7 @@ class MainActivity : AppCompatActivity() {
   companion object {
 
     const val NI_GO_TO_BOOK = "niGotoBook"
+    private const val PlayerTransitionMillis = 260
 
     fun goToBookIntent(context: Context) = Intent(context, MainActivity::class.java).apply {
       putExtra(NI_GO_TO_BOOK, true)

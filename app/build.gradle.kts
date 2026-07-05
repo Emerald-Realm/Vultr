@@ -59,12 +59,13 @@ android {
     }
   }
 
-  fun createSigningConfig(name: String): ApkSigningConfig {
+  fun createSigningConfig(name: String): ApkSigningConfig? {
+    val propertiesFile = layout.settingsDirectory.file("signing/$name/signing.properties").asFile
+      .takeIf { it.canRead() }
+      ?: layout.settingsDirectory.file("signing/ci/signing.properties").asFile.takeIf { it.canRead() }
+      ?: return null
     return signingConfigs.create(name) {
       val properties = Properties()
-      val propertiesFile = layout.settingsDirectory.file("signing/$name/signing.properties").asFile
-        .takeIf { it.canRead() }
-        ?: layout.settingsDirectory.file("signing/ci/signing.properties").asFile
       propertiesFile.inputStream().use { input ->
         properties.load(input)
       }
@@ -83,11 +84,11 @@ android {
   productFlavors {
     register("github") {
       dimension = signingFlavor
-      signingConfig = githubSigningConfig
+      githubSigningConfig?.let { signingConfig = it }
     }
     register("play") {
       dimension = signingFlavor
-      signingConfig = playSigningConfig
+      playSigningConfig?.let { signingConfig = it }
     }
   }
 
