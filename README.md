@@ -1,7 +1,5 @@
 # Raven
 
-![CI](https://github.com/Emerald-Realm/Vultr/actions/workflows/ci.yml/badge.svg?branch=main)
-
 
 **Raven** is a minimalist, offline, open-source audiobook player for Android — built for reliability and simplicity. No accounts, no ads, no tracking; just your own audiobooks, played beautifully.
 
