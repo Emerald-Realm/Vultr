@@ -2,7 +2,6 @@ package voice.features.bookOverview.details
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -25,9 +24,7 @@ internal fun BookCoverArt(
   onPlayClick: () -> Unit,
   modifier: Modifier = Modifier,
 ) {
-  Box(
-    modifier = modifier.fillMaxWidth(),
-  ) {
+  Box(modifier = modifier) {
     AsyncImage(
       model = cover?.file,
       placeholder = painterResource(UiR.drawable.album_art),
@@ -35,7 +32,7 @@ internal fun BookCoverArt(
       contentScale = ContentScale.Crop,
       contentDescription = null,
       modifier = Modifier
-        .fillMaxWidth()
+        .fillMaxSize()
         .shadow(elevation = 16.dp, shape = RoundedCornerShape(12.dp), clip = false)
         .clip(RoundedCornerShape(12.dp)),
     )

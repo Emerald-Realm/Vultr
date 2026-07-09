@@ -2,11 +2,14 @@ package voice.features.bookOverview.details
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -32,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -43,7 +48,6 @@ import dev.zacsweers.metro.ContributesTo
 import dev.zacsweers.metro.IntoSet
 import dev.zacsweers.metro.Provides
 import voice.core.common.rootGraphAs
-import voice.core.ui.readableContentWidth
 import voice.features.bookOverview.views.MiniPlayer
 import voice.navigation.Destination
 import voice.navigation.NavEntryProvider
@@ -93,6 +97,8 @@ internal fun BookDetailsScreen(
   onMiniPlayerPlayClick: () -> Unit,
   onEditClick: () -> Unit = {},
 ) {
+  val useLandscapeLayout = with(LocalConfiguration.current) { screenWidthDp > screenHeightDp }
+
   Scaffold(
     topBar = {
       Row(
@@ -128,106 +134,203 @@ internal fun BookDetailsScreen(
       }
     },
   ) { padding ->
+    if (useLandscapeLayout) {
+      BookDetailsLandscape(
+        padding = padding,
+        viewState = viewState,
+        onPlayClick = onPlayClick,
+        onChapterClick = onChapterClick,
+      )
+    } else {
+      BookDetailsPortrait(
+        padding = padding,
+        viewState = viewState,
+        onPlayClick = onPlayClick,
+        onChapterClick = onChapterClick,
+      )
+    }
+  }
+}
+
+@Composable
+private fun BookDetailsPortrait(
+  padding: PaddingValues,
+  viewState: BookDetailsViewState,
+  onPlayClick: () -> Unit,
+  onChapterClick: (BookDetailsViewState.ChapterViewState) -> Unit,
+) {
+  LazyColumn(
+    modifier = Modifier
+      .fillMaxSize()
+      .padding(padding),
+    contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
+    verticalArrangement = Arrangement.spacedBy(20.dp),
+  ) {
+    item {
+      BookCoverArt(
+        cover = viewState.cover,
+        playing = viewState.isPlaying,
+        onPlayClick = onPlayClick,
+        modifier = Modifier
+          .fillMaxWidth()
+          .aspectRatio(1F),
+      )
+    }
+    bookDetailsMetadataItems(viewState)
+    bookDetailsChapterItems(viewState, onChapterClick)
+  }
+}
+
+@Composable
+private fun BookDetailsLandscape(
+  padding: PaddingValues,
+  viewState: BookDetailsViewState,
+  onPlayClick: () -> Unit,
+  onChapterClick: (BookDetailsViewState.ChapterViewState) -> Unit,
+) {
+  Row(
+    modifier = Modifier
+      .fillMaxSize()
+      .padding(padding)
+      .padding(horizontal = 24.dp, vertical = 12.dp),
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    Box(
+      modifier = Modifier
+        .weight(1F)
+        .fillMaxHeight()
+        .padding(end = 20.dp),
+      contentAlignment = Alignment.Center,
+    ) {
+      BookCoverArt(
+        cover = viewState.cover,
+        playing = viewState.isPlaying,
+        onPlayClick = onPlayClick,
+        modifier = Modifier
+          .fillMaxHeight()
+          .aspectRatio(1F),
+      )
+    }
     LazyColumn(
       modifier = Modifier
-        .fillMaxHeight()
-        .padding(padding)
-        .readableContentWidth(),
-      contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
-      verticalArrangement = Arrangement.spacedBy(20.dp),
+        .weight(1F)
+        .fillMaxHeight(),
+      contentPadding = PaddingValues(vertical = 8.dp),
+      verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-      item {
-        BookCoverArt(
-          cover = viewState.cover,
-          playing = viewState.isPlaying,
-          onPlayClick = onPlayClick,
+      bookDetailsMetadataItems(viewState, centerHeader = false)
+      bookDetailsChapterItems(viewState, onChapterClick)
+    }
+  }
+}
+
+private fun LazyListScope.bookDetailsMetadataItems(
+  viewState: BookDetailsViewState,
+  centerHeader: Boolean = true,
+) {
+  item {
+    Column(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalAlignment = if (centerHeader) Alignment.CenterHorizontally else Alignment.Start,
+    ) {
+      Text(
+        text = viewState.title,
+        style = MaterialTheme.typography.headlineSmall,
+        fontWeight = FontWeight.Bold,
+        textAlign = if (centerHeader) TextAlign.Center else TextAlign.Start,
+      )
+      viewState.author?.let {
+        Text(
+          text = it,
+          style = MaterialTheme.typography.bodyLarge,
+          color = MaterialTheme.colorScheme.onSurfaceVariant,
+          textAlign = if (centerHeader) TextAlign.Center else TextAlign.Start,
         )
       }
-      item {
-        Column(
-          modifier = Modifier.fillMaxWidth(),
-          horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-          Text(
-            text = viewState.title,
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-          )
-          viewState.author?.let {
-            Text(
-              text = it,
-              style = MaterialTheme.typography.bodyLarge,
-              color = MaterialTheme.colorScheme.onSurfaceVariant,
-              textAlign = TextAlign.Center,
-            )
-          }
-        }
-      }
-      item {
-        StatsRow(viewState)
-      }
-      item {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-          LinearProgressIndicator(
-            progress = { viewState.progress },
-            modifier = Modifier.weight(1F),
-            drawStopIndicator = {},
-          )
-          Text(
-            text = viewState.remainingTime,
-            modifier = Modifier.padding(start = 12.dp),
-            style = MaterialTheme.typography.labelMedium,
-          )
-        }
-      }
-      if (viewState.description.isNotBlank()) {
-        item {
-          ExpandableDescription(viewState.description)
-        }
-      }
-      item {
-        Text("Chapters", style = MaterialTheme.typography.titleLarge)
-      }
-      items(viewState.chapters) { chapter ->
-        val primary = MaterialTheme.colorScheme.primary
-        Column(
-          modifier = Modifier
-            .fillMaxWidth()
-            .then(if (chapter.isCompleted) Modifier.alpha(0.6f) else Modifier)
-            .clickable { onChapterClick(chapter) },
-        ) {
-          Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-          ) {
-            Text(
-              text = chapter.number.toString(),
-              modifier = Modifier.width(28.dp),
-              style = MaterialTheme.typography.labelMedium,
-              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Text(
-              text = chapter.title,
-              modifier = Modifier.weight(1F),
-              style = MaterialTheme.typography.titleMedium,
-              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurface,
-              maxLines = 2,
-              overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-              text = chapter.time,
-              modifier = Modifier.padding(start = 8.dp),
-              style = MaterialTheme.typography.labelMedium,
-              color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-          }
-          Spacer(Modifier.height(14.dp))
-          HorizontalDivider()
-        }
-      }
     }
+  }
+  item {
+    StatsRow(
+      viewState = viewState,
+      centered = centerHeader,
+    )
+  }
+  item {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      LinearProgressIndicator(
+        progress = { viewState.progress },
+        modifier = Modifier.weight(1F),
+        drawStopIndicator = {},
+      )
+      Text(
+        text = viewState.remainingTime,
+        modifier = Modifier.padding(start = 12.dp),
+        style = MaterialTheme.typography.labelMedium,
+      )
+    }
+  }
+  if (viewState.description.isNotBlank()) {
+    item {
+      ExpandableDescription(viewState.description)
+    }
+  }
+  item {
+    Text("Chapters", style = MaterialTheme.typography.titleLarge)
+  }
+}
+
+private fun LazyListScope.bookDetailsChapterItems(
+  viewState: BookDetailsViewState,
+  onChapterClick: (BookDetailsViewState.ChapterViewState) -> Unit,
+) {
+  items(viewState.chapters) { chapter ->
+    ChapterListItem(
+      chapter = chapter,
+      onClick = { onChapterClick(chapter) },
+    )
+  }
+}
+
+@Composable
+private fun ChapterListItem(
+  chapter: BookDetailsViewState.ChapterViewState,
+  onClick: () -> Unit,
+) {
+  val primary = MaterialTheme.colorScheme.primary
+  Column(
+    modifier = Modifier
+      .fillMaxWidth()
+      .then(if (chapter.isCompleted) Modifier.alpha(0.6f) else Modifier)
+      .clickable(onClick = onClick),
+  ) {
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalArrangement = Arrangement.SpaceBetween,
+      verticalAlignment = Alignment.CenterVertically,
+    ) {
+      Text(
+        text = chapter.number.toString(),
+        modifier = Modifier.width(28.dp),
+        style = MaterialTheme.typography.labelMedium,
+        color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+      Text(
+        text = chapter.title,
+        modifier = Modifier.weight(1F),
+        style = MaterialTheme.typography.titleMedium,
+        color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurface,
+        maxLines = 2,
+        overflow = TextOverflow.Ellipsis,
+      )
+      Text(
+        text = chapter.time,
+        modifier = Modifier.padding(start = 8.dp),
+        style = MaterialTheme.typography.labelMedium,
+        color = if (chapter.isCurrent) primary else MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+    }
+    Spacer(Modifier.height(14.dp))
+    HorizontalDivider()
   }
 }
 
@@ -256,10 +359,15 @@ private fun ExpandableDescription(description: String) {
 private fun StatsRow(
   viewState: BookDetailsViewState,
   modifier: Modifier = Modifier,
+  centered: Boolean = true,
 ) {
   Row(
     modifier = modifier.fillMaxWidth(),
-    horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+    horizontalArrangement = if (centered) {
+      Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally)
+    } else {
+      Arrangement.spacedBy(20.dp)
+    },
     verticalAlignment = Alignment.CenterVertically,
   ) {
     StatItem(painter = painterResource(UiR.drawable.ic_mage_clock), text = viewState.durationText)

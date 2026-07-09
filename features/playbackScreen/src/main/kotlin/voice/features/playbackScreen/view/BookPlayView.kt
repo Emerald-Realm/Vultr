@@ -1,10 +1,12 @@
 package voice.features.playbackScreen.view
 
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -44,6 +46,7 @@ internal fun BookPlayView(
   onBookDetailsClick: () -> Unit,
   snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
+  val speedText = formatSpeed(viewState.playbackSpeed)
   Scaffold(
     snackbarHost = {
       SnackbarHost(hostState = snackbarHostState)
@@ -51,27 +54,25 @@ internal fun BookPlayView(
     topBar = {
       BookPlayAppBar(
         viewState = viewState,
-        onSleepTimerClick = onSleepTimerClick,
-        onBookmarkClick = onBookmarkClick,
-        onBookmarkLongClick = onBookmarkLongClick,
         onAddBookmarkClick = onAddBookmarkClick,
-        onSpeedChangeClick = onSpeedChangeClick,
         onSkipSilenceClick = onSkipSilenceClick,
         onVolumeBoostClick = onVolumeBoostClick,
         onCloseClick = onCloseClick,
-        useLandscapeLayout = useLandscapeLayout,
       )
     },
     bottomBar = {
+      // Portrait: actions docked to the system nav bar.
+      // Landscape: the same bar sits in the right control column (see BookPlayContent).
       if (!useLandscapeLayout) {
         PlayerActionsBar(
-          speedText = formatSpeed(viewState.playbackSpeed),
+          speedText = speedText,
           speedActive = viewState.playbackSpeed != 1.0f,
           sleepTimerState = viewState.sleepTimerState,
           onSpeedClick = onSpeedChangeClick,
           onBookmarksClick = onBookmarkClick,
           onHistoryClick = onHistoryClick,
           onSleepClick = onSleepTimerClick,
+          modifier = Modifier.navigationBarsPadding(),
         )
       }
     },
@@ -87,7 +88,12 @@ internal fun BookPlayView(
         onSkipToPrevious = onSkipToPrevious,
         onCurrentChapterClick = onCurrentChapterClick,
         onBookDetailsClick = onBookDetailsClick,
+        onSpeedChangeClick = onSpeedChangeClick,
+        onBookmarkClick = onBookmarkClick,
+        onHistoryClick = onHistoryClick,
+        onSleepTimerClick = onSleepTimerClick,
         useLandscapeLayout = useLandscapeLayout,
+        speedText = speedText,
       )
     },
   )

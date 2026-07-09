@@ -134,8 +134,8 @@
     <string name="sleep_timer.button.decrement">Lebih singkat</string>
     <string name="auto_sleep_timer.title">Pengatur Waktu Tidur Otomatis</string>
     <string name="auto_sleep_timer.subtitle">Mulai pengatur waktu tidur secara otomatis saat pemutaran dimulai antara %1$s dan %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Atur waktu mulai</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Atur waktu selesai</string>
+    <string name="auto_sleep_timer.start">Atur waktu mulai</string>
+    <string name="auto_sleep_timer.end">Atur waktu selesai</string>
     <plurals name="minutes">
         <item quantity="other">%d menit</item>
     </plurals>

@@ -133,9 +133,9 @@
     <string name="select_folder_subtitle">Les livres sont-ils des fichiers ou des dossiers ?</string>
     <string name="auto_sleep_timer.title">Minuteur de veille automatique</string>
     <string name="auto_sleep_timer.subtitle">Démarrer automatiquement le minuteur de veille lorsque la lecture commence entre %1$s et %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Heure de début</string>
+    <string name="auto_sleep_timer.start">Heure de début</string>
     <string name="pref_faq">FAQ</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Heure de fin</string>
+    <string name="auto_sleep_timer.end">Heure de fin</string>
     <string name="playback.current_chapter">Chapitre en cours</string>
     <string name="end_of_chapter">Fin du chapitre</string>
     <string name="onboarding_analytics_consent_title">Aidez-nous à améliorer Raven</string>

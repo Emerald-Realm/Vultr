@@ -1,5 +1,9 @@
 # Android / Gradle
 local.properties
+keystore.properties
+*.jks
+*.keystore
+private/
 .gradle/
 build/
 */build/

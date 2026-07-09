@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -145,21 +146,27 @@ private fun Content(
       key = "ravenLogo",
       span = { GridItemSpan(maxLineSpan) },
     ) {
-      Surface(
+      // Grid items get exact full-width constraints; wrap so the circle stays 44×44 and left-aligned.
+      Box(
         modifier = Modifier
-          .padding(start = 16.dp, top = 8.dp)
-          .size(44.dp),
-        shape = CircleShape,
-        color = RavenTheme.colors.bgTertiary,
+          .fillMaxWidth()
+          .padding(start = 16.dp, top = 8.dp),
+        contentAlignment = Alignment.CenterStart,
       ) {
-        Box(contentAlignment = Alignment.Center) {
-          Icon(
-            // Preserve the logo's 154:185 portrait aspect ratio so it isn't squashed into a square.
-            modifier = Modifier.size(width = 20.dp, height = 24.dp),
-            painter = painterResource(id = voice.core.ui.R.drawable.ic_raven_logo),
-            contentDescription = null,
-            tint = RavenTheme.colors.primary,
-          )
+        Surface(
+          modifier = Modifier.size(44.dp),
+          shape = CircleShape,
+          color = Color(0xFFE8F0FF),
+        ) {
+          Box(contentAlignment = Alignment.Center) {
+            Icon(
+              // Preserve the logo's 154:185 portrait aspect ratio so it isn't squashed into a square.
+              modifier = Modifier.size(width = 20.dp, height = 24.dp),
+              painter = painterResource(id = voice.core.ui.R.drawable.ic_raven_logo),
+              contentDescription = null,
+              tint = RavenTheme.colors.primary,
+            )
+          }
         }
       }
     }

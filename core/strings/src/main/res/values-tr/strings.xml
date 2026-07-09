@@ -131,8 +131,8 @@
     <string name="pref_faq">SSS</string>
     <string name="auto_sleep_timer.title">Otomatik Uyku Zamanlayıcısı</string>
     <string name="auto_sleep_timer.subtitle">Eğer oynatıcı saat %1$s ile %2$s arasında başlatılırsa otomatik olarak bir uyku zamanlayıcısı başlat</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Başlama zamanı</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Bitiş zamanı</string>
+    <string name="auto_sleep_timer.start">Başlama zamanı</string>
+    <string name="auto_sleep_timer.end">Bitiş zamanı</string>
     <string name="playback.current_chapter">Şu anki bölüm</string>
     <string name="end_of_chapter">Bölüm Sonu</string>
     <string name="onboarding_analytics_consent_title">Raven\'u iyileştirmeye katkı sağlayın</string>
