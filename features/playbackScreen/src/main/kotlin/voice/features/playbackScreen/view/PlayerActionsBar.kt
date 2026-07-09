@@ -39,12 +39,13 @@ internal fun PlayerActionsBar(
   onHistoryClick: () -> Unit,
   onSleepClick: () -> Unit,
   modifier: Modifier = Modifier,
+  applyNavigationBarsPadding: Boolean = false,
 ) {
   val colors = RavenTheme.colors
   Row(
     modifier = modifier
       .fillMaxWidth()
-      .navigationBarsPadding()
+      .then(if (applyNavigationBarsPadding) Modifier.navigationBarsPadding() else Modifier)
       .padding(horizontal = 24.dp, vertical = 8.dp),
     horizontalArrangement = Arrangement.SpaceBetween,
     verticalAlignment = Alignment.CenterVertically,

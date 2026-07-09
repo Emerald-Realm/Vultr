@@ -130,8 +130,8 @@
     </plurals>
     <string name="pref_faq">Vanliga frågor</string>
     <string name="auto_sleep_timer.subtitle">Starta en insomningstimer automatiskt när uppspelningen börjar mellan %1$s och %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Ange starttid</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Ange sluttid</string>
+    <string name="auto_sleep_timer.start">Ange starttid</string>
+    <string name="auto_sleep_timer.end">Ange sluttid</string>
     <string name="playback.current_chapter">Aktuellt kapitel</string>
     <string name="auto_sleep_timer.title">Automatisk insomningstimer</string>
     <string name="end_of_chapter">Slut på kapitlet</string>

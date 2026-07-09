@@ -146,7 +146,7 @@
     <string name="settings_analytics_consent_description">Дозволити анонімне збирання данних для покращення додатку</string>
     <string name="auto_sleep_timer.title">Автоматичний таймер сну</string>
     <string name="auto_sleep_timer.subtitle">Автоматично запустити таймер сну, коли програш починається між %1$s та %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Час початку</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Час кінця</string>
+    <string name="auto_sleep_timer.start">Час початку</string>
+    <string name="auto_sleep_timer.end">Час кінця</string>
     <string name="playback.current_chapter">Глава</string>
 </resources>

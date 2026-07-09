@@ -1,6 +1,20 @@
 # Raven
 
-Open source Audiobook player with the best experience.
+**Raven** is a minimalist, offline, open-source audiobook player for Android — built for reliability and simplicity. No accounts, no ads, no tracking; just your own audiobooks, played beautifully.
+
+Open source audiobook player with the best experience.
+
+## Screenshots
+
+<p>
+  <img src="UI%20shots/Playstore.png" width="180" alt="Raven library screen" />
+  <img src="UI%20shots/Playstore-1.png" width="180" alt="Raven book details screen" />
+  <img src="UI%20shots/Playstore-2.png" width="180" alt="Raven now playing screen" />
+  <img src="UI%20shots/Playstore-3.png" width="180" alt="Raven history screen" />
+  <img src="UI%20shots/Playstore-4.png" width="180" alt="Raven settings screen" />
+  <img src="UI%20shots/Playstore-5.png" width="180" alt="Raven onboarding screen" />
+  <img src="UI%20shots/Playstore-6.png" width="180" alt="Raven audiobook controls" />
+</p>
 
 ## Documentation
 

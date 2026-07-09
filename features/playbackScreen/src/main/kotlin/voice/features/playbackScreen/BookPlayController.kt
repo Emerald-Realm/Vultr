@@ -94,9 +94,9 @@ fun BookPlayScreen(bookId: BookId) {
     onSkipToPrevious = viewModel::previous,
     onCurrentChapterClick = viewModel::onCurrentChapterClick,
     onBookDetailsClick = viewModel::onBookDetailsClick,
-    // Two-pane on wide screens (tablets in either orientation + phone landscape), not just
-    // by orientation, so the cover and the controls always fit together.
-    useLandscapeLayout = LocalConfiguration.current.screenWidthDp >= 600,
+    // Two-pane only when the viewport is wider than tall (tablet landscape / phone landscape).
+    // Portrait tablets use the same stacked layout as phones for feature parity.
+    useLandscapeLayout = with(LocalConfiguration.current) { screenWidthDp > screenHeightDp },
     snackbarHostState = snackbarHostState,
   )
   if (dialogState != null) {

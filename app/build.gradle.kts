@@ -47,8 +47,9 @@ android {
 
   defaultConfig {
     applicationId = "io.github.emeraldrealm.raven"
-    versionName = providers.gradleProperty("voice.versionName").orNull ?: "1.0.0"
-    versionCode = providers.gradleProperty("voice.versionCode").orNull?.toInt() ?: 1
+    // versionName is user-facing (can be "1.01"); versionCode must be a unique integer for Play
+    versionName = providers.gradleProperty("voice.versionName").orNull ?: "1.01"
+    versionCode = providers.gradleProperty("voice.versionCode").orNull?.toInt() ?: 2
 
     testInstrumentationRunner = "voice.app.VoiceJUnitRunner"
   }
@@ -60,8 +61,10 @@ android {
   }
 
   fun createSigningConfig(name: String): ApkSigningConfig? {
-    val propertiesFile = layout.settingsDirectory.file("signing/$name/signing.properties").asFile
+    val rootPropertiesFile = layout.settingsDirectory.file("keystore.properties").asFile
       .takeIf { it.canRead() }
+    val propertiesFile = rootPropertiesFile
+      ?: layout.settingsDirectory.file("signing/$name/signing.properties").asFile.takeIf { it.canRead() }
       ?: layout.settingsDirectory.file("signing/ci/signing.properties").asFile.takeIf { it.canRead() }
       ?: return null
     return signingConfigs.create(name) {
@@ -69,10 +72,13 @@ android {
       propertiesFile.inputStream().use { input ->
         properties.load(input)
       }
-      storeFile = File(propertiesFile.parentFile, "signing.keystore")
-      storePassword = properties["STORE_PASSWORD"] as String
-      keyAlias = properties["KEY_ALIAS"] as String
-      keyPassword = properties["KEY_PASSWORD"] as String
+      storeFile = properties["storeFile"]
+        ?.toString()
+        ?.let(::File)
+        ?: File(propertiesFile.parentFile, "signing.keystore")
+      storePassword = properties["storePassword"]?.toString() ?: properties["STORE_PASSWORD"] as String
+      keyAlias = properties["keyAlias"]?.toString() ?: properties["KEY_ALIAS"] as String
+      keyPassword = properties["keyPassword"]?.toString() ?: properties["KEY_PASSWORD"] as String
     }
   }
 
@@ -96,6 +102,10 @@ android {
     getByName("release") {
       isMinifyEnabled = true
       isShrinkResources = true
+      ndk {
+        // Include native debug symbols in the AAB for Play Console crash/ANR analysis
+        debugSymbolLevel = "FULL"
+      }
     }
     getByName("debug") {
       isMinifyEnabled = false
@@ -144,6 +154,23 @@ android {
 
   buildFeatures {
     buildConfig = true
+  }
+
+  androidComponents {
+    onVariants(selector().withBuildType("release")) { variant ->
+      val hasSigningConfig = variant.productFlavors.any { (_, flavor) ->
+        when (flavor) {
+          "github" -> githubSigningConfig != null
+          "play" -> playSigningConfig != null
+          else -> false
+        }
+      }
+      if (!hasSigningConfig) {
+        throw GradleException(
+          "Release builds require signing. Create an ignored keystore.properties file at the repo root.",
+        )
+      }
+    }
   }
 }
 

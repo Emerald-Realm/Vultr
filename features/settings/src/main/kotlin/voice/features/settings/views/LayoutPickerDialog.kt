@@ -69,7 +69,7 @@ internal fun LayoutPickerDialog(
       ) {
         LayoutOptionCard(
           modifier = Modifier.weight(1f),
-          label = "Row",
+          label = "List",
           selected = currentSelection == GridMode.LIST,
           onClick = { currentSelection = GridMode.LIST },
         ) { RowLayoutIcon(it) }

@@ -130,8 +130,8 @@
     <string name="playback.current_chapter">Capítulo actual</string>
     <string name="auto_sleep_timer.title">Temporizador automático</string>
     <string name="auto_sleep_timer.subtitle">Iniciar o temporizador automáticamente cando a escoita comece entre as %1$s e as %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Hora de inicio</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Hora de fin</string>
+    <string name="auto_sleep_timer.start">Hora de inicio</string>
+    <string name="auto_sleep_timer.end">Hora de fin</string>
     <string name="review.request.button.yes">Valorar agora</string>
     <string name="pref_faq">PMF</string>
     <string name="end_of_chapter">Fin do capítulo</string>

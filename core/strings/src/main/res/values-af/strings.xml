@@ -135,8 +135,8 @@
     <string name="sleep_timer.button.decrement">Korter</string>
     <string name="auto_sleep_timer.title">Outomatiese slaaptimer</string>
     <string name="auto_sleep_timer.subtitle">Begin outomaties ’n slaaptimer wanneer afspeel tussen %1$s en %2$s begin</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Stel begintyd</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Stel eindtyd</string>
+    <string name="auto_sleep_timer.start">Stel begintyd</string>
+    <string name="auto_sleep_timer.end">Stel eindtyd</string>
     <plurals name="minutes">
         <item quantity="one">%d minuut</item>
         <item quantity="other">%d minute</item>

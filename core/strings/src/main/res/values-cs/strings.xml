@@ -134,8 +134,8 @@
     <string name="battery_optimization_rationale">Kvůli nastavení omezení spotřeby může docházet k přerušování přehrávání.</string>
     <string name="battery_optimization_action">Aktualizovat</string>
     <string name="select_folder_title_onboarding">Přidejte svou první audioknihu</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Nastavit čas startu</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Nastavit čas konce</string>
+    <string name="auto_sleep_timer.start">Nastavit čas startu</string>
+    <string name="auto_sleep_timer.end">Nastavit čas konce</string>
     <string name="pref_faq">Často kladené dotazy (FAQ)</string>
     <string name="auto_sleep_timer.title">Automatický časovač spánku</string>
     <string name="playback.current_chapter">Aktuální kapitola</string>

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.Text
 import voice.core.ui.RavenTheme
 import voice.features.playbackScreen.BookPlayViewState
 import kotlin.time.Duration
@@ -37,34 +37,167 @@ internal fun BookPlayContent(
   onSkipToPrevious: () -> Unit,
   onCurrentChapterClick: () -> Unit,
   onBookDetailsClick: () -> Unit,
+  onSpeedChangeClick: () -> Unit,
+  onBookmarkClick: () -> Unit,
+  onHistoryClick: () -> Unit,
+  onSleepTimerClick: () -> Unit,
   useLandscapeLayout: Boolean,
+  speedText: String,
 ) {
   if (useLandscapeLayout) {
-    Row(Modifier.padding(contentPadding)) {
+    LandscapeContent(
+      contentPadding = contentPadding,
+      viewState = viewState,
+      onPlayClick = onPlayClick,
+      onRewindClick = onRewindClick,
+      onFastForwardClick = onFastForwardClick,
+      onSeek = onSeek,
+      onSkipToNext = onSkipToNext,
+      onSkipToPrevious = onSkipToPrevious,
+      onCurrentChapterClick = onCurrentChapterClick,
+      onBookDetailsClick = onBookDetailsClick,
+      onSpeedChangeClick = onSpeedChangeClick,
+      onBookmarkClick = onBookmarkClick,
+      onHistoryClick = onHistoryClick,
+      onSleepTimerClick = onSleepTimerClick,
+      speedText = speedText,
+    )
+  } else {
+    PortraitContent(
+      contentPadding = contentPadding,
+      viewState = viewState,
+      onPlayClick = onPlayClick,
+      onRewindClick = onRewindClick,
+      onFastForwardClick = onFastForwardClick,
+      onSeek = onSeek,
+      onSkipToNext = onSkipToNext,
+      onSkipToPrevious = onSkipToPrevious,
+      onCurrentChapterClick = onCurrentChapterClick,
+      onBookDetailsClick = onBookDetailsClick,
+    )
+  }
+}
+
+@Composable
+private fun PortraitContent(
+  contentPadding: PaddingValues,
+  viewState: BookPlayViewState,
+  onPlayClick: () -> Unit,
+  onRewindClick: () -> Unit,
+  onFastForwardClick: () -> Unit,
+  onSeek: (Duration) -> Unit,
+  onSkipToNext: () -> Unit,
+  onSkipToPrevious: () -> Unit,
+  onCurrentChapterClick: () -> Unit,
+  onBookDetailsClick: () -> Unit,
+) {
+  Column(Modifier.padding(contentPadding)) {
+    Spacer(modifier = Modifier.size(8.dp))
+    PlayerHeader(
+      title = viewState.title,
+      author = viewState.author,
+      onClick = onBookDetailsClick,
+    )
+    Box(
+      modifier = Modifier
+        .fillMaxWidth()
+        .weight(1F)
+        .padding(horizontal = 16.dp, vertical = 16.dp),
+      contentAlignment = Alignment.Center,
+    ) {
+      CoverRow(
+        onPlayClick = onPlayClick,
+        cover = viewState.cover,
+        modifier = Modifier
+          .fillMaxWidth(0.82f)
+          .aspectRatio(1F),
+      )
+    }
+    viewState.chapterName?.let { chapterName ->
+      ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
+    }
+    Spacer(modifier = Modifier.size(16.dp))
+    SliderRow(
+      duration = viewState.duration,
+      playedTime = viewState.playedTime,
+      onSeek = onSeek,
+    )
+    Spacer(modifier = Modifier.size(16.dp))
+    PlaybackRow(
+      playing = viewState.playing,
+      showPreviousNext = viewState.showPreviousNextButtons,
+      onPlayClick = onPlayClick,
+      onRewindClick = onRewindClick,
+      onFastForwardClick = onFastForwardClick,
+      onSkipToPrevious = onSkipToPrevious,
+      onSkipToNext = onSkipToNext,
+    )
+    Spacer(modifier = Modifier.size(24.dp))
+  }
+}
+
+@Composable
+private fun LandscapeContent(
+  contentPadding: PaddingValues,
+  viewState: BookPlayViewState,
+  onPlayClick: () -> Unit,
+  onRewindClick: () -> Unit,
+  onFastForwardClick: () -> Unit,
+  onSeek: (Duration) -> Unit,
+  onSkipToNext: () -> Unit,
+  onSkipToPrevious: () -> Unit,
+  onCurrentChapterClick: () -> Unit,
+  onBookDetailsClick: () -> Unit,
+  onSpeedChangeClick: () -> Unit,
+  onBookmarkClick: () -> Unit,
+  onHistoryClick: () -> Unit,
+  onSleepTimerClick: () -> Unit,
+  speedText: String,
+) {
+  Row(
+    modifier = Modifier
+      .padding(contentPadding)
+      .fillMaxWidth()
+      .fillMaxHeight(),
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    Box(
+      modifier = Modifier
+        .weight(1F)
+        .fillMaxHeight()
+        .padding(start = 24.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+      contentAlignment = Alignment.Center,
+    ) {
       CoverRow(
         cover = viewState.cover,
         onPlayClick = onPlayClick,
         modifier = Modifier
           .fillMaxHeight()
-          .weight(1F)
-          .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+          .aspectRatio(1F),
       )
+    }
+    Column(
+      modifier = Modifier
+        .weight(1F)
+        .fillMaxHeight()
+        .padding(end = 16.dp),
+      horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+      Spacer(modifier = Modifier.weight(0.4f))
+      PlayerHeader(
+        title = viewState.title,
+        author = viewState.author,
+        onClick = onBookDetailsClick,
+      )
+      Spacer(modifier = Modifier.weight(1f))
       Column(
-        modifier = Modifier
-          .fillMaxHeight()
-          .weight(1F),
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
       ) {
-        PlayerHeader(
-          title = viewState.title,
-          author = viewState.author,
-          onClick = onBookDetailsClick,
-        )
-        Spacer(modifier = Modifier.size(16.dp))
         viewState.chapterName?.let { chapterName ->
           ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
         }
-        Spacer(modifier = Modifier.size(20.dp))
+        Spacer(modifier = Modifier.size(12.dp))
         SliderRow(
           duration = viewState.duration,
           playedTime = viewState.playedTime,
@@ -81,50 +214,18 @@ internal fun BookPlayContent(
           onSkipToNext = onSkipToNext,
         )
       }
-    }
-  } else {
-    Column(Modifier.padding(contentPadding)) {
-      Spacer(modifier = Modifier.size(8.dp))
-      PlayerHeader(
-        title = viewState.title,
-        author = viewState.author,
-        onClick = onBookDetailsClick,
+      Spacer(modifier = Modifier.weight(1f))
+      PlayerActionsBar(
+        speedText = speedText,
+        speedActive = viewState.playbackSpeed != 1.0f,
+        sleepTimerState = viewState.sleepTimerState,
+        onSpeedClick = onSpeedChangeClick,
+        onBookmarksClick = onBookmarkClick,
+        onHistoryClick = onHistoryClick,
+        onSleepClick = onSleepTimerClick,
+        applyNavigationBarsPadding = false,
       )
-      Box(
-        modifier = Modifier
-          .fillMaxWidth()
-          .weight(1F)
-          .padding(horizontal = 16.dp, vertical = 16.dp),
-        contentAlignment = Alignment.Center,
-      ) {
-        CoverRow(
-          onPlayClick = onPlayClick,
-          cover = viewState.cover,
-          modifier = Modifier
-            .fillMaxWidth(0.82f)
-            .aspectRatio(1F),
-        )
-      }
-      viewState.chapterName?.let { chapterName ->
-        ChapterRow(chapterName = chapterName, onClick = onCurrentChapterClick)
-      }
-      Spacer(modifier = Modifier.size(16.dp))
-      SliderRow(
-        duration = viewState.duration,
-        playedTime = viewState.playedTime,
-        onSeek = onSeek,
-      )
-      Spacer(modifier = Modifier.size(16.dp))
-      PlaybackRow(
-        playing = viewState.playing,
-        showPreviousNext = viewState.showPreviousNextButtons,
-        onPlayClick = onPlayClick,
-        onRewindClick = onRewindClick,
-        onFastForwardClick = onFastForwardClick,
-        onSkipToPrevious = onSkipToPrevious,
-        onSkipToNext = onSkipToNext,
-      )
-      Spacer(modifier = Modifier.size(24.dp))
+      Spacer(modifier = Modifier.weight(0.3f))
     }
   }
 }

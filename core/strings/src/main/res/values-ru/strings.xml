@@ -136,8 +136,8 @@
     <string name="pref_faq">Частые Вопросы (ЧаВо)</string>
     <string name="auto_sleep_timer.title">Автоматический таймер сна</string>
     <string name="auto_sleep_timer.subtitle">Запускать таймер сна автоматически когда воспроизведение начинается между %1$s и %2$s</string>
-    <string name="auto_sleep_timer.start" weblate-flags="max-length:16">Время начала</string>
-    <string name="auto_sleep_timer.end" weblate-flags="max-length:16">Время конца</string>
+    <string name="auto_sleep_timer.start">Время начала</string>
+    <string name="auto_sleep_timer.end">Время конца</string>
     <string name="playback.current_chapter">Текущая глава</string>
     <string name="dialog_cancel">Отмена</string>
     <string name="end_of_chapter">Конец главы</string>
