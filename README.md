@@ -1,8 +1,6 @@
 # Raven
 
-
-**Raven** is a minimalist, offline, open-source audiobook player for Android — built for reliability and simplicity. No accounts, no ads, no tracking; just your own audiobooks, played beautifully.
-
+Open source Audiobook player with the best experience.
 
 ## Documentation
 
