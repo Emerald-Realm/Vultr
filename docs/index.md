@@ -9,6 +9,20 @@ permalink: /
 
 A minimalist, offline, open-source audiobook player for Android. No accounts, no ads, no tracking — just your own audiobooks, played beautifully.
 
+## 📸 Screenshots
+
+<p>
+  <img src="/Vultr/images/knight-book-details.png" width="180" alt="Raven book details on tablet" />
+  <img src="/Vultr/images/knight-now-playing.png" width="180" alt="Raven now playing on tablet" />
+  <img src="/Vultr/images/knight-tablet-vertical.png" width="180" alt="Raven tablet vertical view" />
+  <img src="/Vultr/images/playstore.png" width="180" alt="Raven library screen" />
+  <img src="/Vultr/images/playstore-1.png" width="180" alt="Raven book details screen" />
+  <img src="/Vultr/images/playstore-2.png" width="180" alt="Raven now playing screen" />
+  <img src="/Vultr/images/playstore-3.png" width="180" alt="Raven history screen" />
+  <img src="/Vultr/images/playstore-4.png" width="180" alt="Raven settings screen" />
+  <img src="/Vultr/images/playstore-5.png" width="180" alt="Raven onboarding screen" />
+  <img src="/Vultr/images/playstore-6.png" width="180" alt="Raven audiobook controls" />
+</p>
 
 ---
 
