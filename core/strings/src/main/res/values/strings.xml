@@ -81,8 +81,8 @@
         <item quantity="other">%d audio files</item>
     </plurals>
     <string name="folder_type_book_example_header">This would lead to the following books being detected</string>
-    <string name="folder_type_no_books">Raven could not detect any books. Are there any audio files?</string>
-    <string name="folder_type_title">How are your files structured?</string>
+    <string name="folder_type_no_books">Audiobook not found in the “%1$s” folder</string>
+    <string name="folder_type_title">How are your audiobooks structured?</string>
     <string name="bookmark_just_now">Just now</string>
     <string name="bookmark_today">Today</string>
     <string name="bookmark_yesterday">Yesterday</string>
@@ -137,12 +137,14 @@
     <string name="storage_bug_title">Permission required</string>
     <string name="storage_bug_subtitle">For certain devices, a system app is missing the necessary permission to access the external storage. This access is essential for Raven to read your audiobooks.</string>
     <string name="storage_bug_button">Grant permission</string>
-    <string name="select_folder_title_onboarding">Add Your First Audiobook</string>
-    <string name="select_folder_title_default">Add your Audiobook(s)</string>
+    <string name="select_folder_title_onboarding">Add your first audiobook</string>
+    <string name="select_folder_title_default">Add your audiobooks</string>
     <string name="select_folder_type_file">File</string>
     <string name="select_folder_type_folder">Folder</string>
     <string name="select_folder_scan_folder">Scan Folder</string>
     <string name="select_folder_add_file">Add a File</string>
+    <string name="select_folder_supported_files">Select any of the buttons below to import audiobooks (i.e. files like .mp3, .m4b and more)</string>
+    <string name="select_folder_pdf_warning">Raven does not offer PDF to AI voice reading.</string>
     <string name="select_folder_subtitle">Would you like to add a single file as a book or a folder?</string>
     <string name="onboarding_welcome_title">Welcome to Raven</string>
     <string name="onboarding_welcome_subtitle">Your audiobook library. Listen to your books MP3, M4B, and more from local storage.</string>

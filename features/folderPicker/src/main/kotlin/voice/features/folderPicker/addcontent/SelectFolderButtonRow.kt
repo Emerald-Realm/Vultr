@@ -57,7 +57,7 @@ internal fun SelectFolderButtonRow(onAdd: (FileTypeSelection, Uri) -> Unit) {
       text = stringResource(id = R.string.select_folder_add_file),
       onClick = {
         try {
-          openDocumentLauncher.launch(arrayOf("*/*"))
+          openDocumentLauncher.launch(arrayOf("audio/*"))
         } catch (e: ActivityNotFoundException) {
           Logger.w(e, "Could not add file")
         }

@@ -26,7 +26,7 @@ internal fun SelectFolderButton(
     modifier = modifier,
     onClick = onClick,
     shape = RoundedCornerShape(999.dp),
-    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
+    border = BorderStroke(1.dp, MaterialTheme.colorScheme.surfaceVariant),
     colors = ButtonDefaults.outlinedButtonColors(
       contentColor = MaterialTheme.colorScheme.onSurface,
     ),

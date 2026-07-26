@@ -23,7 +23,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -156,7 +156,7 @@ private fun Content(
         Surface(
           modifier = Modifier.size(44.dp),
           shape = CircleShape,
-          color = Color(0xFFE8F0FF),
+          color = RavenTheme.colors.primaryFaint,
         ) {
           Box(contentAlignment = Alignment.Center) {
             Icon(
@@ -174,10 +174,18 @@ private fun Content(
       key = "header",
       span = { GridItemSpan(maxLineSpan) },
     ) {
-      FolderModeSelectionCard(
-        onFolderModeSelect = onFolderModeSelect,
-        selectedFolderMode = viewState.selectedFolderMode,
-      )
+      Column {
+        Text(
+          modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 36.dp),
+          text = stringResource(id = StringsR.string.folder_type_title),
+          style = MaterialTheme.typography.headlineSmall,
+        )
+        Spacer(Modifier.size(36.dp))
+        FolderModeSelectionCard(
+          onFolderModeSelect = onFolderModeSelect,
+          selectedFolderMode = viewState.selectedFolderMode,
+        )
+      }
     }
     item(
       key = "folderStructureExplanation",
@@ -210,7 +218,15 @@ private fun Content(
           key = "noBooksDetected",
           span = { GridItemSpan(maxLineSpan) },
         ) {
-          Text(text = stringResource(id = StringsR.string.folder_type_no_books))
+          Text(
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 24.dp),
+            text = stringResource(
+              id = StringsR.string.folder_type_no_books,
+              viewState.folderName,
+            ),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.error,
+          )
         }
       } else {
         item(span = { GridItemSpan(maxLineSpan) }) {
@@ -237,7 +253,7 @@ private fun AppBar(
   scrollBehavior: TopAppBarScrollBehavior,
   onBackClick: () -> Unit,
 ) {
-  MediumTopAppBar(
+  TopAppBar(
     scrollBehavior = scrollBehavior,
     navigationIcon = {
       IconButton(onClick = onBackClick) {
@@ -247,9 +263,7 @@ private fun AppBar(
         )
       }
     },
-    title = {
-      Text(text = stringResource(id = StringsR.string.folder_type_title))
-    },
+    title = {},
   )
 }
 
@@ -260,6 +274,7 @@ private fun SelectFolderTypePreview() {
     onBackClick = {},
     onFolderModeSelect = {},
     viewState = SelectFolderTypeViewState(
+      folderName = "Audiobooks",
       books = listOf(
         SelectFolderTypeViewState.Book("Cats", 42),
         SelectFolderTypeViewState.Book("Dogs", 12),
