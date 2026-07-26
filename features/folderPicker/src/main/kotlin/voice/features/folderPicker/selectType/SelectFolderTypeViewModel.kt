@@ -106,37 +106,26 @@ class SelectFolderTypeViewModel(
       withContext(dispatcherProvider.io) {
         books = when (selectedFolderMode) {
           FolderMode.Audiobooks -> {
-            documentFile.children.map { child ->
-              SelectFolderTypeViewState.Book(
-                name = child.nameWithoutExtension(),
-                fileCount = child.audioFileCount(),
-              )
+            documentFile.children.mapNotNull { child ->
+              child.toDetectedBook()
             }
           }
           FolderMode.SingleBook -> {
-            listOf(
+            listOfNotNull(
               SelectFolderTypeViewState.Book(
                 name = documentFile.nameWithoutExtension(),
                 fileCount = documentFile.audioFileCount(),
-              ),
+              ).takeIf { it.fileCount > 0 },
             )
           }
           FolderMode.Authors -> {
             documentFile.children.flatMap { author ->
               val authorName = author.nameWithoutExtension()
               if (author.isAudioFile()) {
-                listOf(
-                  SelectFolderTypeViewState.Book(
-                    name = author.nameWithoutExtension(),
-                    fileCount = author.audioFileCount(),
-                  ),
-                )
+                listOfNotNull(author.toDetectedBook())
               } else {
-                author.children.map { child ->
-                  SelectFolderTypeViewState.Book(
-                    name = "${child.nameWithoutExtension()} ($authorName)",
-                    fileCount = child.audioFileCount(),
-                  )
+                author.children.mapNotNull { child ->
+                  child.toDetectedBook(name = "${child.nameWithoutExtension()} ($authorName)")
                 }
               }
             }
@@ -146,12 +135,24 @@ class SelectFolderTypeViewModel(
       }
     }
     return SelectFolderTypeViewState(
+      folderName = documentFile.nameWithoutExtension(),
       books = books,
       selectedFolderMode = selectedFolderMode,
       loading = loading,
       noBooksDetected = !loading && books.isEmpty(),
       addButtonVisible = books.isNotEmpty(),
     )
+  }
+
+  private fun CachedDocumentFile.toDetectedBook(
+    name: String = nameWithoutExtension(),
+  ): SelectFolderTypeViewState.Book? {
+    val fileCount = audioFileCount()
+    return if (fileCount > 0) {
+      SelectFolderTypeViewState.Book(name = name, fileCount = fileCount)
+    } else {
+      null
+    }
   }
 
   @AssistedFactory

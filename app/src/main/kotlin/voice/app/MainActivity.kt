@@ -13,6 +13,10 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.ui.Modifier
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -28,6 +32,7 @@ import voice.app.navigation.StartDestinationProvider
 import voice.core.analytics.api.Analytics
 import voice.core.common.rootGraphAs
 import voice.core.logging.api.Logger
+import voice.core.ui.RavenTheme
 import voice.core.ui.VoiceTheme
 import voice.features.review.ReviewFeature
 import voice.navigation.Destination
@@ -69,6 +74,10 @@ class MainActivity : AppCompatActivity() {
         val dialogStrategy = remember { DialogSceneStrategy<Destination.Compose>() }
 
         NavDisplay(
+          modifier = Modifier
+            .fillMaxSize()
+            .background(RavenTheme.colors.bgMain)
+            .safeDrawingPadding(),
           backStack = backStack,
           sceneStrategies = listOf(dialogStrategy),
           transitionSpec = {

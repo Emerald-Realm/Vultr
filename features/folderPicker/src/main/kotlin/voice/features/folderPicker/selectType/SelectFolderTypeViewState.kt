@@ -1,6 +1,7 @@
 package voice.features.folderPicker.selectType
 
 internal data class SelectFolderTypeViewState(
+  val folderName: String,
   val books: List<Book>,
   val selectedFolderMode: FolderMode,
   val loading: Boolean,

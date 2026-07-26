@@ -29,6 +29,9 @@ class SelectFolderTypeViewModelTest {
     val audiobookFolder = temporaryFolder.newFolder("audiobooks")
     with(temporaryFolder) {
       newFile("audiobooks/FirstBook.mp3")
+      newFile("audiobooks/NotAnAudiobook.pdf")
+      newFolder("audiobooks/Documents")
+      newFile("audiobooks/Documents/book.pdf")
       newFolder("audiobooks/SecondBook")
       newFile("audiobooks/SecondBook/1.mp3")
       newFile("audiobooks/SecondBook/2.mp3")
@@ -55,6 +58,7 @@ class SelectFolderTypeViewModelTest {
         with(awaitItem()) {
           this.books.shouldContainExactlyInAnyOrder(books.toList())
           this.selectedFolderMode shouldBe folderMode
+          this.folderName shouldBe "audiobooks"
         }
       }
       expectItem(FolderMode.Audiobooks)
