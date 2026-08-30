@@ -25,6 +25,8 @@ internal fun SettingsRow(
   modifier: Modifier = Modifier,
   value: String? = null,
   trailing: SettingsRowTrailing = SettingsRowTrailing.None,
+  leadingIcon: Int? = null,
+  leadingTint: Color = RavenTheme.colors.icon,
 ) {
   Row(
     modifier = modifier
@@ -34,12 +36,22 @@ internal fun SettingsRow(
     horizontalArrangement = Arrangement.SpaceBetween,
     verticalAlignment = Alignment.CenterVertically,
   ) {
-    Text(
-      text = label,
-      fontSize = 15.sp,
-      letterSpacing = (-0.075).sp,
-      color = RavenTheme.colors.subTitle,
-    )
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      if (leadingIcon != null) {
+        Icon(
+          painter = painterResource(leadingIcon),
+          contentDescription = null,
+          modifier = Modifier.padding(end = 10.dp).size(18.dp),
+          tint = leadingTint,
+        )
+      }
+      Text(
+        text = label,
+        fontSize = 15.sp,
+        letterSpacing = (-0.075).sp,
+        color = RavenTheme.colors.subTitle,
+      )
+    }
     Row(
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -69,6 +81,14 @@ internal fun SettingsRow(
             tint = RavenTheme.colors.icon,
           )
         }
+        SettingsRowTrailing.Forward -> {
+          Icon(
+            painter = painterResource(UiR.drawable.ic_mage_chevron_right),
+            contentDescription = null,
+            modifier = Modifier.size(20.dp),
+            tint = RavenTheme.colors.icon,
+          )
+        }
         SettingsRowTrailing.None -> {}
       }
     }
@@ -76,5 +96,5 @@ internal fun SettingsRow(
 }
 
 internal enum class SettingsRowTrailing {
-  None, Dots, ExternalLink,
+  None, Dots, ExternalLink, Forward,
 }

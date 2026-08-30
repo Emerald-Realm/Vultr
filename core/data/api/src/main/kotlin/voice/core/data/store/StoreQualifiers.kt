@@ -43,3 +43,6 @@ public annotation class DeveloperMenuUnlockedStore
 
 @Qualifier
 public annotation class FeatureFlagOverridesStore
+
+@Qualifier
+public annotation class ReaderProfileStore

@@ -13,6 +13,7 @@ import kotlinx.serialization.builtins.nullable
 import kotlinx.serialization.builtins.serializer
 import voice.core.data.BookId
 import voice.core.data.GridMode
+import voice.core.data.ReaderProfile
 import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.featureflag.FeatureFlagOverride
@@ -176,6 +177,17 @@ public interface StoreModule {
   @DeveloperMenuUnlockedStore
   private fun developerMenuUnlocked(factory: VoiceDataStoreFactory): DataStore<Boolean> {
     return factory.boolean("developerMenuUnlocked", defaultValue = false)
+  }
+
+  @Provides
+  @SingleIn(AppScope::class)
+  @ReaderProfileStore
+  private fun readerProfile(factory: VoiceDataStoreFactory): DataStore<ReaderProfile> {
+    return factory.create(
+      serializer = ReaderProfile.serializer(),
+      defaultValue = ReaderProfile(),
+      fileName = "readerProfile",
+    )
   }
 
   @Provides

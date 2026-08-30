@@ -15,6 +15,7 @@ dependencies {
   implementation(projects.core.data.api)
 
   implementation(libs.androidxCore)
+  implementation(libs.coil)
 
   testImplementation(libs.molecule)
   testImplementation(libs.turbine)

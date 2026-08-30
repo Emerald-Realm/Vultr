@@ -259,6 +259,10 @@ class SettingsViewModel(
   override fun openDeveloperMenu() {
     navigator.goTo(Destination.DeveloperSettings)
   }
+
+  override fun openProfile() {
+    navigator.goTo(Destination.Profile)
+  }
 }
 
 // GitHub Pages site served from the /docs folder of the public repo.
