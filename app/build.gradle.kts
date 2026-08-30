@@ -47,9 +47,9 @@ android {
 
   defaultConfig {
     applicationId = "io.github.emeraldrealm.raven"
-    // versionName is user-facing (can be "1.01"); versionCode must be a unique integer for Play
-    versionName = providers.gradleProperty("voice.versionName").orNull ?: "1.01"
-    versionCode = providers.gradleProperty("voice.versionCode").orNull?.toInt() ?: 3
+    // versionName is user-facing; versionCode must be a unique integer for Play
+    versionName = providers.gradleProperty("voice.versionName").orNull ?: "1.7"
+    versionCode = providers.gradleProperty("voice.versionCode").orNull?.toInt() ?: 8
 
     testInstrumentationRunner = "voice.app.VoiceJUnitRunner"
   }

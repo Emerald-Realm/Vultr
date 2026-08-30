@@ -31,6 +31,7 @@ interface SettingsListener {
   fun toggleAnalytics()
   fun openFolderPicker()
   fun onAppVersionClick()
+  fun openProfile()
 
   fun openDeveloperMenu()
 
@@ -62,6 +63,7 @@ interface SettingsListener {
       override fun toggleAnalytics() {}
       override fun openFolderPicker() {}
       override fun onAppVersionClick() {}
+      override fun openProfile() {}
       override fun openDeveloperMenu() {}
     }
   }
