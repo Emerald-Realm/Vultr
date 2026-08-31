@@ -22,26 +22,21 @@
     android:theme="@style/AppTheme"
     tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
-    <!--
-      Android Auto is disabled for v1. Declaring car support requires a separate Google Play
-      "Cars" declaration and review. To re-enable, uncomment the three car meta-data entries
-      below and complete the Play Cars declaration.
-
+    <!-- Android Auto: publishing to Play requires the Google Play "Cars" declaration and review. -->
     <meta-data
       android:name="com.google.android.gms.car.application"
       android:resource="@xml/automotive_app_desc" />
 
-    auto notification
+    <!-- auto notification -->
     <meta-data
       android:name="com.google.android.gms.car.notification.SmallIcon"
       android:resource="@drawable/ic_notification"
       tools:ignore="ManifestResource" />
 
-    auto theme
+    <!-- auto theme -->
     <meta-data
       android:name="com.google.android.gms.car.application.theme"
       android:resource="@style/AppTheme" />
-    -->
 
     <activity-alias
       android:name=".features.MainActivity"

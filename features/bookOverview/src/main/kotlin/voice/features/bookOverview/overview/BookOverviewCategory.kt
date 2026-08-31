@@ -3,7 +3,8 @@ package voice.features.bookOverview.overview
 import androidx.annotation.StringRes
 import voice.core.data.Book
 import voice.core.data.BookComparator
-import java.util.concurrent.TimeUnit.SECONDS
+import voice.core.data.BookProgressCategory
+import voice.core.data.progressCategory
 import voice.core.strings.R as StringsR
 
 enum class BookOverviewCategory(
@@ -26,13 +27,9 @@ enum class BookOverviewCategory(
 
 val Book.category: BookOverviewCategory
   get() {
-    return if (position == 0L) {
-      BookOverviewCategory.NOT_STARTED
-    } else {
-      if (position >= duration - SECONDS.toMillis(5)) {
-        BookOverviewCategory.FINISHED
-      } else {
-        BookOverviewCategory.CURRENT
-      }
+    return when (progressCategory) {
+      BookProgressCategory.NOT_STARTED -> BookOverviewCategory.NOT_STARTED
+      BookProgressCategory.CURRENT -> BookOverviewCategory.CURRENT
+      BookProgressCategory.FINISHED -> BookOverviewCategory.FINISHED
     }
   }

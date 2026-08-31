@@ -1,6 +1,9 @@
 package voice.core.playback.session
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import androidx.core.content.IntentCompat
 import androidx.datastore.core.DataStore
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -27,6 +30,7 @@ import kotlinx.coroutines.launch
 import voice.core.data.Book
 import voice.core.data.BookId
 import voice.core.data.repo.BookRepository
+import voice.core.data.repo.BookmarkRepo
 import voice.core.data.store.CurrentBookStore
 import voice.core.logging.api.Logger
 import voice.core.playback.player.VoicePlayer
@@ -43,6 +47,8 @@ class LibrarySessionCallback(
   @CurrentBookStore
   private val currentBookStoreId: DataStore<BookId?>,
   private val bookRepository: BookRepository,
+  private val bookmarkRepo: BookmarkRepo,
+  private val mediaButtonEventHandler: MediaButtonEventHandler,
 ) : MediaLibrarySession.Callback {
 
   override fun onAddMediaItems(
@@ -214,8 +220,37 @@ class LibrarySessionCallback(
       is CustomCommand.SetGain -> {
         player.setGain(command.gain)
       }
+      CustomCommand.AddBookmark -> {
+        scope.launch {
+          val book = currentBook() ?: return@launch
+          bookmarkRepo.addBookmarkAtBookPosition(
+            book = book,
+            title = null,
+            setBySleepTimer = false,
+          )
+          Logger.d("added bookmark for ${book.id}")
+        }
+      }
+      CustomCommand.CycleSpeed -> {
+        player.setPlaybackSpeed(SpeedCycle.next(player.playbackParameters.speed))
+      }
     }
 
     return Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
+  }
+
+  override fun onMediaButtonEvent(
+    session: MediaSession,
+    controllerInfo: ControllerInfo,
+    intent: Intent,
+  ): Boolean {
+    val keyEvent = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_KEY_EVENT, KeyEvent::class.java)
+    if (keyEvent != null) {
+      val isAndroidAuto = controllerInfo.packageName == "com.google.android.projection.gearhead"
+      if (mediaButtonEventHandler.onKeyEvent(keyEvent, isAndroidAuto = isAndroidAuto)) {
+        return true
+      }
+    }
+    return super.onMediaButtonEvent(session, controllerInfo, intent)
   }
 }

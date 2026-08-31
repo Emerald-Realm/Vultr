@@ -3,6 +3,7 @@ package voice.core.playback.session
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import voice.core.data.BookId
+import voice.core.data.BookProgressCategory
 import voice.core.data.ChapterId
 
 @Serializable
@@ -10,6 +11,10 @@ sealed interface MediaId {
   @Serializable
   @SerialName("root")
   data object Root : MediaId
+
+  @Serializable
+  @SerialName("category")
+  data class Category(val category: BookProgressCategory) : MediaId
 
   @Serializable
   @SerialName("book")
