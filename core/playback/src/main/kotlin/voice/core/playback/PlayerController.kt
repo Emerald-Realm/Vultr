@@ -153,6 +153,7 @@ class PlayerController(
       is MediaId.Chapter -> mediaId.bookId
       MediaId.Recent -> null
       MediaId.Root -> null
+      is MediaId.Category -> null
     }
   }
 

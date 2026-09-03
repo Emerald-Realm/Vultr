@@ -13,7 +13,9 @@ import voice.core.data.Book
 import voice.core.data.BookComparator
 import voice.core.data.BookContent
 import voice.core.data.BookId
+import voice.core.data.BookProgressCategory
 import voice.core.data.Chapter
+import voice.core.data.progressCategory
 import voice.core.data.repo.BookContentRepo
 import voice.core.data.repo.BookRepository
 import voice.core.data.repo.ChapterRepo
@@ -53,6 +55,7 @@ class MediaItemProvider(
     val mediaId = id.toMediaIdOrNull() ?: return null
     return when (mediaId) {
       MediaId.Root -> root()
+      is MediaId.Category -> categoryItem(mediaId.category)
       is MediaId.Book -> {
         bookRepository.get(mediaId.id)?.let(::mediaItem)
       }
@@ -80,7 +83,7 @@ class MediaItemProvider(
         val book = bookRepository.get(mediaId.id) ?: return null
         mediaItemsWithStartPosition(book)
       }
-      is MediaId.Chapter, MediaId.Root, MediaId.Recent, null -> null
+      is MediaId.Chapter, MediaId.Root, is MediaId.Category, MediaId.Recent, null -> null
     }
   }
 
@@ -102,8 +105,14 @@ class MediaItemProvider(
     val mediaId = id.toMediaIdOrNull() ?: return null
     return when (mediaId) {
       MediaId.Root -> {
+        // Browsable root children render as tabs in Android Auto, mirroring the categories of
+        // the book overview screen.
+        BookProgressCategory.entries.map(::categoryItem)
+      }
+      is MediaId.Category -> {
         bookRepository.all()
-          .sortedWith(BookComparator.ByLastPlayed)
+          .filter { it.progressCategory == mediaId.category }
+          .sortedWith(mediaId.category.comparator)
           .map { book ->
             mediaItem(book)
           }
@@ -119,6 +128,28 @@ class MediaItemProvider(
       }
     }
   }
+
+  private fun categoryItem(category: BookProgressCategory): MediaItem = MediaItem(
+    title = application.getString(category.titleRes),
+    browsable = true,
+    isPlayable = false,
+    mediaId = MediaId.Category(category),
+    mediaType = MediaType.AudioBookRoot,
+  )
+
+  private val BookProgressCategory.titleRes: Int
+    get() = when (this) {
+      BookProgressCategory.NOT_STARTED -> StringsR.string.book_header_not_started
+      BookProgressCategory.CURRENT -> StringsR.string.book_header_current
+      BookProgressCategory.FINISHED -> StringsR.string.book_header_completed
+    }
+
+  private val BookProgressCategory.comparator: Comparator<Book>
+    get() = when (this) {
+      BookProgressCategory.NOT_STARTED -> BookComparator.ByName
+      BookProgressCategory.CURRENT -> BookComparator.ByLastPlayed
+      BookProgressCategory.FINISHED -> BookComparator.ByLastPlayed
+    }
 
   fun mediaItem(book: Book): MediaItem = MediaItem(
     title = book.content.name,

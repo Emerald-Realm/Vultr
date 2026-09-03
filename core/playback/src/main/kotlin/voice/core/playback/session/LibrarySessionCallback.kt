@@ -1,6 +1,9 @@
 package voice.core.playback.session
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import androidx.core.content.IntentCompat
 import androidx.datastore.core.DataStore
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -27,6 +30,7 @@ import kotlinx.coroutines.launch
 import voice.core.data.Book
 import voice.core.data.BookId
 import voice.core.data.repo.BookRepository
+import voice.core.data.repo.BookmarkRepo
 import voice.core.data.store.CurrentBookStore
 import voice.core.logging.api.Logger
 import voice.core.playback.player.VoicePlayer
@@ -43,6 +47,9 @@ class LibrarySessionCallback(
   @CurrentBookStore
   private val currentBookStoreId: DataStore<BookId?>,
   private val bookRepository: BookRepository,
+  private val bookmarkRepo: BookmarkRepo,
+  private val mediaButtonEventHandler: MediaButtonEventHandler,
+  private val dynamicMediaButtons: DynamicMediaButtons,
 ) : MediaLibrarySession.Callback {
 
   override fun onAddMediaItems(
@@ -164,9 +171,10 @@ class LibrarySessionCallback(
   ): ConnectionResult {
     Logger.d("onConnect to ${controller.packageName}")
 
-    if (player.playbackState == Player.STATE_IDLE &&
-      controller.packageName == "com.google.android.projection.gearhead"
-    ) {
+    if (controller.isAndroidAuto) {
+      dynamicMediaButtons.onAndroidAutoConnected()
+    }
+    if (player.playbackState == Player.STATE_IDLE && controller.isAndroidAuto) {
       Logger.d("onConnect to ${controller.packageName} and player is idle.")
       Logger.d("Preparing current book so it shows up as recently played")
       scope.launch {
@@ -183,6 +191,16 @@ class LibrarySessionCallback(
       sessionCommands,
       connectionResult.availablePlayerCommands,
     )
+  }
+
+  override fun onDisconnected(
+    session: MediaSession,
+    controller: ControllerInfo,
+  ) {
+    if (controller.isAndroidAuto) {
+      dynamicMediaButtons.onAndroidAutoDisconnected()
+    }
+    super.onDisconnected(session, controller)
   }
 
   private suspend fun prepareCurrentBook() {
@@ -208,14 +226,51 @@ class LibrarySessionCallback(
       CustomCommand.ForceSeekToPrevious -> {
         player.forceSeekToPrevious()
       }
+      CustomCommand.SeekBack -> {
+        player.seekBack()
+      }
+      CustomCommand.SeekForward -> {
+        player.seekForward()
+      }
       is CustomCommand.SetSkipSilence -> {
         player.setSkipSilenceEnabled(command.skipSilence)
       }
       is CustomCommand.SetGain -> {
         player.setGain(command.gain)
       }
+      CustomCommand.AddBookmark -> {
+        scope.launch {
+          val book = currentBook() ?: return@launch
+          bookmarkRepo.addBookmarkAtBookPosition(
+            book = book,
+            title = null,
+            setBySleepTimer = false,
+          )
+          Logger.d("added bookmark for ${book.id}")
+        }
+      }
+      CustomCommand.CycleSpeed -> {
+        player.setPlaybackSpeed(SpeedCycle.next(player.playbackParameters.speed))
+      }
     }
 
     return Futures.immediateFuture(SessionResult(SessionResult.RESULT_SUCCESS))
   }
+
+  override fun onMediaButtonEvent(
+    session: MediaSession,
+    controllerInfo: ControllerInfo,
+    intent: Intent,
+  ): Boolean {
+    val keyEvent = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_KEY_EVENT, KeyEvent::class.java)
+    if (keyEvent != null) {
+      if (mediaButtonEventHandler.onKeyEvent(keyEvent, isAndroidAuto = controllerInfo.isAndroidAuto)) {
+        return true
+      }
+    }
+    return super.onMediaButtonEvent(session, controllerInfo, intent)
+  }
 }
+
+private val ControllerInfo.isAndroidAuto: Boolean
+  get() = packageName == "com.google.android.projection.gearhead"
