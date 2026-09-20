@@ -13,7 +13,7 @@ private val monthFormatter = DateTimeFormatter.ofPattern("LLLL", Locale.getDefau
 
 /** Month label such as "June" (current year) or "June 2024" (other years). */
 internal fun monthLabel(item: BookOverviewItemViewState): String {
-  val date = item.addedAt.atZone(zone).toLocalDate()
+  val date = java.time.Instant.ofEpochMilli(item.addedAt.toEpochMilliseconds()).atZone(zone).toLocalDate()
   val month = date.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
     .replaceFirstChar { it.titlecase(Locale.getDefault()) }
   val currentYear = java.time.LocalDate.now(zone).year

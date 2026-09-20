@@ -4,19 +4,20 @@ import io.kotest.matchers.shouldBe
 import org.junit.Test
 import voice.core.data.MarkData
 import java.io.File
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 
 class ConvertersTest {
 
   @Test
   fun instant() {
-    test(Instant.now(), Converters::fromInstant, Converters::toInstant)
+    test(Clock.System.now(), Converters::fromInstant, Converters::toInstant)
   }
 
   @Test
   fun uuid() {
-    test(UUID.randomUUID(), Converters::fromUUID, Converters::toUUID)
+    test(Uuid.random(), Converters::fromUUID, Converters::toUUID)
   }
 
   @Test

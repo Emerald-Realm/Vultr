@@ -31,6 +31,7 @@ fun Project.baseSetup() {
           "kotlin.time.ExperimentalTime",
           "kotlinx.coroutines.ExperimentalCoroutinesApi",
           "kotlinx.coroutines.FlowPreview",
+          "kotlin.uuid.ExperimentalUuidApi",
         ),
       )
       allWarningsAsErrors.set(providers.gradleProperty("voice.warningsAsErrors").map(String::toBooleanStrict))
@@ -72,6 +73,7 @@ fun Project.baseSetup() {
     add("implementation", platform(libs.findLibrary("firebase-bom").get()))
     add("implementation", libs.findLibrary("coroutines.core").get())
     add("implementation", libs.findLibrary("coroutines.android").get())
+    add("implementation", libs.findLibrary("kotlinx-datetime").get())
     if (project.path != ":core:logging:api") {
       add("implementation", project(":core:logging:api"))
     }

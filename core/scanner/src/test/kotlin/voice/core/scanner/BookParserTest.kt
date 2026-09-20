@@ -13,7 +13,7 @@ import voice.core.data.Chapter
 import voice.core.data.ChapterId
 import voice.core.documentfile.FileBasedDocumentFile
 import java.io.File
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 @RunWith(AndroidJUnit4::class)
 class BookParserTest {
@@ -115,7 +115,7 @@ class BookParserTest {
     id = ChapterId(file.toUri()),
     name = "Chapter",
     duration = 1000L,
-    fileLastModified = Instant.EPOCH,
+    fileLastModified = Instant.fromEpochMilliseconds(0L),
     markData = emptyList(),
   )
 

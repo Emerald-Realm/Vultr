@@ -6,7 +6,7 @@ import voice.core.data.BookId
 import voice.core.logging.api.Logger
 import voice.core.ui.ImmutableFile
 import voice.core.ui.formatTime
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 @Immutable
 data class BookOverviewItemViewState(

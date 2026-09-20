@@ -7,7 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoSet
 import dev.zacsweers.metro.binding
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 // clear the fileLastModified to trigger a rescan of the chapters
 @ContributesIntoSet(
@@ -18,7 +18,7 @@ public class Migration53 : IncrementalMigration(53) {
 
   override fun migrate(db: SupportSQLiteDatabase) {
     val lastModifiedCv = ContentValues().apply {
-      put("fileLastModified", Instant.EPOCH.toString())
+      put("fileLastModified", Instant.fromEpochMilliseconds(0L).toString())
     }
     db.update(
       "chapters2",

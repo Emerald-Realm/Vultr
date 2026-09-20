@@ -14,7 +14,8 @@ import voice.core.data.repo.BookRepository
 import voice.core.data.repo.ListeningSessionRepo
 import voice.core.data.store.CurrentBookStore
 import voice.core.logging.api.Logger
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 @Inject
 @SingleIn(AppScope::class)
@@ -31,7 +32,7 @@ class PlaybackHistoryRecorder(
   private var suppressNextPause = false
 
   fun onPlay() {
-    playingSince = Instant.now()
+    playingSince = Clock.System.now()
     record(ListeningHistoryAction.Played, listenedMs = 0)
   }
 
@@ -62,8 +63,8 @@ class PlaybackHistoryRecorder(
 
   private fun consumeListened(keepPlaying: Boolean): Long {
     val since = playingSince ?: return 0
-    val now = Instant.now()
-    val elapsed = (now.toEpochMilli() - since.toEpochMilli()).coerceAtLeast(0)
+    val now = Clock.System.now()
+    val elapsed = (now.toEpochMilliseconds() - since.toEpochMilliseconds()).coerceAtLeast(0)
     playingSince = if (keepPlaying && playStateManager.playState == PlayStateManager.PlayState.Playing) {
       now
     } else {
@@ -87,7 +88,7 @@ class PlaybackHistoryRecorder(
             chapterId = book.content.currentChapter,
             action = action.name,
             positionInChapter = book.content.positionInChapter,
-            createdAt = Instant.now(),
+            createdAt = Clock.System.now(),
             listenedMs = listenedMs,
           ),
         )

@@ -3,7 +3,8 @@ package voice.core.data
 import io.kotest.assertions.withClue
 import io.kotest.matchers.collections.shouldContainInOrder
 import org.junit.Test
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 class ChapterTest {
 
@@ -146,7 +147,7 @@ class ChapterTest {
 
     val actualPositions = Chapter(
       duration = duration,
-      fileLastModified = Instant.now(),
+      fileLastModified = Clock.System.now(),
       id = ChapterId(""),
       markData = marks,
       name = "Chapter",

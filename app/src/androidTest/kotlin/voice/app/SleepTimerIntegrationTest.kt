@@ -25,8 +25,9 @@ import voice.core.sleeptimer.SleepTimer
 import voice.core.sleeptimer.SleepTimerMode
 import voice.core.sleeptimer.SleepTimerState
 import java.io.File
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 import kotlin.time.Duration.Companion.seconds
 
 class SleepTimerIntegrationTest {
@@ -92,14 +93,14 @@ class SleepTimerIntegrationTest {
   private suspend fun prepareTestBook(): BookId {
     val audioFile = copyTestAudioFile()
 
-    val bookId = BookId(UUID.randomUUID().toString())
+    val bookId = BookId(Uuid.random().toString())
     val chapterId = ChapterId(audioFile.toUri())
 
     val chapter = Chapter(
       id = chapterId,
       duration = 119210,
       name = "Test Chapter",
-      fileLastModified = Instant.EPOCH,
+      fileLastModified = Instant.fromEpochMilliseconds(0L),
       markData = listOf(
         MarkData(startMs = 0, name = "Mark 1"),
         MarkData(startMs = 1000, name = "Mark 2"),
@@ -111,10 +112,10 @@ class SleepTimerIntegrationTest {
       playbackSpeed = 1.0f,
       skipSilence = false,
       isActive = true,
-      lastPlayedAt = Instant.now(),
+      lastPlayedAt = Clock.System.now(),
       author = "Test Author",
       name = "Test Audio Book",
-      addedAt = Instant.now(),
+      addedAt = Clock.System.now(),
       chapters = listOf(chapterId),
       currentChapter = chapterId,
       positionInChapter = 0L,

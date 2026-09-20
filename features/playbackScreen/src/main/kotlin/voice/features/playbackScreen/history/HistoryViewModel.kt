@@ -49,7 +49,7 @@ class HistoryViewModel(
       val zone = ZoneId.systemDefault()
       val days = listeningSessionRepo.forBook(bookId)
         .sortedByDescending { it.createdAt }
-        .groupBy { it.createdAt.atZone(zone).toLocalDate() }
+        .groupBy { java.time.Instant.ofEpochMilli(it.createdAt.toEpochMilliseconds()).atZone(zone).toLocalDate() }
         .map { (date, sessions) ->
           val totalListenedMs = sessions.sumOf { it.listenedMs }
           val totalMinutes = totalListenedMs / 60_000L

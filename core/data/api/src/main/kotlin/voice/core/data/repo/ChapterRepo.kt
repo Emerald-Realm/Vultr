@@ -2,7 +2,7 @@ package voice.core.data.repo
 
 import voice.core.data.Chapter
 import voice.core.data.ChapterId
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 public interface ChapterRepo {
   public suspend fun get(id: ChapterId): Chapter?

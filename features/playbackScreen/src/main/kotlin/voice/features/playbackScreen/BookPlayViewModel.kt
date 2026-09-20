@@ -445,7 +445,7 @@ class BookPlayViewModel(
             BookmarkItemUi(
               id = bm.id,
               title = bm.title ?: "",
-              timeAndDate = "${voice.core.ui.formatTime(info.positionInMarkMs, info.markDurationMs)} - ${dateFormatter.format(bm.addedAt.atZone(zone).toLocalDate())}",
+              timeAndDate = "${voice.core.ui.formatTime(info.positionInMarkMs, info.markDurationMs)} - ${dateFormatter.format(java.time.Instant.ofEpochMilli(bm.addedAt.toEpochMilliseconds()).atZone(zone).toLocalDate())}",
             )
           },
         )

@@ -11,8 +11,8 @@ import voice.core.data.ChapterId
 import voice.core.data.ListeningSession
 import voice.core.data.MarkData
 import java.io.File
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 
 internal class Converters {
 
@@ -31,10 +31,10 @@ internal class Converters {
   fun toFile(path: String) = File(path)
 
   @TypeConverter
-  fun fromUUID(uuid: UUID): String = uuid.toString()
+  fun fromUUID(uuid: Uuid): String = uuid.toString()
 
   @TypeConverter
-  fun toUUID(string: String): UUID = UUID.fromString(string)
+  fun toUUID(string: String): Uuid = Uuid.parse(string)
 
   @TypeConverter
   fun fromInstant(instant: Instant): String {
@@ -75,13 +75,13 @@ internal class Converters {
   fun fromChapterId(id: ChapterId): String = id.value
 
   @TypeConverter
-  fun toBookmarkId(value: String): Bookmark.Id = Bookmark.Id(UUID.fromString(value))
+  fun toBookmarkId(value: String): Bookmark.Id = Bookmark.Id(Uuid.parse(value))
 
   @TypeConverter
   fun fromBookmarkId(id: Bookmark.Id): String = id.value.toString()
 
   @TypeConverter
-  fun toListeningSessionId(value: String): ListeningSession.Id = ListeningSession.Id(UUID.fromString(value))
+  fun toListeningSessionId(value: String): ListeningSession.Id = ListeningSession.Id(Uuid.parse(value))
 
   @TypeConverter
   fun fromListeningSessionId(id: ListeningSession.Id): String = id.value.toString()

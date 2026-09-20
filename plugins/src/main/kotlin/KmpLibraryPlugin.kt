@@ -47,6 +47,7 @@ class KmpLibraryPlugin : Plugin<Project> {
             "kotlin.time.ExperimentalTime",
             "kotlinx.coroutines.ExperimentalCoroutinesApi",
             "kotlinx.coroutines.FlowPreview",
+            "kotlin.uuid.ExperimentalUuidApi",
           ),
         )
         allWarningsAsErrors.set(
@@ -66,6 +67,7 @@ class KmpLibraryPlugin : Plugin<Project> {
       }
       sourceSets.getByName("commonMain").dependencies {
         implementation(libs.findLibrary("coroutines-core").get())
+        implementation(libs.findLibrary("kotlinx-datetime").get())
         if (target.path != ":core:logging:api") {
           implementation(project(":core:logging:api"))
         }

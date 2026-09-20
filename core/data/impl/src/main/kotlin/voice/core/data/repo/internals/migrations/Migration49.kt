@@ -10,8 +10,8 @@ import dev.zacsweers.metro.binding
 import voice.core.data.repo.internals.getInt
 import voice.core.data.repo.internals.getString
 import voice.core.data.repo.internals.moveToNextLoop
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 
 @ContributesIntoSet(
   scope = AppScope::class,
@@ -43,9 +43,9 @@ public class Migration49 : IncrementalMigration(49) {
             put("file", file)
             put("title", title)
             put("time", time)
-            put("addedAt", Instant.EPOCH.toString())
+            put("addedAt", Instant.fromEpochMilliseconds(0L).toString())
             put("setBySleepTimer", false)
-            put("id", UUID.randomUUID().toString())
+            put("id", Uuid.random().toString())
           },
         )
       }

@@ -12,7 +12,8 @@ import voice.core.data.toUri
 import voice.core.documentfile.CachedDocumentFile
 import voice.core.documentfile.CachedDocumentFileFactory
 import voice.core.logging.api.Logger
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 @Inject
 internal class BookParser(
@@ -42,9 +43,9 @@ internal class BookParser(
     return BookContent(
       id = id,
       isActive = true,
-      addedAt = Instant.now(),
+      addedAt = Clock.System.now(),
       author = analyzed?.artist,
-      lastPlayedAt = Instant.EPOCH,
+      lastPlayedAt = Instant.fromEpochMilliseconds(0L),
       name = analyzed?.album
         ?: analyzed?.title?.takeIf { file.isFile }
         ?: file.bookName(),

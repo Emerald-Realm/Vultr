@@ -17,7 +17,7 @@ import voice.core.data.repo.internals.getInt
 import voice.core.data.repo.internals.getString
 import voice.core.data.repo.internals.getStringOrNull
 import voice.core.data.repo.internals.mapRows
-import java.util.UUID
+import kotlin.uuid.Uuid
 import kotlin.random.Random
 
 @RunWith(AndroidJUnit4::class)
@@ -121,7 +121,7 @@ class DataBaseMigratorTest {
     db.execSQL(ChapterTable.CREATE_TABLE)
     db.execSQL(BookmarkTable.CREATE_TABLE)
 
-    fun randomString() = UUID.randomUUID().toString()
+    fun randomString() = Uuid.random().toString()
     fun randomInt() = Random.nextInt(100)
 
     data class Bookmark(

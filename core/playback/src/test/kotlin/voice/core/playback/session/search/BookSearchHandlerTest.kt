@@ -17,8 +17,8 @@ import voice.core.data.BookId
 import voice.core.data.Chapter
 import voice.core.data.ChapterId
 import voice.core.data.repo.BookRepository
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 
 class BookSearchHandlerTest {
 
@@ -101,21 +101,21 @@ class BookSearchHandlerTest {
 
 fun book(
   chapters: List<Chapter>,
-  id: BookId = BookId(UUID.randomUUID().toString()),
+  id: BookId = BookId(Uuid.random().toString()),
   positionInChapter: Long = 0,
 ): Book {
   return Book(
     content = BookContent(
-      author = UUID.randomUUID().toString(),
-      name = UUID.randomUUID().toString(),
+      author = Uuid.random().toString(),
+      name = Uuid.random().toString(),
       positionInChapter = positionInChapter,
       playbackSpeed = 1F,
-      addedAt = Instant.EPOCH,
+      addedAt = Instant.fromEpochMilliseconds(0L),
       chapters = chapters.map { it.id },
       cover = null,
       currentChapter = chapters.first().id,
       isActive = true,
-      lastPlayedAt = Instant.EPOCH,
+      lastPlayedAt = Instant.fromEpochMilliseconds(0L),
       skipSilence = false,
       id = id,
       gain = 0F,
@@ -131,10 +131,10 @@ fun book(
 
 private fun chapter(): Chapter {
   return Chapter(
-    id = ChapterId(UUID.randomUUID().toString()),
-    name = UUID.randomUUID().toString(),
+    id = ChapterId(Uuid.random().toString()),
+    name = Uuid.random().toString(),
     duration = 10000,
-    fileLastModified = Instant.EPOCH,
+    fileLastModified = Instant.fromEpochMilliseconds(0L),
     markData = emptyList(),
   )
 }

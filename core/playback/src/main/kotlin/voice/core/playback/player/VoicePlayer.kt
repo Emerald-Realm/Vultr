@@ -32,7 +32,8 @@ import voice.core.playback.session.MediaItemProvider
 import voice.core.playback.session.toMediaIdOrNull
 import voice.core.sleeptimer.SleepTimer
 import voice.core.sleeptimer.SleepTimerState
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlin.time.Duration.Companion.ZERO
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
@@ -253,7 +254,7 @@ class VoicePlayer(
     scope.launch {
       currentBookStoreId.data.first()?.let { bookId ->
         repo.updateBook(bookId) {
-          val lastPlayedAt = Instant.now()
+          val lastPlayedAt = Clock.System.now()
           Logger.v("Update ${it.name}: lastPlayedAt to $lastPlayedAt")
           it.copy(lastPlayedAt = lastPlayedAt)
         }

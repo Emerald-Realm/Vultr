@@ -5,6 +5,7 @@ sdk-target = "36"
 sdk-robolectric = "35"
 
 coroutines = "1.10.2"
+datetime = "0.6.1"
 room = "2.8.4"
 kotlin = "2.3.21"
 media3 = "1.10.0"
@@ -46,6 +47,8 @@ jebml = "org.jitsi:jebml:2.4.4-6-gb310849"
 slf4j-noop = "org.slf4j:slf4j-nop:2.0.17"
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-guava = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-guava", version.ref = "coroutines" }

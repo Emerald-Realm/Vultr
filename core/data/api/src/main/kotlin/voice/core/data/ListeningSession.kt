@@ -3,8 +3,8 @@ package voice.core.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 
 @Entity(tableName = "listening_session")
 public data class ListeningSession(
@@ -21,9 +21,9 @@ public data class ListeningSession(
   val listenedMs: Long,
 ) {
 
-  public data class Id(val value: UUID) {
+  public data class Id(val value: Uuid) {
     public companion object {
-      public fun random(): Id = Id(UUID.randomUUID())
+      public fun random(): Id = Id(Uuid.random())
     }
   }
 }

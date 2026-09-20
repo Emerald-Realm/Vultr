@@ -7,7 +7,7 @@ import voice.core.data.isAudioFile
 import voice.core.data.repo.ChapterRepo
 import voice.core.data.repo.getOrPut
 import voice.core.documentfile.CachedDocumentFile
-import java.time.Instant
+import kotlinx.datetime.Instant
 
 @Inject
 internal class ChapterParser(
@@ -21,12 +21,12 @@ internal class ChapterParser(
     suspend fun parseChapters(file: CachedDocumentFile) {
       if (file.isAudioFile()) {
         val id = ChapterId(file.uri)
-        val chapter = chapterRepo.getOrPut(id, Instant.ofEpochMilli(file.lastModified)) {
+        val chapter = chapterRepo.getOrPut(id, Instant.fromEpochMilliseconds(file.lastModified)) {
           val metaData = mediaAnalyzer.analyze(file) ?: return@getOrPut null
           Chapter(
             id = id,
             duration = metaData.duration,
-            fileLastModified = Instant.ofEpochMilli(file.lastModified),
+            fileLastModified = Instant.fromEpochMilliseconds(file.lastModified),
             name = metaData.title ?: metaData.fileName,
             markData = metaData.chapters,
           )

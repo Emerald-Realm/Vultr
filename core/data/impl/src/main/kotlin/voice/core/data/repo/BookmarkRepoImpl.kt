@@ -12,7 +12,8 @@ import voice.core.data.repo.internals.dao.BookmarkDao
 import voice.core.data.repo.internals.transaction
 import voice.core.data.runForMaxSqlVariableNumber
 import voice.core.logging.api.Logger
-import java.time.Instant
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 @ContributesBinding(AppScope::class)
 public class BookmarkRepoImpl
@@ -39,7 +40,7 @@ internal constructor(
         title = title,
         time = book.content.positionInChapter,
         id = Bookmark.Id.random(),
-        addedAt = Instant.now(),
+        addedAt = Clock.System.now(),
         setBySleepTimer = setBySleepTimer,
         chapterId = book.content.currentChapter,
         bookId = book.id,

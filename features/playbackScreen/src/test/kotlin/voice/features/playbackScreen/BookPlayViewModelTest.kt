@@ -40,8 +40,9 @@ import voice.core.sleeptimer.SleepTimerMode
 import voice.core.sleeptimer.SleepTimerMode.TimedWithDuration
 import voice.core.sleeptimer.SleepTimerState
 import voice.features.sleepTimer.SleepTimerViewState
-import java.time.Instant
-import java.util.UUID
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlin.uuid.Uuid
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
@@ -97,9 +98,9 @@ class BookPlayViewModelTest {
       coEvery { addBookmarkAtBookPosition(book, any(), any()) } returns Bookmark(
         bookId = book.id,
         chapterId = book.currentChapter.id,
-        addedAt = Instant.now(),
+        addedAt = Clock.System.now(),
         setBySleepTimer = true,
-        id = Bookmark.Id(UUID.randomUUID()),
+        id = Bookmark.Id(Uuid.random()),
         time = 0L,
         title = null,
       )
@@ -352,18 +353,18 @@ private fun book(
   )
   return Book(
     content = BookContent(
-      author = UUID.randomUUID().toString(),
+      author = Uuid.random().toString(),
       name = name,
       positionInChapter = 2.5.minutes.inWholeMilliseconds,
       playbackSpeed = 1F,
-      addedAt = Instant.ofEpochMilli(addedAtMillis),
+      addedAt = Instant.fromEpochMilliseconds(addedAtMillis),
       chapters = chapters.map { it.id },
       cover = null,
       currentChapter = chapters[1].id,
       isActive = true,
-      lastPlayedAt = Instant.ofEpochMilli(lastPlayedAtMillis),
+      lastPlayedAt = Instant.fromEpochMilliseconds(lastPlayedAtMillis),
       skipSilence = false,
-      id = BookId(UUID.randomUUID().toString()),
+      id = BookId(Uuid.random().toString()),
       gain = 0F,
       genre = null,
       narrator = null,
@@ -377,9 +378,9 @@ private fun book(
 
 private fun chapter(): Chapter {
   return Chapter(
-    id = ChapterId("http://${UUID.randomUUID()}"),
+    id = ChapterId("http://${Uuid.random()}"),
     duration = 5.minutes.inWholeMilliseconds,
-    fileLastModified = Instant.EPOCH,
+    fileLastModified = Instant.fromEpochMilliseconds(0L),
     markData = listOf(
       MarkData(startMs = 0L, name = "Chapter Start"),
       MarkData(startMs = 2.minutes.inWholeMilliseconds, name = "Middle Section"),
