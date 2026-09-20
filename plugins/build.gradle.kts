@@ -15,6 +15,10 @@ gradlePlugin {
       id = "voice.library"
       implementationClass = "LibraryPlugin"
     }
+    create("kmpLibrary") {
+      id = "voice.kmp.library"
+      implementationClass = "KmpLibraryPlugin"
+    }
     create("app") {
       id = "voice.app"
       implementationClass = "AppPlugin"

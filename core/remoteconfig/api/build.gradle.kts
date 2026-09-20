@@ -1,9 +1,11 @@
 plugins {
-  id("voice.library")
+  id("voice.kmp.library")
   alias(libs.plugins.metro)
 }
 
-dependencies {
-  implementation(projects.core.initializer)
-  implementation(projects.core.common)
+kotlin {
+  sourceSets.getByName("androidMain").dependencies {
+    implementation(projects.core.common)
+    implementation(projects.core.initializer)
+  }
 }

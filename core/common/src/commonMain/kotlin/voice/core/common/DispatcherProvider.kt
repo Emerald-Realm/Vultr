@@ -7,9 +7,11 @@ import kotlin.coroutines.CoroutineContext
 
 data class DispatcherProvider(
   val main: CoroutineContext = Dispatchers.Main,
-  val io: CoroutineContext = Dispatchers.IO,
+  val io: CoroutineContext = platformIoDispatcher,
   val mainImmediate: CoroutineContext = Dispatchers.Main.immediate,
 )
+
+internal expect val platformIoDispatcher: CoroutineContext
 
 @Suppress("FunctionName")
 fun MainScope(dispatcherProvider: DispatcherProvider): CoroutineScope {

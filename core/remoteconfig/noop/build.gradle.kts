@@ -1,8 +1,10 @@
 plugins {
-  id("voice.library")
+  id("voice.kmp.library")
   alias(libs.plugins.metro)
 }
 
-dependencies {
-  implementation(projects.core.remoteconfig.api)
+kotlin {
+  sourceSets.getByName("commonMain").dependencies {
+    implementation(projects.core.remoteconfig.api)
+  }
 }

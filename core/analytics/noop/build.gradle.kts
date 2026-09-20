@@ -1,8 +1,10 @@
 plugins {
-  id("voice.library")
+  id("voice.kmp.library")
   alias(libs.plugins.metro)
 }
 
-dependencies {
-  api(projects.core.analytics.api)
+kotlin {
+  sourceSets.getByName("commonMain").dependencies {
+    api(projects.core.analytics.api)
+  }
 }
