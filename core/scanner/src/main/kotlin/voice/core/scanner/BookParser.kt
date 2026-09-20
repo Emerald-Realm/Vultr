@@ -28,7 +28,7 @@ internal class BookParser(
     val id = BookId(file.uri)
     return contentRepo.getOrPut(id) {
       val uri = chapters.first().id.toUri()
-      val analyzed = mediaAnalyzer.analyze(fileFactory.create(uri))
+      val analyzed = mediaAnalyzer.analyze(fileFactory.create(uri.toString()))
       parse(chapters, id, analyzed, file)
     }
   }
@@ -69,7 +69,7 @@ internal class BookParser(
   private fun CachedDocumentFile.bookName(): String {
     val fileName = name
     return if (fileName == null) {
-      uri.toString()
+      uri
         .removePrefix("/storage/emulated/0/")
         .removePrefix("/storage/emulated/")
         .removePrefix("/storage/")

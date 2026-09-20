@@ -5,20 +5,22 @@ import android.net.Uri
 
 internal data class RealCachedDocumentFile(
   val context: Context,
-  override val uri: Uri,
+  private val androidUri: Uri,
   private val preFilledContent: FileContents?,
 ) : CachedDocumentFile {
 
+  override val uri: String = androidUri.toString()
+
   override val children: List<CachedDocumentFile> by lazy {
     if (isDirectory) {
-      parseContents(uri, context)
+      parseContents(androidUri, context)
     } else {
       emptyList()
     }
   }
 
   private val content: FileContents? by lazy {
-    preFilledContent ?: FileContents.query(context, uri)
+    preFilledContent ?: FileContents.query(context, androidUri)
   }
 
   override val name: String? by lazy { content?.name }
@@ -27,5 +29,5 @@ internal data class RealCachedDocumentFile(
   override val length: Long by lazy { content?.length ?: 0L }
   override val lastModified: Long by lazy { content?.lastModified ?: 0L }
 
-  override fun toString(): String = "RealCachedDocumentFile($uri)"
+  override fun toString(): String = "RealCachedDocumentFile($androidUri)"
 }

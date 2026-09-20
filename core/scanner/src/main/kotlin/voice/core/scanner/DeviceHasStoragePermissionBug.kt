@@ -1,6 +1,7 @@
 package voice.core.scanner
 
 import android.content.Context
+import androidx.core.net.toUri
 import dev.zacsweers.metro.Inject
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +29,7 @@ public class DeviceHasStoragePermissionBug(private val context: Context) {
   private suspend fun deviceHasPermissionBug(probeFile: CachedDocumentFile): Boolean {
     return withContext(Dispatchers.IO) {
       try {
-        context.contentResolver.openInputStream(probeFile.uri)?.close()
+        context.contentResolver.openInputStream(probeFile.uri.toUri())?.close()
         false
       } catch (e: SecurityException) {
         // https://issuetracker.google.com/issues/258270138

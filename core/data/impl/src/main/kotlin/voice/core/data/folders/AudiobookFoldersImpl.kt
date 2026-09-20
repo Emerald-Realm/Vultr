@@ -71,7 +71,7 @@ internal constructor(
         )
       }
     }
-    return cachedDocumentFileFactory.create(uri)
+    return cachedDocumentFileFactory.create(uri.toString())
   }
 
   public override fun add(

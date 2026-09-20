@@ -92,7 +92,7 @@ class SelectFolderTypeViewModel(
   @Composable
   internal fun viewState(): SelectFolderTypeViewState {
     val documentFile: CachedDocumentFile = remember {
-      documentFileFactory.create(documentFile.uri)
+      documentFileFactory.create(documentFile.uri.toString())
     }
     val selectedFolderMode = selectedFolderMode.value ?: documentFile.defaultFolderMode().also {
       selectedFolderMode.value = it

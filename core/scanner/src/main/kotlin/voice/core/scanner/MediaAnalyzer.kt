@@ -2,6 +2,7 @@ package voice.core.scanner
 
 import android.content.Context
 import android.net.Uri
+import androidx.core.net.toUri
 import androidx.media3.common.C
 import androidx.media3.common.FileTypes
 import androidx.media3.common.MediaItem
@@ -48,7 +49,7 @@ internal class MediaAnalyzer(
 
     // A single retriever yields both duration and track groups from one container
     // parse, instead of opening and parsing the file twice.
-    val (duration, trackGroups) = retrieveDurationAndTrackGroups(file.uri)
+    val (duration, trackGroups) = retrieveDurationAndTrackGroups(file.uri.toUri())
       ?: return null
     if (duration <= Duration.ZERO) {
       Logger.w("Duration is zero or negative for file: ${file.uri}")
@@ -76,7 +77,7 @@ internal class MediaAnalyzer(
       }
     }
 
-    val fileType = FileTypes.inferFileTypeFromUri(file.uri)
+    val fileType = FileTypes.inferFileTypeFromUri(file.uri.toUri())
     val extension = (file.name ?: "").substringAfterLast(delimiter = ".", missingDelimiterValue = "").lowercase()
     if (fileType == FileTypes.MP4 || extension == "mp4" || extension == "m4a" || extension == "m4b") {
       parseMp4Chapters(file, builder)
@@ -93,7 +94,7 @@ internal class MediaAnalyzer(
     builder: Metadata.Builder,
   ) {
     try {
-      matroskaExtractorFactory.create(file.uri).use { extractor ->
+      matroskaExtractorFactory.create(file.uri.toUri()).use { extractor ->
         val mediaInfo = extractor.readMediaInfo()
         builder.chapters.addAll(mediaInfo.chapters)
         builder.artist = builder.artist ?: mediaInfo.artist
@@ -109,7 +110,7 @@ internal class MediaAnalyzer(
     file: CachedDocumentFile,
     builder: Metadata.Builder,
   ) {
-    val chapters = mp4ChapterExtractor.extractChapters(file.uri)
+    val chapters = mp4ChapterExtractor.extractChapters(file.uri.toUri())
     builder.chapters += chapters
   }
 

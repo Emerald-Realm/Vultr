@@ -1,6 +1,5 @@
 package voice.core.documentfile
 
-import android.net.Uri
 import androidx.core.net.toFile
 import androidx.core.net.toUri
 import java.io.File
@@ -13,11 +12,11 @@ data class FileBasedDocumentFile(private val file: File) : CachedDocumentFile {
   override val isFile: Boolean get() = file.isFile
   override val length: Long get() = file.length()
   override val lastModified: Long get() = file.lastModified()
-  override val uri: Uri get() = file.toUri()
+  override val uri: String get() = file.toUri().toString()
 }
 
 object FileBasedDocumentFactory : CachedDocumentFileFactory {
-  override fun create(uri: Uri): CachedDocumentFile {
-    return FileBasedDocumentFile(uri.toFile())
+  override fun create(uri: String): CachedDocumentFile {
+    return FileBasedDocumentFile(uri.toUri().toFile())
   }
 }

@@ -1,5 +1,6 @@
 package voice.core.scanner
 
+import androidx.core.net.toUri
 import dev.zacsweers.metro.Inject
 import voice.core.data.BookId
 import voice.core.data.audioFileCount
@@ -66,7 +67,7 @@ internal class MediaScanner(
   private fun List<CachedDocumentFile>.findProbeFile(): CachedDocumentFile? {
     return asSequence().flatMap { it.walk() }
       .firstOrNull { child ->
-        child.isAudioFile() && child.uri.authority == "com.android.externalstorage.documents"
+        child.isAudioFile() && child.uri.toUri().authority == "com.android.externalstorage.documents"
       }
   }
 
