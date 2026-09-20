@@ -24,6 +24,7 @@ import voice.features.bookOverview.overview.MiniPlayerViewState
 import voice.features.bookOverview.overview.toMiniPlayerViewState
 import voice.navigation.Destination
 import voice.navigation.Navigator
+import java.io.File
 
 @AssistedInject
 class BookDetailsViewModel(
@@ -157,7 +158,7 @@ private fun Book.toDetailsViewState(
 ) = BookDetailsViewState(
   title = content.name,
   author = content.author,
-  cover = content.cover?.let(::ImmutableFile),
+  cover = content.cover?.let { ImmutableFile(File(it)) },
   progress = (position.toFloat() / duration.toFloat()).coerceIn(0F, 1F),
   remainingTime = formatHoursMinutes(duration - position) + " left",
   durationText = formatHoursMinutes(duration),

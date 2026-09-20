@@ -13,6 +13,7 @@ import voice.core.data.repo.BookRepository
 import voice.core.ui.ImmutableFile
 import voice.navigation.Destination
 import voice.navigation.Navigator
+import java.io.File
 
 @AssistedInject
 class EditBookViewModel(
@@ -34,7 +35,7 @@ class EditBookViewModel(
         author = book.content.author.orEmpty(),
         date = book.content.year?.toString().orEmpty(),
         description = book.content.description.orEmpty(),
-        cover = book.content.cover?.let(::ImmutableFile),
+        cover = book.content.cover?.let { ImmutableFile(File(it)) },
       )
     }
   }

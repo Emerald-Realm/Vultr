@@ -1,7 +1,5 @@
 package voice.core.data
 
-import android.net.Uri
-import androidx.core.net.toUri
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
@@ -88,5 +86,3 @@ internal object ChapterIdSerializer : KSerializer<ChapterId> {
     encoder.encodeString(value.value)
   }
 }
-
-public fun ChapterId.toUri(): Uri = value.toUri()

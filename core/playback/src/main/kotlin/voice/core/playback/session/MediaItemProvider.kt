@@ -125,7 +125,7 @@ class MediaItemProvider(
     mediaId = MediaId.Book(book.id),
     browsable = false,
     isPlayable = true,
-    imageUri = book.content.cover?.toProvidedUri(),
+    imageUri = book.content.cover?.let { File(it).toProvidedUri() },
     mediaType = MediaType.AudioBook,
   )
 
@@ -138,7 +138,7 @@ class MediaItemProvider(
     browsable = false,
     isPlayable = true,
     sourceUri = chapter.id.toUri(),
-    imageUri = content.cover?.toProvidedUri(),
+    imageUri = content.cover?.let { File(it).toProvidedUri() },
     artist = content.author,
     mediaType = MediaType.AudioBookChapter,
   )

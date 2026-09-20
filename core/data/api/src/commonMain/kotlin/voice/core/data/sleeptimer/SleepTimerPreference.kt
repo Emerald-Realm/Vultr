@@ -1,8 +1,7 @@
 package voice.core.data.sleeptimer
 
+import kotlinx.datetime.LocalTime
 import kotlinx.serialization.Serializable
-import voice.core.common.serialization.LocalTimeSerializer
-import java.time.LocalTime
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
@@ -17,9 +16,7 @@ public data class SleepTimerPreference(
    */
   val autoSleepTimerEnabled: Boolean,
   val persistentSleepTimerEnabled: Boolean = false,
-  @Serializable(with = LocalTimeSerializer::class)
   val autoSleepStartTime: LocalTime,
-  @Serializable(with = LocalTimeSerializer::class)
   val autoSleepEndTime: LocalTime,
 ) {
 
@@ -27,8 +24,8 @@ public data class SleepTimerPreference(
     public val Default: SleepTimerPreference = SleepTimerPreference(
       autoSleepTimerEnabled = false,
       persistentSleepTimerEnabled = false,
-      autoSleepStartTime = LocalTime.of(22, 0),
-      autoSleepEndTime = LocalTime.of(6, 0),
+      autoSleepStartTime = LocalTime(22, 0),
+      autoSleepEndTime = LocalTime(6, 0),
       duration = 20.minutes,
     )
   }

@@ -104,18 +104,19 @@ class NaturalOrderComparatorTest {
         .appendPath("document")
         .appendPath("primary:audiobooks/$it")
         .build()
+        .toString()
     }
 
-    uris.sortedWith(NaturalOrderComparator.uriComparator)
+    uris.sortedWith(NaturalOrderComparator.uriStringComparator)
       .shouldContainExactly(uris)
   }
 
   @Test
   fun uriComparatorFiles() {
     val expected = testFiles()
-    val uris = expected.map { Uri.fromFile(it) }
+    val uris = expected.map { Uri.fromFile(it).toString() }
 
-    uris.sortedWith(NaturalOrderComparator.uriComparator)
+    uris.sortedWith(NaturalOrderComparator.uriStringComparator)
       .shouldContainExactly(uris)
   }
 

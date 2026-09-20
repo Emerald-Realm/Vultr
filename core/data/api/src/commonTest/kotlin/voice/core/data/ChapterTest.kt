@@ -2,7 +2,7 @@ package voice.core.data
 
 import io.kotest.assertions.withClue
 import io.kotest.matchers.collections.shouldContainInOrder
-import org.junit.Test
+import kotlin.test.Test
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 

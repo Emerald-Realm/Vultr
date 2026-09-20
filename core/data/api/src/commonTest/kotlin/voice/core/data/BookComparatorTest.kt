@@ -1,7 +1,7 @@
 package voice.core.data
 
 import io.kotest.matchers.collections.shouldContainExactly
-import org.junit.Test
+import kotlin.test.Test
 
 class BookComparatorTest {
 

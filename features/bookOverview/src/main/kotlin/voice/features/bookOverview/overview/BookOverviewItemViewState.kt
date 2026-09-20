@@ -7,6 +7,7 @@ import voice.core.logging.api.Logger
 import voice.core.ui.ImmutableFile
 import voice.core.ui.formatTime
 import kotlinx.datetime.Instant
+import java.io.File
 
 @Immutable
 data class BookOverviewItemViewState(
@@ -34,7 +35,7 @@ data class MiniPlayerViewState(
 internal fun Book.toItemViewState() = BookOverviewItemViewState(
   name = content.name,
   author = content.author,
-  cover = content.cover?.let(::ImmutableFile),
+  cover = content.cover?.let { ImmutableFile(File(it)) },
   id = id,
   progress = progress(),
   remainingTime = formatTime(duration - position),
@@ -45,7 +46,7 @@ internal fun Book.toMiniPlayerViewState(playing: Boolean) = MiniPlayerViewState(
   id = id,
   chapterTitle = currentMark.name ?: currentChapter.name ?: content.name,
   author = content.author,
-  cover = content.cover?.let(::ImmutableFile),
+  cover = content.cover?.let { ImmutableFile(File(it)) },
   progress = progress(),
   // Global book position / total book duration, matching the player and notification.
   positionText = formatTime(position, duration),

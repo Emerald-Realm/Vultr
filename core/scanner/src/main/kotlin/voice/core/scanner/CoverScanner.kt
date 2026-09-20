@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import voice.core.data.Book
 import voice.core.data.toUri
 import voice.core.logging.api.Logger
+import java.io.File
 import java.io.IOException
 
 @Inject
@@ -23,7 +24,7 @@ internal class CoverScanner(
 
   private suspend fun findCoverForBook(book: Book) {
     val coverFile = book.content.cover
-    if (coverFile != null && coverFile.exists()) {
+    if (coverFile != null && File(coverFile).exists()) {
       return
     }
 

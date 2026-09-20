@@ -20,6 +20,8 @@ import voice.core.common.MainScope
 import voice.core.data.GridMode
 import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
+import voice.core.data.toJavaLocalTime
+import voice.core.data.toKotlinxLocalTime
 import voice.core.data.store.AnalyticsConsentStore
 import voice.core.data.store.AutoRewindAmountStore
 import voice.core.data.store.DarkThemeStore
@@ -92,8 +94,8 @@ class SettingsViewModel(
       gridMode = gridMode,
       autoSleepTimer = SettingsViewState.AutoSleepTimerViewState(
         enabled = autoSleepTimer.autoSleepTimerEnabled,
-        startTime = autoSleepTimer.autoSleepStartTime,
-        endTime = autoSleepTimer.autoSleepEndTime,
+        startTime = autoSleepTimer.autoSleepStartTime.toJavaLocalTime(),
+        endTime = autoSleepTimer.autoSleepEndTime.toJavaLocalTime(),
       ),
       analyticsEnabled = analyticsEnabled,
       showAnalyticSetting = appInfoProvider.analyticsIncluded,
@@ -225,7 +227,7 @@ class SettingsViewModel(
   override fun setAutoSleepTimerStart(time: LocalTime) {
     mainScope.launch {
       sleepTimerPreferenceStore.updateData { currentPrefs ->
-        currentPrefs.copy(autoSleepStartTime = time)
+        currentPrefs.copy(autoSleepStartTime = time.toKotlinxLocalTime())
       }
     }
   }
@@ -233,7 +235,7 @@ class SettingsViewModel(
   override fun setAutoSleepTimerEnd(time: LocalTime) {
     mainScope.launch {
       sleepTimerPreferenceStore.updateData { currentPrefs ->
-        currentPrefs.copy(autoSleepEndTime = time)
+        currentPrefs.copy(autoSleepEndTime = time.toKotlinxLocalTime())
       }
     }
   }

@@ -57,6 +57,7 @@ import java.time.format.FormatStyle
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
+import java.io.File
 
 @AssistedInject
 class BookPlayViewModel(
@@ -142,7 +143,7 @@ class BookPlayViewModel(
       chapterName = currentMark.name.takeIf { hasMoreThanOneChapter },
       duration = currentMark.durationMs.milliseconds,
       playedTime = positionInCurrentMark.milliseconds,
-      cover = book.content.cover?.let(::ImmutableFile),
+      cover = book.content.cover?.let { ImmutableFile(File(it)) },
       skipSilence = book.content.skipSilence,
     )
   }

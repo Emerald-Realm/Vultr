@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.data.store.SleepTimerPreferenceStore
+import voice.core.data.toJavaLocalTime
 import voice.core.initializer.AppInitializer
 import voice.core.playback.playstate.PlayStateManager
 import voice.core.playback.playstate.PlayStateManager.PlayState.Playing
@@ -57,8 +58,8 @@ class AutoEnableSleepTimer(
     return autoSleepTimer.autoSleepTimerEnabled &&
       isTimeInRange(
         currentTime = clock.instant().atZone(clock.zone).toLocalTime(),
-        startTime = autoSleepTimer.autoSleepStartTime,
-        endTime = autoSleepTimer.autoSleepEndTime,
+        startTime = autoSleepTimer.autoSleepStartTime.toJavaLocalTime(),
+        endTime = autoSleepTimer.autoSleepEndTime.toJavaLocalTime(),
       )
   }
 }

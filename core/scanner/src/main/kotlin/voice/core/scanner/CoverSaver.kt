@@ -76,12 +76,12 @@ internal constructor(
     val oldCover = repo.get(bookId)?.content?.cover
     if (oldCover != null) {
       withContext(Dispatchers.IO) {
-        oldCover.delete()
+        File(oldCover).delete()
       }
     }
 
     repo.updateBook(bookId) {
-      it.copy(cover = cover)
+      it.copy(cover = cover.absolutePath)
     }
   }
 }

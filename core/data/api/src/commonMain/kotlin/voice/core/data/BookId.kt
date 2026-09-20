@@ -1,7 +1,5 @@
 package voice.core.data
 
-import android.net.Uri
-import androidx.core.net.toUri
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -11,14 +9,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(with = BookIdSerializer::class)
-public data class BookId(val value: String) {
-
-  public constructor(uri: Uri) : this(uri.toString())
-
-  public fun toUri(): Uri {
-    return value.toUri()
-  }
-}
+public data class BookId(val value: String)
 
 public object BookIdSerializer : KSerializer<BookId> {
 

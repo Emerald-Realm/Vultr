@@ -9,6 +9,7 @@ import dev.zacsweers.metro.SingleIn
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import voice.core.data.BookId
+import voice.core.data.toUri
 import voice.core.logging.api.Logger
 import voice.core.scanner.MediaScanTrigger
 import voice.features.bookOverview.bottomSheet.BottomSheetItem

@@ -16,7 +16,6 @@ import voice.core.sleeptimer.SleepTimerMode.TimedWithDuration
 import voice.core.sleeptimer.impl.MemoryDataStore
 import java.time.Clock
 import java.time.Instant
-import java.time.LocalTime
 import java.time.ZoneId
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -45,8 +44,8 @@ class AutoEnableSleepTimerMinimalTest {
 
   private fun prefs(
     enabled: Boolean,
-    start: LocalTime = LocalTime.of(22, 0),
-    end: LocalTime = LocalTime.of(6, 0),
+    start: kotlinx.datetime.LocalTime = kotlinx.datetime.LocalTime(22, 0),
+    end: kotlinx.datetime.LocalTime = kotlinx.datetime.LocalTime(6, 0),
     duration: Duration = 30.minutes,
   ) = SleepTimerPreference(
     autoSleepTimerEnabled = enabled,

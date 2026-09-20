@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.io.File
 import kotlinx.datetime.Instant
 
 @Entity(tableName = "content2")
@@ -21,7 +20,7 @@ public data class BookContent(
   val chapters: List<ChapterId>,
   val currentChapter: ChapterId,
   val positionInChapter: Long,
-  val cover: File?,
+  val cover: String?,
   @ColumnInfo(defaultValue = "0")
   val gain: Float,
   val genre: String?,
