@@ -1,6 +1,6 @@
 package voice.core.sleeptimer
 
-import java.time.LocalTime
+import kotlinx.datetime.LocalTime
 
 fun isTimeInRange(
   currentTime: LocalTime,
@@ -9,9 +9,9 @@ fun isTimeInRange(
 ): Boolean {
   return if (startTime <= endTime) {
     // Standard case, start and end on the same day
-    currentTime.isAfter(startTime) && currentTime.isBefore(endTime)
+    currentTime > startTime && currentTime < endTime
   } else {
     // Range wraps around midnight
-    currentTime.isAfter(startTime) || currentTime.isBefore(endTime)
+    currentTime > startTime || currentTime < endTime
   }
 }

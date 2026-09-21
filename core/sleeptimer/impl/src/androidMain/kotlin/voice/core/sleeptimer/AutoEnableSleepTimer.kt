@@ -1,6 +1,5 @@
 package voice.core.sleeptimer
 
-import android.app.Application
 import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoSet
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.data.store.SleepTimerPreferenceStore
-import voice.core.data.toJavaLocalTime
+import voice.core.data.toKotlinxLocalTime
 import voice.core.initializer.AppInitializer
 import voice.core.playback.playstate.PlayStateManager
 import voice.core.playback.playstate.PlayStateManager.PlayState.Playing
@@ -28,7 +27,7 @@ class AutoEnableSleepTimer(
   private val scope: CoroutineScope,
 ) : AppInitializer {
 
-  override fun onAppStart(application: Application) {
+  override fun onAppStart() {
     playStateManager.flow
       .filter { it == Playing }
       .onEach {
@@ -57,9 +56,9 @@ class AutoEnableSleepTimer(
     if (autoSleepTimer.persistentSleepTimerEnabled) return true
     return autoSleepTimer.autoSleepTimerEnabled &&
       isTimeInRange(
-        currentTime = clock.instant().atZone(clock.zone).toLocalTime(),
-        startTime = autoSleepTimer.autoSleepStartTime.toJavaLocalTime(),
-        endTime = autoSleepTimer.autoSleepEndTime.toJavaLocalTime(),
+        currentTime = clock.instant().atZone(clock.zone).toLocalTime().toKotlinxLocalTime(),
+        startTime = autoSleepTimer.autoSleepStartTime,
+        endTime = autoSleepTimer.autoSleepEndTime,
       )
   }
 }

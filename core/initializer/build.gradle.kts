@@ -1,3 +1,3 @@
 plugins {
-  id("voice.library")
+  id("voice.kmp.library")
 }

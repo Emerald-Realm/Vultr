@@ -1,6 +1,5 @@
 package voice.core.remoteconfig.api
 
-import android.app.Application
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoSet
 import kotlinx.coroutines.launch
@@ -16,7 +15,7 @@ class LoadRemoteConfigOnAppStart(
 
   private val mainScope = MainScope(dispatcherProvider)
 
-  override fun onAppStart(application: Application) {
+  override fun onAppStart() {
     mainScope.launch {
       remoteConfig.refresh()
     }

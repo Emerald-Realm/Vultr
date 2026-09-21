@@ -1,27 +1,32 @@
 plugins {
-  id("voice.library")
+  id("voice.kmp.library")
   alias(libs.plugins.metro)
 }
 
-dependencies {
-  implementation(projects.core.sleeptimer.api)
-  implementation(projects.core.data.api)
-  implementation(projects.core.common)
-  implementation(projects.core.playback)
-  implementation(projects.core.initializer)
-  implementation(projects.core.logging.api)
-  implementation(projects.core.analytics.api)
-
-  implementation(libs.androidxCore)
-  implementation(libs.seismic)
-  implementation(libs.appCompat)
-
-  testImplementation(libs.junit)
-  testImplementation(libs.mockk)
-  testImplementation(libs.koTest.assert)
-  testImplementation(libs.coroutines.test)
-  testImplementation(libs.androidX.test.core)
-  testImplementation(libs.androidX.test.junit)
-  testImplementation(libs.androidX.test.runner)
-  testImplementation(libs.robolectric)
+kotlin {
+  sourceSets.getByName("commonMain").dependencies {
+    implementation(projects.core.sleeptimer.api)
+    implementation(projects.core.analytics.api)
+    implementation(libs.metro.runtime)
+  }
+  sourceSets.getByName("androidMain").dependencies {
+    implementation(projects.core.common)
+    implementation(projects.core.data.api)
+    implementation(projects.core.initializer)
+    implementation(projects.core.playback)
+    implementation(libs.androidxCore)
+    implementation(libs.seismic)
+    implementation(libs.appCompat)
+    implementation(libs.metro.runtime)
+  }
+  sourceSets.getByName("androidHostTest").dependencies {
+    implementation(libs.junit)
+    implementation(libs.mockk)
+    implementation(libs.koTest.assert)
+    implementation(libs.coroutines.test)
+    implementation(libs.androidX.test.core)
+    implementation(libs.androidX.test.junit)
+    implementation(libs.androidX.test.runner)
+    implementation(libs.robolectric)
+  }
 }

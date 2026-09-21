@@ -17,12 +17,13 @@ import voice.core.initializer.AppInitializer
 
 @ContributesIntoSet(AppScope::class)
 class UIAppStartInitializer(
+  private val application: Application,
   @DarkThemeStore
   private val themeModeStore: DataStore<ThemeMode>,
   private val scope: CoroutineScope,
 ) : AppInitializer {
 
-  override fun onAppStart(application: Application) {
+  override fun onAppStart() {
     Coil.setImageLoader(
       ImageLoader.Builder(application)
         .addLastModifiedToFileCacheKey(false)

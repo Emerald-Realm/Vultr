@@ -79,6 +79,7 @@ class KmpLibraryPlugin : Plugin<Project> {
         implementation(libs.findLibrary("koTest-assert").get())
       }
       sourceSets.getByName("androidMain").dependencies {
+        implementation(target.dependencies.platform(libs.findLibrary("compose-bom").get()))
         implementation(libs.findLibrary("coroutines-android").get())
       }
     }

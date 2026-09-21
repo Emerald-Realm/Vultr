@@ -22,7 +22,7 @@ open class App : Application() {
       }
 
     appInitializers.forEach {
-      it.onAppStart(this)
+      it.onAppStart()
     }
   }
 

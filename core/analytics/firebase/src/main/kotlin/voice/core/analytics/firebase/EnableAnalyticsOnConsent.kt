@@ -1,6 +1,5 @@
 package voice.core.analytics.firebase
 
-import android.app.Application
 import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoSet
@@ -20,7 +19,7 @@ class EnableAnalyticsOnConsent(
 
   private val scope = MainScope()
 
-  override fun onAppStart(application: Application) {
+  override fun onAppStart() {
     scope.launch {
       analyticsConsentStore.data.collect {
         Logger.d("Enabling analytics collection: $it")

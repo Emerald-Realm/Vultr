@@ -67,7 +67,7 @@ class AutoEnableSleepTimerMinimalTest {
   fun `enables when playing and in time window`() = testScope.runTest {
     sleepTimerPreferenceStore.updateData { prefs(enabled = true) }
 
-    sut.onAppStart(mockk())
+    sut.onAppStart()
     playStateManager.playState = PlayStateManager.PlayState.Playing
     advanceUntilIdle()
     yield()
@@ -79,7 +79,7 @@ class AutoEnableSleepTimerMinimalTest {
   fun `does nothing when sleeptimer is disabled`() = testScope.runTest {
     sleepTimerPreferenceStore.updateData { prefs(enabled = false) }
 
-    sut.onAppStart(mockk())
+    sut.onAppStart()
     playStateManager.playState = PlayStateManager.PlayState.Playing
     advanceUntilIdle()
     yield()

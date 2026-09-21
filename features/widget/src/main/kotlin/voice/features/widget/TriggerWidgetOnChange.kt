@@ -1,6 +1,5 @@
 package voice.features.widget
 
-import android.app.Application
 import androidx.datastore.core.DataStore
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoSet
@@ -29,7 +28,7 @@ class TriggerWidgetOnChange(
   private val scope: CoroutineScope,
 ) : AppInitializer {
 
-  override fun onAppStart(application: Application) {
+  override fun onAppStart() {
     anythingChanged()
       .onEach {
         widgetUpdater.update()
