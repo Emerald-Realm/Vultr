@@ -9,26 +9,6 @@ plugins {
   id("voice.compose")
   alias(libs.plugins.kotlin.serialization)
   alias(libs.plugins.metro)
-  alias(libs.plugins.crashlytics) apply false
-  alias(libs.plugins.googleServices) apply false
-}
-
-fun includeProprietaryLibraries(): Boolean {
-  val includeProprietaryLibraries = providers.gradleProperty("voice.includeProprietaryLibraries").get().toBooleanStrict()
-  if (!includeProprietaryLibraries) {
-    return false
-  }
-  return file("google-services.json").exists()
-    .also { present ->
-      if (!present) {
-        logger.warn("Google Services JSON file not found, disabling proprietary libraries.")
-      }
-    }
-}
-
-if (includeProprietaryLibraries()) {
-  pluginManager.apply(libs.plugins.googleServices.get().pluginId)
-  pluginManager.apply(libs.plugins.crashlytics.get().pluginId)
 }
 
 android {
@@ -119,7 +99,7 @@ android {
           "proguard.pro",
         ),
       )
-      buildConfigField(type = "Boolean", name = "INCLUDE_ANALYTICS", value = includeProprietaryLibraries().toString())
+      buildConfigField(type = "Boolean", name = "INCLUDE_ANALYTICS", value = "false")
     }
   }
 
@@ -205,30 +185,15 @@ dependencies {
 
   implementation(libs.serialization.json)
 
-  implementation(libs.coil)
-
-  if (includeProprietaryLibraries()) {
-    implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.analytics)
-    implementation(projects.core.logging.crashlytics)
-    implementation(projects.features.review.play)
-  } else {
-    implementation(projects.features.review.noop)
-  }
+  // Play-flavored builds use the Play In-App Review flow; sideloaded builds ship a no-op.
+  "playImplementation"(projects.features.review.play)
+  "githubImplementation"(projects.features.review.noop)
 
   implementation(projects.core.remoteconfig.api)
-  if (includeProprietaryLibraries()) {
-    implementation(projects.core.remoteconfig.firebase)
-  } else {
-    implementation(projects.core.remoteconfig.noop)
-  }
+  implementation(projects.core.remoteconfig.noop)
 
   implementation(projects.core.analytics.api)
-  if (includeProprietaryLibraries()) {
-    implementation(projects.core.analytics.firebase)
-  } else {
-    implementation(projects.core.analytics.noop)
-  }
+  implementation(projects.core.analytics.noop)
 
   debugImplementation(projects.core.logging.debug)
 
@@ -236,9 +201,6 @@ dependencies {
 
   testImplementation(libs.junit)
   testImplementation(libs.mockk)
-
-  implementation(libs.media3.exoplayer)
-  implementation(libs.media3.session)
 
   testImplementation(libs.androidX.test.runner)
   testImplementation(libs.androidX.test.junit)

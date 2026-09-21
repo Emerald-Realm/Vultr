@@ -17,8 +17,7 @@ kotlin {
   }
   sourceSets.getByName("androidMain").dependencies {
     implementation(project.dependencies.platform(libs.compose.bom))
-    api(libs.compose.runtime)
-    implementation(libs.appCompat)
+    implementation(libs.compose.runtime)
     implementation(libs.androidxCore)
   }
 }

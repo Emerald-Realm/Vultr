@@ -11,6 +11,8 @@ build/
 captures/
 .cxx/
 UI shots/
+symbols/
+symbols.zip
 
 # IDE
 .idea/
