@@ -44,6 +44,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,6 +60,7 @@ import voice.features.settings.SettingsListener
 import voice.features.settings.SettingsViewEffect
 import voice.features.settings.SettingsViewModel
 import voice.features.settings.SettingsViewState
+import voice.features.settings.profile.BOOKS_PER_LEVEL
 import voice.features.settings.profile.ProfileGraph
 import voice.features.settings.profile.ProfileViewModel
 import voice.features.settings.profile.ProfileViewState
@@ -162,6 +164,11 @@ private fun Settings(
       // About
       SettingsSectionHeader(stringResource(StringsR.string.settings_section_about))
       SettingsSectionContent {
+        SettingsRow(
+          label = stringResource(StringsR.string.settings_rate_raven),
+          trailing = SettingsRowTrailing.ExternalLink,
+          onClick = { listener.openRateApp() },
+        )
         SettingsRow(
           label = stringResource(StringsR.string.settings_terms_of_service),
           trailing = SettingsRowTrailing.ExternalLink,
@@ -273,7 +280,7 @@ private fun SettingsProfileHeader(viewState: ProfileViewState, viewModel: Profil
       modifier = Modifier.fillMaxWidth().padding(top = 18.dp),
       verticalAlignment = Alignment.CenterVertically,
     ) {
-      Text("Exp", fontSize = 12.sp, color = RavenTheme.colors.caption)
+      Text("Books", fontSize = 12.sp, color = RavenTheme.colors.caption)
       Box(
         modifier = Modifier
           .weight(1f)
@@ -284,13 +291,20 @@ private fun SettingsProfileHeader(viewState: ProfileViewState, viewModel: Profil
       ) {
         Box(
           modifier = Modifier
-            .fillMaxWidth(viewState.booksIntoLevel / 5f)
+            .fillMaxWidth(viewState.barFraction)
             .height(6.dp)
             .background(RavenTheme.colors.primary),
         )
       }
-      Text("${viewState.booksIntoLevel}/5 Books", fontSize = 12.sp, color = RavenTheme.colors.caption)
+      Text("${viewState.booksIntoLevel}/${BOOKS_PER_LEVEL}", fontSize = 12.sp, color = RavenTheme.colors.caption)
     }
+    Text(
+      text = "${viewState.booksIntoLevel} of $BOOKS_PER_LEVEL books to the next level",
+      modifier = Modifier.fillMaxWidth().padding(top = 6.dp),
+      fontSize = 11.sp,
+      color = RavenTheme.colors.caption,
+      textAlign = TextAlign.Center,
+    )
     Row(
       modifier = Modifier.fillMaxWidth().padding(top = 22.dp),
       horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -393,11 +407,15 @@ fun Settings() {
   val snackbarHostState = remember { SnackbarHostState() }
   val viewState = viewModel.viewState()
   val currentDeveloperMenuUnlockedMessage = rememberUpdatedState("Developer Menu unlocked")
+  val currentStoreUnavailableMessage = rememberUpdatedState(stringResource(StringsR.string.settings_store_unavailable))
   LaunchedEffect(viewModel) {
     viewModel.viewEffects.collect { viewEffect ->
       when (viewEffect) {
         SettingsViewEffect.DeveloperMenuUnlocked -> {
           snackbarHostState.showSnackbar(currentDeveloperMenuUnlockedMessage.value)
+        }
+        SettingsViewEffect.StoreUnavailable -> {
+          snackbarHostState.showSnackbar(currentStoreUnavailableMessage.value)
         }
       }
     }

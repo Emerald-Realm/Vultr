@@ -13,18 +13,20 @@ interface FeatureFlagBindingContainer {
 
   @Provides
   @SingleIn(AppScope::class)
-  @ReviewEnabledFeatureFlagQualifier
-  fun reviewEnabledFeatureFlag(factory: FeatureFlagFactory): FeatureFlag<Boolean> {
+  @RatingReminderEnabledFeatureFlagQualifier
+  fun ratingReminderEnabledFeatureFlag(factory: FeatureFlagFactory): FeatureFlag<Boolean> {
     return factory.boolean(
-      key = "review_enabled",
-      description = "Shows the in-app review prompt when the review conditions are met.",
-      defaultValue = false,
+      key = "rating_reminder_enabled",
+      description = "Shows the monthly rating reminder after an hour of listening in the second week of a month.",
+      defaultValue = true,
     )
   }
 
   @Binds
   @IntoSet
-  fun bindReviewEnabledFeatureFlag(@ReviewEnabledFeatureFlagQualifier flag: FeatureFlag<Boolean>): FeatureFlag<*>
+  fun bindRatingReminderEnabledFeatureFlag(
+    @RatingReminderEnabledFeatureFlagQualifier flag: FeatureFlag<Boolean>,
+  ): FeatureFlag<*>
 
   @Provides
   @SingleIn(AppScope::class)
@@ -81,7 +83,7 @@ interface FeatureFlagBindingContainer {
 }
 
 @Qualifier
-annotation class ReviewEnabledFeatureFlagQualifier
+annotation class RatingReminderEnabledFeatureFlagQualifier
 
 @Qualifier
 annotation class UserAgentFeatureFlagQualifier

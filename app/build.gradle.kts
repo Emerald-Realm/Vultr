@@ -146,9 +146,16 @@ android {
         }
       }
       if (!hasSigningConfig) {
-        throw GradleException(
-          "Release builds require signing. Create an ignored keystore.properties file at the repo root.",
-        )
+        val taskSuffix = variant.name.replaceFirstChar { it.uppercase() }
+        tasks.configureEach {
+          if (name == "package$taskSuffix" || name == "bundle$taskSuffix") {
+            doFirst {
+              throw GradleException(
+                "Release builds require signing. Create an ignored keystore.properties file at the repo root.",
+              )
+            }
+          }
+        }
       }
     }
   }
@@ -185,7 +192,7 @@ dependencies {
 
   implementation(libs.serialization.json)
 
-  // Play-flavored builds use the Play In-App Review flow; sideloaded builds ship a no-op.
+  // Play-flavored builds ship the monthly rating reminder; sideloaded builds ship a no-op.
   "playImplementation"(projects.features.review.play)
   "githubImplementation"(projects.features.review.noop)
 

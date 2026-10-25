@@ -146,7 +146,9 @@ class MainActivity : AppCompatActivity() {
           }
         }
 
-        ReviewFeature()
+        ReviewFeature(
+          automaticReminderAllowed = backStack.lastOrNull() is Destination.BookOverview,
+        )
       }
     }
   }

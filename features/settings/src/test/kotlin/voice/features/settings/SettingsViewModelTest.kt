@@ -15,10 +15,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import voice.core.common.AppInfoProvider
 import voice.core.common.DispatcherProvider
+import voice.core.common.StoreLinkHandler
 import voice.core.data.GridMode
 import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
@@ -47,6 +49,9 @@ class SettingsViewModelTest {
   private val gridCount = mockk<GridCount> {
     every { useGridAsDefault() } returns true
   }
+  private val storeLinkHandler = mockk<StoreLinkHandler> {
+    every { openRavenListing() } returns true
+  }
   private val folderPickerFeatureFlag = MemoryFeatureFlag(false)
 
   private val viewModel = SettingsViewModel(
@@ -61,6 +66,7 @@ class SettingsViewModelTest {
     gridCount = gridCount,
     folderPickerInSettingsFeatureFlag = folderPickerFeatureFlag,
     developerMenuUnlockedStore = developerMenuUnlockedStore,
+    storeLinkHandler = storeLinkHandler,
     dispatcherProvider = DispatcherProvider(scope.coroutineContext, scope.coroutineContext, scope.coroutineContext),
   )
 
@@ -96,6 +102,24 @@ class SettingsViewModelTest {
 
     verify(exactly = 1) {
       navigator.goTo(Destination.DeveloperSettings)
+    }
+  }
+
+  @Test
+  fun `rate row opens the published listing`() = scope.runTest {
+    viewModel.openRateApp()
+    advanceUntilIdle()
+
+    verify(exactly = 1) { storeLinkHandler.openRavenListing().let { } }
+  }
+
+  @Test
+  fun `an unavailable store emits a snackbar effect`() = scope.runTest {
+    every { storeLinkHandler.openRavenListing() } returns false
+    viewModel.viewEffects.test {
+      viewModel.openRateApp()
+
+      awaitItem().shouldBeInstanceOf<SettingsViewEffect.StoreUnavailable>()
     }
   }
 }

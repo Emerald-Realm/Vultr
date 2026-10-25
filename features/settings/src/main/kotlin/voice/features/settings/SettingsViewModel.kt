@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import voice.core.common.AppInfoProvider
 import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
+import voice.core.common.StoreLinkHandler
 import voice.core.data.GridMode
 import voice.core.data.ThemeMode
 import voice.core.data.sleeptimer.SleepTimerPreference
@@ -57,6 +58,7 @@ class SettingsViewModel(
   private val folderPickerInSettingsFeatureFlag: FeatureFlag<Boolean>,
   @DeveloperMenuUnlockedStore
   private val developerMenuUnlockedStore: DataStore<Boolean>,
+  private val storeLinkHandler: StoreLinkHandler,
   dispatcherProvider: DispatcherProvider,
 ) : SettingsListener {
 
@@ -133,6 +135,14 @@ class SettingsViewModel(
 
   override fun openOpenSourceLicenses() {
     navigator.goTo(Destination.Website("$DOCS_BASE/docs/licenses.md"))
+  }
+
+  override fun openRateApp() {
+    mainScope.launch {
+      if (!storeLinkHandler.openRavenListing()) {
+        _viewEffects.emit(SettingsViewEffect.StoreUnavailable)
+      }
+    }
   }
 
   override fun toggleGrid() {

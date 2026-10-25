@@ -42,6 +42,8 @@
     <string name="settings_section_library">Library</string>
     <string name="settings_section_help">Help</string>
     <string name="settings_section_about">About</string>
+    <string name="settings_rate_raven">Rate Raven</string>
+    <string name="settings_store_unavailable">Couldn\'t open the Play Store</string>
     <string name="settings_visit_website">Visit Website</string>
     <string name="settings_terms_of_service">Terms of Service</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
@@ -183,4 +185,9 @@
         <item quantity="other">%d minutes</item>
     </plurals>
     <string name="playback.current_chapter">Current chapter</string>
+    <string name="rating_reminder_title">Enjoying Raven?</string>
+    <string name="rating_reminder_content">You\'ve listened for over an hour in the last few days. A quick rating helps other readers find Raven.</string>
+    <string name="rating_reminder_rate">Rate Raven</string>
+    <string name="rating_reminder_not_now">Not now</string>
+    <string name="rating_reminder_already_rated">I\'ve already rated</string>
 </resources>

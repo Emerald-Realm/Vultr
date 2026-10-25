@@ -13,8 +13,10 @@ import kotlinx.serialization.builtins.nullable
 import kotlinx.serialization.builtins.serializer
 import voice.core.data.BookId
 import voice.core.data.GridMode
+import voice.core.data.RatingReminderState
 import voice.core.data.ReaderProfile
 import voice.core.data.ThemeMode
+import voice.core.data.listening.ListeningStats
 import voice.core.data.sleeptimer.SleepTimerPreference
 import voice.core.featureflag.FeatureFlagOverride
 import kotlin.time.Duration
@@ -187,6 +189,28 @@ public interface StoreModule {
       serializer = ReaderProfile.serializer(),
       defaultValue = ReaderProfile(),
       fileName = "readerProfile",
+    )
+  }
+
+  @Provides
+  @SingleIn(AppScope::class)
+  @ListeningStatsStore
+  private fun listeningStats(factory: VoiceDataStoreFactory): DataStore<ListeningStats> {
+    return factory.create(
+      serializer = ListeningStats.serializer(),
+      defaultValue = ListeningStats(),
+      fileName = "listeningStats",
+    )
+  }
+
+  @Provides
+  @SingleIn(AppScope::class)
+  @RatingReminderStateStore
+  private fun ratingReminderState(factory: VoiceDataStoreFactory): DataStore<RatingReminderState> {
+    return factory.create(
+      serializer = RatingReminderState.serializer(),
+      defaultValue = RatingReminderState(),
+      fileName = "ratingReminderState",
     )
   }
 

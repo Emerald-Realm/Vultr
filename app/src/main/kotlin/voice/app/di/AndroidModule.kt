@@ -11,9 +11,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.json.Json
 import voice.app.misc.AppInfoProviderImpl
 import voice.app.misc.MainActivityIntentProviderImpl
+import voice.app.misc.StoreLinkHandlerImpl
 import voice.core.common.AppInfoProvider
 import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
+import voice.core.common.StoreLinkHandler
 import voice.core.playback.notification.MainActivityIntentProvider
 import java.time.Clock
 
@@ -37,6 +39,9 @@ interface AndroidModule {
 
   @Provides
   fun applicationIdProvider(impl: AppInfoProviderImpl): AppInfoProvider = impl
+
+  @Provides
+  fun storeLinkHandler(impl: StoreLinkHandlerImpl): StoreLinkHandler = impl
 
   @Provides
   @SingleIn(AppScope::class)

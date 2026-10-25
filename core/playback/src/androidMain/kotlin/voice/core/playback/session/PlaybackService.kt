@@ -10,6 +10,7 @@ import voice.core.common.rootGraphAs
 import voice.core.logging.api.Logger
 import voice.core.playback.di.PlaybackGraph
 import voice.core.playback.player.VoicePlayer
+import voice.core.playback.playstate.ListeningTracker
 import voice.core.playback.playstate.PositionUpdater
 
 class PlaybackService : MediaLibraryService() {
@@ -27,6 +28,9 @@ class PlaybackService : MediaLibraryService() {
   lateinit var positionUpdater: PositionUpdater
 
   @Inject
+  lateinit var listeningTracker: ListeningTracker
+
+  @Inject
   lateinit var voiceNotificationProvider: VoiceMediaNotificationProvider
 
   override fun onCreate() {
@@ -41,7 +45,9 @@ class PlaybackService : MediaLibraryService() {
   private fun release() {
     runBlocking {
       positionUpdater.flushPositionNow()
+      listeningTracker.flushNow()
     }
+    listeningTracker.release()
     positionUpdater.release()
     player.release()
     session.release()

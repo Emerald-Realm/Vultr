@@ -46,3 +46,9 @@ public annotation class FeatureFlagOverridesStore
 
 @Qualifier
 public annotation class ReaderProfileStore
+
+@Qualifier
+public annotation class ListeningStatsStore
+
+@Qualifier
+public annotation class RatingReminderStateStore

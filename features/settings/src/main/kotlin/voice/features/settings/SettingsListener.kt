@@ -12,6 +12,7 @@ interface SettingsListener {
   fun openTermsOfService()
   fun openPrivacyPolicy()
   fun openOpenSourceLicenses()
+  fun openRateApp()
   fun toggleGrid()
   fun onLayoutRowClick()
   fun setGridMode(gridMode: GridMode)
@@ -44,6 +45,7 @@ interface SettingsListener {
       override fun openTermsOfService() {}
       override fun openPrivacyPolicy() {}
       override fun openOpenSourceLicenses() {}
+      override fun openRateApp() {}
       override fun toggleGrid() {}
       override fun onLayoutRowClick() {}
       override fun setGridMode(gridMode: GridMode) {}

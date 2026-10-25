@@ -49,6 +49,23 @@ To unlock it:
 2. Tap the app version entry 13 times.
 3. Open the newly visible developer menu from `Settings`.
 
+## Android APK builds
+
+Debug APKs are installable without signing configuration:
+
+```sh
+./gradlew :app:assemblePlayDebug
+./gradlew :app:assembleGithubDebug
+```
+
+The APKs are written to `app/build/outputs/apk/<flavor>/debug/`. The `Android` GitHub Actions workflow runs the
+unit tests, builds both debug flavors and uploads the APKs as artifacts.
+
+Release builds need an ignored `keystore.properties` at the repository root (or
+`signing/<flavor>/signing.properties`). It must provide `storeFile`, `storePassword`, `keyAlias` and `keyPassword`.
+Without it, release packaging fails with an explanatory error before any artifact is produced. Never commit keystores or
+passwords.
+
 ## Ktlint
 
 Voice uses **Ktlint** to enforce consistent code formatting.
@@ -74,43 +91,40 @@ chmod +x .git/hooks/pre-commit
 
 ## Releasing
 
-To release a new version, trigger the [Release Workflow](https://github.com/PaulWoitaschek/Voice/actions/workflows/trigger_release.yml)
+Release publishing is intentionally separate from Android development handoffs. Do not upload or promote to Play
+without an explicit release request.
 
-This pushes a tag and publishes the release to the Play Store’s internal track. From there, promotion to production must be done
-manually.
+With the existing Raven upload credentials, build a signed release after choosing the next version:
 
-F-Droid builds are handled by their team and usually appear a few days after a stable (non-RC) release.
+```sh
+./gradlew :app:assemblePlayRelease :app:bundlePlayRelease \
+  -Pvoice.versionName=<next-version> \
+  -Pvoice.versionCode=<greater-than-highest-uploaded-code>
+```
+
+Verify the APK signature and AAB structure before uploading to the Play Console. Promotion to production is manual.
+An APK or AAB built without the upload key is not release-ready.
 
 ## Versioning
 
-Voice uses [calendar versioning (CalVer)](https://calver.org/).
+Version defaults live in `app/build.gradle.kts`. For a Play upload, pass a `voice.versionCode` greater than the highest
+code already uploaded; do not rely on the repository default. `voice.versionName` is the user-visible version.
 
-- Version name format: `YY.M.RELEASE`
-  - `YY`: release year, last 2 digits (2025 → 25)
-  - `M`: release month (1–12)
-  - `RELEASE`: counter for releases within the same month (starting at 1)
-- Tag format (used by CI): `YY.M.RELEASE-CODE`
-  - `CODE` is the numeric Android versionCode derived from the version name using the formula below.
+## Listening and rating behavior
 
-Examples:
+Listening time is recorded from monotonic active playback only. Paused, buffering, seeking and idle time are excluded,
+background playback counts, and playback speed never multiplies the measured time. Sessions are attributed to local
+calendar dates and checkpointed so a process restart does not double count.
 
-- First release in September 2025 → version name `25.9.1`
-- Tag includes version code → `25.9.1-5309001`
+A book earns a level completion only after at least 95% of its known duration has genuinely been played. Seeking to the
+end earns nothing, replaying does not duplicate coverage, and awarded books stay awarded. Levels use five books per level
+and the same calculation in Settings and Profile.
 
-### Version code
-
-The Android `versionCode` is calculated from the version name with:
-
-`CODE = (YY + 28)(MM as 2 digits)(RELEASE as 3 digits)`
-
-Example: `25.9.1` → `(25+28)=53`, `MM=09`, `RELEASE=001` → `5309001`.
-
-This code is embedded in the git tag by `release.main.kts` and used by CI and Fastlane.
+Play builds show at most one rating reminder per calendar month, only on local dates 8–14, after one hour of genuine
+listening in that window, and only in the foreground while playback is paused or stopped. "I've already rated" suppresses
+future reminders permanently. "Rate Raven" opens the published listing and has a browser fallback. See
+[release notes](release-notes-next.md).
 
 ## Pages Deployment
 
-The project website uses MkDocs for repository-hosted documentation and the public product site lives at <https://praiseoyegoke.framer.website/raven>.
-To deploy a new website, use dispatch a workflow
-manually.
-
-[👉 Dispatch Workflow](https://github.com/VoiceAudiobook/Voice/actions/workflows/deploy_pages.yml)
+The public product site is <https://praiseoyegoke.framer.website/raven>. It is maintained outside this repository.

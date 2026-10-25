@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import voice.core.common.DispatcherProvider
 import voice.core.common.MainScope
-import voice.core.data.Book
 import voice.core.data.ReaderProfile
-import voice.core.data.repo.BookRepository
+import voice.core.data.listening.ListeningStats
+import voice.core.data.repo.ListeningStatsRepo
 import voice.core.data.store.ReaderProfileStore
 import voice.navigation.Navigator
 import java.util.concurrent.TimeUnit
@@ -21,13 +21,13 @@ import kotlin.math.roundToLong
 @Inject
 class ProfileViewModel(
   @ReaderProfileStore private val profileStore: DataStore<ReaderProfile>,
-  bookRepository: BookRepository,
+  listeningStatsRepo: ListeningStatsRepo,
   private val navigator: Navigator,
   dispatcherProvider: DispatcherProvider,
 ) {
   private val mainScope = MainScope(dispatcherProvider)
-  private val state = combine(profileStore.data, bookRepository.flow()) { profile, books ->
-    profile.toViewState(books)
+  private val state = combine(profileStore.data, listeningStatsRepo.stats) { profile, stats ->
+    profile.toViewState(stats)
   }
 
   @Composable
@@ -59,23 +59,22 @@ data class ProfileViewState(
   val completedBooks: Int = 0,
   val level: Int = 0,
   val booksIntoLevel: Int = 0,
+  val barFraction: Float = 0f,
   val listenedHours: Long = 0,
 )
 
-private fun ReaderProfile.toViewState(books: List<Book>): ProfileViewState {
-  val completed = books.count { it.isCompleted }
-  val listenedMs = books.sumOf { it.position.coerceIn(0L, it.duration) }
+internal fun ReaderProfile.toViewState(stats: ListeningStats): ProfileViewState {
+  val completedBooks = stats.awardedBookIds.size
+  val booksIntoLevel = completedBooks % BOOKS_PER_LEVEL
   return ProfileViewState(
     name = name,
     imageUri = imageUri,
-    completedBooks = completed,
-    level = completed / BOOKS_PER_LEVEL,
-    booksIntoLevel = completed % BOOKS_PER_LEVEL,
-    listenedHours = (listenedMs.toDouble() / TimeUnit.HOURS.toMillis(1)).roundToLong(),
+    completedBooks = completedBooks,
+    level = completedBooks / BOOKS_PER_LEVEL,
+    booksIntoLevel = booksIntoLevel,
+    barFraction = booksIntoLevel / BOOKS_PER_LEVEL.toFloat(),
+    listenedHours = (stats.lifetimeListenedMs.toDouble() / TimeUnit.HOURS.toMillis(1)).roundToLong(),
   )
 }
-
-private val Book.isCompleted: Boolean
-  get() = duration > 0L && position >= duration - TimeUnit.SECONDS.toMillis(5)
 
 internal const val BOOKS_PER_LEVEL = 5

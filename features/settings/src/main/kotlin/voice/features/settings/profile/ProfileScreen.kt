@@ -193,11 +193,7 @@ private fun ProfileScreen(viewState: ProfileViewState, viewModel: ProfileViewMod
           trackColor = RavenTheme.colors.bgTertiary,
         )
         Text(
-          text = if (viewState.booksIntoLevel == 0 && viewState.completedBooks > 0) {
-            "Level ${viewState.level} reached"
-          } else {
-            "${BOOKS_PER_LEVEL - viewState.booksIntoLevel} more to reach level ${viewState.level + 1}"
-          },
+          text = "${viewState.booksIntoLevel} of $BOOKS_PER_LEVEL books to the next level",
           modifier = Modifier.padding(top = 12.dp),
           style = MaterialTheme.typography.bodyMedium,
           color = RavenTheme.colors.caption,

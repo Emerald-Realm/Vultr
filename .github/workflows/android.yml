@@ -1,0 +1,45 @@
+name: Android
+
+on:
+  push:
+    branches: [KMP, android-apk-handoff]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-package-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Unit tests
+        run: ./gradlew voiceUnitTest --console=plain
+
+      - name: Assemble Play debug APK
+        run: ./gradlew :app:assemblePlayDebug --console=plain
+
+      - name: Assemble GitHub debug APK
+        run: ./gradlew :app:assembleGithubDebug --console=plain
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: raven-debug-apks
+          path: |
+            app/build/outputs/apk/play/debug/*.apk
+            app/build/outputs/apk/github/debug/*.apk
+          if-no-files-found: error
