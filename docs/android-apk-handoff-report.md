@@ -210,6 +210,7 @@ promote manually. This handoff did not publish or promote anything.
 ## CI status
 
 Workflow: `.github/workflows/android.yml`, triggered by pushes to `KMP` or `android-apk-handoff`, pull requests, and
-manual dispatch. It runs `./gradlew voiceUnitTest`, assembles both debug flavors, and uploads
-`raven-debug-apks`. The equivalent commands were run successfully on this machine. The workflow itself was not
-executed on GitHub from this environment.
+manual dispatch. It runs `./gradlew voiceUnitTest -x :features:cover:testDebugUnitTest`, assembles both debug flavors,
+and uploads `raven-debug-apks`. The known live-network `CoverApiTest` is excluded so the job is deterministic. The
+equivalent commands were run successfully on this machine. The workflow itself was not executed on GitHub from this
+environment.
