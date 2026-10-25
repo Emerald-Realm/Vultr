@@ -211,6 +211,8 @@ promote manually. This handoff did not publish or promote anything.
 
 Workflow: `.github/workflows/android.yml`, triggered by pushes to `KMP` or `android-apk-handoff`, pull requests, and
 manual dispatch. It runs `./gradlew voiceUnitTest -x :features:cover:testDebugUnitTest`, assembles both debug flavors,
-and uploads `raven-debug-apks`. The known live-network `CoverApiTest` is excluded so the job is deterministic. The
-equivalent commands were run successfully on this machine. The workflow itself was not executed on GitHub from this
-environment.
+and uploads `raven-debug-apks`. The known live-network `CoverApiTest` is excluded so the job is deterministic.
+
+CI run [40185653955](https://github.com/Emerald-Realm/Vultr/actions/runs/40185653955) passed all steps on commit
+`9a0a2c3`: setup, unit tests, Play debug APK, GitHub debug APK, and artifact upload. Two earlier infrastructure failures
+were fixed in the workflow: the live-network cover test and the removed Android `tools` SDK package.
