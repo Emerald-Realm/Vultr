@@ -25,3 +25,43 @@ symbols.zip
 
 # Kotlin
 .kotlin/
+
+Knight/
+
+# Private configuration and generated diagnostics
+
+signing/
+
+REMOVE/
+
+artifacts/
+
+.env
+
+.env.*
+
+!.env.example
+
+!.env.sample
+
+*.p12
+
+*.pfx
+
+*.pem
+
+*.key
+
+*SIGNING_BACKUP*
+
+google-services.json
+
+*.apk
+
+*.aab
+
+*.apks
+
+*.hprof
+
+*.log
